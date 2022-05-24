@@ -1,2 +1,12 @@
 <h1>Assignments#index</h1>
 <p>Find me in app/views/assignments/index.html.erb</p>
+
+<div class="container">
+  <%= @assignments.each do |assignment| %>
+    <%= assignment.title %>
+    <%= assignment.instruction %>
+    <%= assignment.comment %>
+    <%= assignment.checkpoint %>
+    <%= assignment.status %>
+  <% end %>
+</div>
