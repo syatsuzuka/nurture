@@ -1,8 +1,7 @@
   <%= simple_form_for @course do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.association :tutor, collection: User.all.order(:first_name, :last_name), label_method: :select_label %>
-    <%= f.association :student, collection: User.all.order(:first_name, :last_name), label_method: :select_label %>
+    <%= f.association :student, collection: User.where(role: "student").order(:first_name, :last_name), label_method: :select_label %>
     <%= f.submit 'Save', class: "btn btn-primary" %>
     <%= link_to 'Cancel', courses_path, class: 'btn btn-primary'%>
   <% end %>
