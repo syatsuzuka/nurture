@@ -1,0 +1,9 @@
+  <%= simple_form_for [ @course, @assignment ] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :instruction %>
+    <%= f.input :checkpoint %>
+    <%= f.input :status, default: :false %>
+    <%= f.input :course %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= link_to 'Add a New Assignment', new_assignment_path, class: 'btn btn-primary'%>
+  <% end %>
