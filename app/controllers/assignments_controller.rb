@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+  before_action :set_assignment, only: %i[edit]
+
   def index
   end
 
@@ -12,5 +14,11 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
   end
 end
