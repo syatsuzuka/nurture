@@ -63,6 +63,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# custom
 gem 'devise'
-
 gem 'faker'
+gem 'cloudinary', '~> 1.16.0'
+gem 'pundit'

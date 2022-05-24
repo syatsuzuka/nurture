@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+  before_action :set_assignment, only: %i[edit]
+
   def index
     @assignments = Assignment.all
   end
@@ -22,7 +24,13 @@ class AssignmentsController < ApplicationController
   def edit
   end
 
+  private
+
   def assignment_params
     params.require(:assignment).permit(:title, :instruction, :comment, :checkpoint, :status, :course_id)
+  end
+  
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
   end
 end
