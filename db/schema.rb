@@ -100,8 +100,6 @@ ActiveRecord::Schema.define(version: 2022_05_24_060609) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
-  add_foreign_key "courses", "users", column: "student_id"
-  add_foreign_key "courses", "users", column: "tutor_id"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end

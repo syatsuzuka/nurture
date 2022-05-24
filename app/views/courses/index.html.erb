@@ -1,6 +1,27 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 bg-white border-bottom">
-  <h1 class="h2">Courses</h1>
-</div>
+<div class="container">
+  <h1>Courses</h1>
 
-<%= cl_image_tag("igkqcxieskonjb9wfqfy",
-      width: 400, height: 300, crop: :fill) %>
+  <%= link_to 'Add Course', new_course_path, class: "btn btn-primary" %>
+
+  <table class="table table-responsive table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Tutor</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @courses.each_with_index do |course, index| %>
+        <tr>
+          <td scope="row"><%= index + 1 %></td>
+          <td><%= course.name %></td>
+          <td><%= course.description %></td>
+          <td><%= course.tutor.last_name %> <%= course.tutor.first_name %><br>(<%= course.tutor.email %>)</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

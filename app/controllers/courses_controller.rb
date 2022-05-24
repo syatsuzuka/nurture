@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update]
 
   def index
-    @courses = Course.all
+    @courses = policy_scope(Course)
   end
 
   def show
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    authorize @course
   end
 
   def create
