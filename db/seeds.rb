@@ -52,11 +52,15 @@ puts '===================================='
 puts '===================================='
 
 puts "Generating courses..."
-20.times do
-Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
+
+10.times do
+  course = Course.create!(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", user: User.where(role:"tutor").sample )
+  Enrollment.create!(course: course, user: User.where(role: "student").sample)
 end
 
-puts "Generated #{Course.all.count} courses successfully"
+
+
+puts "Generated #{Course.count} courses successfully"
 
 puts '===================================='
 
@@ -69,7 +73,7 @@ instruction = "#{Faker::Quote.yoda}"
 comment = "#{Faker::Quote.robin}"
 status = rand(100) > 33 ? true : false
 
-Assignment.create(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course_id: Course.all.sample.id, status: status)
+Assignment.create!(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course: Course.all.sample, status: status)
 
 end
 puts "Generated #{Assignment.all.count} Assignments successfully"
