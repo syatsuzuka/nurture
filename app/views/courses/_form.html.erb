@@ -1,0 +1,8 @@
+  <%= simple_form_for @course do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :tutor %>
+    <%= f.input :student %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= link_to 'Cancel', owner_gears_path, class: 'btn btn-primary'%>
+  <% end %>
