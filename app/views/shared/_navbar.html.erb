@@ -7,7 +7,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if user_signed_in? %>
-        <span class="text-light m-3"><%= current_user.first_name %> <%= current_user.last_name %></span>
+        <span class="text-light m-3"><%= current_user.first_name %> <%= current_user.last_name %>@<%= current_user.role %></span>
 
         <ul class="navbar-nav me-auto">
           <li class="nav-item dropdown">

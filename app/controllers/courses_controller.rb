@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    authorize @course
   end
 
   def new
@@ -16,6 +17,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(courses_params)
+    @course.tutor_user_id = current_user.id
     authorize @course
 
     if @course.save

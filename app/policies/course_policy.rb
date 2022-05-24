@@ -1,7 +1,11 @@
 class CoursePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.role == "tutor"
+        scope.where(tutor_user_id: user.id)
+      else
+        scope.where(student_user_id: user.id)
+      end
     end
   end
 
