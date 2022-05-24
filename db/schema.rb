@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2022_05_24_043038) do
+=======
 ActiveRecord::Schema.define(version: 2022_05_24_043240) do
+>>>>>>> 9d8be954ab32f6c10bc1ed5d92204877683a26c6
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +62,10 @@ ActiveRecord::Schema.define(version: 2022_05_24_043240) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "tutor_id", null: false
-    t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_courses_on_student_id"
-    t.index ["tutor_id"], name: "index_courses_on_tutor_id"
+    t.integer "tutor_user_id"
+    t.integer "student_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -97,11 +99,14 @@ ActiveRecord::Schema.define(version: 2022_05_24_043240) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+=======
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
   add_foreign_key "courses", "users", column: "student_id"
   add_foreign_key "courses", "users", column: "tutor_id"
+>>>>>>> 9d8be954ab32f6c10bc1ed5d92204877683a26c6
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end
