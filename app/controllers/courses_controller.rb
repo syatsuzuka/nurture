@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update]
 
   def index
-    @courses = Course.all
+    @courses = policy_scope(Course)
   end
 
   def show
@@ -11,10 +11,12 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    authorize @course
   end
 
   def create
     @course = Course.new(courses_params)
+    authorize @course
 
     if @course.save
       redirect_to courses_path
@@ -40,7 +42,7 @@ class CoursesController < ApplicationController
   private
 
   def courses_params
-    params.require(:course).permit(:name, :description, :tutor_id, :student_id)
+    params.require(:course).permit(:name, :description, :tutor_user_id, :student_user_id)
   end
 
   def set_course
