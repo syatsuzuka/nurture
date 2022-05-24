@@ -9,10 +9,15 @@
 def user_count(role)
   User.where(role: role).count
 end
-
+puts 'Cleaning up assignments...'
+Assignment.delete_all
+puts 'Cleaning up courses...'
+Course.delete_all
 puts 'Cleaning up users...'
-puts '===================================='
 User.delete_all
+
+puts '===================================='
+
 puts "Generating personal tutor seeds"
 User.create(email: 'shingo@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 User.create(email: 'ed@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
@@ -25,7 +30,7 @@ puts "Generating random tutor seeds..."
   User.create(email: "#{Faker::Internet.email}", first_name: "#{Faker::Name.name.split[0]}", last_name: "#{Faker::Name.name.split[1]}", password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 end
 
-puts "#{user_count("tutor")} new tutors standing in a row"
+puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts '===================================='
 puts "#{Faker::Hacker.ingverb} personal student seeds..."
 
@@ -40,11 +45,10 @@ puts "Generating random student seeds..."
 User.create(email: "#{Faker::Internet.email}", first_name: "#{Faker::Name.name.split[0]}", last_name: "#{Faker::Name.name.split[1]}", password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 end
 
-puts "Generated #{user_count("student")} shiny new students"
+puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
 puts '===================================='
 
-puts 'Cleaning up courses...'
-Course.delete_all
+
 puts '===================================='
 
 puts "Generating courses..."
@@ -55,4 +59,20 @@ end
 puts "Generated #{Course.all.count} courses successfully"
 
 puts '===================================='
-puts "#{Faker::Marketing.buzzwords}"
+
+
+puts 'Generating assignments...'
+30.times do
+title= "#{Faker::Verb.ing_form.capitalize} practice"
+checkpoint= "can #{Faker::Verb.base} #{rand(100)} times in a row"
+instruction = "#{Faker::Quote.yoda}"
+comment = "#{Faker::Quote.robin}"
+status = rand(100) > 33 ? true : false
+
+Assignment.create(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course_id: Course.all.sample.id, status: status)
+
+end
+puts "Generated #{Assignment.all.count} Assignments successfully"
+
+
+puts "Remember :#{Faker::Marketing.buzzwords}"
