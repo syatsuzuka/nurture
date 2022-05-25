@@ -1,2 +1,12 @@
 <h1>Assignments#index</h1>
-<p>Find me in app/views/assignments/index.html.erb</p>
+<h1><%= @course.name %></h1>
+
+<%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+
+<div class="container">
+  <%= @assignments.each do |assignment| %>
+    <div class="assinment border">
+      <p><%= assignment.title %></p>
+    </div>
+  <% end %>
+</div>

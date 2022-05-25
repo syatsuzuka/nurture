@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    authorize @course
   end
 
   def new

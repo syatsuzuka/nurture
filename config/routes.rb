@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :courses do
-    resources :assignments, only: %i[edit]
+    resources :assignments, only: %i[new create index show edit]
   end
 end
