@@ -1,10 +1,42 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
-
+<h1><%= @assignment.title %></h1>
 <div class="container">
-  <p><%= @assignment.title %></p>
-  <p><%= @assignment.instruction %></p>
-  <p><%= @assignment.comment %></p>
-  <p><%= @assignment.checkpoint %></p>
-  <p><%= @assignment.status %></p>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">Title</td>
+        <td scope="row"><%= @assignment.title %></td>
+      </tr>
+      <tr>
+        <td scope="row">Instruction</td>
+        <td><%= @assignment.instruction %></td>
+      </tr>
+      <tr>
+        <td scope="row">Comment</td>
+        <td><%= @assignment.comment %></td>
+      </tr>
+      <tr>
+        <td scope="row">Checkpoint</td>
+        <td><%= @assignment.checkpoint %></td>
+      </tr>
+      <tr>
+        <td scope="row">Status</td>
+        <td>
+          <% if @assignment.status == true %>
+            Work In Process
+          <% else %>
+            Done
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<%= link_to "Edit", edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-primary" %>
+<%= link_to "Back", course_assignments_path(@assignment.course), class: "btn btn-primary" %>

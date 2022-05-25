@@ -32,4 +32,8 @@ class AssignmentPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def close?
+    true
+  end
 end
