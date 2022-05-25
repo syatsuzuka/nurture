@@ -1,10 +1,14 @@
 class AssignmentsController < ApplicationController
   before_action :assignment_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update]
-  before_action :set_assignment, only: %i[show edit update]
+  before_action :set_course, only: %i[index new create edit update close]
+  before_action :set_assignment, only: %i[show edit update close]
 
   def index
-    @assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+    if current_user.role == "tutor"
+      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+    else
+      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.student_user_id == current_user.id }
+    end
   end
 
   def show
@@ -29,9 +33,30 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
+    @assignment.course = @course
+    authorize @assignment
   end
 
   def update
+    @assignment.course = @course
+    authorize @assignment
+
+    if @assignment.update(assignment_params)
+      redirect_to course_assignments_path(@course)
+    else
+      render :edit
+    end
+  end
+
+  def close
+    @assignment.course = @course
+    authorize @assignment
+
+    if @assignment.save!
+      redirect_to course_assignments_path(@course)
+    else
+      render course_assignments_path(@course)
+    end
   end
 
   private
