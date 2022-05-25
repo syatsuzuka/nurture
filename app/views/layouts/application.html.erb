@@ -13,13 +13,17 @@
 
   </head>
   <body class="bg-white">
-    <%= render 'shared/navbar'%>
+    <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
+      <%= render 'shared/navbar'%>
+    <% end %>
 
     <div class="container-fluid">
       <div class="row">
-        <%= render 'shared/sidebarMenu'%>
+        <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
+          <%= render 'shared/sidebarMenu'%>
+        <% end %>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 col-lg-10 px-md-4">
           <%= yield %>
         </main>
       </div>
