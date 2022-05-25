@@ -67,7 +67,7 @@ title= "#{Faker::Verb.ing_form.capitalize} practice"
 checkpoint= "can #{Faker::Verb.base} #{rand(100)} times in a row"
 instruction = "#{Faker::Quote.yoda}"
 comment = "#{Faker::Quote.robin}"
-status = rand(100) > 33 ? true : false
+status = rand(3)
 
 Assignment.create(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course_id: Course.all.sample.id, status: status)
 

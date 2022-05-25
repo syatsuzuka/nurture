@@ -24,13 +24,15 @@
           <td><%= assignment.instruction %></td>
           <td><%= assignment.checkpoint %></td>
           <td>
-            <% if assignment.status == "true" %>
+            <% if assignment.status == 0 %>
               Work In Process
-            <% else %>
+            <% elsif assignment.status == 1 %>
               Done
               <% if current_user.role == "tutor" %>
                 <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
               <% end %>
+            <% else %>
+              Closed
             <% end %>
           </td>
         </tr>

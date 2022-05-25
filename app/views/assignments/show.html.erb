@@ -27,10 +27,12 @@
       <tr>
         <td scope="row">Status</td>
         <td>
-          <% if @assignment.status == true %>
+          <% if @assignment.status == 0 %>
             Work In Process
-          <% else %>
+          <% elsif @assignment.status == 1 %>
             Done
+          <% else %>
+            Closed
           <% end %>
         </td>
       </tr>

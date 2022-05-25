@@ -4,10 +4,12 @@ class AssignmentsController < ApplicationController
   before_action :set_assignment, only: %i[show edit update close]
 
   def index
+    all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
+
     if current_user.role == "tutor"
-      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+      @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
     else
-      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.student_user_id == current_user.id }
+      @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
   end
 
