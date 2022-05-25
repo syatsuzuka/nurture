@@ -33,6 +33,10 @@ class AssignmentPolicy < ApplicationPolicy
     true
   end
 
+  def all?
+    true
+  end
+
   def close?
     true
   end

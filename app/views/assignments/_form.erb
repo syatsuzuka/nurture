@@ -1,13 +1,17 @@
   <%= simple_form_for [@course, @assignment] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :instruction %>
-    <%= f.input :comment %>
-    <%= f.input :checkpoint %>
     <% if current_user.role == "tutor" %>
-      <% unless @assignment.id.nil? %>
+      <%= f.input :title %>
+      <%= f.input :instruction %>
+      <%= f.input :checkpoint %>
+    <% end %>
+    <% unless @assignment.id.nil? %>
+      <% if current_user.role == "tutor" %>
         <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true %>
+      <% else %>
+        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true %>
       <% end %>
     <% end %>
+    <%= f.input :comment %>
     <%= f.submit 'Save', class: "btn btn-primary" %>
     <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-primary'%>
   <% end %>
