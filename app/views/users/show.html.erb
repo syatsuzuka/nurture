@@ -2,12 +2,12 @@
   <h1>User Detail</h1>
 
   <p>
-    <%= @user.first_name %> <%= @user.last_name %>
     <% if defined? @user.photo.key %>
       <%= cl_image_tag @user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
     <% else %>
       <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
     <% end %>
+    <%= @user.first_name %> <%= @user.last_name %>
 
   </p>
   <p> <%= @user.email %></p>
