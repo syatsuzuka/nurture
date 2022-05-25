@@ -19,7 +19,7 @@
       <% @courses.each_with_index do |course, index| %>
       <tr>
           <td scope="row"><%= index + 1 %></td>
-          <td><%= link_to course_path(course), class: "text-decoration-none" do %><%= course.name %><% end %></td>
+          <td><%= link_to course_assignments_path(course), class: "text-decoration-none" do %><%= course.name %><% end %></td>
           <td><%= course.description %></td>
           <td>
             <%= link_to user_path(course.tutor), class: "text-decoration-none" do %>
