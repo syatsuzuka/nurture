@@ -1,0 +1,9 @@
+  <%= simple_form_for [@course, @assignment] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :instruction %>
+    <%= f.input :comment %>
+    <%= f.input :checkpoint %>
+    <%= f.input :status %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-primary'%>
+  <% end %>
