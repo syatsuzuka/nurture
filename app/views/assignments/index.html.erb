@@ -1,10 +1,10 @@
-<h1><%= @course.name %></h1>
+<div class="m-4">
+  <h1>Course Detail - <%= @course.name %></h1>
 
-<% if current_user.role == "tutor" %>
-  <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
-<% end %>
+  <% if current_user.role == "tutor" %>
+    <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+  <% end %>
 
-<div class="container">
   <table class="table table-responsive table-hover">
     <thead class="thead-dark">
       <tr>
