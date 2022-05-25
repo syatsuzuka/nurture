@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Courses</h1>
+  <h1 class = "my-3">Courses</h1>
 
   <% if current_user.role == "tutor" %>
     <%= link_to 'Add Course', new_course_path, class: "btn btn-primary" %>
