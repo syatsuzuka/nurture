@@ -32,10 +32,14 @@ class AssignmentsController < ApplicationController
 
   private
 
+  def assignment_params
+    params.require(:assignment).permit(:title, :instruction, :comment, :checkpoint, :status, :course_id)
+  end
+  
   def set_course
     @course = Course.find(params[:course_id])
   end
-
+  
   def set_assignment
     @assignment = Assignment.find(params[:id])
   end

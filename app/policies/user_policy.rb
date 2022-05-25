@@ -1,11 +1,8 @@
-class CoursePolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
+    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user.role == "tutor"
-        scope.where(tutor_user_id: user.id)
-      else
-        scope.where(student_user_id: user.id)
-      end
+      scope.all
     end
   end
 
