@@ -12,13 +12,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
   </head>
+  <%# header section %>
   <body class="bg-white">
     <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
       <%= render 'shared/navbar'%>
     <% end %>
 
-    <div class="container-fluid">
-      <div class="row">
+    <%# main section %>
+    <div class="container-fluid d-flex flex-column h-100 section-container">
+      <div class="row flex-grow-1">
         <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
           <%= render 'shared/sidebarMenu'%>
         <% end %>
@@ -27,5 +29,8 @@
         </main>
       </div>
     </div>
+
+    <%# footer section %>
+    <%= render 'shared/footer'%>
   </body>
 </html>

@@ -1,0 +1,37 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #6B6E70;
+}
+
+.facebook:hover {
+  color: #1973EB
+}
+
+.twitter:hover {
+  color: #36B3F7
+}
+
+.instagram:hover {
+  color: #F8618A
+}
+.linkedin:hover {
+  color: #1D6EC2
+}
+.google:hover {
+  color: #FC2424
+}
+.github:hover, .footertext:hover {
+  color: #F4F4F4
+}
+
+
+
+footer h6 {
+  font-weight: bold;
+  font-size: 16px;
+}
