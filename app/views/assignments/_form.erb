@@ -4,7 +4,9 @@
     <%= f.input :comment %>
     <%= f.input :checkpoint %>
     <% if current_user.role == "tutor" %>
-      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]] %>
+      <% unless @assignment.id.nil? %>
+        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true %>
+      <% end %>
     <% end %>
     <%= f.submit 'Save', class: "btn btn-primary" %>
     <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-primary'%>

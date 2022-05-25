@@ -26,6 +26,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     @assignment.course = @course
+    @assignment.status = 0
     authorize @assignment
     if @assignment.save
       redirect_to course_assignment_path(@course, @assignment)
