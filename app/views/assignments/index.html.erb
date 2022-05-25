@@ -4,7 +4,7 @@
 <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
 
 <div class="container">
-  <%= @assignments.each do |assignment| %>
+  <% @assignments.each do |assignment| %>
     <div class="assinment border">
       <p><%= assignment.title %></p>
     </div>
