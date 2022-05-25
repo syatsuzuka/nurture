@@ -58,8 +58,19 @@ class AssignmentsController < ApplicationController
     redirect_to course_assignments_path(@course)
   end
 
+  def all
+    if current_user.role == "tutor"
+      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+    else
+      @assignments = policy_scope(Assignment).select do |assignment|
+        assignment.course.student_user_id == current_user.id
+      end
+    end
+  end
+
   def close
     @assignment.course = @course
+    @assignment.status = 2
     authorize @assignment
 
     if @assignment.save!
