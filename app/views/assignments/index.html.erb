@@ -1,12 +1,31 @@
-<h1>Assignments#index</h1>
 <h1><%= @course.name %></h1>
 
-<%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+<% if current_user.role == "tutor" %>
+  <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+<% end %>
 
 <div class="container">
-  <% @assignments.each do |assignment| %>
-    <div class="assinment border">
-      <p><%= assignment.title %></p>
-    </div>
-  <% end %>
+  <table class="table table-responsive table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Instruction</th>
+        <th scope="col">Checkpoints</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @assignments.each_with_index do |assignment, index| %>
+        <tr>
+          <td scope="row"><%= link_to course_assignment_path(@course, assignment), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
+          <td><%= assignment.title %></td>
+          <td><%= assignment.instruction %></td>
+          <td><%= assignment.checkpoint %></td>
+          <td><%= assignment.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
