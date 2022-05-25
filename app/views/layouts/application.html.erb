@@ -12,11 +12,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
   </head>
+  <%# header section %>
   <body class="bg-white">
     <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
       <%= render 'shared/navbar'%>
     <% end %>
 
+    <%# main section %>
     <div class="container-fluid">
       <div class="row">
         <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
@@ -28,5 +30,8 @@
         </main>
       </div>
     </div>
+
+    <%# footer section %>
+    <%= render 'shared/footer'%>
   </body>
 </html>
