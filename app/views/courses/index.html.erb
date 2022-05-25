@@ -23,7 +23,13 @@
           <td><%= course.description %></td>
           <td>
             <%= link_to user_path(course.tutor), class: "text-decoration-none" do %>
-            <%= course.tutor.last_name %> <%= course.tutor.first_name %><br>(<%= course.tutor.email %>)
+              <% if defined? course.tutor.photo.key %>
+                <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+              <% end %>
+              <%= course.tutor.last_name %> <%= course.tutor.first_name %>
+              <br>(<%= course.tutor.email %>)
             <% end %>
           </td>
         </tr>
