@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="video-background-holder" id="banner">
+  <div class="video-background-overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="https://res.cloudinary.com/snoared/video/upload/v1653449529/production_ID_4058004_qigpfy.mp4" type="video/mp4">
+  </video>
+  <div class="video-background-content container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-4">The easiest way to help tutors engage with students</h1>
+        <p class="lead mb-5">Nurture helps counsel and monitor student progress in a more efficient way.</p>
+
+        <%= link_to "Enter", courses_path, class:"enter" %>
+                    <u></u></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<%# <div class="btn btn-primary"> |
+  <%= link_to 'Index', gears_path :class => "btn"%>
+</div>

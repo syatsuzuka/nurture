@@ -13,19 +13,6 @@
 
   </head>
   <body class="bg-white">
-    <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
-      <%= render 'shared/navbar'%>
-    <% end %>
-
-    <div class="container-fluid">
-      <div class="row">
-        <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
-          <%= render 'shared/sidebarMenu'%>
-        <% end %>
-        <main class="col-md-9 col-lg-10 px-md-4">
-          <%= yield %>
-        </main>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>
