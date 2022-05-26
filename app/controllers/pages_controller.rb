@@ -6,5 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @courses = policy_scope(Course)
+    authorize @courses
   end
 end
