@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get '/assignments', to: 'assignments#all', as: :all_assignments
   get '/tutors/', to: 'users#index', as: :tutors
