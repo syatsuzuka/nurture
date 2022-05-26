@@ -12,6 +12,7 @@
       <th scope="col">Description</th>
       <th scope="col">Student</th>
       <th scope="col">Tutor</th>
+      <th scope="col">Since</th>
     </tr>
   </thead>
 
@@ -40,6 +41,9 @@
             <% end %>
             <%= course.tutor.last_name %> <%= course.tutor.first_name %>
           <% end %>
+        </td>
+        <td>
+          <%= course.created_at.strftime('%F') %>
         </td>
       </tr>
     <% end %>
