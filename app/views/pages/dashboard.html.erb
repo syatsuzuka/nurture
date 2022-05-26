@@ -1,0 +1,5 @@
+<div class="m-4">
+  <h1>Dashboard</h1>
+
+  <%= line_chart User.group_by_day(:created_at).count %>
+</div>
