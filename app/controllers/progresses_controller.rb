@@ -6,6 +6,7 @@ class ProgressesController < ApplicationController
 
   def index
     all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
+    all_progresses.sort_by! { |progress| progress.date }
 
     if current_user.role == "tutor"
       @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }
@@ -51,7 +52,7 @@ class ProgressesController < ApplicationController
     authorize @progress
 
     if @progress.update!(progress_params)
-      redirect_to target_path(@target)
+      redirect_to course_target_progresses_path(@course, @target)
     else
       render :edit
     end
@@ -61,7 +62,7 @@ class ProgressesController < ApplicationController
     authorize @progress
     @progress.destroy!
 
-    redirect_to target_path(@target)
+    redirect_to course_target_progresses_path(@course, @target)
   end
 
   private

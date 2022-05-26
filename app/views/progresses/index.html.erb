@@ -51,6 +51,7 @@
       <th scope="col">Date</th>
       <th scope="col">Score</th>
       <th scope="col">Comment</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -60,6 +61,10 @@
         <td><%= progress.date %></td>
         <td><%= progress.score %></td>
         <td><%= progress.comment %></td>
+        <td>
+          <%= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
+          <%= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
+        </td>
       </tr>
     <% end %>
   </tbody>
