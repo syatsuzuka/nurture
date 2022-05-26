@@ -9,7 +9,7 @@
   <tbody>
     <tr>
       <td scope="row">Title</td>
-      <td scope="row"><%= @assignment.title %></td>
+      <td><%= @assignment.title %></td>
     </tr>
     <tr>
       <td scope="row">Instruction</td>
@@ -34,6 +34,18 @@
           Closed
         <% end %>
       </td>
+    <tr>
+      <td scope="row">Comment</td>
+      <td><%= @assignment.comment %></td>
+    </tr>
+    <tr>
+      <td scope="row">Start Date</td>
+      <td><%= @assignment.start_date %></td>
+    </tr>
+    <tr>
+      <td scope="row">End Date</td>
+      <td><%= @assignment.end_date %></td>
+    </tr>
     </tr>
   </tbody>
 </table>

@@ -14,6 +14,8 @@
       <th scope="col">Instruction</th>
       <th scope="col">Checkpoints</th>
       <th scope="col">Status</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Period</th>
     </tr>
   </thead>
 
@@ -58,6 +60,9 @@
             Closed
           <% end %>
         </td>
+        <td><%= assignment.comment %></td>
+        <td>from: <%= assignment.start_date %><br>
+        to: <%= assignment.end_date %></td>
       </tr>
     <% end %>
   </tbody>
