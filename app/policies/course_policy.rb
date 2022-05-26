@@ -36,4 +36,8 @@ class CoursePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def dashboard?
+    true
+  end
 end
