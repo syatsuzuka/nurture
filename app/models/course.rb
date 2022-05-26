@@ -2,6 +2,7 @@ class Course < ApplicationRecord
   belongs_to :tutor, :class_name => "User", :foreign_key => :tutor_user_id
   belongs_to :student, :class_name => "User", :foreign_key => :student_user_id
   has_many :assignments, dependent: :destroy
+  has_many :targets, dependent: :destroy
   validate :check_name
   validate :check_description
 

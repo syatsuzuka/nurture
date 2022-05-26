@@ -4,7 +4,7 @@ class TargetsController < ApplicationController
   before_action :set_target, only: %i[show edit update destroy close]
 
   def index
-    all_targets = policy_scope(target).select { |target| target.course.id == @course.id }
+    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
 
     if current_user.role == "tutor"
       @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
@@ -45,7 +45,7 @@ class TargetsController < ApplicationController
     authorize @target
 
     if @target.update!(target_params)
-      redirect_to course_targets_path(@course)
+      redirect_to course_assignments_path(@course)
     else
       render :edit
     end
