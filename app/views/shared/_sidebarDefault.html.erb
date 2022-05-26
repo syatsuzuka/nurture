@@ -1,0 +1,12 @@
+<div class="default-sidebar bg-light d-none" data-collapse-target="defaultsidebar">
+  <div class="arrow-right mt-3 text-center"><a href="#" data-action="click->collapse#open"><i class="fas fa-arrow-right"></i></a></div>
+  <div class="sideicon text-center mt-4"><i class="fas fa-chart-bar"></i></div>
+  <div class="sideicon text-center mt-4"><i class="fas fa-pen"></i></div>
+  <div class="sideicon text-center mt-4"><i class="fas fa-tasks"></i></div>
+  <% if current_user.role == "student" %>
+    <div class="sideicon text-center mt-4"><i class="fas fa-chalkboard-teacher"></i></div>
+  <% end %>
+  <% if current_user.role == "tutor" %>
+    <div class="sideicon text-center mt-4"><i class="fas fa-user"></i></div>
+  <% end %>
+</div>
