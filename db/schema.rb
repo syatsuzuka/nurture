@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.integer "student_user_id"
   end
 
-<<<<<<< HEAD
   create_table "progresses", force: :cascade do |t|
     t.date "date"
     t.float "score"
@@ -136,7 +135,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["target_id"], name: "index_progresses_on_target_id"
-=======
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -145,7 +144,6 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
->>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
   end
 
   create_table "roles", force: :cascade do |t|
@@ -194,12 +192,12 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
-<<<<<<< HEAD
   add_foreign_key "progresses", "targets"
-=======
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
->>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
+  add_foreign_key "progresses", "targets"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "targets", "courses"

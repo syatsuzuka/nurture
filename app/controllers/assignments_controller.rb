@@ -5,13 +5,12 @@ class AssignmentsController < ApplicationController
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
-
+    all_assignments.sort_by(&:created_at).reverse
     if current_user.role == "tutor"
       @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
     else
       @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
-<<<<<<< HEAD
 
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
 
@@ -20,12 +19,14 @@ class AssignmentsController < ApplicationController
     else
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
-=======
+
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
 
->>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
   end
 
   def show
