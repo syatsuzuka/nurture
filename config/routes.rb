@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :courses do
     resources :assignments
+    resources :targets do
+      resources :progresses
+    end
   end
 
   authenticate :user, ->(user) { user.admin? } do
