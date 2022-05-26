@@ -1,4 +1,10 @@
-<h1>User Detail</h1>
+<h1>User Detail
+  <% if defined? @user.photo.key %>
+    <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
+  <% else %>
+    <%= image_tag 'avatar.png', class: "avatar-large" %>
+  <% end %>
+</h1>
 
 <table class="table">
   <thead class="thead-dark">
@@ -10,14 +16,7 @@
   <tbody>
     <tr>
       <td scope="row">Name</td>
-      <td>
-        <% if defined? @user.photo.key %>
-          <%= cl_image_tag @user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-        <% else %>
-          <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-        <% end %>
-        <%= @user.first_name %> <%= @user.last_name %>
-      </td>
+      <td><%= @user.first_name %> <%= @user.last_name %></td>
     </tr>
 
     <tr>
