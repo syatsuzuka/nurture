@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
-    @courses = policy_scope(Course)
+    @courses = policy_scope(Course).sort_by(&:created_at).reverse
   end
 
   def show
