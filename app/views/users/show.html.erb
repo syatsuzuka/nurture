@@ -1,15 +1,33 @@
-<div class="m-4">
-  <h1>User Detail</h1>
+<h1>User Detail</h1>
 
-  <p>
-    <% if defined? @user.photo.key %>
-      <%= cl_image_tag @user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-    <% else %>
-      <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-    <% end %>
-    <%= @user.first_name %> <%= @user.last_name %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Key</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Name</td>
+      <td>
+        <% if defined? @user.photo.key %>
+          <%= cl_image_tag @user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+        <% else %>
+          <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+        <% end %>
+        <%= @user.first_name %> <%= @user.last_name %>
+      </td>
+    </tr>
 
-  </p>
-  <p> <%= @user.email %></p>
-  <p><%= @user.role %></p>
-</div>
+    <tr>
+      <td scope="row">E-mail</td>
+      <td><%= @user.email %></td>
+    </tr>
+
+    <tr>
+      <td scope="row">Role</td>
+      <td><%= @user.role %></td>
+    </tr>
+  </tbody>
+</table>
