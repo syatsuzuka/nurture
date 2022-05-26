@@ -1,43 +1,41 @@
-<div class="m-4">
-  <h1>Course Detail - <%= @course.name %></h1>
+<h1>Course Detail - <%= @course.name %></h1>
 
-  <% if current_user.role == "tutor" %>
-    <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
-    <%= link_to 'Delete Course', course_path(@course), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the course?' } %>
-  <% end %>
+<% if current_user.role == "tutor" %>
+  <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+  <%= link_to 'Delete Course', course_path(@course), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the course?' } %>
+<% end %>
 
-  <table class="table table-responsive table-hover">
-    <thead class="thead-dark">
+<table class="table table-responsive table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Instruction</th>
+      <th scope="col">Checkpoints</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each_with_index do |assignment, index| %>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Instruction</th>
-        <th scope="col">Checkpoints</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @assignments.each_with_index do |assignment, index| %>
-        <tr>
-          <td scope="row"><%= link_to course_assignment_path(@course, assignment), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
-          <td><%= assignment.title %></td>
-          <td><%= assignment.instruction %></td>
-          <td><%= assignment.checkpoint %></td>
-          <td>
-            <% if assignment.status == 0 %>
-              Work In Process
-            <% elsif assignment.status == 1 %>
-              Done
-              <% if current_user.role == "tutor" %>
-                <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
-              <% end %>
-            <% else %>
-              Closed
+        <td scope="row"><%= link_to course_assignment_path(@course, assignment), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
+        <td><%= assignment.title %></td>
+        <td><%= assignment.instruction %></td>
+        <td><%= assignment.checkpoint %></td>
+        <td>
+          <% if assignment.status == 0 %>
+            Work In Process
+          <% elsif assignment.status == 1 %>
+            Done
+            <% if current_user.role == "tutor" %>
+              <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
             <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+          <% else %>
+            Closed
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
