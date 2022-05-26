@@ -1,7 +1,7 @@
 <h1>Course Detail - <%= @course.name %></h1>
 
 <% if current_user.role == "tutor" %>
-  <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-primary" %>
+  <%= link_to 'Add Assignment', new_course_assignment_path(@course), class: "btn btn-success text-light" %>
   <%= link_to 'Delete Course', course_path(@course), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the course?' } %>
 <% end %>
 
