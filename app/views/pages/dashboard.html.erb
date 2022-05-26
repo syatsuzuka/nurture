@@ -2,34 +2,38 @@
   <h1>Dashboard</h1>
   <div class="row">
     <% @courses.each do |course| %>
-      <div class="col-6 mb-3">
+      <div class="col-4 mb-3">
         <div class="card h-100">
           <%= line_chart User.group_by_day(:created_at).count %>
           <div class="card-body">
-            <h4 class="card-title">
+            <h5 class="card-title">
               <%= link_to course_assignments_path(course) do %>
                 <%= course.name %>
               <% end %>
             </h5>
-            <h5>
+            <p>
               <% if current_user.role == "tutor" %>
-                <% if defined? course.student.photo.key %>
-                  <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <%= link_to student_path(course.student.id) do %>
+                  <% if defined? course.student.photo.key %>
+                    <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% end %>
+                  <%= course.student.first_name %> <%= course.student.last_name %>
+                  @student
                 <% end %>
-                <%= course.student.first_name %> <%= course.student.last_name %>
-                @student
               <% else %>
-                <% if defined? course.tutor.photo.key %>
-                  <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <%= link_to student_path(course.tutor.id) do %>
+                  <% if defined? course.tutor.photo.key %>
+                    <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% end %>
+                  <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                  @tutor
                 <% end %>
-                <%= course.tutor.first_name %> <%= course.tutor.last_name %>
-                @tutor
               <% end %>
-            </h5>
+            </p>
             <p class="card-text"><%= course.description %></p>
             <p class="card-text"><small class="text-muted">Create <%= course.created_at %></small></p>
             <p class="card-text"><small class="text-muted">Last updated <%= course.updated_at %></small></p>
