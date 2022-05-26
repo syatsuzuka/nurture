@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
-
+    all_assignments.sort_by(&:created_at).reverse
     if current_user.role == "tutor"
       @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
     else
@@ -19,10 +19,15 @@ class AssignmentsController < ApplicationController
     else
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
+
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
   end
 
   def show
     authorize @assignment
+
   end
 
   def new
