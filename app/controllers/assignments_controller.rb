@@ -20,6 +20,16 @@ class AssignmentsController < ApplicationController
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
 
+    @data_hash = []
+
+    @targets.each do |target|
+      progresses = Progress.where(target: target)
+      data = progresses.map do |progress|
+        [progress.date.strftime("%F"), progress.score]
+      end
+      @data_hash << { name: target.name, data: data }
+    end
+
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new

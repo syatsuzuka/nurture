@@ -1,13 +1,10 @@
 <div class="m-4">
   <h1>Dashboard</h1>
   <div class="row">
-    <% @courses.each do |course| %>
+    <% @courses.each_with_index do |course, index| %>
       <div class="col-6 mb-3">
         <div class="card h-100">
-          <%= line_chart  [
-              {name: "test1", data: [["2021-01-01", 3], ["2021-01-02", 4]]},
-              {name: "test2", data: [["2021-01-01", 2], ["2021-01-02", 3]]}
-            ],
+          <%= line_chart  @data[index],
             title: course.name,
             xtitle: "Time",
             ytitle: "Point",

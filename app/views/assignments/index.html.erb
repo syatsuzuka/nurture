@@ -6,6 +6,13 @@
   <%= link_to 'Delete Course', course_path(@course), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the course?' } %>
 <% end %>
 
+<%= line_chart  @data_hash,
+  title: @course.name,
+  xtitle: "Time",
+  ytitle: "Point",
+  download: {background: "#ffffff"}
+%>
+
 <h3 class="mt-3">Target Settings</h3>
 <table class="table table-responsive table-hover">
   <thead class="thead-dark">
@@ -13,17 +20,19 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
-      <th scope="col">Score</th>
+      <th scope="col">Target Score</th>
+      <th scope="col">The Latest Score</th>
     </tr>
   </thead>
 
   <tbody>
     <% @targets.each_with_index do |target, index| %>
       <tr>
-        <td scope="row"><%= link_to course_target_path(@course, target), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
+        <td scope="row"><%= link_to course_target_progresses_path(@course, target), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
         <td><%= target.name %></td>
         <td><%= target.description %></td>
         <td><%= target.score %></td>
+        <td><%#= target.progresses.sort(date).last.score %></td>
       </tr>
     <% end %>
   </tbody>
