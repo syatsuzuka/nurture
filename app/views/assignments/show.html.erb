@@ -50,8 +50,8 @@
   </tbody>
 </table>
 
-<%= link_to "Edit", edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-primary" %>
-<%= link_to "Back to Course", course_assignments_path(@assignment.course), class: "btn btn-primary" %>
+<%= link_to "Edit", edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success text-light" %>
+<%= link_to "Back to Course", course_assignments_path(@assignment.course), class: "btn btn-success text-light" %>
 <% if current_user.role == "tutor" %>
   <%= link_to "Delete", course_assignment_path(@assignment.course, @assignment), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the assignment?' } %>
 <% end %>
