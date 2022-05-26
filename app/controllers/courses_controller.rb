@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
 
   def show
     authorize @course
+    render 'chatroom/show'
   end
 
   def new

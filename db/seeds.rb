@@ -9,12 +9,14 @@
 def user_count(role)
   User.where(role: role).count
 end
+
+
 puts 'Cleaning up assignments...'
-Assignment.delete_all
+Assignment.destroy_all
 puts 'Cleaning up courses...'
-Course.delete_all
+Course.destroy_all
 puts 'Cleaning up users...'
-User.delete_all
+User.destroy_all
 
 puts '===================================='
 
