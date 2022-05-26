@@ -9,12 +9,22 @@
 def user_count(role)
   User.where(role: role).count
 end
+
+
+puts 'Cleaning up progress...'
+Progress.destroy_all
+puts 'Cleaning up target...'
+Target.destroy_all
+puts 'Cleaning up message...'
+Message.destroy_all
+puts 'Cleaning up chartroom...'
+Chatroom.destroy_all
 puts 'Cleaning up assignments...'
-Assignment.delete_all
+Assignment.destroy_all
 puts 'Cleaning up courses...'
-Course.delete_all
+Course.destroy_all
 puts 'Cleaning up users...'
-User.delete_all
+User.destroy_all
 
 puts '===================================='
 
@@ -22,12 +32,16 @@ puts "Generating personal tutor seeds"
 User.create(email: 'shingo@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 User.create(email: 'ed@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 User.create(email: 'shunjiro@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-User.create(email: 'tutor@mail.com', first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+User.create(email: 'tutor@mail.com',nickname:"1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random tutor seeds..."
 
 5.times do
-  User.create(email: "#{Faker::Internet.email}", first_name: "#{Faker::Name.name.split[0]}", last_name: "#{Faker::Name.name.split[1]}", password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+  User.create(email: "#{Faker::Internet.email}",
+              first_name: "#{Faker::Name.name.split[0]}",
+              last_name: "#{Faker::Name.name.split[1]}",
+              password: '11221122', role: 'tutor',
+              avatar_url: "#{Faker::LoremPixel.image}")
 end
 
 puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
@@ -37,12 +51,17 @@ puts "#{Faker::Hacker.ingverb} personal student seeds..."
 User.create(email: 'shingos@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 User.create(email: 'eds@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'student')
 User.create(email: 'shunjiros@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-User.create(email: 'tutors@mail.com', first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+User.create(email: 'tutors@mail.com',nickname: "1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random student seeds..."
 
 15.times do
-User.create(email: "#{Faker::Internet.email}", first_name: "#{Faker::Name.name.split[0]}", last_name: "#{Faker::Name.name.split[1]}", password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+User.create(email: "#{Faker::Internet.email}",
+            first_name: "#{Faker::Name.name.split[0]}",
+            last_name: "#{Faker::Name.name.split[1]}",
+            password: '11221122',
+            role: 'student',
+            avatar_url: "#{Faker::LoremPixel.image}")
 end
 
 puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
@@ -54,6 +73,7 @@ puts '===================================='
 puts "Generating courses..."
 20.times do
 Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
+Chatroom.create(name: "Assignment chat")
 end
 
 puts "Generated #{Course.all.count} courses successfully"

@@ -9,6 +9,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('nurutreIcoooonnnn.png'), :rel => 'icon', :type =>  'image/png' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
   </head>
@@ -26,12 +27,14 @@
           <%= render 'shared/sidebarDefault'%>
         <% end %>
         <main class="col-md-9 col-lg-10 px-md-4">
-          <%= yield %>
+          <div class="m-4">
+            <%= yield %>
+          </div>
         </main>
       </div>
     </div>
 
     <%# footer section %>
-    <%# <%= render 'shared/footer'%>
+
   </body>
 </html>

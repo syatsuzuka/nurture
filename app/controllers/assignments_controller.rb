@@ -5,16 +5,33 @@ class AssignmentsController < ApplicationController
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
-
+    all_assignments.sort_by(&:created_at).reverse
     if current_user.role == "tutor"
       @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
     else
       @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
+
+    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
+
+    if current_user.role == "tutor"
+      @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
+    else
+      @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
+    end
+
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
+
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
   end
 
   def show
     authorize @assignment
+
   end
 
   def new
@@ -28,8 +45,8 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     @assignment.status = 0
     authorize @assignment
-    if @assignment.save
-      redirect_to course_assignment_path(@course, @assignment)
+    if @assignment.save!
+      redirect_to course_assignments_path(@course)
     else
       render :new
     end
@@ -44,7 +61,7 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     authorize @assignment
 
-    if @assignment.update(assignment_params)
+    if @assignment.update!(assignment_params)
       redirect_to course_assignments_path(@course)
     else
       render :edit
@@ -83,7 +100,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :instruction, :comment, :checkpoint, :status, :course_id)
+    params.require(:assignment).permit(:title, :instruction, :comment, :checkpoint, :status, :start_date, :end_date, :course_id)
   end
 
   def set_course
