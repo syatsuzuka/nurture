@@ -23,6 +23,10 @@ class AssignmentsController < ApplicationController
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
+
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
   end
 
   def show

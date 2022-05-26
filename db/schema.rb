@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["target_id"], name: "index_progresses_on_target_id"
 
-    create_table "messages", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
@@ -192,6 +192,9 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
+  add_foreign_key "progresses", "targets"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "progresses", "targets"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
