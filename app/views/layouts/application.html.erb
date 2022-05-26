@@ -19,6 +19,7 @@
     <% end %>
 
     <%# main section %>
+    <div>
     <div class="container-fluid d-flex flex-column h-100 section-container">
       <div class="row flex-grow-1">
         <% unless current_page?(root_path) or request.fullpath.start_with?('/users/') %>
@@ -28,6 +29,7 @@
           <%= yield %>
         </main>
       </div>
+    </div>
     </div>
 
     <%# footer section %>
