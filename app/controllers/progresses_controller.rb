@@ -67,7 +67,7 @@ class ProgressesController < ApplicationController
   private
 
   def progress_params
-    params.require(:progress).permit(:date, :score, :target_id)
+    params.require(:progress).permit(:date, :score, :comment, :target_id)
   end
 
   def set_course

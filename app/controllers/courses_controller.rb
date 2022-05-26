@@ -15,7 +15,6 @@ class CoursesController < ApplicationController
     @course = Course.new
 
     authorize @course
-
   end
 
   def create
@@ -30,15 +29,16 @@ class CoursesController < ApplicationController
     else
       render :new
     end
-
-
   end
 
   def edit
+    authorize @course
   end
 
   def update
-    if @course.update(courses_params)
+    authorize @course
+
+    if @course.update!(courses_params)
       redirect_to courses_path
     else
       render :edit
