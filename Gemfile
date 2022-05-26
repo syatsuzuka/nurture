@@ -70,3 +70,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'pundit'
 gem 'rails_admin', '~> 2.0'
 gem 'blazer'
+gem 'chartkick'
+gem "groupdate"
