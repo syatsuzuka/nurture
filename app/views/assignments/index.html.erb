@@ -34,8 +34,20 @@
         <td><%= target.name %></td>
         <td><%= target.description %></td>
         <td><%= target.score %></td>
-        <td><%= target.progresses.order(date: :desc).first.score %> (<%= target.progresses.order(date: :desc).first.date %>)</td>
-        <td><%= target.progresses.order(score: :desc).first.score %> (<%= target.progresses.order(score: :desc).first.date %>)</td>
+        <td>
+          <% if defined target.progresses %>
+            <%= target.progresses.order(date: :desc).first.score %> (<%= target.progresses.order(date: :desc).first.date %>)
+          <% else %>
+            -
+          <% end %>
+        </td>
+        <td>
+          <% if defined target.progresses %>
+            <%= target.progresses.order(score: :desc).first.score %> (<%= target.progresses.order(score: :desc).first.date %>)
+          <% else %>
+            -
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
