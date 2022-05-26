@@ -11,10 +11,15 @@ class AssignmentsController < ApplicationController
     else
       @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
+
   end
 
   def show
     authorize @assignment
+
   end
 
   def new

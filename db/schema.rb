@@ -113,6 +113,12 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -120,6 +126,16 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tutor_user_id"
     t.integer "student_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -149,6 +165,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
     t.string "last_name"
     t.string "avatar_url"
     t.string "role"
+    t.string "nickname"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -157,6 +174,8 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end
