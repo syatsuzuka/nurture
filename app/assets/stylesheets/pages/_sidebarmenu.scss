@@ -15,8 +15,16 @@
   width: 100%;
 }
 
-#sidebarMenu a:hover {
-　top:-3px;
+.nav-item a:hover {
 	box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.fa-arrow-left {
+  color: black;
+}
+
+.fa-arrow-left:hover {
+  color: #6B6E70;
   transition: 0.3s;
 }
