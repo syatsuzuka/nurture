@@ -11,6 +11,7 @@ class AssignmentsController < ApplicationController
     else
       @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
+<<<<<<< HEAD
 
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
 
@@ -19,10 +20,17 @@ class AssignmentsController < ApplicationController
     else
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
+=======
+    @chatroom = Chatroom.find(params[:course_id])
+    authorize @chatroom
+    @message = Message.new
+
+>>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
   end
 
   def show
     authorize @assignment
+
   end
 
   def new

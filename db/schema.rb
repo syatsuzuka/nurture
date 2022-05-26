@@ -113,6 +113,12 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -122,6 +128,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.integer "student_user_id"
   end
 
+<<<<<<< HEAD
   create_table "progresses", force: :cascade do |t|
     t.date "date"
     t.float "score"
@@ -129,6 +136,16 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["target_id"], name: "index_progresses_on_target_id"
+=======
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+>>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
   end
 
   create_table "roles", force: :cascade do |t|
@@ -168,6 +185,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
     t.string "last_name"
     t.string "avatar_url"
     t.string "role"
+    t.string "nickname"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -176,7 +194,12 @@ ActiveRecord::Schema.define(version: 2022_05_26_072117) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
+<<<<<<< HEAD
   add_foreign_key "progresses", "targets"
+=======
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
+>>>>>>> e6537aec170522f89044d3e4aff95be981fd534c
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "targets", "courses"

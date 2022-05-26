@@ -8,16 +8,21 @@ class CoursesController < ApplicationController
 
   def show
     authorize @course
+
   end
 
   def new
     @course = Course.new
+
     authorize @course
+
   end
 
   def create
     @course = Course.new(courses_params)
     @course.tutor_user_id = current_user.id
+    @chatroom = Chatroom.create(name: "Assignment chat")
+
     authorize @course
 
     if @course.save
@@ -25,6 +30,8 @@ class CoursesController < ApplicationController
     else
       render :new
     end
+
+
   end
 
   def edit
