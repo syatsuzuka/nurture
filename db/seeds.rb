@@ -11,12 +11,16 @@ def user_count(role)
 end
 
 
-puts 'Cleaning up assignments...'
-Assignment.destroy_all
-puts 'Cleaning up chartroom...'
-Chatroom.destroy_all
+puts 'Cleaning up progress...'
+Progress.destroy_all
 puts 'Cleaning up target...'
 Target.destroy_all
+puts 'Cleaning up message...'
+Message.destroy_all
+puts 'Cleaning up chartroom...'
+Chatroom.destroy_all
+puts 'Cleaning up assignments...'
+Assignment.destroy_all
 puts 'Cleaning up courses...'
 Course.destroy_all
 puts 'Cleaning up users...'
