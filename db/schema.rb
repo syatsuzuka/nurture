@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_060102) do
+ActiveRecord::Schema.define(version: 2022_05_26_072117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,7 +128,15 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
     t.integer "student_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "progresses", force: :cascade do |t|
+    t.date "date"
+    t.float "score"
+    t.bigint "target_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["target_id"], name: "index_progresses_on_target_id"
+
+    create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
@@ -153,6 +161,16 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "score"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_targets_on_course_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -174,8 +192,10 @@ ActiveRecord::Schema.define(version: 2022_05_26_060102) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
+  add_foreign_key "progresses", "targets"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
+  add_foreign_key "targets", "courses"
 end

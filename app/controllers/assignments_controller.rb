@@ -11,10 +11,18 @@ class AssignmentsController < ApplicationController
     else
       @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
     end
+
+    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
+
+    if current_user.role == "tutor"
+      @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
+    else
+      @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
+    end
+
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
-
   end
 
   def show
@@ -33,8 +41,8 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     @assignment.status = 0
     authorize @assignment
-    if @assignment.save
-      redirect_to course_assignment_path(@course, @assignment)
+    if @assignment.save!
+      redirect_to course_assignments_path(@course)
     else
       render :new
     end
@@ -49,7 +57,7 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     authorize @assignment
 
-    if @assignment.update(assignment_params)
+    if @assignment.update!(assignment_params)
       redirect_to course_assignments_path(@course)
     else
       render :edit

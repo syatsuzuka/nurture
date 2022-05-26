@@ -1,0 +1,7 @@
+  <%= simple_form_for [@course, @target] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :score %>
+    <%= f.submit 'Save', class: "btn btn-success text-light" %>
+    <%= link_to 'Cancel', course_targets_path(@course), class: 'btn btn-danger text-light'%>
+  <% end %>
