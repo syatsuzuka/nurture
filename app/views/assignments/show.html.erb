@@ -1,5 +1,5 @@
-<h1><%= @assignment.title %></h1>
-<div class="container">
+<div class="m-4">
+  <h1>Assignment Detail - <%= @assignment.title %></h1>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -38,7 +38,10 @@
       </tr>
     </tbody>
   </table>
-</div>
 
-<%= link_to "Edit", edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-primary" %>
-<%= link_to "Back", course_assignments_path(@assignment.course), class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-primary" %>
+  <%= link_to "Back to Course", course_assignments_path(@assignment.course), class: "btn btn-primary" %>
+  <% if current_user.role == "tutor" %>
+    <%= link_to "Delete", course_assignment_path(@assignment.course, @assignment), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the assignment?' } %>
+  <% end %>
+</div>

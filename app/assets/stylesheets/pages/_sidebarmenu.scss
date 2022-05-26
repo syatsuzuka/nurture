@@ -1,3 +1,22 @@
 .section-container {
   min-height: 100vh;
 }
+
+#sidebarMenu li {
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-link {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#sidebarMenu a:hover {
+　top:-3px;
+	box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}

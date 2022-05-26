@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :courses_params, only: %i[create]
-  before_action :set_course, only: %i[show edit update]
+  before_action :set_course, only: %i[show edit update destroy]
 
   def index
     @courses = policy_scope(Course)
@@ -40,6 +40,10 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    authorize @course
+    @course.destroy!
+
+    redirect_to courses_path
   end
 
   private

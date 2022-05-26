@@ -1,0 +1,46 @@
+<div class="m-4">
+  <% if current_user.role == "tutor" %>
+    <h1>Student List</h1>
+  <% else %>
+    <h1>Tutor List</h1>
+  <% end %>
+
+  <table class="table table-responsive table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <th scope="row">
+            <% if current_user.role == "tutor" %>
+              <%= link_to student_path(user), class: "text-decoration-none" do %>
+                <%= index + 1 %>
+              <% end %>
+            <% else %>
+              <%= link_to tutor_path(user), class: "text-decoration-none" do %>
+                <%= index + 1 %>
+              <% end %>
+            <% end %>
+          </th>
+          <td>
+            <% if defined? user.photo.key %>
+              <%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% else %>
+              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
+            <%= user.first_name %> <%= user.last_name %>
+          </td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
