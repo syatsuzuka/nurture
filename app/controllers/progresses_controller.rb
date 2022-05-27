@@ -5,6 +5,7 @@ class ProgressesController < ApplicationController
   before_action :set_progress, only: %i[show edit update destroy]
 
   def index
+
     all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
     all_progresses.sort_by! { |progress| progress.date }
 
@@ -14,10 +15,23 @@ class ProgressesController < ApplicationController
       @progresses = all_progresses.select { |progress| progress.target.course.student_user_id == current_user.id }
     end
 
-    data = @progresses.map do |progress|
-      [progress.date.strftime("%F"), progress.score]
+    #===== Data set for graph =====
+
+    # data = @progresses.map do |progress|
+    #   [progress.date.strftime("%F"), progress.score]
+    # end
+    # @data_hash = { name: @target.name, data: data }
+
+    @data = []
+    data_hash_progress = []
+    data_hash_target = []
+
+    @progresses.each do |progress|
+      data_hash_progress << [progress.date.strftime("%F"), progress.score]
+      data_hash_target << [progress.date.strftime("%F"), @target.score]
     end
-    @data_hash = { name: @target.name, data: data }
+    @data << { name: "target", data: data_hash_target }
+    @data << { name: "progress", data: data_hash_progress }
   end
 
   def show
