@@ -30,7 +30,7 @@
               <% else %>
                 <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% end %>
-              <%= assignment.course.student.first_name %> <%= assignment.course.student.lst_name %>
+              <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
             <% end %>
           <% else %>
             <%= link_to tutor_path(assignment.course.tutor), class: "text-decoration-none" do %>
