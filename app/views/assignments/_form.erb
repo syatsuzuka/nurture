@@ -1,7 +1,7 @@
   <%= simple_form_for [@course, @assignment] do |f| %>
     <% if current_user.role == "tutor" %>
       <%= f.input :title %>
-      <%= f.input :instruction placeholder: "What do you want your student to achieve?"%>
+      <%= f.input :instruction, placeholder: "What do you want your student to achieve?"%>
       <%= f.input :checkpoint, placeholder: "List the tasks you think are indicitive of success in your student's instruction?" %>
     <% end %>
     <% unless @assignment.id.nil? %>
