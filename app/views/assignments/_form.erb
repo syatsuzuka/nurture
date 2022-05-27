@@ -1,8 +1,8 @@
   <%= simple_form_for [@course, @assignment] do |f| %>
     <% if current_user.role == "tutor" %>
       <%= f.input :title %>
-      <%= f.input :instruction %>
-      <%= f.input :checkpoint %>
+      <%= f.input :instruction placeholder: "What do you want your student to achieve?"%>
+      <%= f.input :checkpoint, placeholder: "List the tasks you think are indicitive of success in your student's instruction?" %>
     <% end %>
     <% unless @assignment.id.nil? %>
       <% if current_user.role == "tutor" %>
@@ -11,7 +11,7 @@
         <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true %>
       <% end %>
     <% end %>
-    <%= f.input :comment %>
+    <%= f.input :comment, placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank" %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
