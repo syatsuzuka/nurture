@@ -12,14 +12,13 @@
           %>
           <div class="card-body">
             <h5 class="card-title">
-              Title: <%= link_to course_assignments_path(course) do %>
+              <%= link_to course_assignments_path(course), class: "text-decoration-none" do %>
                 <%= course.name %>
               <% end %>
             </h5>
             <p>
               <% if current_user.role == "tutor" %>
-                Student:
-                <%= link_to student_path(course.student.id) do %>
+                <%= link_to student_path(course.student.id), class: "text-decoration-none" do %>
                   <% if defined? course.student.photo.key %>
                     <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% else %>
@@ -29,8 +28,7 @@
                   @student
                 <% end %>
               <% else %>
-                Tutor:
-                <%= link_to student_path(course.tutor.id) do %>
+                <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
                   <% if defined? course.tutor.photo.key %>
                     <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% else %>
@@ -41,7 +39,7 @@
                 <% end %>
               <% end %>
             </p>
-            <p class="card-text">Description: <%= course.description %></p>
+            <p class="card-text"><%= course.description %></p>
             <p class="card-text"><small class="text-muted">Create <%= course.created_at %></small></p>
             <p class="card-text"><small class="text-muted">Last updated <%= course.updated_at %></small></p>
           </div>
