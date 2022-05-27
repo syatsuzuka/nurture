@@ -11,8 +11,6 @@
         <th scope="col">Tutor</th>
       <% end %>
       <th scope="col">Title</th>
-      <th scope="col">Instruction</th>
-      <th scope="col">Checkpoints</th>
       <th scope="col">Status</th>
       <th scope="col">Comment</th>
       <th scope="col">Period</th>
@@ -46,8 +44,6 @@
           <% end %>
         </td>
         <td><%= assignment.title %></td>
-        <td><%= assignment.instruction %></td>
-        <td><%= assignment.checkpoint %></td>
         <td>
           <% if assignment.status == 0 %>
             Work In Process
