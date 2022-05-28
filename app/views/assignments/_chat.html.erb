@@ -6,7 +6,7 @@
   >
   <h1>One to one</h1>
 
-    <div class="messages d-flex flex-column p-2 m-5" data-chatroom-subscription-target="messages">
+    <div class="messages d-flex flex-column p-2 m-5"  data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
@@ -23,5 +23,4 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary" %>
 <% end %>
-
 </div>
