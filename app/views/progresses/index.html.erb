@@ -57,20 +57,28 @@
       <th scope="col">Date</th>
       <th scope="col">Score</th>
       <th scope="col">Comment</th>
-      <th scope="col"></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @progresses.each_with_index do |progress, index| %>
       <tr>
-        <td scope="row"><%= index + 1 %></td>
+        <td>
+          <%= index + 1 %>
+        </td>
         <td><%= progress.date %></td>
         <td><%= progress.score %></td>
         <td><%= progress.comment %></td>
-        <td>
-          <%= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
-          <%= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
+        <td class="text-start">
+          <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "text-secondary ms-3" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the progress info?' } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         </td>
+          <%#= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
+          <%#= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
       </tr>
     <% end %>
   </tbody>
