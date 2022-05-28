@@ -1,11 +1,14 @@
 
 <div class="d-flex align-content-center">
   <h1><%= @course.name %></h1>
-  <%= link_to edit_course_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-edit"></i>
-  <% end %>
-  <%= link_to course_path(@course), method: :delete, class: "btn btn-secondary text-light ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
-    <i class="fas fa-trash-alt"></i>
+
+  <% if current_user.role == "tutor" %>
+    <%= link_to edit_course_path(@course), class: "text-secondary ms-3" do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to course_path(@course), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
   <% end %>
 </div>
 
