@@ -14,6 +14,6 @@
     <%= f.input :comment, placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank" %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.submit 'Save', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-danger text-light'%>
+    <%= f.submit 'Save', class: "btn btn-success" %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-danger text-light'%>
   <% end %>
