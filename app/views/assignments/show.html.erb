@@ -1,12 +1,15 @@
-<h1>Assignment Detail - <%= @assignment.title %></h1>
-<%= link_to edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success text-light" do %>
-  <i class="fas fa-edit"></i>
-<% end %>
-<% if current_user.role == "tutor" %>
-  <%= link_to course_assignment_path(@assignment.course, @assignment), method: :delete, class: "btn btn-secondary text-light", data: { confirm: 'Do you really want to delete the assignment?' } do %>
-    <i class="fas fa-trash-alt"></i>
+<div class="d-flex align-content-center">
+  <h1>Assignment Detail - <%= @assignment.title %></h1>
+
+  <%= link_to edit_course_assignment_path(@assignment.course, @assignment), class: "text-secondary ms-3" do %>
+    <i class="fas fa-edit"></i>
   <% end %>
-<% end %>
+  <% if current_user.role == "tutor" %>
+    <%= link_to course_assignment_path(@assignment.course, @assignment), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to "Back", :back, class: "btn btn-outline-success" %>
 

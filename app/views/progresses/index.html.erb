@@ -1,12 +1,18 @@
+<div class="d-flex align-content-center">
 <h1>Target Detail - <%= @target.name %></h1>
 
-<%= link_to "Edit Target", edit_course_target_path(@target.course, @target), class: "btn btn-success text-light" %>
+  <% if current_user.role == "tutor" %>
+    <%= link_to edit_course_target_path(@target.course, @target), class: "text-secondary ms-3" do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to course_target_path(@target.course, @target), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% end %>
+</div>
+
 <%= link_to "Add Progress", new_course_target_progress_path(@target.course, @target), class: "btn btn-success text-light" %>
 <%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
-<% if current_user.role == "tutor" %>
-  <%= link_to "Delete Target", course_target_path(@target.course, @target), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the target?' } %>
-<% end %>
 
 <%= line_chart  @data,
   title: @target.course.name,
