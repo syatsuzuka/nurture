@@ -1,25 +1,31 @@
-<div class="container chatroom border mt-5"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-  >
-  <h1>Chatroom</h1>
-  <div class="messages d-flex flex-column p-2 m-3"  data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
-  </div>
+<h3 class="mt-3">Chatroom
+  <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
+    <i class="fas fa-bars border p-2 rounded"></i>
+  </span>
+</h3>
 
-  <div>
-    <%= simple_form_for [@chatroom, @message],
-    remote: true,
-    html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-success text-light" %>
-  <% end %>
+<div class="collapse" id="navbarHeader">
+  <div class="container chatroom border mt-3"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
+    <div class="messages d-flex flex-column p-2 m-3"  data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+    <div>
+      <%= simple_form_for [@chatroom, @message],
+        remote: true,
+        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+      %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@chatroom.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-success text-light" %>
+    <% end %>
+    </div>
   </div>
 </div>
