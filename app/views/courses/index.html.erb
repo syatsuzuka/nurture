@@ -1,8 +1,13 @@
 <h1 class = "my-3">Course List</h1>
 
 <% if current_user.role == "tutor" %>
-  <%= link_to 'Add Course', new_course_path, class: "btn btn-success text-light" %>
+  <%= link_to new_course_path, class: "btn btn-success text-light" do %>
+    <i class="fas fa-plus"></i>
+    Course
+  <% end %>
 <% end %>
+
+<%= link_to "Back", :back, class: "btn btn-outline-success" %>
 
 <table class="table table-responsive table-hover align-middle">
   <thead class="thead-dark">
