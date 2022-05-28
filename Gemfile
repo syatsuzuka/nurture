@@ -72,3 +72,5 @@ gem 'rails_admin', '~> 2.0'
 gem 'blazer'
 gem 'chartkick'
 gem "groupdate"
+
+gem 'youtube_rails'
