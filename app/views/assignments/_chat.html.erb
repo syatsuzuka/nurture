@@ -5,11 +5,8 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   >
   <h1>One to one</h1>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
 
-    <div class="collapse messages d-flex flex-column p-2 m-5" id="collapseExample" data-chatroom-subscription-target="messages">
+    <div class="messages d-flex flex-column p-2 m-5"  data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
