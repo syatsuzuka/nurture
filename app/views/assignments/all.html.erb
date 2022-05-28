@@ -1,6 +1,6 @@
 <h1>All Assignments View</h1>
 
-<table class="table table-responsive table-hover">
+<table class="table table-responsive table-hover align-middle">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -11,8 +11,6 @@
         <th scope="col">Tutor</th>
       <% end %>
       <th scope="col">Title</th>
-      <th scope="col">Instruction</th>
-      <th scope="col">Checkpoints</th>
       <th scope="col">Status</th>
       <th scope="col">Comment</th>
       <th scope="col">Period</th>
@@ -32,7 +30,7 @@
               <% else %>
                 <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% end %>
-              <%= assignment.course.student.first_name %> <%= assignment.course.student.first_name %>
+              <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
             <% end %>
           <% else %>
             <%= link_to tutor_path(assignment.course.tutor), class: "text-decoration-none" do %>
@@ -41,13 +39,11 @@
               <% else %>
                 <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% end %>
-              <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.first_name %>
+              <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
             <% end %>
           <% end %>
         </td>
         <td><%= assignment.title %></td>
-        <td><%= assignment.instruction %></td>
-        <td><%= assignment.checkpoint %></td>
         <td>
           <% if assignment.status == 0 %>
             Work In Process

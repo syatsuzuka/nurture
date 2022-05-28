@@ -8,7 +8,7 @@
   <%= link_to "Delete Target", course_target_path(@target.course, @target), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the target?' } %>
 <% end %>
 
-<%= line_chart  [@data_hash],
+<%= line_chart  @data,
   title: @target.course.name,
   xtitle: "Time",
   ytitle: "Score",
