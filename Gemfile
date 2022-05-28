@@ -73,4 +73,4 @@ gem 'blazer'
 gem 'chartkick'
 gem "groupdate"
 
-gem 'youtube_rails'
+gem 'youtube_addy'
