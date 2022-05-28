@@ -2,6 +2,6 @@
     <%= f.input :name, required: true %>
     <%= f.input :description, required: true %>
     <%= f.association :student, collection: User.where(role: "student").order(:first_name, :last_name), required: true, label_method: :select_label %>
-    <%= f.submit 'Save', class: "btn btn-success" %>
-    <%= link_to 'Cancel', :back, class: 'btn btn-danger text-light'%>
+    <%= f.submit 'Save', class: "btn btn-success text-light" %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-secondary text-light'%>
   <% end %>
