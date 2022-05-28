@@ -1,9 +1,9 @@
-<h1 class="mb-5"><%= @user.first_name %> <%= @user.last_name %>
+<h3 class="mb-5"><%= @user.first_name %> <%= @user.last_name %>
   <% if defined? @user.photo.key %>
     <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
   <% else %>
     <%= image_tag 'avatar.png', class: "avatar-large" %>
   <% end %>
-</h1>
-<h2><i class="fas fa-envelope me-3"></i><%= @user.email %></h2>
-<h2><i class="fas fa-users me-3"></i><%= @user.role %></h2>
+</h3>
+<p><i class="fas fa-envelope me-3"></i><%= @user.email %></p>
+<p><i class="fas fa-users me-3"></i><%= @user.role %></p>

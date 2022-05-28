@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.update!(courses_params)
-      redirect_to courses_path
+      redirect_to course_assignments_path(@course)
     else
       render :edit
     end

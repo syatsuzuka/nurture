@@ -20,6 +20,8 @@
   <% end %>
 <% end %>
 
+<%= link_to "Back", :back, class: "btn btn-outline-success" %>
+
 <%= line_chart  @data_hash,
   title: @course.name,
   xtitle: "Time",
