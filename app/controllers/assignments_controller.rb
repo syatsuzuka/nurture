@@ -6,22 +6,18 @@ class AssignmentsController < ApplicationController
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
     all_assignments.sort_by(&:created_at).reverse
-    if current_user.role == "tutor"
-      @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
-    else
-      @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
-    end
-
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
 
     if current_user.role == "tutor"
+      @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
       @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
     else
+      @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
 
+    #======= Data setting for Graph (chartkick) =======
     @data_hash = []
-
     @targets.each do |target|
       progresses = Progress.where(target: target)
       data = progresses.map do |progress|
@@ -30,10 +26,7 @@ class AssignmentsController < ApplicationController
       @data_hash << { name: target.name, data: data }
     end
 
-    @chatroom = Chatroom.find(params[:course_id])
-    authorize @chatroom
-    @message = Message.new
-
+    #======= Chatroom =======
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
