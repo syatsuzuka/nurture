@@ -3,6 +3,7 @@ class ProgressesController < ApplicationController
   before_action :set_course, only: %i[index new create edit update destroy]
   before_action :set_target, only: %i[index new create edit update destroy]
   before_action :set_progress, only: %i[show edit update destroy]
+  before_action :set_active_courses
 
   def index
 
@@ -95,5 +96,9 @@ class ProgressesController < ApplicationController
 
   def set_progress
     @progress = Progress.find(params[:id])
+  end
+
+  def set_active_courses
+    @active_courses = "class=active"
   end
 end

@@ -2,6 +2,7 @@ class TargetsController < ApplicationController
   before_action :target_params, only: %i[create update]
   before_action :set_course, only: %i[index new create edit update destroy close]
   before_action :set_target, only: %i[show edit update destroy close]
+  before_action :set_active_courses
 
   def index
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
@@ -70,5 +71,9 @@ class TargetsController < ApplicationController
 
   def set_target
     @target = Target.find(params[:id])
+  end
+
+  def set_active_courses
+    @active_courses = "class=active"
   end
 end
