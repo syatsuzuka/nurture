@@ -5,7 +5,7 @@
   </ol>
 </nav>
 
-<h1 class = "my-3">Course List</h1>
+<h1 class = "mt-3">Course List</h1>
 
 <% if current_user.role == "tutor" %>
   <%= link_to new_course_path, class: "btn btn-success text-light" do %>
@@ -16,54 +16,60 @@
 
 <%= link_to "Back", :back, class: "btn btn-outline-success" %>
 
-<table class="table table-responsive table-hover align-middle">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <% if current_user.role == "tutor" %>
-        <th scope="col">Student</th>
-      <% else %>
-        <th scope="col">Tutor</th>
-      <% end %>
-      <th scope="col">Since</th>
-    </tr>
-  </thead>
+<div class="mt-5">
+  <% unless @courses.count == 0 %>
+    <table class="table table-responsive table-hover align-middle">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <% if current_user.role == "tutor" %>
+            <th scope="col">Student</th>
+          <% else %>
+            <th scope="col">Tutor</th>
+          <% end %>
+          <th scope="col">Since</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @courses.each_with_index do |course, index| %>
-    <tr>
-        <td scope="row"><%= index + 1 %></td>
-        <td><%= link_to course_assignments_path(course), class: "text-dark" do %><%= course.name %><% end %></td>
-        <td><%= course.description %></td>
-        <% if current_user.role == "tutor" %>
-          <td>
-              <% if defined? course.student.photo.key %>
-                <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
-            <%= link_to student_path(course.student), class: "text-dark" do %>
-              <%= course.student.last_name %> <%= course.student.first_name %>
+      <tbody>
+        <% @courses.each_with_index do |course, index| %>
+        <tr>
+            <td scope="row"><%= index + 1 %></td>
+            <td><%= link_to course_assignments_path(course), class: "text-dark" do %><%= course.name %><% end %></td>
+            <td><%= course.description %></td>
+            <% if current_user.role == "tutor" %>
+              <td>
+                  <% if defined? course.student.photo.key %>
+                    <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% end %>
+                <%= link_to student_path(course.student), class: "text-dark" do %>
+                  <%= course.student.last_name %> <%= course.student.first_name %>
+                <% end %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                  <% if defined? course.tutor.photo.key %>
+                    <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% end %>
+                  <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                <% end %>
+              </td>
             <% end %>
-          </td>
-        <% else %>
-          <td>
-            <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
-              <% if defined? course.tutor.photo.key %>
-                <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
-              <%= course.tutor.first_name %> <%= course.tutor.last_name %>
-            <% end %>
-          </td>
+            <td>
+              <%= course.created_at.strftime('%F') %>
+            </td>
+          </tr>
         <% end %>
-        <td>
-          <%= course.created_at.strftime('%F') %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
+  <% end %>
+</div>
