@@ -29,25 +29,29 @@
   <tbody>
     <% @assignments.each_with_index do |assignment, index| %>
       <tr>
-        <th scope="row"><%= link_to course_assignment_path(assignment.course, assignment), class: "text-decoration-none" do %><%= index + 1 %><% end %></th>
-        <td scope="col"><%= assignment.course.name %></td>
+        <th scope="row"><%= index + 1 %></th>
+        <td scope="col">
+          <%= link_to course_assignment_path(assignment.course, assignment), class: "text-dark" do %>
+            <%= assignment.course.name %>
+          <% end %>
+        </td>
         <td scope="col">
           <% if current_user.role == "tutor" %>
-            <%= link_to student_path(assignment.course.student), class: "text-decoration-none" do %>
-              <% if defined? assignment.course.student.photo.key %>
-                <%= cl_image_tag assignment.course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
+            <% if defined? assignment.course.student.photo.key %>
+              <%= cl_image_tag assignment.course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% else %>
+              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
+            <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
               <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
             <% end %>
           <% else %>
-            <%= link_to tutor_path(assignment.course.tutor), class: "text-decoration-none" do %>
-              <% if defined? assignment.course.tutor.photo.key %>
-                <%= cl_image_tag assignment.course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
+            <% if defined? assignment.course.tutor.photo.key %>
+              <%= cl_image_tag assignment.course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% else %>
+              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
+            <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
               <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
             <% end %>
           <% end %>
