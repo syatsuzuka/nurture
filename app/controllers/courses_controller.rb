@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :courses_params, only: %i[create]
   before_action :set_course, only: %i[show edit update destroy]
+  before_action :set_active_courses
 
   def index
     @courses = policy_scope(Course).sort_by(&:created_at).reverse
@@ -60,5 +61,9 @@ class CoursesController < ApplicationController
 
   def set_course
     @course = Course.find(params[:id])
+  end
+
+  def set_active_courses
+    @active_courses = "class=active"
   end
 end

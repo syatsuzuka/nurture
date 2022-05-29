@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :set_active_dashboard, only: %i[dashboard]
+  before_action :set_active_aboutus, only: %i[aboutus]
 
   def home
     render layout: 'landing'
@@ -39,5 +41,15 @@ class PagesController < ApplicationController
   end
 
   def aboutus
+  end
+
+  private
+
+  def set_active_dashboard
+    @active_dashboard = "class=active"
+  end
+
+  def set_active_aboutus
+    @active_aboutus = "class=active"
   end
 end

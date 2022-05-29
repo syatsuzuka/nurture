@@ -5,24 +5,30 @@
       <li class="nav-item p-3">
         <h5 class="m-3">
           <%= link_to dashboard_path, class: "card-link text-dark text-decoration-none" do %>
-            <i class="fas fa-home text-secondary me-1"></i>
-            Dashboard
+            <div <%= @active_dashboard %>>
+              <i class="fas fa-home text-secondary me-1"></i>
+              Dashboard
+            </div>
           <% end %>
         </h5>
       </li>
       <li class="nav-item p-3">
         <h5 class="m-3">
         <%= link_to courses_path, class: "card-link text-dark text-decoration-none" do %>
-          <i class="fas fa-university text-secondary me-1"></i>
-          Courses
+          <div <%= @active_courses %>>
+            <i class="fas fa-university text-secondary me-1"></i>
+            Courses
+            </div>
         <% end %>
         </h5>
       </li>
       <li class="nav-item p-3">
         <h5 class="m-3">
         <%= link_to all_assignments_path, class: "card-link text-dark text-decoration-none" do %>
-          <i class="fas fa-tasks text-secondary me-1"></i>
-          Assignments
+          <div <%= @active_assignments %>>
+            <i class="fas fa-tasks text-secondary me-1"></i>
+            Assignments
+          </div>
         <% end %>
         </h5>
       </li>
@@ -30,8 +36,10 @@
         <li class="nav-item p-3">
         <h5 class="m-3">
           <%= link_to tutors_path, class: "card-link text-dark text-decoration-none" do %>
-            <i class="fas fa-chalkboard-teacher text-secondary me-1"></i>
-            Tutors
+            <div <%= @active_users %>>
+              <i class="fas fa-chalkboard-teacher text-secondary me-1"></i>
+              Tutors
+            </div>
           <% end %>
         </h5>
         </li>
@@ -40,8 +48,10 @@
         <li class="nav-item p-3">
         <h5 class="m-3">
           <%= link_to students_path, class: "card-link text-dark text-decoration-none" do %>
-            <i class="fas fa-user text-secondary me-1"></i>
-            Students
+            <div <%= @active_users %>>
+              <i class="fas fa-user text-secondary me-1"></i>
+              Students
+            </div>
           <% end %>
           </h5>
         </li>
@@ -54,8 +64,10 @@
     <ul class="nav flex-column mb-2">
       <li class="nav-item p-3">
         <%= link_to aboutus_path, class: "nav-link, text-muted text-decoration-none" do %>
-          <i class="fas fa-user-friends text-secondary me-1"></i>
-          About us
+          <div <%= @active_aboutus %>>
+            <i class="fas fa-user-friends text-secondary me-1"></i>
+            About us
+          </div>
         <% end %>
         </a>
       </li>
