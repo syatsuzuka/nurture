@@ -4,52 +4,59 @@
   </ol>
 </nav>
 
-<div class="m-4">
-  <h1>Dashboard</h1>
-  <div class="row">
-    <% @courses.each_with_index do |course, index| %>
-      <div class="col-6 mb-3">
-        <div class="card h-100 p-3">
-          <%= line_chart  @data[index],
-            title: course.name,
-            xtitle: "Time",
-            ytitle: "Point",
-            download: {background: "#ffffff"}
-          %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to course_assignments_path(course), class: "text-decoration-none" do %>
-                <%= course.name %>
-              <% end %>
-            </h5>
-            <p>
-              <% if current_user.role == "tutor" %>
-                <%= link_to student_path(course.student.id), class: "text-decoration-none" do %>
+<h1 class="mt-3">Dashboard</h1>
+
+<%= link_to "Back", :back, class: "btn btn-outline-success" %>
+
+<div class="mt-5">
+  <% unless @courses.count == 0 %>
+    <div class="row">
+      <% @courses.each_with_index do |course, index| %>
+        <div class="col-6 mb-3">
+          <div class="card h-100 p-3">
+            <%= line_chart  @data[index],
+              title: course.name,
+              xtitle: "Time",
+              ytitle: "Point",
+              download: {background: "#ffffff"}
+            %>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to course_assignments_path(course), class: "text-dark" do %>
+                  <%= course.name %>
+                <% end %>
+              </h5>
+              <p>
+                <% if current_user.role == "tutor" %>
                   <% if defined? course.student.photo.key %>
                     <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% else %>
                     <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% end %>
-                  <%= course.student.first_name %> <%= course.student.last_name %>
+                  <%= link_to student_path(course.student.id), class: "text-dark" do %>
+                    <%= course.student.first_name %> <%= course.student.last_name %>
+                  <% end %>
                   @student
-                <% end %>
-              <% else %>
-                <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
+                <% else %>
                   <% if defined? course.tutor.photo.key %>
                     <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% else %>
                     <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% end %>
-                  <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                  <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
+                    <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                  <% end %>
                   @tutor
                 <% end %>
-              <% end %>
-            </p>
-            <p class="card-text">Description: <%= course.description %></p>
-            <p class="card-text"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
+              </p>
+              <p class="card-text">Description: <%= course.description %></p>
+              <p class="card-text"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
+  <% end %>
 </div>
