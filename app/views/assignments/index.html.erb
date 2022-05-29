@@ -55,8 +55,12 @@
   <tbody>
     <% @targets.each_with_index do |target, index| %>
       <tr>
-        <td scope="row"><%= link_to course_target_progresses_path(@course, target), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
-        <td><%= target.name %></td>
+        <td scope="row"><%= index + 1 %></td>
+        <td>
+          <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
+            <%= target.name %>
+          <% end %>
+        </td>
         <td><%= target.description %></td>
         <td><%= target.score %></td>
         <td>
@@ -96,8 +100,12 @@
   <tbody>
     <% @assignments.each_with_index do |assignment, index| %>
       <tr>
-        <td scope="row"><%= link_to course_assignment_path(@course, assignment), class: "text-decoration-none" do %><%= index + 1 %><% end %></td>
-        <td><%= assignment.title %></td>
+        <td scope="row"><%= index + 1 %></td>
+        <td>
+          <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
+            <%= assignment.title %>
+          <% end %>
+        </td>
         <td><%= assignment.instruction %></td>
         <td><%= assignment.checkpoint %></td>
         <td>
