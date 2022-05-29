@@ -32,24 +32,23 @@
     <tbody>
       <% @users.each_with_index do |user, index| %>
         <tr>
-          <th scope="row">
-            <% if current_user.role == "tutor" %>
-              <%= link_to student_path(user), class: "text-decoration-none" do %>
-                <%= index + 1 %>
-              <% end %>
-            <% else %>
-              <%= link_to tutor_path(user), class: "text-decoration-none" do %>
-                <%= index + 1 %>
-              <% end %>
-            <% end %>
-          </th>
+          <th scope="row"><%= index + 1 %></th>
           <td>
             <% if defined? user.photo.key %>
               <%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
             <% else %>
               <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
             <% end %>
-            <%= user.first_name %> <%= user.last_name %>
+
+            <% if current_user.role == "tutor" %>
+              <%= link_to student_path(user), class: "text-dark" do %>
+                <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+            <% else %>
+              <%= link_to tutor_path(user), class: "text-decoration-none" do %>
+                <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+            <% end %>
           </td>
           <td><%= user.email %></td>
           <td><%= user.role %></td>

@@ -35,22 +35,22 @@
     <% @courses.each_with_index do |course, index| %>
     <tr>
         <td scope="row"><%= index + 1 %></td>
-        <td><%= link_to course_assignments_path(course), class: "text-decoration-none" do %><%= course.name %><% end %></td>
+        <td><%= link_to course_assignments_path(course), class: "text-dark" do %><%= course.name %><% end %></td>
         <td><%= course.description %></td>
         <% if current_user.role == "tutor" %>
           <td>
-            <%= link_to student_path(course.student), class: "text-decoration-none" do %>
               <% if defined? course.student.photo.key %>
                 <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% else %>
                 <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% end %>
+            <%= link_to student_path(course.student), class: "text-dark" do %>
               <%= course.student.last_name %> <%= course.student.first_name %>
             <% end %>
           </td>
         <% else %>
           <td>
-            <%= link_to tutor_path(course.tutor), class: "text-decoration-none" do %>
+            <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
               <% if defined? course.tutor.photo.key %>
                 <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% else %>
