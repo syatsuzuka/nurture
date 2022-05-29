@@ -22,4 +22,7 @@ class PagesController < ApplicationController
       @data << data_hash
     end
   end
+
+  def aboutus
+  end
 end
