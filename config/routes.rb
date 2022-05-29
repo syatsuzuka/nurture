@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/students/', to: 'users#index', as: :students
   get '/students/:id', to: 'users#show', as: :student
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get '/aboutus', to: 'pages#aboutus', as: :aboutus
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
 
   resources :courses do
@@ -21,8 +22,6 @@ Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
   end
-
-
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create
