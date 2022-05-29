@@ -1,3 +1,15 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %>
+    <% if current_user.role == "tutor" %>
+      <li class="breadcrumb-item active" aria-current="page"><%= link_to "Students", students_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page">Student Detail</li></ol>
+    <% else %>
+      <li class="breadcrumb-item active" aria-current="page"><%= link_to "Tutors", tutors_path, class: "text-secondary" %></li></ol>
+      <li class="breadcrumb-item active" aria-current="page">Tutor Detail</li></ol>
+    <% end %>
+</nav>
+
 <h3 class="mb-5"><%= @user.first_name %> <%= @user.last_name %>
   <% if defined? @user.photo.key %>
     <%= cl_image_tag @user.photo.key, class: "avatar-large" %>

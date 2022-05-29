@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %>
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to "Course Detail", course_assignments_path(@assignment.course), class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page">Assignment Detail</li></ol>
+</nav>
+
 <div class="d-flex align-content-center">
   <h1>Assignment Detail - <%= @assignment.title %></h1>
 
