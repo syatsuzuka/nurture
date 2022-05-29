@@ -37,6 +37,10 @@ class AssignmentPolicy < ApplicationPolicy
     true
   end
 
+  def dashboard?
+    true
+  end
+
   def close?
     true
   end

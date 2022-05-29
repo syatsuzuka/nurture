@@ -9,6 +9,9 @@
 <%= link_to "Back", :back, class: "btn btn-outline-success" %>
 
 <div class="mt-5">
+
+  <%= render 'alert' %>
+
   <% unless @courses.count == 0 %>
     <div class="row">
       <% @courses.each_with_index do |course, index| %>
