@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %>
+    <li class="breadcrumb-item active" aria-current="page">Courses</li>
+  </ol>
+</nav>
+
 <h1 class = "my-3">Course List</h1>
 
 <% if current_user.role == "tutor" %>
