@@ -8,71 +8,76 @@
 
 <%= link_to "Back", :back, class: "btn btn-outline-success" %>
 
-
-<table class="table table-responsive table-hover align-middle">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Course</th>
-      <% if current_user.role == "tutor" %>
-        <th scope="col">Student</th>
-      <% else %>
-        <th scope="col">Tutor</th>
-      <% end %>
-      <th scope="col">Title</th>
-      <th scope="col">Status</th>
-      <th scope="col">Comment</th>
-      <th scope="col">Period</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @assignments.each_with_index do |assignment, index| %>
-      <tr>
-        <th scope="row"><%= index + 1 %></th>
-        <td scope="col">
-          <%= link_to course_assignment_path(assignment.course, assignment), class: "text-dark" do %>
-            <%= assignment.course.name %>
-          <% end %>
-        </td>
-        <td scope="col">
+<div class="mt-5">
+  <% unless @assignments.count == 0 %>
+    <table class="table table-responsive table-hover align-middle">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Course</th>
           <% if current_user.role == "tutor" %>
-            <% if defined? assignment.course.student.photo.key %>
-              <%= cl_image_tag assignment.course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-            <% else %>
-              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-            <% end %>
-            <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
-              <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
-            <% end %>
+            <th scope="col">Student</th>
           <% else %>
-            <% if defined? assignment.course.tutor.photo.key %>
-              <%= cl_image_tag assignment.course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-            <% else %>
-              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-            <% end %>
-            <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
-              <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
-            <% end %>
+            <th scope="col">Tutor</th>
           <% end %>
-        </td>
-        <td><%= assignment.title %></td>
-        <td>
-          <% if assignment.status == 0 %>
-            Work In Process
-          <% elsif assignment.status == 1 %>
-            Done
-            <% if current_user.role == "tutor" %>
-              <%= link_to "Close", close_course_assignment_path(assignment.course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
-            <% end %>
-          <% else %>
-            Closed
-          <% end %>
-        </td>
-        <td><%= assignment.comment %></td>
-        <td>from: <%= assignment.start_date %><br>
-        to: <%= assignment.end_date %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Period</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @assignments.each_with_index do |assignment, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td scope="col">
+              <%= link_to course_assignment_path(assignment.course, assignment), class: "text-dark" do %>
+                <%= assignment.course.name %>
+              <% end %>
+            </td>
+            <td scope="col">
+              <% if current_user.role == "tutor" %>
+                <% if defined? assignment.course.student.photo.key %>
+                  <%= cl_image_tag assignment.course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <% else %>
+                  <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <% end %>
+                <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
+                  <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
+                <% end %>
+              <% else %>
+                <% if defined? assignment.course.tutor.photo.key %>
+                  <%= cl_image_tag assignment.course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <% else %>
+                  <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                <% end %>
+                <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
+                  <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= assignment.title %></td>
+            <td>
+              <% if assignment.status == 0 %>
+                Work In Process
+              <% elsif assignment.status == 1 %>
+                Done
+                <% if current_user.role == "tutor" %>
+                  <%= link_to "Close", close_course_assignment_path(assignment.course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
+                <% end %>
+              <% else %>
+                Closed
+              <% end %>
+            </td>
+            <td><%= assignment.comment %></td>
+            <td>from: <%= assignment.start_date %><br>
+            to: <%= assignment.end_date %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
+  <% end %>
+</div>
