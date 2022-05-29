@@ -1,11 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %>
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
-      <li class="breadcrumb-item active" aria-current="page">Students</li></ol>
+      <li class="breadcrumb-item active" aria-current="page">Students</li>
     <% else %>
-      <li class="breadcrumb-item active" aria-current="page">Tutors</li></ol>
+      <li class="breadcrumb-item active" aria-current="page">Tutors</li>
     <% end %>
+  </ol>
 </nav>
 
 <div class="m-4">
