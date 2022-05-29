@@ -1,0 +1,7 @@
+<% @assignments.each do |assignment| %>
+
+<div class="alert alert-success" role="alert">
+  <%= link_to assignment.course.student.first_name, student_path(assignment.course.student) %> is waiting for your review of assignment (<%= link_to assignment.title, course_assignment_path(assignment.course, assignment) %>).
+</div>
+
+<% end %>

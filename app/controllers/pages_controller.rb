@@ -9,6 +9,21 @@ class PagesController < ApplicationController
     @courses = policy_scope(Course)
     authorize @courses
 
+    if current_user.role == "tutor"
+      assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+    else
+      assignments = policy_scope(Assignment).select do |assignment|
+        assignment.course.student_user_id == current_user.id
+      end
+    end
+
+    @assignments = assignments.select do |assignment|
+      assignment.status == 1
+    end
+
+    # authorize @assignments unless @assignments.nil?
+
+    #======= Data Setup for graph =======
     @data = []
     @courses.each do |course|
       data_hash = []
