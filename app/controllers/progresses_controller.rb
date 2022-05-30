@@ -1,7 +1,9 @@
+require 'csv'
+
 class ProgressesController < ApplicationController
   before_action :progress_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy]
-  before_action :set_target, only: %i[index new create edit update destroy]
+  before_action :set_course, only: %i[index new create edit update destroy export]
+  before_action :set_target, only: %i[index new create edit update destroy export]
   before_action :set_progress, only: %i[show edit update destroy]
   before_action :set_active_courses
 
@@ -78,6 +80,28 @@ class ProgressesController < ApplicationController
     @progress.destroy
 
     redirect_to course_target_progresses_path(@course, @target)
+  end
+
+  def export
+    all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
+    all_progresses.sort_by! { |progress| progress.date }
+
+    if current_user.role == "tutor"
+      @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }
+    else
+      @progresses = all_progresses.select { |progress| progress.target.course.student_user_id == current_user.id }
+    end
+
+    authorize Progress
+
+    respond_to do |format|
+      # format.csv { send_data @progresses.to_csv, filename: "progresses-#{Date.today}.csv" }
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachments; filename=progresses.csv"
+        render "export.csv.erb"
+      end
+    end
   end
 
   private
