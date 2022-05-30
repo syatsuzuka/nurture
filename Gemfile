@@ -74,3 +74,4 @@ gem 'chartkick'
 gem "groupdate"
 # gem 'mailcatcher', '0.8.0', group: :development
 gem 'youtube_addy'
+gem 'postmark-rails'

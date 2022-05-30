@@ -105,7 +105,6 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    daemons (1.4.1)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -120,7 +119,6 @@ GEM
       railties (>= 3.2)
     errbase (0.2.2)
     erubi (1.10.0)
-    eventmachine (1.2.7)
     execjs (2.7.0)
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
@@ -169,16 +167,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mailcatcher (0.2.4)
-      eventmachine
-      haml
-      i18n
-      json
-      mail
-      sinatra
-      skinny (>= 0.1.2)
-      sqlite3-ruby
-      thin
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -188,8 +176,6 @@ GEM
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.5.2)
-    mustermann (1.1.1)
-      ruby2_keywords (~> 0.0.1)
     nested_form (0.3.2)
     netrc (0.11.0)
     nio4r (2.5.8)
@@ -197,6 +183,11 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.3.5)
+    postmark (1.22.0)
+      json
+    postmark-rails (0.22.0)
+      actionmailer (>= 3.0.0)
+      postmark (>= 1.21.3, < 2.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -217,8 +208,6 @@ GEM
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
-    rack-protection (2.2.0)
-      rack
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -277,7 +266,6 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     safely_block (0.3.0)
       errbase (>= 0.1.1)
@@ -297,14 +285,6 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    sinatra (2.2.0)
-      mustermann (~> 1.0)
-      rack (~> 2.2)
-      rack-protection (= 2.2.0)
-      tilt (~> 2.0)
-    skinny (0.2.2)
-      eventmachine (~> 1.0)
-      thin
     spring (4.0.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -313,14 +293,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
-    sqlite3-ruby (1.3.3)
-      sqlite3 (>= 1.3.3)
     temple (0.8.2)
-    thin (1.8.1)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0, >= 1.0.4)
-      rack (>= 1, < 3)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -374,8 +347,8 @@ DEPENDENCIES
   groupdate
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  mailcatcher
   pg (~> 1.1)
+  postmark-rails
   pry-byebug
   pry-rails
   puma (~> 5.0)
