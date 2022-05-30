@@ -46,7 +46,7 @@ class TargetsController < ApplicationController
     authorize @target
 
     if @target.update(target_params)
-      redirect_to course_target_progresses_path(@course, @target)
+      redirect_to course_assignments_path(@course)
     else
       render :edit
     end
