@@ -39,6 +39,7 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Edit</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Target Score</th>
@@ -52,6 +53,13 @@
       <% @targets.each_with_index do |target, index| %>
         <tr>
           <td scope="row"><%= index + 1 %></td>
+          <td>
+            <% if current_user.role == "tutor" %>
+              <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            <% end %>
+          </td>
           <td>
             <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
               <%= target.name %>
