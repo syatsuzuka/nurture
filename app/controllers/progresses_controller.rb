@@ -50,7 +50,7 @@ class ProgressesController < ApplicationController
     @progress.target = @target
     authorize @progress
 
-    if @progress.save!
+    if @progress.save
       redirect_to course_target_progresses_path(@course, @target)
     else
       render :new
@@ -66,7 +66,7 @@ class ProgressesController < ApplicationController
     @progress.target = @target
     authorize @progress
 
-    if @progress.update!(progress_params)
+    if @progress.update(progress_params)
       redirect_to course_target_progresses_path(@course, @target)
     else
       render :edit
@@ -75,7 +75,7 @@ class ProgressesController < ApplicationController
 
   def destroy
     authorize @progress
-    @progress.destroy!
+    @progress.destroy
 
     redirect_to course_target_progresses_path(@course, @target)
   end
