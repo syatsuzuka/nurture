@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
+  put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
 
   resources :courses do
     resources :assignments

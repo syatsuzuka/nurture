@@ -29,7 +29,8 @@ class PagesController < ApplicationController
     @data = []
     @courses.each do |course|
       data_hash = []
-      course.targets.each do |target|
+      disp_targets = course.targets.select { |target| target.display == true }
+      disp_targets.each do |target|
         progresses = Progress.where(target: target).order(date: :asc)
         data = progresses.map do |progress|
           [progress.date.strftime("%F"), progress.score]

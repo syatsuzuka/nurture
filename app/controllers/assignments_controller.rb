@@ -1,9 +1,9 @@
 class AssignmentsController < ApplicationController
   before_action :assignment_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy close]
-  before_action :set_assignment, only: %i[show edit update destroy close]
+  before_action :set_course, only: %i[index new create edit update destroy close close2]
+  before_action :set_assignment, only: %i[show edit update destroy close close2]
   before_action :set_active_assignments, only: %i[all]
-  before_action :set_active_courses, only: %i[index show new create edit update destroy close]
+  before_action :set_active_courses, only: %i[index show new create edit update destroy close close2]
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
@@ -20,7 +20,8 @@ class AssignmentsController < ApplicationController
 
     #======= Data setting for Graph (chartkick) =======
     @data_hash = []
-    @targets.each do |target|
+    display_targets = @targets.select { |target| target.display == true }
+    display_targets.each do |target|
       progresses = Progress.where(target: target)
       data = progresses.map do |progress|
         [progress.date.strftime("%F"), progress.score]
@@ -88,6 +89,7 @@ class AssignmentsController < ApplicationController
         assignment.course.student_user_id == current_user.id
       end
     end
+    @assignments.sort_by!(&:status)
   end
 
   def close
@@ -95,11 +97,17 @@ class AssignmentsController < ApplicationController
     @assignment.status = 2
     authorize @assignment
 
-    if @assignment.save!
-      redirect_to course_assignments_path(@course)
-    else
-      render course_assignments_path(@course)
-    end
+    @assignment.save
+    redirect_to course_assignments_path(@course)
+  end
+
+  def close2
+    @assignment.course = @course
+    @assignment.status = 2
+    authorize @assignment
+
+    @assignment.save
+    redirect_to all_assignments_path
   end
 
   private
