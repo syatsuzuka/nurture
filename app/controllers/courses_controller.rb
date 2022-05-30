@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
   def update
     authorize @course
 
-    if @course.update!(courses_params)
+    if @course.update(courses_params)
       redirect_to course_assignments_path(@course)
     else
       render :edit
@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
 
   def destroy
     authorize @course
-    @course.destroy!
+    @course.destroy
 
     redirect_to courses_path
   end

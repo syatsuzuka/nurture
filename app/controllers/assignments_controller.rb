@@ -50,7 +50,7 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     @assignment.status = 0
     authorize @assignment
-    if @assignment.save!
+    if @assignment.save
       redirect_to course_assignments_path(@course)
     else
       render :new
@@ -66,7 +66,7 @@ class AssignmentsController < ApplicationController
     @assignment.course = @course
     authorize @assignment
 
-    if @assignment.update!(assignment_params)
+    if @assignment.update(assignment_params)
       redirect_to course_assignments_path(@course)
     else
       render :edit
@@ -75,7 +75,7 @@ class AssignmentsController < ApplicationController
 
   def destroy
     authorize @assignment
-    @assignment.destroy!
+    @assignment.destroy
 
     redirect_to course_assignments_path(@course)
   end
