@@ -72,5 +72,5 @@ gem 'rails_admin', '~> 2.0'
 gem 'blazer'
 gem 'chartkick'
 gem "groupdate"
-
+# gem 'mailcatcher', '0.8.0', group: :development
 gem 'youtube_addy'

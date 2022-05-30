@@ -105,6 +105,7 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    daemons (1.4.1)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -119,8 +120,9 @@ GEM
       railties (>= 3.2)
     errbase (0.2.2)
     erubi (1.10.0)
+    eventmachine (1.2.7)
     execjs (2.7.0)
-    faker (2.20.0)
+    faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     font-awesome-sass (5.6.1)
@@ -133,7 +135,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     http-accept (1.7.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -146,6 +148,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -166,6 +169,16 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailcatcher (0.2.4)
+      eventmachine
+      haml
+      i18n
+      json
+      mail
+      sinatra
+      skinny (>= 0.1.2)
+      sqlite3-ruby
+      thin
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -174,14 +187,12 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     minitest (5.15.0)
-    msgpack (1.5.1)
+    msgpack (1.5.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     nested_form (0.3.2)
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.6-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.6-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -200,12 +211,14 @@ GEM
     pundit (2.2.0)
       activesupport (>= 3.0.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.2.0)
+      rack
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -253,7 +266,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.6.0)
-    regexp_parser (2.4.0)
+    regexp_parser (2.5.0)
     remotipart (1.4.4)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -264,6 +277,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     safely_block (0.3.0)
       errbase (>= 0.1.1)
@@ -277,11 +291,20 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.1.0)
+    selenium-webdriver (4.2.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
+    sinatra (2.2.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.0)
+      tilt (~> 2.0)
+    skinny (0.2.2)
+      eventmachine (~> 1.0)
+      thin
     spring (4.0.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -290,7 +313,14 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     temple (0.8.2)
+    thin (1.8.1)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -300,7 +330,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.1)
+    unf_ext (0.0.8.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -317,6 +347,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -326,8 +357,6 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  arm64-darwin-21
-  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -345,6 +374,7 @@ DEPENDENCIES
   groupdate
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mailcatcher
   pg (~> 1.1)
   pry-byebug
   pry-rails

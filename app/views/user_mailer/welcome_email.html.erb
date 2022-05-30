@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Nurture!<%= @user.name %></h1>
+    <h1>Welcome to Nurture, <%= @user.first_name %>!</h1>
     <p>
       We're happy to confirm that your account has been successfully created.
-      Your username is: <%= @user.login %>.<br>
+      Your username is: <%= @user.nickname %>.<br>
     </p>
     <p>
       To login to the site, just follow this link: <%= @url %>.
