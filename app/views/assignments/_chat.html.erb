@@ -17,14 +17,20 @@
     <div>
       <%= simple_form_for [@chatroom, @message],
         remote: true,
-        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex flex-column" } do |f|
       %>
       <%= f.input :content,
         label: false,
+        as: :text,
         placeholder: "Message ##{@chatroom.name}",
-        wrapper_html: {class: "flex-grow-1"}
+        wrapper_html: {class: "flex-grow-2 flex-space-between"}
       %>
-      <%= f.submit "Send", class: "btn btn-success text-light" %>
+      <%= f.input :photo,
+       as: :file,
+       label: false,
+       wrapper_html: {class: ""}
+       %>
+      <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
     <% end %>
     </div>
   </div>
