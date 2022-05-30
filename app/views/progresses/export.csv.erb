@@ -1,0 +1,5 @@
+<%- headers = ['Date', 'Score', 'TargetID', 'CreatedAt', 'UpdatedAt'] -%>
+<%= CSV.generate_line headers %>
+<%- @progresses.each do |progress| -%>
+<%= CSV.generate_line([progress.date, progress.score, progress.target_id, progress.created_at, progress.updated_at]) -%>
+<%- end -%>

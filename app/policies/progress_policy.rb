@@ -33,4 +33,8 @@ class ProgressPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def export?
+    true
+  end
 end

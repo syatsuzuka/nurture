@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/assignments', to: 'assignments#all', as: :all_assignments
+  put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
+  put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
+  get '/courses/:course_id/targets/:target_id/progresses/export.csv', to: 'progresses#export', as: :export_progresses
   get '/tutors/', to: 'users#index', as: :tutors
   get '/tutors/:id', to: 'users#show', as: :tutor
   get '/students/', to: 'users#index', as: :students
   get '/students/:id', to: 'users#show', as: :student
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
-  put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
-  put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
 
   resources :courses do
     resources :assignments
