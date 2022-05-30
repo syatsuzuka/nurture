@@ -24,6 +24,7 @@
         placeholder: "Message ##{@chatroom.name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
+      <%= f.file_field :picture, class: 'form-control', direct_upload: true  %>
       <%= f.submit "Send", class: "btn btn-success text-light" %>
     <% end %>
     </div>
