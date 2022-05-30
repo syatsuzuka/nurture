@@ -107,12 +107,14 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Edit</th>
         <th scope="col">Title</th>
         <th scope="col">Instruction</th>
         <th scope="col">Checkpoints</th>
         <th scope="col">Status</th>
         <th scope="col">Comment</th>
         <th scope="col">Period</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
 
@@ -120,6 +122,13 @@
       <% @assignments.each_with_index do |assignment, index| %>
         <tr>
           <td scope="row"><%= index + 1 %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+          <% end %>
           <td>
             <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
               <%= assignment.title %>
@@ -142,6 +151,13 @@
           <td><%= assignment.comment %></td>
           <td>from: <%= assignment.start_date %><br>
           to: <%= assignment.end_date %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

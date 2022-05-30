@@ -1,5 +1,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li>
+      <%= link_to :back, class:"text-secondary me-3" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
       <li class="breadcrumb-item active" aria-current="page">Students</li>
@@ -15,9 +20,6 @@
   <% else %>
     <h1>Tutor List</h1>
   <% end %>
-
-  <%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
 
   <table class="table mt-5 table-responsive table-hover align-middle">
     <thead class="thead-dark">
