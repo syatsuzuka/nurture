@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
   before_action :set_course, only: %i[index new create edit update destroy close]
   before_action :set_assignment, only: %i[show edit update destroy close]
   before_action :set_active_assignments, only: %i[all]
-  before_action :set_active_courses, only: %i[index new create edit update destroy close]
+  before_action :set_active_courses, only: %i[index show new create edit update destroy close]
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
