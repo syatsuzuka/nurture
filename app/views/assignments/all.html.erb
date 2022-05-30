@@ -1,19 +1,22 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+     <li>
+      <%= link_to :back, class:"text-secondary me-3" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item active" aria-current="page">Assignments</li></ol>
 </nav>
 
 <h1>All Assignments View</h1>
-
-<%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
 <div class="mt-5">
   <% unless @assignments.count == 0 %>
     <table class="table table-responsive table-hover align-middle">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Edit</th>
           <th scope="col">Course</th>
           <% if current_user.role == "tutor" %>
             <th scope="col">Student</th>
@@ -24,6 +27,7 @@
           <th scope="col">Status</th>
           <th scope="col">Comment</th>
           <th scope="col">Period</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
 
@@ -31,6 +35,13 @@
         <% @assignments.each_with_index do |assignment, index| %>
           <tr>
             <th scope="row"><%= index + 1 %></th>
+            <% if current_user.role == "tutor" %>
+              <td>
+                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+            <% end %>
             <td scope="col">
               <%= link_to course_assignment_path(assignment.course, assignment), class: "text-dark" do %>
                 <%= assignment.course.name %>
@@ -73,6 +84,13 @@
             <td><%= assignment.comment %></td>
             <td>from: <%= assignment.start_date %><br>
             to: <%= assignment.end_date %></td>
+            <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          <% end %>
           </tr>
         <% end %>
       </tbody>

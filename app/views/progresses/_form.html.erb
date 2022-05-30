@@ -1,7 +1,7 @@
   <%= simple_form_for [@course, @target, @progress] do |f| %>
-    <%= f.input :date %>
-    <%= f.input :score %>
+    <%= f.input :date, required: true %>
+    <%= f.input :score, required: true %>
     <%= f.input :comment %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', :back, class: 'btn btn-danger text-light'%>
+    <%= link_to 'Cancel', course_target_progresses_path(@course, @target), class: 'btn btn-secondary text-light'%>
   <% end %>

@@ -29,7 +29,7 @@ class TargetsController < ApplicationController
     @target.course = @course
     authorize @target
 
-    if @target.save!
+    if @target.save
       redirect_to course_assignments_path(@course)
     else
       render :new
@@ -45,7 +45,7 @@ class TargetsController < ApplicationController
     @target.course = @course
     authorize @target
 
-    if @target.update!(target_params)
+    if @target.update(target_params)
       redirect_to course_target_progresses_path(@course, @target)
     else
       render :edit
@@ -54,7 +54,7 @@ class TargetsController < ApplicationController
 
   def destroy
     authorize @target
-    @target.destroy!
+    @target.destroy
 
     redirect_to course_assignments_path(@course)
   end

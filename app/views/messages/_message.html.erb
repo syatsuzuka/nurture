@@ -1,14 +1,14 @@
 
-<% if message.user.role == current_user.role%>
-  <div id="message-<%= message.id %>" style="margin-left: 20px;" >
-<% else %>
-  <div id="message-<%= message.id %>" class="align-self-end" style="margin-right: 120px;" >
-<% end %>
+
+  <div id="message-<%= message.id %>" style="width: 70%" class=""  >
   <small>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <div><%= youtube_link?(message.content) ? YouTubeAddy.youtube_embed_url(youtube_url_clean(message.content),420,315).html_safe : message.content %></div>
+     <% unless message.photo.key.nil? %>
+        <%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %>
+     <% end %>
 
+  </small>
+  <div class="text-break"><%= text_or_youtube(message)%></div>
 </div>
 <p >

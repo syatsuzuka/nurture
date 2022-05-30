@@ -1,5 +1,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li>
+      <%= link_to :back, class:"text-secondary me-3" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item active" aria-current="page">Courses</li>
   </ol>
@@ -13,15 +18,13 @@
     Course
   <% end %>
 <% end %>
-
-<%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
 <div class="mt-5">
   <% unless @courses.count == 0 %>
     <table class="table table-responsive table-hover align-middle">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Edit</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <% if current_user.role == "tutor" %>
@@ -30,6 +33,9 @@
             <th scope="col">Tutor</th>
           <% end %>
           <th scope="col">Since</th>
+          <% if current_user.role == "tutor" %>
+            <th scope="col">Delete</th>
+          <% end %>
         </tr>
       </thead>
 
@@ -37,6 +43,13 @@
         <% @courses.each_with_index do |course, index| %>
         <tr>
             <td scope="row"><%= index + 1 %></td>
+            <% if current_user.role == "tutor" %>
+              <td>
+                <%= link_to edit_course_path(course), class: "btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+            <% end %>
             <td><%= link_to course_assignments_path(course), class: "text-dark" do %><%= course.name %><% end %></td>
             <td><%= course.description %></td>
             <% if current_user.role == "tutor" %>
@@ -64,6 +77,13 @@
             <% end %>
             <td>
               <%= course.created_at.strftime('%F') %>
+            </td>
+            <td>
+              <% if current_user.role == "tutor" %>
+                <%= link_to course_path(course), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>
