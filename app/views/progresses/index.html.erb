@@ -1,5 +1,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li>
+      <%= link_to :back, class: "text-secondary me-3" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to "Course Detail", course_assignments_path(@target.course), class: "text-secondary" %></li>
@@ -7,21 +12,7 @@
   </ol>
 </nav>
 
-<div class="d-flex align-content-center">
 <h1>Target Detail - <%= @target.name %></h1>
-
-  <% if current_user.role == "tutor" %>
-    <%= link_to edit_course_target_path(@target.course, @target), class: "text-secondary ms-3" do %>
-      <i class="fas fa-edit"></i>
-    <% end %>
-    <%= link_to course_target_path(@target.course, @target), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  <% end %>
-</div>
-
-<%= link_to "Add Progress", new_course_target_progress_path(@target.course, @target), class: "btn btn-success text-light" %>
-<%= link_to "Back", :back, class: "btn btn-outline-success" %>
 
 <%= line_chart  @data,
   title: @target.course.name,
@@ -57,16 +48,23 @@
   </tbody>
 </table>
 
-<h2 class="mt-5">Progress List</h2>
+<h2 class="mt-5">Progress List
+  <%= link_to new_course_target_progress_path(@target.course, @target), class: "btn btn-success text-light ms-3" do %>
+  <i class="fas fa-plus"></i>
+  Add Progress
+  <% end %>
+</h2>
 
 <% unless @progresses.count == 0 %>
-  <table class="table">
+  <table class="table align-middle">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Edit</th>
         <th scope="col">Date</th>
         <th scope="col">Score</th>
         <th scope="col">Comment</th>
+        <th scope="col">Delete</th>
         <th></th>
       </tr>
     </thead>
@@ -76,14 +74,16 @@
           <td>
             <%= index + 1 %>
           </td>
+          <td>
+            <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "btn btn-outline-success" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
           <td><%= progress.date %></td>
           <td><%= progress.score %></td>
           <td><%= progress.comment %></td>
-          <td class="text-start">
-            <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "text-secondary ms-3" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-            <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the progress info?' } do %>
+          <td>
+            <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>

@@ -1,37 +1,26 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Course Detail</li>
-  </ol>
-</nav>
 
-<div class="d-flex align-content-center">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb d-flex align-items-center">
+      <li>
+        <%= link_to :back, class:"text-secondary me-3" do %>
+          <i class="fas fa-arrow-left"></i>
+        <% end %>
+      </li>
+      <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page">Course Detail</li>
+    </ol>
+  </nav>
+
+<div class="d-flex align-items-center">
   <h1><%= @course.name %></h1>
-
   <% if current_user.role == "tutor" %>
-    <%= link_to edit_course_path(@course), class: "text-secondary ms-3" do %>
+    <%= link_to edit_course_path(@course), class: "btn btn-outline-success ms-2" do %>
       <i class="fas fa-edit"></i>
-    <% end %>
-    <%= link_to course_path(@course), method: :delete, class: "text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
-      <i class="fas fa-trash-alt"></i>
     <% end %>
   <% end %>
 </div>
-
-<% if current_user.role == "tutor" %>
-  <%= link_to new_course_target_path(@course), class: "btn btn-success text-light" do %>
-    <i class="fas fa-plus"></i>
-    Target
-  <% end %>
-  <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light" do %>
-    <i class="fas fa-plus"></i>
-    Assignment
-  <% end %>
-<% end %>
-
-<%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
 <%= line_chart  @data_hash,
   title: @course.name,
   xtitle: "Time",
@@ -39,17 +28,24 @@
   download: {background: "#ffffff"}
 %>
 
-<h3 class="mt-3">Target Settings</h3>
+<h3 class="mt-3">Target Settings
+  <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <i class="fas fa-plus"></i>
+    Target
+  <% end %>
+</h3>
 <% unless @targets.count == 0 %>
   <table class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Edit</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Target Score</th>
         <th scope="col">The Latest Score</th>
         <th scope="col">The Best Score</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
 
@@ -57,6 +53,13 @@
       <% @targets.each_with_index do |target, index| %>
         <tr>
           <td scope="row"><%= index + 1 %></td>
+          <td>
+            <% if current_user.role == "tutor" %>
+              <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            <% end %>
+          </td>
           <td>
             <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
               <%= target.name %>
@@ -78,7 +81,14 @@
               -
             <% end %>
           </td>
-        </tr>
+          <% if current_user.role == "tutor" %>
+            <td>
+            <%= link_to course_target_path(target.course, target), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+            </td>
+          <% end %>
+          </tr>
       <% end %>
     </tbody>
   </table>
@@ -86,18 +96,25 @@
   <span class="ms-5 text-secondary">No data</span>
 <% end %>
 
-<h3 class="mt-5">Assignment</h3>
+<h3 class="mt-5">Assignment
+  <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <i class="fas fa-plus"></i>
+    Assignment
+  <% end %>
+</h3>
 <% unless @assignments.count == 0 %>
   <table class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Edit</th>
         <th scope="col">Title</th>
         <th scope="col">Instruction</th>
         <th scope="col">Checkpoints</th>
         <th scope="col">Status</th>
         <th scope="col">Comment</th>
         <th scope="col">Period</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
 
@@ -105,6 +122,13 @@
       <% @assignments.each_with_index do |assignment, index| %>
         <tr>
           <td scope="row"><%= index + 1 %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+          <% end %>
           <td>
             <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
               <%= assignment.title %>
@@ -118,7 +142,7 @@
             <% elsif assignment.status == 1 %>
               Done
               <% if current_user.role == "tutor" %>
-                <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
+                <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-success", data: { confirm: 'Do you really want to close this?' } %>
               <% end %>
             <% else %>
               Closed
@@ -127,6 +151,13 @@
           <td><%= assignment.comment %></td>
           <td>from: <%= assignment.start_date %><br>
           to: <%= assignment.end_date %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
