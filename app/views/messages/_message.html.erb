@@ -1,12 +1,24 @@
 
 
-  <div id="message-<%= message.id %>" style="width: 70%" class=""  >
+  <div id="message-<%= message.id %>" style="width: 500px" class="d-flex flex-column text-wrap"  >
   <small>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+
      <% unless message.photo.key.nil? %>
         <%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %>
      <% end %>
+
+     <% unless message.video.service_url.nil?%>
+
+          <%= cl_video_tag( message.video.key, :controls => true,
+              :transformation => [
+              :height=>300, :width=>400, :crop=>"pad",
+              :quality=>70],
+              :fallback_content => "Your browser does not support HTML5 video tags." )
+              %>
+
+        <% end %>
 
   </small>
   <div class="text-break"><%= text_or_youtube(message)%></div>
