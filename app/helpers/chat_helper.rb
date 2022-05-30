@@ -9,6 +9,6 @@ module ChatHelper
   end
 
   def youtube_url_clean(data)
-      return data.match(URI.regexp).to_s
+    return data.match(URI.regexp).to_s
   end
 end
