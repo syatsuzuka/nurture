@@ -1,9 +1,6 @@
 
-<% if message.user.role == current_user.role%>
-  <div id="message-<%= message.id %>" style="margin-left: 20px;" >
-<% else %>
-  <div id="message-<%= message.id %>" class="align-self-end" style="margin-right: 120px;" >
-<% end %>
+
+  <div id="message-<%= message.id %>"  >
   <small>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
