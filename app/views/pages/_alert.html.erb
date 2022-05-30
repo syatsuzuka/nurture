@@ -1,7 +1,23 @@
-<% @assignments.each do |assignment| %>
-
-<div class="alert alert-success" role="alert">
-  <%= link_to assignment.course.student.first_name, student_path(assignment.course.student) %> is waiting for your review of assignment (<%= link_to assignment.title, course_assignment_path(assignment.course, assignment) %>).
-</div>
-
+<% if current_user.role == "tutor" %>
+  <div style="position: fixed; bottom: 10px; right: 10px; z-index: 100; display: grid; gap: 16px;" >
+    <% @assignments.each do |assignment| %>
+      <div class="toast-container">
+        <div class="toast fade show">
+            <div class="toast-header">
+              <% if defined? assignment.course.student.photo.key %>
+                <%= cl_image_tag assignment.course.student.photo.key, class: "avatar-toast ml-3" %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: "avatar-toast" %>
+              <% end %>
+              <strong class="me-auto"><%= link_to "#{assignment.course.student.first_name} #{assignment.course.student.last_name}", student_path(assignment.course.student), class: "link-secondary ms-3" %></strong>
+                <small><%= time_ago_in_words(assignment.updated_at) %> ago</small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body bg-light">
+              Waiting for your review! (<%= link_to assignment.title, course_assignment_path(assignment.course, assignment), class:"link-secondary" %>).
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
