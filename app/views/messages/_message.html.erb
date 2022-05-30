@@ -1,6 +1,6 @@
 
 
-  <div id="message-<%= message.id %>"  >
+  <div id="message-<%= message.id %>" style="width: 400px"  >
   <small>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
@@ -9,7 +9,6 @@
      <% end %>
 
   </small>
-  <div><%= youtube_link?(message.content) ? YouTubeAddy.youtube_embed_url(youtube_url_clean(message.content),420,315).html_safe : message.content %></div>
-
+  <div><%= text_or_youtube(message)%></div>
 </div>
 <p >
