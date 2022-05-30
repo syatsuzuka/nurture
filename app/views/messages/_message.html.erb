@@ -1,14 +1,14 @@
 
 
-  <div id="message-<%= message.id %>" style="width: 400px"  >
+  <div id="message-<%= message.id %>" style="width: 70%" class=""  >
   <small>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
      <% unless message.photo.key.nil? %>
-        <p><%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %></p>
+        <%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %>
      <% end %>
 
   </small>
-  <div><%= text_or_youtube(message)%></div>
+  <div class="text-break"><%= text_or_youtube(message)%></div>
 </div>
 <p >
