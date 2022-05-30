@@ -1,13 +1,15 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li>
+    <%= link_to :back, class:"text-secondary me-3" do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    </li>
     <li class="breadcrumb-item active" aria-current="page">Home</li>
   </ol>
 </nav>
 
 <h1 class="mt-3">Dashboard</h1>
-
-<%= link_to "Back", :back, class: "btn btn-outline-success" %>
-
 <div class="mt-5">
 
   <%= render 'alert' %>
