@@ -75,7 +75,7 @@
               <% elsif assignment.status == 1 %>
                 Done
                 <% if current_user.role == "tutor" %>
-                  <%= link_to "Close", close_course_assignment_path(assignment.course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
+                  <%= link_to "Close", close2_course_assignment_path(assignment.course, assignment), method: :put, class: "btn btn-warning", data: { confirm: 'Do you really want to close this?' } %>
                 <% end %>
               <% else %>
                 Closed

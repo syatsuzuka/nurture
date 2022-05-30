@@ -44,4 +44,8 @@ class AssignmentPolicy < ApplicationPolicy
   def close?
     true
   end
+
+  def close2?
+    true
+  end
 end
