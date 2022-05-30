@@ -27,7 +27,12 @@
       %>
       <%= f.input :photo,
        as: :file,
-       label: false,
+       inline_label: "Image upload",
+       wrapper_html: {class: ""}
+       %>
+           <%= f.input :video,
+       as: :file,
+       inline_label: "Video upload",
        wrapper_html: {class: ""}
        %>
       <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
