@@ -27,21 +27,21 @@
           <th scope="col">Status</th>
           <th scope="col">Comment</th>
           <th scope="col">Period</th>
-          <th scope="col">Delete</th>
+          <% if current_user.role == "tutor" %>
+            <th scope="col">Delete</th>
+          <% end %>
         </tr>
       </thead>
 
       <tbody>
         <% @assignments.each_with_index do |assignment, index| %>
           <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <% if current_user.role == "tutor" %>
-              <td>
-                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
-              </td>
-            <% end %>
+            <th scope="row" id="<%= assignment.id %>"><%= index + 1 %></th>
+            <td>
+              <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
             <td scope="col">
               <%= link_to course_assignment_path(assignment.course, assignment), class: "text-dark" do %>
                 <%= assignment.course.name %>

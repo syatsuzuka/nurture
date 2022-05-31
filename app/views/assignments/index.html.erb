@@ -37,7 +37,9 @@
         <th scope="col">Display</th>
         <th scope="col">The Latest Score</th>
         <th scope="col">The Best Score</th>
-        <th scope="col">Delete</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Delete</th>
+        <% end %>
       </tr>
     </thead>
 
@@ -46,10 +48,8 @@
         <tr>
           <td scope="row"><%= index + 1 %></td>
           <td>
-            <% if current_user.role == "tutor" %>
-              <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
+            <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
+              <i class="fas fa-edit"></i>
             <% end %>
           </td>
           <td>
@@ -107,7 +107,9 @@
         <th scope="col">Status</th>
         <th scope="col">Comment</th>
         <th scope="col">Period</th>
-        <th scope="col">Delete</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Delete</th>
+        <% end %>
       </tr>
     </thead>
 
@@ -115,13 +117,11 @@
       <% @assignments.each_with_index do |assignment, index| %>
         <tr>
           <td scope="row"><%= index + 1 %></td>
-          <% if current_user.role == "tutor" %>
             <td>
               <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             </td>
-          <% end %>
           <td>
             <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
               <%= assignment.title %>

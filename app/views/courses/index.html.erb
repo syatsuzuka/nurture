@@ -24,7 +24,9 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Edit</th>
+          <% if current_user.role == "tutor" %>
+            <th scope="col">Edit</th>
+          <% end %>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <% if current_user.role == "tutor" %>
