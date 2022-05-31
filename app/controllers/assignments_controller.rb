@@ -18,7 +18,7 @@ class AssignmentsController < ApplicationController
       @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
 
-    #======= Data setting for Graph (chartkick) =======
+    #======= Data setting for Graph (target) =======
     @data_hash = []
     display_targets = @targets.select { |target| target.display == true }
     display_targets.each do |target|
@@ -28,6 +28,24 @@ class AssignmentsController < ApplicationController
       end
       @data_hash << { name: target.name, data: data }
     end
+
+    #======= Data Setup for graph (assignment) =======
+    num_days = 100
+    end_date = Date.today
+    start_date = end_date - num_days
+
+    @data_assignment = []
+    data = []
+
+    (start_date..end_date).each do |date|
+      open_assignments = @assignments.select do |assignment|
+        assignment.start_date < date and assignment.end_date > date unless assignment.end_date.nil?
+      end
+      count = open_assignments.count
+      data << [date.strftime("%F"), count]
+    end
+
+    @data_assignment << { name: "assignment", data: data }
 
     #======= Chatroom =======
     @chatroom = Chatroom.find(params[:course_id])
