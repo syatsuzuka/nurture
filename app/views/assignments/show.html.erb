@@ -12,54 +12,67 @@
   </ol>
 </nav>
 
-<h1>Assignment Detail - <%= @assignment.title %></h1>
+<h1 class="mb-5">Assignment Detail - <%= @assignment.title %></h1>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-pen-nib"></i> Title</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.title %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-book-reader"></i> Instruction</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.instruction %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-check-square"></i> Checkpoint</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.checkpoint %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-question"></i> Status</h5>
+    </div>
+    <div class="col-10">
+      <% if @assignment.status == 0 %>
+        <h5>Work In Process</h5>
+      <% elsif @assignment.status == 1 %>
+        <h5>Done</h5>
+      <% else %>
+        <h5>Closed</h5>
+      <% end %>
+    </div>
+  </div>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Key</th>
-      <th scope="col">Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row">Title</td>
-      <td><%= @assignment.title %></td>
-    </tr>
-    <tr>
-      <td scope="row">Instruction</td>
-      <td><%= @assignment.instruction %></td>
-    </tr>
-    <tr>
-      <td scope="row">Comment</td>
-      <td><%= @assignment.comment %></td>
-    </tr>
-    <tr>
-      <td scope="row">Checkpoint</td>
-      <td><%= @assignment.checkpoint %></td>
-    </tr>
-    <tr>
-      <td scope="row">Status</td>
-      <td>
-        <% if @assignment.status == 0 %>
-          Work In Process
-        <% elsif @assignment.status == 1 %>
-          Done
-        <% else %>
-          Closed
-        <% end %>
-      </td>
-    <tr>
-      <td scope="row">Comment</td>
-      <td><%= @assignment.comment %></td>
-    </tr>
-    <tr>
-      <td scope="row">Start Date</td>
-      <td><%= @assignment.start_date %></td>
-    </tr>
-    <tr>
-      <td scope="row">End Date</td>
-      <td><%= @assignment.end_date %></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-comments"></i> Comment</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.comment %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-calendar"></i> Start date</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.start_date %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mb-3">
+      <h5><i class="fas fa-calendar-check"></i> End date</h5>
+    </div>
+    <div class="col-10">
+      <h5><%= @assignment.end_date %></h5>
+    </div>
+  </div>
