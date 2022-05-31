@@ -1,10 +1,10 @@
 
 
-  <div id="message-<%= message.id %>" style="width: 500px" class="d-flex flex-column text-wrap"  >
-  <small>
+  <div id="message-<%= message.id %>"  class="d-flex flex-column text-wrap w-80 mb-3"   >
+  <small >
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-
+  </small>
      <% unless message.photo.key.nil? %>
         <%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %>
      <% end %>
@@ -20,7 +20,7 @@
 
         <% end %>
 
-  </small>
+
   <div class="text-break"><%= text_or_youtube(message)%></div>
 </div>
 <p >
