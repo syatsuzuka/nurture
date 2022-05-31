@@ -1,5 +1,6 @@
 class Assignment < ApplicationRecord
-  validates :title, :instruction, :checkpoint, presence: true
+  validates :title, uniqueness: true
+  validates :instruction, :checkpoint, presence: true
   belongs_to :course
   validate :check_status
 
