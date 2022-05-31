@@ -13,9 +13,9 @@
 
 <h1><%= @course.name %></h1>
 <%= line_chart  @data_hash,
-  title: @course.name,
+  title: "#{@course.name} - Progress",
   xtitle: "Time",
-  ytitle: "Point",
+  ytitle: "Score",
   download: {background: "#ffffff"}
 %>
 
@@ -95,10 +95,12 @@
     Assignment
   <% end %>
 </h3>
-<%= line_chart  @data_hash,
-  title: @course.name,
+<%= line_chart  @data_assignment,
+  title: "#{@course.name} - # of Open Assignments",
   xtitle: "Time",
-  ytitle: "Point",
+  ytitle: "# of Open Assignments",
+  points: false,
+  curve: false,
   download: {background: "#ffffff"}
 %>
 
