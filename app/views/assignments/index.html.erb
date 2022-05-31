@@ -95,6 +95,13 @@
     Assignment
   <% end %>
 </h3>
+<%= line_chart  @data_hash,
+  title: @course.name,
+  xtitle: "Time",
+  ytitle: "Point",
+  download: {background: "#ffffff"}
+%>
+
 <% unless @assignments.count == 0 %>
   <table class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
