@@ -28,11 +28,11 @@ User.destroy_all
 puts '===================================='
 puts "Generating personal tutor seeds..."
 
-tutor_1 = User.create!(email: 'shingo@nurture-edu-app.quest', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_2 = User.create!(email: 'ed@nurture-edu-app.quest', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_3 = User.create!(email: 'shunjiro@nurture-edu-app.quest', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_4 = User.create!(email: 'doug@nurture-edu-app.quest',nickname:"Doug", first_name: 'Dougn', last_name: 'Berkeley', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_5 = User.create!(email: 'tutor@nurture-edu-app.quest',nickname:"1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_1 = User.create!(email: 'shingo@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_2 = User.create!(email: 'ed@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_3 = User.create!(email: 'shunjiro@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_4 = User.create!(email: 'doug@mail.com',nickname:"Doug", first_name: 'Doug', last_name: 'Berkeley', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_5 = User.create!(email: 'tutor@mail.com',nickname:"1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random tutor seeds..."
 
@@ -49,10 +49,10 @@ puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts '===================================='
 puts "#{Faker::Hacker.ingverb} personal student seeds..."
 
-student_1 = User.create!(email: 'shingos@nurture-edu-app.quest', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-student_2 = User.create!(email: 'eds@nurture-edu-app.quest', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'student')
-student_3 = User.create!(email: 'shunjiros@nurture-edu-app.quest', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-student_4 = User.create!(email: 'tutors@nurture-edu-app.quest',nickname: "1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_1 = User.create!(email: 'shingos@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_2 = User.create!(email: 'eds@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'student')
+student_3 = User.create!(email: 'shunjiros@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_4 = User.create!(email: 'tutors@mail.com',nickname: "1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random student seeds..."
 
@@ -71,19 +71,19 @@ puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Entry Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+course_1 = Course.create!(name: "Tennis Lesson (Intermediate Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
 course_2 = Course.create!(name: "English Lesson for TOEFL", description: "Private tutoring in English to get higher score in TOEFL exam.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
 
-course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
-chatroom_3 = Chatroom.create!(name: "Assignment chat")
+# course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+# chatroom_3 = Chatroom.create!(name: "Assignment chat")
 
-20.times do
-  Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
-  Chatroom.create(name: "Assignment chat")
-end
+# 20.times do
+#   Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
+#   Chatroom.create(name: "Assignment chat")
+# end
 
 puts "Generated #{Course.all.count} courses successfully"
 
@@ -96,14 +96,14 @@ assignment_12 = Assignment.create!(title: "Mustle Training (Shoulder Press)", in
 assignment_21 = Assignment.create!(title: "Listening Practice with English Journal", instruction: "Take 30mins to listen English Journey every day", comment: "", checkpoint: "Take 30mins every days", course_id: course_2.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 assignment_22 = Assignment.create!(title: "Enhance vocabrary", instruction: "Check 10 new words every days and memorize them", comment: "", checkpoint: "Memorize 70% of new words", course_id: course_2.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
 
-30.times do
-  title= "#{Faker::Verb.ing_form.capitalize} practice"
-  checkpoint= "can #{Faker::Verb.base} #{rand(100)} times in a row"
-  instruction = "#{Faker::Quote.yoda}"
-  comment = "#{Faker::Quote.robin}"
-  status = rand(3)
-  Assignment.create(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course_id: Course.all.sample.id, status: status, start_date: Random.rand(Time.zone.today.last_year..Time.zone.today), end_date: Random.rand(Time.zone.tomorrow..Time.zone.tomorrow.next_year))
-end
+# 30.times do
+#   title= "#{Faker::Verb.ing_form.capitalize} practice"
+#   checkpoint= "can #{Faker::Verb.base} #{rand(100)} times in a row"
+#   instruction = "#{Faker::Quote.yoda}"
+#   comment = "#{Faker::Quote.robin}"
+#   status = rand(3)
+#   Assignment.create(title: title, instruction: instruction, comment: comment, checkpoint: checkpoint, course_id: Course.all.sample.id, status: status, start_date: Random.rand(Time.zone.today.last_year..Time.zone.today), end_date: Random.rand(Time.zone.tomorrow..Time.zone.tomorrow.next_year))
+# end
 
 puts "Generated #{Assignment.all.count} Assignments successfully"
 
