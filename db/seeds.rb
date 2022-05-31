@@ -36,13 +36,13 @@ tutor_5 = User.create!(email: 'tutor@nurture-edu-app.quest',nickname:"1234", fir
 
 puts "Generating random tutor seeds..."
 
-5.times do
-  User.create(email: "#{Faker::Internet.email}",
-              first_name: "#{Faker::Name.name.split[0]}",
-              last_name: "#{Faker::Name.name.split[1]}",
-              password: '11221122', role: 'tutor',
-              avatar_url: "#{Faker::LoremPixel.image}")
-end
+# 5.times do
+#   User.create(email: "#{Faker::Internet.email}",
+#               first_name: "#{Faker::Name.name.split[0]}",
+#               last_name: "#{Faker::Name.name.split[1]}",
+#               password: '11221122', role: 'tutor',
+#               avatar_url: "#{Faker::LoremPixel.image}")
+# end
 
 puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 
