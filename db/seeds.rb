@@ -28,11 +28,11 @@ User.destroy_all
 puts '===================================='
 puts "Generating personal tutor seeds..."
 
-tutor_1 = User.create!(email: 'shingo@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_2 = User.create!(email: 'ed@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_3 = User.create!(email: 'shunjiro@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_4 = User.create!(email: 'doug@mail.com',nickname:"Doug", first_name: 'Dougn', last_name: 'Berkeley', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-tutor_5 = User.create!(email: 'tutor@mail.com',nickname:"1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_1 = User.create!(email: 'shingo@nurture-edu-app.quest', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_2 = User.create!(email: 'ed@nurture-edu-app.quest', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_3 = User.create!(email: 'shunjiro@nurture-edu-app.quest', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_4 = User.create!(email: 'doug@nurture-edu-app.quest',nickname:"Doug", first_name: 'Dougn', last_name: 'Berkeley', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_5 = User.create!(email: 'tutor@nurture-edu-app.quest',nickname:"1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random tutor seeds..."
 
@@ -49,21 +49,21 @@ puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts '===================================='
 puts "#{Faker::Hacker.ingverb} personal student seeds..."
 
-student_1 = User.create!(email: 'shingos@mail.com', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-student_2 = User.create!(email: 'eds@mail.com', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'student')
-student_3 = User.create!(email: 'shunjiros@mail.com', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-student_4 = User.create!(email: 'tutors@mail.com',nickname: "1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_1 = User.create!(email: 'shingos@nurture-edu-app.quest', first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_2 = User.create!(email: 'eds@nurture-edu-app.quest', first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'student')
+student_3 = User.create!(email: 'shunjiros@nurture-edu-app.quest', first_name: 'Shunjiro', last_name: 'Yatsuzuka', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_4 = User.create!(email: 'tutors@nurture-edu-app.quest',nickname: "1234", first_name: 'Teachy', last_name: 'McTeacherson', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random student seeds..."
 
-15.times do
-  User.create(email: "#{Faker::Internet.email}",
-              first_name: "#{Faker::Name.name.split[0]}",
-              last_name: "#{Faker::Name.name.split[1]}",
-              password: '11221122',
-              role: 'student',
-              avatar_url: "#{Faker::LoremPixel.image}")
-end
+# 15.times do
+#   User.create(email: "#{Faker::Internet.email}",
+#               first_name: "#{Faker::Name.name.split[0]}",
+#               last_name: "#{Faker::Name.name.split[1]}",
+#               password: '11221122',
+#               role: 'student',
+#               avatar_url: "#{Faker::LoremPixel.image}")
+# end
 
 puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
 puts '===================================='
