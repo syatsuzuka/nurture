@@ -26,6 +26,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.save
+      UserMailer.with(user: @course.student, path: course_assignments_path(@course)).welcome_email.deliver_now
       redirect_to courses_path
     else
       render :new

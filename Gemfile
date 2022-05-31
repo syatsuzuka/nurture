@@ -76,3 +76,4 @@ gem 'pg_search', '~> 2.3.0'
 # gem 'mailcatcher', '0.8.0', group: :development
 gem 'youtube_addy'
 gem 'postmark-rails'
+gem 'letter_opener', group: :development
