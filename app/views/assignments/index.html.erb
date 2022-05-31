@@ -95,14 +95,16 @@
     Assignment
   <% end %>
 </h3>
-<%= line_chart  @data_assignment,
-  title: "#{@course.name} - # of Open Assignments",
-  xtitle: "Time",
-  ytitle: "# of Open Assignments",
-  points: false,
-  curve: false,
-  download: {background: "#ffffff"}
-%>
+<% if @data_flag %>
+  <%= line_chart  @data_assignment,
+    title: "#{@course.name} - # of Open Assignments",
+    xtitle: "Time",
+    ytitle: "# of Open Assignments",
+    points: false,
+    curve: false,
+    download: {background: "#ffffff"}
+  %>
+<% end %>
 
 <% unless @assignments.count == 0 %>
   <table class="table table-responsive table-hover align-middle">
