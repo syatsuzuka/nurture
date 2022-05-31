@@ -11,14 +11,7 @@
   </ol>
 </nav>
 
-<div class="d-flex align-items-center">
-  <h1><%= @course.name %></h1>
-  <% if current_user.role == "tutor" %>
-    <%= link_to edit_course_path(@course), class: "btn btn-outline-success ms-2" do %>
-      <i class="fas fa-edit"></i>
-    <% end %>
-  <% end %>
-</div>
+<h1><%= @course.name %></h1>
 <%= line_chart  @data_hash,
   title: @course.name,
   xtitle: "Time",
