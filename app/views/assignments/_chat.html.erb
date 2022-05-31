@@ -17,23 +17,23 @@
     <div>
       <%= simple_form_for [@chatroom, @message],
         remote: true,
-        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex flex-column" } do |f|
+        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "row" } do |f|
       %>
       <%= f.input :content,
         label: false,
         as: :text,
         placeholder: "Message ##{@chatroom.name}",
-        wrapper_html: {class: "flex-grow-2 flex-space-between"}
+        wrapper_html: {class: " col-6 flex-grow-2 flex-space-between"}
       %>
       <%= f.input :photo,
        as: :file,
        inline_label: "Image upload",
-       wrapper_html: {class: ""}
+       wrapper_html: {class: "col-3"}
        %>
            <%= f.input :video,
        as: :file,
        inline_label: "Video upload",
-       wrapper_html: {class: ""}
+       wrapper_html: {class: "col-3"}
        %>
       <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
     <% end %>

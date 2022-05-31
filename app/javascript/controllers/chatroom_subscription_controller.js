@@ -6,6 +6,7 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
+
     this.channel = consumer.subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       {
