@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'seek@nurture-edu-app.quest'
   layout 'mailer'
 end

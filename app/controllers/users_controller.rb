@@ -10,16 +10,6 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def set_active_users
-    @active_users = "class=active"
-  end
-
   def create
     @user = User.new(user_params)
     respond_to do |format|
@@ -33,5 +23,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def set_active_users
+    @active_users = "class=active"
   end
 end
