@@ -20,4 +20,12 @@ module ChatHelper
     end
   end
 
+  def user_role_style(message)
+    if message.user.role == "tutor"
+      "bg-success"
+    else
+      "bg-dark"
+    end
+  end
+
 end
