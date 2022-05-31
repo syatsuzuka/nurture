@@ -14,7 +14,7 @@ module ChatHelper
 
   def text_or_youtube(message)
     if youtube_link?(message.content)
-      YouTubeAddy.youtube_embed_url(youtube_url_clean(message.content), 420, 315).html_safe
+      YouTubeAddy.youtube_embed_url(youtube_url_clean(message.content), 420, 315).gsub("http", "https").html_safe
     else
       message.content
     end
