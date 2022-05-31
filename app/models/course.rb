@@ -6,6 +6,13 @@ class Course < ApplicationRecord
   validate :check_name
   validate :check_description
 
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def check_name
     errors.add(:name, "is required") if name.blank?
   end

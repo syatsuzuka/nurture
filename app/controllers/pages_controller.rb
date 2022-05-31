@@ -8,7 +8,13 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @courses = policy_scope(Course)
+    @courses =
+    if params[:q].present?
+        policy_scope(Course).search_by_name_and_description(params[:q])
+    else
+      policy_scope(Course)
+    end
+
     authorize @courses
 
     if current_user.role == "tutor"
@@ -19,6 +25,7 @@ class PagesController < ApplicationController
       end
     end
 
+    # collecting done status assignments for toast
     @assignments = assignments.select do |assignment|
       assignment.status == 1
     end

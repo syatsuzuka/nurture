@@ -72,6 +72,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'blazer'
 gem 'chartkick'
 gem "groupdate"
+gem 'pg_search', '~> 2.3.0'
 # gem 'mailcatcher', '0.8.0', group: :development
 gem 'youtube_addy'
 gem 'postmark-rails'
