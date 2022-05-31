@@ -39,7 +39,7 @@ class AssignmentsController < ApplicationController
 
     (start_date..end_date).each do |date|
       open_assignments = @assignments.select do |assignment|
-        assignment.start_date < date and assignment.end_date > date unless assignment.end_date.nil?
+        assignment.start_date <= date and assignment.end_date >= date unless assignment.end_date.nil?
       end
       count = open_assignments.count
       data << [date.strftime("%F"), count]
