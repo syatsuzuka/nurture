@@ -4,8 +4,14 @@ class UserMailer < ApplicationMailer
 
   def welcome_email
     @user = params[:user]
-    @url  = ENV['SERVER_HOSTNAME'] + params[:path]
+    @url  = ENV['SERVER_HOSTNAME']
     mail(to: @user.email, subject: 'Your Nurture account is now registered!')
+  end
+
+  def update_email
+    @user = params[:user]
+    @url  = ENV['SERVER_HOSTNAME']
+    mail(to: @user.email, subject: 'Your Nurture account was updated!')
   end
 
   def invitation_email
