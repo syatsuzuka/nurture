@@ -12,67 +12,58 @@
   </ol>
 </nav>
 
-<h1 class="mb-5">Homework Detail - <%= @assignment.title %></h1>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-pen-nib"></i> Title</h5>
+<div class="d-flex justify-content-between">
+
+  <div class="mb-5">
+    <div class="row">
+      <div class="col-2 mb-3">
+        <% if @assignment.status == 0 %>
+          <span class="badge rounded-pill bg-danger me-3">Work In Process</span>
+        <% elsif @assignment.status == 1 %>
+          <span class="badge rounded-pill bg-success me-3">Pending</span>
+        <% else %>
+          <span class="badge rounded-pill bg-secondary me-3">Closed</span>
+        <% end %>
+      </div>
     </div>
-    <div class="col-10">
-      <h5><%= @assignment.title %></h5>
+    <h1 class="mb-5"><%= @assignment.title %></h1>
+    <div class="row">
+      <div class="mb-3">
+        <h4><i class="fas fa-book-reader"></i> Instruction</h4>
+        <p><%= @assignment.instruction %></h5></p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-book-reader"></i> Instruction</h5>
+    <div class="row">
+      <div class="mb-3">
+        <h4><i class="fas fa-check-square"></i> Checkpoint</h4>
+        <p><%= @assignment.checkpoint %></h5></p>
+      </div>
     </div>
-    <div class="col-10">
-      <h5><%= @assignment.instruction %></h5>
+    <div class="row">
+      <div class="mb-3">
+        <h4><i class="fas fa-comments"></i> Comment</h4>
+        <p><%= @assignment.comment %></h5></p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-check-square"></i> Checkpoint</h5>
+    <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center me-2">
+        <i class="fas fa-calendar me-1"></i>
+        <%= @assignment.start_date %>
+      </div>
+      <div>~</div>
+      <div class="d-flex align-items-center ms-2">
+        <i class="fas fa-calendar-check me-1"></i>
+        <%= @assignment.end_date %>
+      </div>
     </div>
-    <div class="col-10">
-      <h5><%= @assignment.checkpoint %></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-question"></i> Status</h5>
-    </div>
-    <div class="col-10">
-      <% if @assignment.status == 0 %>
-        <h5>Work In Process</h5>
-      <% elsif @assignment.status == 1 %>
-        <h5>Done</h5>
-      <% else %>
-        <h5>Closed</h5>
-      <% end %>
-    </div>
+
   </div>
 
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-comments"></i> Comment</h5>
-    </div>
-    <div class="col-10">
-      <h5><%= @assignment.comment %></h5>
-    </div>
+  <div class="right-img">
+    <% if defined? @assignment.course.photo.key %>
+      <%= cl_image_tag @assignment.course.photo.key, class: "homework-img" %>
+    <% else %>
+      <%= image_tag 'No image.png', class: "homework-img" %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-calendar"></i> Start date</h5>
-    </div>
-    <div class="col-10">
-      <h5><%= @assignment.start_date %></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-2 mb-3">
-      <h5><i class="fas fa-calendar-check"></i> End date</h5>
-    </div>
-    <div class="col-10">
-      <h5><%= @assignment.end_date %></h5>
-    </div>
-  </div>
+</div>
