@@ -12,27 +12,15 @@
       <div class="card-product d-flex justify-content-between mt-3 p-2">
         <%= link_to '', course_assignment_path(assignment.course, assignment), class: "card-link" %>
         <div class="card-main-info d-flex align-items-center">
-          <% if defined? assignment.course.photo.key %>
-            <%= cl_image_tag assignment.course.photo.key, class: "card-product-img" %>
-          <% else %>
-            <%= image_tag 'No image.png', class: "card-product-img" %>
-          <% end %>
+          <%= add_image(assignment.course, 'No image.png', class: "card-product-img") %>
           <div class="card-product-infos">
             <div class="d-flex align-items-center">
               <h2><%= assignment.title %></h2>
               <div class="card-product-icon ms-3">
                 <% if current_user.role == "tutor" %>
-                  <% if defined? assignment.course.student.photo.key %>
-                    <%= cl_image_tag assignment.course.student.photo.key, class: "avatar-assignment" %>
-                  <% else %>
-                    <%= image_tag 'avatar.png', class: "avatar-assignment" %>
-                  <% end %>
+                  <%= add_image(assignment.course.student, 'avatar.png', class: "avatar-assignment") %>
                 <% else %>
-                  <% if defined? assignment.course.tutor.photo.key %>
-                    <%= cl_image_tag assignment.course.tutor.photo.key, class: "avatar-assignment" %>
-                  <% else %>
-                    <%= image_tag 'avatar.png', class: "avatar-assignment" %>
-                  <% end %>
+                  <%= add_image(assignment.course.tutor, 'avatar.png', class: "avatar-assignment") %>
                 <% end %>
               </div>
             </div>
