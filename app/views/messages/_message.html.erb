@@ -11,11 +11,13 @@
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
      <% unless message.photo.key.nil? %>
-        <%= cl_image_tag message.photo.key, width: :auto, crop: :fill %>
+     <div class="img-container">
+        <%= cl_image_tag message.photo.key, width: 400, crop: :fill %>
+      </div>
      <% end %>
 
      <% unless message.video.service_url.nil?%>
-        <div class= "w-100">
+        <div class= "video-container">
           <%= cl_video_tag( message.video.key, :controls => true,
               :transformation => [
                width: :auto , crop: :fill,
