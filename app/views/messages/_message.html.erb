@@ -11,19 +11,19 @@
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
      <% unless message.photo.key.nil? %>
-        <%= cl_image_tag message.photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag message.photo.key, width: :auto, crop: :fill %>
      <% end %>
 
      <% unless message.video.service_url.nil?%>
-
+        <div class= "w-100">
           <%= cl_video_tag( message.video.key, :controls => true,
               :transformation => [
-              :height=>300, :width=>400, crop: :fill,
+               width: :auto , crop: :fill,
               :quality=>70],
               :fallback_content => "Your browser does not support HTML5 video tags.",
               colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" })
               %>
-
+        </div>
         <% end %>
 
 

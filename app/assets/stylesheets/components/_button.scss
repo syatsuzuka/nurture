@@ -5,3 +5,13 @@
 .btn-outline-success:hover {
   color: white !important;
 }
+
+// all delete button
+.btn-outline-secondary, .btn-outline-success {
+  z-index: 100;
+}
+
+.buttons {
+  min-width: 100px;
+  z-index: 1;
+}
