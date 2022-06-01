@@ -43,21 +43,13 @@
               </h5>
               <p>
                 <% if current_user.role == "tutor" %>
-                  <% if defined? course.student.photo.key %>
-                    <%= cl_image_tag course.student.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                  <% else %>
-                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                  <% end %>
+                  <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
                   <%= link_to student_path(course.student.id), class: "text-dark" do %>
                     <%= course.student.first_name %> <%= course.student.last_name %>
                   <% end %>
                   @student
                 <% else %>
-                  <% if defined? course.tutor.photo.key %>
-                    <%= cl_image_tag course.tutor.photo.key, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                  <% else %>
-                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-                  <% end %>
+                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
                   <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
                     <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                   <% end %>
