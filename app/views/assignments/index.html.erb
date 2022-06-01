@@ -85,9 +85,11 @@
 <% end %>
 
 <h3 class="mt-5">Homework
-  <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-plus"></i>
-    Homework
+  <% if current_user.role == "tutor" %>
+    <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
+      <i class="fas fa-plus"></i>
+      Homework
+    <% end %>
   <% end %>
 </h3>
 <% if @data_flag %>

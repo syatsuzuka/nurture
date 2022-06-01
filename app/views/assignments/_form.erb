@@ -12,6 +12,8 @@
       <% end %>
     <% end %>
     <%= f.input :comment, placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank" %>
+    <%= f.input :material_url %>
+    <%= f.input :review_comment %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>

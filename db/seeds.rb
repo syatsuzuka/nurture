@@ -91,10 +91,12 @@ puts '===================================='
 puts 'Generating assignments...'
 
 assignment_11 = Assignment.create!(title: "Self Practice of Serve", instruction: "Practice Serve repeatedly to raise the success rate of Serve", comment: "", checkpoint: "Achieve 80% success rate in self practices", course_id: course_1.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
-assignment_12 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_1.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
+assignment_12 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_1.id, status: 2, start_date: "2022-01-01", end_date: "2022-03-31")
 
 assignment_21 = Assignment.create!(title: "Listening Practice with English Journal", instruction: "Take 30mins to listen English Journey every day", comment: "", checkpoint: "Take 30mins every days", course_id: course_2.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 assignment_22 = Assignment.create!(title: "Enhance vocabrary", instruction: "Check 10 new words every days and memorize them", comment: "", checkpoint: "Memorize 70% of new words", course_id: course_2.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
+
+assignment_31 = Assignment.create!(title: "60mins walking every day", instruction: "Take 60mins for walking every day", comment: "", checkpoint: "Take 60mins every days", course_id: course_3.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 
 # 30.times do
 #   title= "#{Faker::Verb.ing_form.capitalize} practice"

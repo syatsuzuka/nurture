@@ -24,20 +24,33 @@
     <h1 class="mb-5"><%= @assignment.title %></h1>
     <div class="row">
       <div class="mb-3">
-        <h4><i class="fas fa-book-reader"></i> Instruction</h4>
-        <p><%= @assignment.instruction %></h5></p>
+        <h4><i class="fas fa-book-reader me-2"></i>Instruction</h4>
+        <p><%= @assignment.instruction %></p>
       </div>
     </div>
     <div class="row">
       <div class="mb-3">
-        <h4><i class="fas fa-check-square"></i> Checkpoint</h4>
-        <p><%= @assignment.checkpoint %></h5></p>
+        <h4><i class="fas fa-check-square me-2"></i>Checkpoint</h4>
+        <p><%= @assignment.checkpoint %></p>
       </div>
     </div>
     <div class="row">
       <div class="mb-3">
-        <h4><i class="fas fa-comments"></i> Comment</h4>
-        <p><%= @assignment.comment %></h5></p>
+        <h4><i class="fas fa-sticky-note me-2"></i>Student's Note</h4>
+        <p><%= @assignment.comment %></p>
+        <p>
+          <% unless @assignment.material_url.blank? %>
+            <%= link_to @assignment.material_url, target: :_blank, class: "text-secondary" do %>
+              <i class="fas fa-link me-2"></i><%= @assignment.material_url %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        <h4><i class="fas fa-check me-2"></i>Tutor's Review Comment</h4>
+        <p><%= @assignment.review_comment %></p>
       </div>
     </div>
     <div class="d-flex align-items-center">
