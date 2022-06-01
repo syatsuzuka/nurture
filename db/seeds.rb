@@ -71,14 +71,14 @@ puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Intermediate Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+course_1 = Course.create!(name: "Tennis Lesson (Intermediate Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_1.id )
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
-course_2 = Course.create!(name: "English Lesson for TOEFL", description: "Private tutoring in English to get higher score in TOEFL exam.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+course_2 = Course.create!(name: "English Lesson for TOEFL", description: "Private tutoring in English to get higher score in TOEFL exam.", tutor_user_id: tutor_4.id, student_user_id: student_1.id )
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
 
-# course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
-# chatroom_3 = Chatroom.create!(name: "Assignment chat")
+course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_3.id, student_user_id: student_3.id )
+chatroom_3 = Chatroom.create!(name: "Assignment chat")
 
 # 20.times do
 #   Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
