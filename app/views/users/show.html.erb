@@ -17,11 +17,7 @@
 </nav>
 
 <h3><%= @user.first_name %> <%= @user.last_name %>
-  <% if defined? @user.photo.key %>
-    <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
-  <% else %>
-    <%= image_tag 'avatar.png', class: "avatar-large" %>
-  <% end %>
+  <%= add_image(@user, 'avatar.png', 'avatar-large') %>
 </h3>
 
 <div class="container mt-5">
