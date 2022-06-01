@@ -48,4 +48,8 @@ class AssignmentPolicy < ApplicationPolicy
   def close2?
     true
   end
+
+  def done?
+    true
+  end
 end
