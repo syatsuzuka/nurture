@@ -5,11 +5,11 @@
 </h3>
 
 <div class="collapse" id="navbarHeader">
-  <div class="container chatroom border mt-3 rounded border-success"
+  <div id="chatroom" class="container chatroom border mt-3 rounded border-success"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   >
-    <div class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
+    <div id="messages" class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
@@ -41,3 +41,15 @@
     </div>
   </div>
 </div>
+
+<script>
+var chatToggle = document.getElementById('chat-toggle');
+
+chatToggle.addEventListener("click", myFunction)
+var lastElement = document.getElementById('messages').lastChild;
+scrollDown(lastElement);
+function scrollDown(lastElement) {
+
+  lastElement.scrollIntoView();
+}
+</script>
