@@ -7,6 +7,7 @@
 </nav>
 
 <h1><%= @course.name %></h1>
+
 <%= line_chart  @data_hash,
   title: "#{@course.name} - Progress",
   xtitle: "Time",

@@ -23,7 +23,8 @@
     <div class="row">
       <% @courses.each_with_index do |course, index| %>
         <div class="col-6 mb-3">
-          <div class="card h-100 p-3">
+          <div class="card h-100 shadow p-4 m-1 rounded position-relative">
+            <%= add_image(course, 'No image.png', class: 'dashboard-thumnail-img position-absolute bottom-0 end-0 shadow p-1 m-3') %>
             <%= line_chart  @data[index],
               title: course.name,
               xtitle: "Time",
@@ -52,7 +53,7 @@
                 <% end %>
               </p>
               <p class="card-text">Description: <%= course.description %></p>
-              <p class="card-text"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
+              <p class="card-text mb-4"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
             </div>
           </div>
         </div>
