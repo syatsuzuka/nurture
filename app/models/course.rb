@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   has_many :targets, dependent: :destroy
   validate :check_name
   validate :check_description
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
