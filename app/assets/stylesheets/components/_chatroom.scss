@@ -34,6 +34,8 @@
 .img-container {
   img{
     width: 100%;
+    max-width: 500px;
+    max-height:400px
   }
 }
 
@@ -41,5 +43,8 @@
 
   video{
     width: 100%;
+    max-width: 500px;
+    max-height:400px;
+
   }
 }

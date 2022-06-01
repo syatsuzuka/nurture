@@ -12,7 +12,7 @@
   </small>
      <% unless message.photo.key.nil? %>
      <div class="img-container">
-        <%= cl_image_tag message.photo.key, width: 400, crop: :fill %>
+        <%= cl_image_tag message.photo.key, width: 0.5, crop: :fill %>
       </div>
      <% end %>
 
@@ -20,11 +20,12 @@
         <div class= "video-container">
           <%= cl_video_tag( message.video.key, :controls => true,
               :transformation => [
-               width: :auto , crop: :fill,
+               width: 0.9 , crop: :fill,
               :quality=>70],
               :fallback_content => "Your browser does not support HTML5 video tags.",
               colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" })
               %>
+              <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
         </div>
         <% end %>
 
