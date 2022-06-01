@@ -8,11 +8,11 @@
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to "Course Detail", course_assignments_path(@assignment.course), class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Assignment Detail</li>
+    <li class="breadcrumb-item active" aria-current="page">Homework Detail</li>
   </ol>
 </nav>
 
-<h1 class="mb-5">Assignment Detail - <%= @assignment.title %></h1>
+<h1 class="mb-5">Homework Detail - <%= @assignment.title %></h1>
   <div class="row">
     <div class="col-2 mb-3">
       <h5><i class="fas fa-pen-nib"></i> Title</h5>
