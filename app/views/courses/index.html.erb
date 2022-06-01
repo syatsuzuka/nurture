@@ -24,27 +24,15 @@
     <div class="card-product d-flex justify-content-between mt-3 p-2">
       <%= link_to '', course_assignments_path(course), class: "card-link" %>
       <div class="card-main-info d-flex align-items-center">
-        <% if defined? course.photo.key %>
-          <%= cl_image_tag course.photo.key, class: "card-product-img" %>
-        <% else %>
-          <%= image_tag 'No image.png', class: "card-product-img" %>
-        <% end %>
+        <%= add_image(course, 'No image.png', 'card-product-img') %>
         <div class="card-product-infos">
           <div class="d-flex align-items-center">
             <h2><%= course.name %></h2>
             <div class="card-product-icon ms-3">
               <% if current_user.role == "tutor" %>
-                <% if defined? course.student.photo.key %>
-                  <%= cl_image_tag course.student.photo.key, class: "avatar-course" %>
-                <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar-course" %>
-                <% end %>
+                <%= add_image(course.student, 'avatar.png', 'avatar-course') %>
               <% else %>
-                <% if defined? course.tutor.photo.key %>
-                  <%= cl_image_tag course.tutor.photo.key, class: "avatar-course" %>
-                <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar-course" %>
-                <% end %>
+                <%= add_image(course.tutor, 'avatar.png', 'avatar-course') %>
               <% end %>
             </div>
           </div>
