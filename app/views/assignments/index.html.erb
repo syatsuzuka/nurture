@@ -89,17 +89,17 @@
   <span class="ms-5 text-secondary">No data</span>
 <% end %>
 
-<h3 class="mt-5">Assignment
+<h3 class="mt-5">Homework
   <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
     <i class="fas fa-plus"></i>
-    Assignment
+    Homework
   <% end %>
 </h3>
 <% if @data_flag %>
   <%= line_chart  @data_assignment,
-    title: "#{@course.name} - # of Open Assignments",
+    title: "#{@course.name} - # of Open Homework",
     xtitle: "Time",
-    ytitle: "# of Open Assignments",
+    ytitle: "# of Open Homework",
     points: false,
     curve: false,
     download: {background: "#ffffff"}
@@ -157,7 +157,7 @@
           to: <%= assignment.end_date %></td>
           <% if current_user.role == "tutor" %>
             <td>
-              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             </td>
