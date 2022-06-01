@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.update(courses_params)
-      redirect_to course_assignments_path(@course)
+      redirect_to courses_path
     else
       render :edit
     end
@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
   private
 
   def courses_params
-    params.require(:course).permit(:name, :description, :tutor_user_id, :student_user_id)
+    params.require(:course).permit(:name, :description, :tutor_user_id, :student_user_id, :photo)
   end
 
   def set_course
