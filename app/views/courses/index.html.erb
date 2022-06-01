@@ -51,14 +51,21 @@
           <p><%= course.description %></p>
         </div>
       </div>
-      <div class="buttons ">
+      <div class="buttons">
         <% if current_user.role == "tutor" %>
-          <%= link_to edit_course_path(course), class: "btn btn-outline-success" do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-          <%= link_to course_path(course), method: :delete, class: "btn btn-outline-secondary ms-2", data: { confirm: 'Do you really want to delete the course?' } do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              Action
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li>
+                <%= link_to edit_course_path(course), class: "dropdown-item" do %><i class="fas fa-edit"></i>Edit<% end %>
+              </li>
+              <li>
+                <%= link_to course_path(course), method: :delete, class: "dropdown-item", data: { confirm: 'Do you really want to delete the assignment?' } do %><i class="fas fa-trash-alt"></i>Delete<% end %>
+              </li>
+            </ul>
+          </div>
         <% end %>
       </div>
     </div>
