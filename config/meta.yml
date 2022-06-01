@@ -1,5 +1,4 @@
 meta_product_name: "Nurture"
 meta_title: "Nurture - A one-stop platform to help tutors engage with students and guide their progress"
 meta_description: "The easiest way to help tutors engage with students and guide their progress"
-meta_image: "Icoooonnnn-removebg-preview.png" # should exist in `app/assets/images/`
-twitter_account: ENV['TWITTER_ACCOUNT']   # required for Twitter Cards
+meta_image: "NurutureFacebook Cover.png" # should exist in `app/assets/images/`
