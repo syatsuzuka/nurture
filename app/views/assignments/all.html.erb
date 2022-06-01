@@ -6,10 +6,10 @@
       <% end %>
     </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Assignments</li></ol>
+    <li class="breadcrumb-item active" aria-current="page">Homework</li></ol>
 </nav>
 
-<h1>All Assignments View</h1>
+<h1>All Homework View</h1>
 <div class="mt-5">
   <% unless @assignments.count == 0 %>
     <table class="table table-responsive table-hover align-middle">
@@ -86,7 +86,7 @@
             to: <%= assignment.end_date %></td>
             <% if current_user.role == "tutor" %>
             <td>
-              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the assignment?' } do %>
+              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             </td>
