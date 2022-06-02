@@ -5,7 +5,10 @@
   </ol>
 </nav>
 
-<h1 class = "mt-3">Course List</h1>
+<div class="d-flex align-items-center mb-3">
+  <i class="fas fa-university fa-2x me-2 mb-2"></i>
+  <h1>Course List</h1>
+</div>
 <% if current_user.role == "tutor" %>
   <%= link_to new_course_path, class: "btn btn-success text-light" do %>
     <i class="fas fa-plus"></i>
@@ -13,45 +16,47 @@
   <% end %>
 <% end %>
 
-<% unless @courses.count == 0 %>
-  <% @courses.each do |course| %>
-    <div class="card-product d-flex justify-content-between mt-3 p-2">
-      <%= link_to '', course_assignments_path(course), class: "card-link" %>
-      <div class="card-main-info d-flex align-items-center">
-        <%= add_image(course, 'No image.png', class: 'card-product-img') %>
-        <div class="card-product-infos">
-          <div class=" d-flex align-items-center">
-            <h2 ><%= course.name %></h2>
-            <div class="card-product-icon p-2 ms-3">
-              <% if current_user.role == "tutor" %>
-                <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-              <% else %>
-                <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-              <% end %>
+<div class="card-grid">
+  <% unless @courses.count == 0 %>
+    <% @courses.each do |course| %>
+      <div class="course-card-product d-flex justify-content-between mt-3 p-2">
+        <%= link_to '', course_assignments_path(course), class: "card-link" %>
+        <div class="card-main-info d-flex align-items-center">
+          <%= add_image(course, 'No image.png', class: 'card-product-img') %>
+          <div class="card-product-infos">
+            <div class="d-flex align-items-center">
+              <h2><%= course.name %></h2>
+              <div class="card-product-icon ms-3">
+                <% if current_user.role == "tutor" %>
+                  <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                <% else %>
+                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                <% end %>
+              </div>
             </div>
+            <p><%= course.description %></p>
           </div>
-          <p><%= course.description %></p>
+        </div>
+        <div class="buttons">
+          <% if current_user.role == "tutor" %>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Action
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <%= link_to edit_course_path(course), class: "dropdown-item" do %><i class="fas fa-edit"></i>Edit<% end %>
+                </li>
+                <li>
+                  <%= link_to course_path(course), method: :delete, class: "dropdown-item", data: { confirm: 'Do you really want to delete the assignment?' } do %><i class="fas fa-trash-alt"></i>Delete<% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class="buttons">
-        <% if current_user.role == "tutor" %>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Action
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li>
-                <%= link_to edit_course_path(course), class: "dropdown-item" do %><i class="fas fa-edit"></i>Edit<% end %>
-              </li>
-              <li>
-                <%= link_to course_path(course), method: :delete, class: "dropdown-item", data: { confirm: 'Do you really want to delete the assignment?' } do %><i class="fas fa-trash-alt"></i>Delete<% end %>
-              </li>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
   <% end %>
-<% else %>
-  <span class="ms-5 text-secondary">No data</span>
-<% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_124044) do
+ActiveRecord::Schema.define(version: 2022_06_02_084535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_124044) do
     t.date "end_date"
     t.text "review_comment"
     t.string "material_url"
+    t.string "instruction_url"
     t.index ["course_id"], name: "index_assignments_on_course_id"
   end
 

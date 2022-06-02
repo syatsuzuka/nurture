@@ -4,7 +4,10 @@
   </ol>
 </nav>
 <div class="d-flex justify-content-between align-items-center">
-  <h1>Dashboard</h1>
+  <div class="d-flex align-items-center">
+    <i class="fas fa-home fa-2x mb-2 me-2"></i>
+    <h1>Dashboard</h1>
+  </div>
   <%= form_tag dashboard_path, class: "d-flex h-25 w-50", method: :get do %>
     <%= text_field_tag :q,
       params[:q],
@@ -43,16 +46,14 @@
                   <%= link_to student_path(course.student.id), class: "text-dark" do %>
                     <%= course.student.first_name %> <%= course.student.last_name %>
                   <% end %>
-                  @student
                 <% else %>
                   <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
                   <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
                     <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                   <% end %>
-                  @tutor
                 <% end %>
               </p>
-              <p class="card-text">Description: <%= course.description %></p>
+              <p class="card-text"><%= course.description %></p>
               <p class="card-text mb-4"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
             </div>
           </div>

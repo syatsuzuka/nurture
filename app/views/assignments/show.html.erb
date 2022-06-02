@@ -26,6 +26,13 @@
       <div class="mb-3">
         <h4><i class="fas fa-book-reader me-2"></i>Instruction</h4>
         <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
+        <p>
+          <% unless @assignment.instruction_url.blank? %>
+            <%= link_to @assignment.instruction_url, target: :_blank, class: "text-secondary ms-3" do %>
+              <i class="fas fa-link me-2"></i><%= @assignment.instruction_url %>
+            <% end %>
+          <% end %>
+        </p>
       </div>
     </div>
     <div class="row">

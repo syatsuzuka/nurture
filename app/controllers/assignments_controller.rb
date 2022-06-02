@@ -149,7 +149,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :instruction, :comment, :material_url, :checkpoint, :status, :review_comment, :start_date, :end_date, :course_id)
+    params.require(:assignment).permit(:title, :instruction, :instruction_url, :comment, :material_url, :checkpoint, :status, :review_comment, :start_date, :end_date, :course_id)
   end
 
   def set_course
