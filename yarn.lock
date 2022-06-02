@@ -6015,6 +6015,11 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scroll-into-view@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/scroll-into-view/-/scroll-into-view-1.16.0.tgz#07141fc4ba8a14b898d2163d6167f3d84cb9b05b"
+  integrity sha512-N8T/4mKzQXMorcbMzNm+rOfy0lPmga3zl7SmUSHDryA6cqGVlzG9pePQCqHA/UPaJtC2KOJP/r93pHm9df+5/A==
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
