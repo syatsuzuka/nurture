@@ -31,14 +31,12 @@
             <p><%= assignment.comment %></p>
           </div>
         </div>
-        <div class="date d-flex align-items-center">
-          <div>
-            <p><i class="fas fa-calendar-check"></i> Due date</p>
-            <p><%= assignment.end_date %></p>
-          </div>
+        <div class="date text-center">
           <% if (assignment.end_date - Date.today).to_i <= 3 && (assignment.end_date - Date.today).to_i > 0 %>
-            <span class="badge rounded-pill bg-info ms-2"><%= distance_of_time_in_words(Time.now, assignment.end_date) %> left</span>
+            <p><span class="badge rounded-pill bg-info ms-2"><%= distance_of_time_in_words(Time.now, assignment.end_date) %> left</span></p>
           <% end %>
+          <p><i class="fas fa-calendar-check"></i> Due date</p>
+          <p><%= assignment.end_date %></p>
         </div>
         <div class="buttons d-flex p-2 flex-column">
           <% if assignment.status == 0 %>
