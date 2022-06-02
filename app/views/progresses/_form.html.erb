@@ -1,5 +1,5 @@
   <%= simple_form_for [@course, @target, @progress] do |f| %>
-    <%= f.input :date, required: true %>
+    <%= f.input :date, required: true, html5: true %>
     <%= f.input :score, required: true %>
     <%= f.input :comment %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
