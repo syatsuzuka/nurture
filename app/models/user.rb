@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one_attached :photo
   validate :check_role
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
   # after_update :send_update_email
 
   def select_label
