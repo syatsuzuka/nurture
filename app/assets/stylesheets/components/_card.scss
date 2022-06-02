@@ -19,14 +19,14 @@
   object-fit: cover;
 }
 
-.card-product h2 {
+.card-product h2, .course-card-product h2{
   font-size: 24px;
   font-weight: bold;
   margin: 0;
   word-wrap: break-word;
 }
 
-.card-product p {
+.card-product p, .course-card-product p {
   font-size: 16px;
   line-height: 1.4;
   opacity: .7;
@@ -34,7 +34,7 @@
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
+.card-product, .card-product-infos, .course-card-product {
   padding: 16px;
   width: 400px;
 }
@@ -51,4 +51,34 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+// For course card
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.course-card-product {
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:hover {
+    transition: 0.3s;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+}
+
+@media (min-width: 100px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1200px) {
+  .card-grid { grid-template-columns: 1fr 1fr; }
 }
