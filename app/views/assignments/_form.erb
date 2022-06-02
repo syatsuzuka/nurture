@@ -40,7 +40,7 @@
       <%= f.input :material_url, placeholder: "Put the url for the material your would like to share with Tutor" %>
 
       <% if current_user.role == "tutor" %>
-        <%= f.input :review_comment, "Put review comment" %>
+        <%= f.input :review_comment, placeholder: "Put review comment" %>
       <% else %>
         <span>Review Comment</span>
         <% unless @assignment.review_comment.blank? %>
