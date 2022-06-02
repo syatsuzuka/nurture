@@ -90,7 +90,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
 
     if @assignment.update(assignment_params)
-      redirect_to all_assignments_path
+      redirect_to course_assignments_path
     else
       render :edit
     end

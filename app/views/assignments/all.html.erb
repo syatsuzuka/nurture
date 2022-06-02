@@ -28,39 +28,18 @@
           </div>
         </div>
         <div class="date">
-          <p><i class="fas fa-calendar"></i> <%= assignment.start_date %></p>
-          <p><i class="fas fa-calendar-check"></i> <%= assignment.end_date %></p>
+          <p><i class="fas fa-calendar-check"></i> Due date</p>
+          <p><%= assignment.end_date %></p>
         </div>
         <div class="buttons">
           <% if assignment.status == 0 %>
-            <span class="badge rounded-pill bg-danger me-3">Work In Process</span>
+            <span class="badge rounded-pill bg-danger fs-5 me-3">Work In Process</span>
           <% elsif assignment.status == 1 %>
-            <span class="badge rounded-pill bg-success me-3">Pending</span>
+            <span class="badge rounded-pill bg-success fs-5 me-3">Pending</span>
           <% else %>
-            <span class="badge rounded-pill bg-secondary me-3">Completed</span>
+            <span class="badge rounded-pill bg-secondary fs-5 me-3">Completed</span>
           <% end %>
         </div>
-
-        <% if current_user.role == "tutor" %>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Action
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><%= link_to edit_course_assignment_path(assignment.course, assignment), class: "dropdown-item" do %>
-                <i class="fas fa-edit"></i>
-                Edit
-                <% end %>
-              </li>
-              <li><%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "dropdown-item", data: { confirm: 'Do you really want to delete the assignment?' } do %>
-                <i class="fas fa-trash-alt"></i>
-                Delete
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        <% end %>
-
       </div>
     <% end %>
   <% else %>
