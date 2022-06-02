@@ -7,9 +7,9 @@
   </ol>
 </nav>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex">
 
-  <div class="mb-5">
+  <div class="mb-5 me-5 flex-grow-1">
     <div class="row">
       <div class="col-2 mb-3">
         <% if @assignment.status == 0 %>
@@ -24,18 +24,35 @@
     <h1 class="mb-5"><%= @assignment.title %></h1>
     <div class="row">
       <div class="mb-3">
-        <h4><i class="fas fa-sticky-note me-2"></i>Student's Note
+        <h4><i class="fas fa-book-reader me-2"></i>Instruction</h4>
+        <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        <h4><i class="fas fa-check-square me-2"></i>Checkpoint</h4>
+        <p class="ms-3 p-2 border"><%= @assignment.checkpoint %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        <h4>
+          <i class="fas fa-sticky-note me-2"></i>Student's Note
           <% if current_user.role == "student" %>
             <%= link_to edit_course_assignment_path(@assignment.course, @assignment), class:"btn btn-success" do %>
               <i class="fas fa-edit"></i>
                 Add your comment?
-              <% end %>
+            <% end %>
           <% end %>
         </h4>
-        <p><%= @assignment.comment %></p>
+        <% unless @assignment.comment.blank? %>
+          <p class="ms-3 p-2 border"><%= @assignment.comment %></p>
+        <% else %>
+          <p class="ms-3 p-2 text-secondary">No data</p>
+        <% end %>
         <p>
           <% unless @assignment.material_url.blank? %>
-            <%= link_to @assignment.material_url, target: :_blank, class: "text-secondary" do %>
+            <%= link_to @assignment.material_url, target: :_blank, class: "text-secondary ms-3" do %>
               <i class="fas fa-link me-2"></i><%= @assignment.material_url %>
             <% end %>
           <% end %>
@@ -52,27 +69,19 @@
             <% end %>
           <% end %>
         </h4>
-        <p><%= @assignment.review_comment %></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="mb-3">
-        <h5><i class="fas fa-book-reader me-2"></i>Instruction</h5>
-        <p><%= @assignment.instruction %></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="mb-3">
-        <h5><i class="fas fa-check-square me-2"></i>Checkpoint</h5>
-        <p><%= @assignment.checkpoint %></p>
+        <% unless @assignment.review_comment.blank? %>
+          <p class="ms-3 p-2 border"><%= @assignment.review_comment %></p>
+        <% else %>
+          <p class="ms-3 p-2 text-secondary">No data</p>
+        <% end %>
       </div>
     </div>
     <div class="row">
       <div class="d-flex align-items-center me-2">
         <h5><i class="fas fa-calendar-check me-1"></i>
-        Due date</h5>
+        Period</h5>
       </div>
-      <p><%= @assignment.end_date %></p>
+      <p class="ms-3 p-2"><%= @assignment.start_date %> - <%= @assignment.end_date %></p>
     </div>
       <% if current_user.role == "tutor" && @assignment.status == 1 %>
         <%= link_to "Mark as completed", close2_course_assignment_path(@assignment.course, @assignment), method: :put, class: "btn btn-success me-3", data: { confirm: 'Do you really want to close this?' } %>
