@@ -1,3 +1,4 @@
+
   <%= simple_form_for [@course, @assignment] do |f| %>
     <% if current_user.role == "tutor" %>
       <%= f.input :title, placeholder: "Title of homework" %>
