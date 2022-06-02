@@ -20,9 +20,9 @@
       <div class="card-main-info d-flex align-items-center">
         <%= add_image(course, 'No image.png', class: 'card-product-img') %>
         <div class="card-product-infos">
-          <div class="d-flex align-items-center">
-            <h2><%= course.name %></h2>
-            <div class="card-product-icon ms-3">
+          <div class=" d-flex align-items-center">
+            <h2 ><%= course.name %></h2>
+            <div class="card-product-icon p-2 ms-3">
               <% if current_user.role == "tutor" %>
                 <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
               <% else %>
