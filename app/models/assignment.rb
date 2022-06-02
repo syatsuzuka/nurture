@@ -3,8 +3,9 @@ class Assignment < ApplicationRecord
   validates :instruction, :checkpoint, presence: true
   belongs_to :course
   validate :check_status
-  validates :instruction_url, format: /\A#{URI::regexp(%w(http https))}\z/
-  validates :material_url, format: /\A#{URI::regexp(%w(http https))}\z/
+  # validates :instruction_url, format: /\A#{URI::regexp(%w(http https))}\z/
+  # validates :material_url, format: /\A#{URI::regexp(%w(http https))}\z/
+
 
   def check_checkpoint
     errors.add(:checkpoint, "can't be blank") if checkpoint.blank?
