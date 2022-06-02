@@ -1,10 +1,10 @@
 
   <%= simple_form_for [@course, @assignment] do |f| %>
     <% if current_user.role == "tutor" %>
-      <%= f.input :title, placeholder: "Title of homework" %>
-      <%= f.input :instruction, placeholder: "What do you want your student to achieve?"%>
+      <%= f.input :title, placeholder: "Title of homework", required: true %>
+      <%= f.input :instruction, placeholder: "What do you want your student to achieve?", required: true %>
       <%= f.input :instruction_url, placeholder: "Put the URL for the instruction" %>
-      <%= f.input :checkpoint, placeholder: "List the tasks you think are indicitive of success in your student's instruction?" %>
+      <%= f.input :checkpoint, placeholder: "List the tasks you think are indicitive of success in your student's instruction?", required: true %>
     <% else %>
       <span>Title</span>
       <div class="border mt-2 mb-3 p-2">
@@ -30,9 +30,9 @@
     <% end %>
     <% unless @assignment.id.nil? %>
       <% if current_user.role == "tutor" %>
-        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true %>
+        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], include_blank: false %>
       <% else %>
-        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true %>
+        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], include_blank: false %>
       <% end %>
     <% end %>
     <% unless @assignment.id.nil? %>
@@ -52,8 +52,8 @@
         <% end %>
       <% end %>
     <% end %>
-    <%= f.input :start_date, html5: true %>
-    <%= f.input :end_date, html5: true %>
+    <%= f.input :start_date, html5: true, required: true %>
+    <%= f.input :end_date, html5: true, required: true %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
     <%= link_to 'Cancel', course_assignments_path, class: 'btn btn-secondary text-light'%>
   <% end %>
