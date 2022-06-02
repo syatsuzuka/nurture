@@ -26,9 +26,15 @@
   <% end %>
 
   <span>Student Comment</span>
-  <div class="border mt-2 mb-3 p-2">
-    <%= @assignment.comment %>
-  </div>
+  <% unless @assignment.comment.blank? %>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @assignment.comment %>
+    </div>
+  <% else %>
+    <div class="text-secondary mt-2 mb-3 p-2">
+      No data
+    </div>
+  <% end %>
 
   <%= f.input :review_comment %>
   <%= f.input :start_date, html5: true %>
