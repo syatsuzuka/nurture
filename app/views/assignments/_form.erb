@@ -1,4 +1,4 @@
-  <div class="col-8 offset-1">
+
   <%= simple_form_for [@course, @assignment] do |f| %>
     <% if current_user.role == "tutor" %>
       <%= f.input :title %>
@@ -21,4 +21,3 @@
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
     <%= link_to 'Cancel', all_assignments_path, class: 'btn btn-secondary text-light'%>
   <% end %>
-  </div>
