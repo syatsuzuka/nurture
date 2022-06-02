@@ -58,7 +58,9 @@
           </td>
           <td><%= target.description %></td>
           <td><%= target.score %></td>
-          <td><%= target.display %></td>
+          <td>
+            <i class="<%= target.display ? "fas fa-check-circle" : "fas fa-times-circle" %>"></i>
+          </td>
           <td>
             <% unless target.progresses.blank? %>
               <%= target.progresses.order(date: :desc).first.score %> (<%= target.progresses.order(date: :desc).first.date %>)
