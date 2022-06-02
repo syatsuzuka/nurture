@@ -1,0 +1,38 @@
+<h1 class="mb-4">Add Review Comments - <%= @assignment.title %></h1>
+
+<%= simple_form_for [@course, @assignment] do |f| %>
+
+  <span>Title</span>
+  <div class="border mt-2 mb-3 p-2">
+    <%= @assignment.title %>
+  </div>
+
+  <span>Instruction</span>
+  <div class="border mt-2 mb-3 p-2">
+    <%= @assignment.instruction %>
+  </div>
+
+  <span>Checkpoint</span>
+  <div class="border mt-2 mb-3 p-2">
+    <%= @assignment.checkpoint %>
+  </div>
+
+  <% unless @assignment.id.nil? %>
+    <% if current_user.role == "tutor" %>
+      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true %>
+    <% else %>
+      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true %>
+    <% end %>
+  <% end %>
+
+  <span>Student Comment</span>
+  <div class="border mt-2 mb-3 p-2">
+    <%= @assignment.comment %>
+  </div>
+
+  <%= f.input :review_comment %>
+  <%= f.input :start_date, html5: true %>
+  <%= f.input :end_date, html5: true %>
+  <%= f.submit 'Save', class: "btn btn-success text-light" %>
+  <%= link_to 'Cancel', course_assignments_path, class: 'btn btn-secondary text-light'%>
+<% end %>
