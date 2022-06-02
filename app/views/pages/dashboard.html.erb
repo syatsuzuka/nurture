@@ -27,7 +27,7 @@
       <% @courses.each_with_index do |course, index| %>
         <div class="col-6 mb-3">
           <div class="card h-100 shadow p-4 m-1 rounded position-relative">
-            <%= add_image(course, 'Icoooonnnn-removebg-preview', class: 'dashboard-thumnail-img position-absolute bottom-0 end-0 shadow p-1 m-3')  %>
+            <%= add_image(course, 'No image.png', class: 'dashboard-thumnail-img position-absolute bottom-0 end-0 shadow p-1 m-3')  %>
             <%= line_chart  @data[index],
               title: course.name,
               xtitle: "Time",
