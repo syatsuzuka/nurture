@@ -1,7 +1,9 @@
 <h3 class="mt-3">Chatroom
-  <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
     <i class="fas fa-bars border p-2 rounded"></i>
+
   </span>
+   <button id="chat-toggle" class="btn btn-primary"> going down</button>
 </h3>
 
 <div class="collapse" id="navbarHeader">
@@ -45,11 +47,12 @@
 <script>
 var chatToggle = document.getElementById('chat-toggle');
 
-chatToggle.addEventListener("click", myFunction)
+
 var lastElement = document.getElementById('messages').lastChild;
-scrollDown(lastElement);
+chatToggle.addEventListener("click", scrollDown(lastElement));
+
 function scrollDown(lastElement) {
 
-  lastElement.scrollIntoView();
+  lastElement.scrollIntoView(false);
 }
 </script>
