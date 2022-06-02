@@ -1,10 +1,5 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li>
-      <%= link_to :back, class:"text-secondary me-3" do %>
-        <i class="fas fa-arrow-left"></i>
-      <% end %>
-    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
       <li class="breadcrumb-item active" aria-current="page"><%= link_to "Students", students_path, class: "text-secondary" %></li>
@@ -17,7 +12,7 @@
 </nav>
 
 <h3><%= @user.first_name %> <%= @user.last_name %>
-  <%= add_image(@user, 'avatar.png', 'avatar-large') %>
+  <%= add_image(@user, 'avatar.png', class: 'avatar-large') %>
 </h3>
 
 <div class="container mt-5">

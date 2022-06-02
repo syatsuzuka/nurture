@@ -4,7 +4,7 @@
       <div class="toast-container">
         <div class="toast fade show">
             <div class="toast-header">
-              <%= add_image(assignment.course.student, 'avatar.png', 'avatar-toast') %>
+              <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-toast') %>
               <strong class="me-auto"><%= link_to "#{assignment.course.student.first_name} #{assignment.course.student.last_name}", student_path(assignment.course.student), class: "link-secondary ms-3" %></strong>
                 <small><%= time_ago_in_words(assignment.updated_at) %> ago</small>
               <button type="button" class="btn-close" data-bs-dismiss="toast"></button>

@@ -71,14 +71,14 @@ puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Intermediate Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+course_1 = Course.create!(name: "Tennis Lesson (Intermediate Level)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_4.id, student_user_id: student_1.id )
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
-course_2 = Course.create!(name: "English Lesson for TOEFL", description: "Private tutoring in English to get higher score in TOEFL exam.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
+course_2 = Course.create!(name: "English Lesson for TOEFL", description: "Private tutoring in English to get higher score in TOEFL exam.", tutor_user_id: tutor_4.id, student_user_id: student_1.id )
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
 
-# course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_4.id, student_user_id: student_3.id )
-# chatroom_3 = Chatroom.create!(name: "Assignment chat")
+course_3 = Course.create!(name: "Private Trainer for Weight Loss", description: "Private training to help for weight loss.", tutor_user_id: tutor_3.id, student_user_id: student_3.id )
+chatroom_3 = Chatroom.create!(name: "Assignment chat")
 
 # 20.times do
 #   Course.create(name: "#{Faker::JapaneseMedia::Doraemon.gadget}-101", description: "#{Faker::Movies::Lebowski.quote}", tutor_user_id: User.where(role:"tutor").sample.id, student_user_id: User.where(role: "student").sample.id )
@@ -91,10 +91,12 @@ puts '===================================='
 puts 'Generating assignments...'
 
 assignment_11 = Assignment.create!(title: "Self Practice of Serve", instruction: "Practice Serve repeatedly to raise the success rate of Serve", comment: "", checkpoint: "Achieve 80% success rate in self practices", course_id: course_1.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
-assignment_12 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_1.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
+assignment_12 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_1.id, status: 2, start_date: "2022-01-01", end_date: "2022-03-31")
 
 assignment_21 = Assignment.create!(title: "Listening Practice with English Journal", instruction: "Take 30mins to listen English Journey every day", comment: "", checkpoint: "Take 30mins every days", course_id: course_2.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 assignment_22 = Assignment.create!(title: "Enhance vocabrary", instruction: "Check 10 new words every days and memorize them", comment: "", checkpoint: "Memorize 70% of new words", course_id: course_2.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
+
+assignment_31 = Assignment.create!(title: "60mins walking every day", instruction: "Take 60mins for walking every day", comment: "", checkpoint: "Take 60mins every days", course_id: course_3.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 
 # 30.times do
 #   title= "#{Faker::Verb.ing_form.capitalize} practice"

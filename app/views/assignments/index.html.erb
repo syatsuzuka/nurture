@@ -1,10 +1,5 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb d-flex align-items-center">
-    <li>
-      <%= link_to :back, class:"text-secondary me-3" do %>
-        <i class="fas fa-arrow-left"></i>
-      <% end %>
-    </li>
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item active" aria-current="page">Course Detail</li>
@@ -12,6 +7,7 @@
 </nav>
 
 <h1><%= @course.name %></h1>
+
 <%= line_chart  @data_hash,
   title: "#{@course.name} - Progress",
   xtitle: "Time",
@@ -90,9 +86,11 @@
 <% end %>
 
 <h3 class="mt-5">Homework
-  <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-plus"></i>
-    Homework
+  <% if current_user.role == "tutor" %>
+    <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
+      <i class="fas fa-plus"></i>
+      Homework
+    <% end %>
   <% end %>
 </h3>
 <% if @data_flag %>
