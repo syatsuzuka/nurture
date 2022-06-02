@@ -1,7 +1,7 @@
 class Target < ApplicationRecord
   has_many :progresses, dependent: :destroy
   belongs_to :course
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :course_id }
   validate :check_name
   validate :check_description
   validate :check_score
