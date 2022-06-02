@@ -1,20 +1,26 @@
 module ChatHelper
 
-  def youtube_link?(data)
-    if data.include? "www.youtube.com"
+  def youtube_link?(input)
+    if input.include? "www.youtube.com"
       true
     else
       false
     end
   end
 
-  def youtube_url_clean(data)
-    return data.match(URI.regexp).to_s
+  def url_clean(input)
+    return input.match(URI.regexp).to_s
   end
+
+  def url?(input)
+    input == URI.regexp
+  end
+
 
   def text_or_youtube(message)
     if youtube_link?(message.content)
-      YouTubeAddy.youtube_embed_url(youtube_url_clean(message.content), "100%", "100%").gsub("http", "https").html_safe
+      YouTubeAddy.youtube_embed_url(url_clean(message.content), "100%", "100%").gsub("http", "https").html_safe
+
     else
       message.content
     end
