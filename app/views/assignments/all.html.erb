@@ -31,7 +31,7 @@
           <p><i class="fas fa-calendar-check"></i> Due date</p>
           <p><%= assignment.end_date %></p>
         </div>
-        <div class="buttons">
+        <div class="buttons d-flex p-2 flex-column">
           <% if assignment.status == 0 %>
             <span class="badge rounded-pill bg-danger fs-5 me-3">Work In Process</span>
           <% elsif assignment.status == 1 %>
