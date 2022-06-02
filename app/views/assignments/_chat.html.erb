@@ -1,15 +1,17 @@
 <h3 class="mt-3">Chatroom
-  <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
     <i class="fas fa-bars border p-2 rounded"></i>
+
   </span>
+   <%# <button id="chat-toggle" class="btn btn-primary"> going down</button> %>
 </h3>
 
 <div class="collapse" id="navbarHeader">
-  <div class="container chatroom border mt-3 rounded border-success"
+  <div id="chatroom" class="container chatroom border mt-3 rounded border-success"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   >
-    <div class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
+    <div id="messages" class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
@@ -41,3 +43,16 @@
     </div>
   </div>
 </div>
+
+<%# <script>
+var chatToggle = document.getElementById('chat-toggle');
+
+
+var lastElement = document.getElementById('messages').lastChild;
+chatToggle.addEventListener("click", scrollDown(lastElement));
+
+function scrollDown(lastElement) {
+
+  lastElement.scrollIntoView(false);
+}
+</script> %>
