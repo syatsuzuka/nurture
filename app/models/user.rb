@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   validate :check_role
   after_create :send_welcome_email
-  # after_update :send_update_email
+  after_update :send_update_email
 
   def select_label
     "#{first_name} #{last_name} <#{email}>"
@@ -22,10 +22,10 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome_email.deliver_now
+    # UserMailer.with(user: self).welcome_email.deliver_now
   end
 
   def send_update_email
-    UserMailer.with(user: self).update_email.deliver_now
+    # UserMailer.with(user: self).update_email.deliver_now
   end
 end
