@@ -41,6 +41,10 @@ class AssignmentPolicy < ApplicationPolicy
     true
   end
 
+  def review?
+    true
+  end
+
   def close?
     true
   end

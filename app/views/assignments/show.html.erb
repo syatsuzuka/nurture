@@ -46,7 +46,7 @@
       <div class="mb-3">
         <h4><i class="fas fa-check me-2"></i>Tutor's Review Comment
           <% if current_user.role == "tutor"%>
-            <%= link_to edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success" do %>
+            <%= link_to review_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success" do %>
               <i class="fas fa-edit"></i>
               Add your review?
             <% end %>
