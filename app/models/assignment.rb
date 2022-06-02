@@ -1,5 +1,5 @@
 class Assignment < ApplicationRecord
-  validates :title, uniqueness: true
+  validates :title, uniqueness: { scope: :course_id }
   validates :instruction, :checkpoint, presence: true
   belongs_to :course
   validate :check_status

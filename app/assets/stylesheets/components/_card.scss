@@ -23,6 +23,7 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
+  word-wrap: break-word;
 }
 
 .card-product p, .course-card-product p {
@@ -35,6 +36,7 @@
 
 .card-product, .card-product-infos, .course-card-product {
   padding: 16px;
+  width: 400px;
 }
 
 .card-link {

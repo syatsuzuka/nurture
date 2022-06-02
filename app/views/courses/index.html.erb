@@ -5,7 +5,10 @@
   </ol>
 </nav>
 
-<h1 class = "mt-3">Course List</h1>
+<div class="d-flex align-items-center mb-3">
+  <i class="fas fa-university fa-2x me-2 mb-2"></i>
+  <h1>Course List</h1>
+</div>
 <% if current_user.role == "tutor" %>
   <%= link_to new_course_path, class: "btn btn-success text-light" do %>
     <i class="fas fa-plus"></i>
