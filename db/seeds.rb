@@ -107,9 +107,9 @@ assignment_11 = Assignment.create!(title: "Smash Practice", instruction: "Practi
 # assignment_21 = Assignment.create!(title: "Smash Practice", instruction: "Practice Smash with machine", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_2.id, status: 2, start_date: "2022-01-01", end_date: "2022-03-31")
 assignment_31 = Assignment.create!(title: "Smash Practice", instruction: "Practice Smash with machine", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_3.id, status: 2, start_date: "2022-01-01", end_date: "2022-03-31")
 
-assignment_111 = Assignment.create!(title: "Swing Practice every day", instruction: "Take 30mins for shadow swing everyday", comment: "", checkpoint: "Take 60mins every days", course_id: course_11.id, status: 0, start_date: "2022-04-01", end_date: "2022-06-30")
+assignment_111 = Assignment.create!(title: "Swing Practice every day", instruction: "Take 30mins for shadow swing everyday", comment: "", checkpoint: "Take 60mins every days", course_id: course_11.id, status: 2, start_date: "2020-09-01", end_date: "2020-12-31")
 
-assignment_211 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_21.id, status: 0, start_date: "2022-01-01", end_date: "2022-06-30")
+assignment_211 = Assignment.create!(title: "Mustle Training (Shoulder Press)", instruction: "Ramp up mastle of shoulder to make faster and stable Serve", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_21.id, status: 0, start_date: "2022-04-01", end_date: "2022-06-12")
 
 assignment_311 = Assignment.create!(title: "Listening Practice with English Journal", instruction: "Take 30mins to listen English Journey every day", comment: "", checkpoint: "Take 30mins every days", course_id: course_31.id, status: 0, start_date: "2022-04-01", end_date: "2022-05-31")
 assignment_312 = Assignment.create!(title: "Enhance vocabrary", instruction: "Check 10 new words every days and memorize them", comment: "", checkpoint: "Memorize 70% of new words", course_id: course_31.id, status: 0, start_date: "2022-05-01", end_date: "2022-06-30")
@@ -151,7 +151,7 @@ puts "Generated #{Target.all.count} Targets successfully"
 puts '===================================='
 puts 'Generating progresses...'
 
-
+# Tennis Lesson (Intermediate) - shingos
 progress_111 = Progress.create!(date: "2020-12-01", score: 16 + rand(8)-4, target_id: target_11.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_112 = Progress.create!(date: "2021-01-01", score: 16.5 + rand(8)-4, target_id: target_11.id, comment: "the score in private game with John of the same junior high school")
 progress_113 = Progress.create!(date: "2021-02-01", score: 17 + rand(8)-4, target_id: target_11.id, comment: "the score in championship league")
@@ -210,6 +210,7 @@ progress_1219 = Progress.create!(date: "2022-05-01", score: 12 + rand(8)-4, targ
 # progress_228 = Progress.create!(date: "2022-04-01", score: progress_128.score + rand(8)-4, target_id: target_22.id, comment: "the score in private game with John of the same junior high school")
 # progress_229 = Progress.create!(date: "2022-05-01", score: progress_129.score + rand(8)-4, target_id: target_22.id, comment: "the score in championship league")
 
+# Tennis Lesson (Intermediate) - shunjiros
 progress_311 = Progress.create!(date: "2020-12-01", score: progress_111.score + 7 + rand(8)-4, target_id: target_31.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_312 = Progress.create!(date: "2021-01-01", score: progress_112.score + 7 + rand(8)-4, target_id: target_31.id, comment: "the score in private game with John of the same junior high school")
 progress_313 = Progress.create!(date: "2021-02-01", score: progress_113.score + 7 + rand(8)-4, target_id: target_31.id, comment: "the score in championship league")
@@ -248,26 +249,28 @@ progress_3217 = Progress.create!(date: "2022-03-01", score: progress_127.score +
 progress_3218 = Progress.create!(date: "2022-04-01", score: progress_128.score + rand(8)-4, target_id: target_32.id, comment: "the score in private game with John of the same junior high school")
 progress_3219 = Progress.create!(date: "2022-05-01", score: progress_129.score + rand(8)-4, target_id: target_32.id, comment: "the score in championship league")
 
-progress_1111 = Progress.create!(date: "2021-09-01", score: progress_311.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1112 = Progress.create!(date: "2021-10-01", score: progress_312.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
-progress_1113 = Progress.create!(date: "2021-11-01", score: progress_313.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
-progress_1114 = Progress.create!(date: "2021-12-01", score: progress_314.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1115 = Progress.create!(date: "2022-01-01", score: progress_315.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
-progress_1116 = Progress.create!(date: "2022-02-01", score: progress_316.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
-progress_1117 = Progress.create!(date: "2022-03-01", score: progress_317.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1118 = Progress.create!(date: "2022-04-01", score: progress_318.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
-progress_1119 = Progress.create!(date: "2022-05-01", score: progress_319.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
+# Tennis Lesson (Beginner) - shingos
+progress_1111 = Progress.create!(date: "2020-04-01", score: progress_311.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1112 = Progress.create!(date: "2020-05-01", score: progress_312.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
+progress_1113 = Progress.create!(date: "2020-06-01", score: progress_313.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
+progress_1114 = Progress.create!(date: "2020-07-01", score: progress_314.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1115 = Progress.create!(date: "2020-08-01", score: progress_315.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
+progress_1116 = Progress.create!(date: "2020-09-01", score: progress_316.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
+progress_1117 = Progress.create!(date: "2020-10-01", score: progress_317.score + rand(8)-4, target_id: target_111.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1118 = Progress.create!(date: "2020-11-01", score: progress_318.score + rand(8)-4, target_id: target_111.id, comment: "the score in private game with John of the same junior high school")
+progress_1119 = Progress.create!(date: "2020-12-01", score: progress_319.score + rand(8)-4, target_id: target_111.id, comment: "the score in championship league")
 
-progress_1121 = Progress.create!(date: "2021-09-01", score: progress_321.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1122 = Progress.create!(date: "2021-10-01", score: progress_322.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
-progress_1123 = Progress.create!(date: "2021-11-01", score: progress_323.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
-progress_1124 = Progress.create!(date: "2021-12-01", score: progress_324.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1125 = Progress.create!(date: "2022-01-01", score: progress_325.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
-progress_1126 = Progress.create!(date: "2022-02-01", score: progress_326.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
-progress_1127 = Progress.create!(date: "2022-03-01", score: progress_327.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
-progress_1128 = Progress.create!(date: "2022-04-01", score: progress_328.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
-progress_1129 = Progress.create!(date: "2022-05-01", score: progress_329.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
+progress_1121 = Progress.create!(date: "2020-04-01", score: progress_321.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1122 = Progress.create!(date: "2020-05-01", score: progress_322.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
+progress_1123 = Progress.create!(date: "2020-06-01", score: progress_323.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
+progress_1124 = Progress.create!(date: "2020-07-01", score: progress_324.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1125 = Progress.create!(date: "2020-08-01", score: progress_325.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
+progress_1126 = Progress.create!(date: "2020-09-01", score: progress_326.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
+progress_1127 = Progress.create!(date: "2020-10-01", score: progress_327.score + rand(8)-4, target_id: target_112.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_1128 = Progress.create!(date: "2020-11-01", score: progress_328.score + rand(8)-4, target_id: target_112.id, comment: "the score in private game with John of the same junior high school")
+progress_1129 = Progress.create!(date: "2020-12-01", score: progress_329.score + rand(8)-4, target_id: target_112.id, comment: "the score in championship league")
 
+# Tennis Lesson (Advanced) - James
 progress_2111 = Progress.create!(date: "2021-09-01", score: progress_311.score + rand(8)-4, target_id: target_211.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_2112 = Progress.create!(date: "2021-10-01", score: progress_312.score + rand(8)-4, target_id: target_211.id, comment: "the score in private game with John of the same junior high school")
 progress_2113 = Progress.create!(date: "2021-11-01", score: progress_313.score + rand(8)-4, target_id: target_211.id, comment: "the score in championship league")
@@ -278,6 +281,7 @@ progress_2117 = Progress.create!(date: "2022-03-01", score: progress_317.score +
 progress_2118 = Progress.create!(date: "2022-04-01", score: progress_318.score + rand(8)-4, target_id: target_211.id, comment: "the score in private game with John of the same junior high school")
 progress_2119 = Progress.create!(date: "2022-05-01", score: progress_319.score + rand(8)-4, target_id: target_211.id, comment: "the score in championship league")
 
+# English Lesson
 progress_3111 = Progress.create!(date: "2021-09-01", score: 20, target_id: target_311.id, comment: "official TOEFL exam")
 progress_3112 = Progress.create!(date: "2021-10-01", score: 21, target_id: target_311.id, comment: "official TOEFL exam")
 progress_3113 = Progress.create!(date: "2021-11-01", score: 22, target_id: target_311.id, comment: "mock TOEFL exam")

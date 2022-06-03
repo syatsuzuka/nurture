@@ -9,8 +9,8 @@ module ApplicationHelper
 
   def due_alert (assignment)
     unless assignment.end_date.nil?
-      if (assignment.end_date - Date.today).to_i <= 7 && (assignment.end_date - Date.today).to_i > 0
-        distance_of_time_in_words(Time.now, assignment.end_date) + " left"
+      if (assignment.end_date - Date.today).to_i < 10 && (assignment.end_date - Date.today).to_i > 0
+        distance_of_time_in_words(Time.now, assignment.end_date + 1) + " left"
       end
     end
   end
