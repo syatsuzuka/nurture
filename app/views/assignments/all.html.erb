@@ -13,7 +13,7 @@
 <%# fix below %>
   <% unless @assignments.count == 0 %>
     <% @assignments.each do |assignment| %>
-      <div class="card-product d-flex justify-content-between mt-3 p-2">
+      <div class="card-product ps-0 d-flex justify-content-between mt-3 p-2">
         <%= link_to '', course_assignment_path(assignment.course, assignment), class: "card-link" %>
         <div class="card-main-info d-flex align-items-center">
           <%= add_image(assignment.course, 'No image.png', class: "card-product-img") %>
