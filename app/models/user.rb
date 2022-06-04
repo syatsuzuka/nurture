@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :student_users, :class_name => "Course", :foreign_key => :student_user_team_id
   has_many :messages, dependent: :destroy
   has_one_attached :photo
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :nickname, uniqueness: true, presence: true
   validate :check_role
   after_create :send_welcome_email
   after_update :send_update_email
