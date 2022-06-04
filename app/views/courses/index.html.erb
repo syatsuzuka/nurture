@@ -28,12 +28,14 @@
                   <%= course.name %>
                 <% end %>
                 <% if current_user.role == "tutor" %>
+                  <div>
                   <%= link_to edit_course_path(course), class: "btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
                   <%= link_to course_path(course), method: :delete, class: "btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
+                  </div>
                 <% end %>
               </div>
               <div class="mb-1">
