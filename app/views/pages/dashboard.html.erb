@@ -26,35 +26,41 @@
     <div class="row">
       <% @courses.each_with_index do |course, index| %>
         <div class="col-6 mb-3">
-          <div class="card h-100 shadow p-4 m-1 rounded position-relative">
-            <%= add_image(course, 'No image.png', class: 'dashboard-thumnail-img position-absolute bottom-0 end-0 shadow p-1 m-3')  %>
+          <div class="card h-100 shadow p-4 m-1 rounded">
             <%= line_chart  @data[index],
               title: course.name,
               xtitle: "Time",
               ytitle: "Score",
               download: {background: "#ffffff"}
             %>
-            <div class="card-body">
-              <h5 class="card-title">
-                <%= link_to course_assignments_path(course), class: "text-dark" do %>
-                  <%= course.name %>
-                <% end %>
-              </h5>
-              <p>
-                <% if current_user.role == "tutor" %>
-                  <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
-                  <%= link_to student_path(course.student.id), class: "text-dark" do %>
-                    <%= course.student.first_name %> <%= course.student.last_name %>
+            <div class="card-body row">
+              <div class="col-8">
+                <h5 class="card-title">
+                  <%= link_to course_assignments_path(course), class: "text-dark" do %>
+                    <%= course.name %>
                   <% end %>
-                <% else %>
-                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
-                  <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
-                    <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                </h5>
+                <p>
+                  <% if current_user.role == "tutor" %>
+                    <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
+                    <%= link_to student_path(course.student.id), class: "text-dark" do %>
+                      <%= course.student.first_name %> <%= course.student.last_name %>
+                    <% end %>
+                  <% else %>
+                    <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
+                    <%= link_to student_path(course.tutor.id), class: "text-decoration-none" do %>
+                      <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </p>
-              <p class="card-text"><%= course.description %></p>
-              <p class="card-text mb-4"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
+                </p>
+                <p class="card-text"><%= course.description %></p>
+                <p class="card-text mb-4"><small class="text-muted">Created at <%= course.created_at.strftime("%F") %><%= course.created_at.strftime(" %I:%M%#p") %></small></p>
+              </div>
+              <div class="col-4 d-flex">
+                <div class="align-self-end">
+                  <%= add_image(course, 'No image.png', class: "w-100", style: "object-fit: cover;")  %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

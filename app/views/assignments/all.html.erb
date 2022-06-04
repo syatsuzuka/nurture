@@ -13,8 +13,8 @@
     <div class="row mb-2">
       <% @assignments.each do |assignment| %>
         <div class="col-md-12">
-          <div class="card flex-md-row mb-4 box-shadow">
-            <div class="card-body d-flex flex-column align-items-start inline" style="width: 55%;">
+          <div class="card flex-md-row mb-4 shadow rounded">
+            <div class="card-body d-flex flex-column align-items-start inline p-4" style="width: 55%;">
               <div class="mb-2">
                 <%= link_to course_assignment_path(assignment.course, assignment), class: "fs-3" do %>
                   <%= assignment.title %>
@@ -30,7 +30,9 @@
                   <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% else %>
                   <span class="fs-5 me-2">
-                    <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
+                    <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
+                      <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
+                    <% end %>
                   </span>
                   <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% end %>
