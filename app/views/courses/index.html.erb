@@ -20,7 +20,7 @@
   <% unless @courses.count == 0 %>
     <div class="row mb-2">
       <% @courses.each do |course| %>
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
           <div class="card flex-md-row mt-2 shadow rounded">
             <div class="card-body flex-column align-items-start p-4">
               <div class="mb-2">
@@ -59,7 +59,7 @@
                 <%= course.description %>
               </div>
             </div>
-            <%= add_image(course, 'No image.png', class: 'card-img-right flex-auto d-none d-md-block', style: "width: 250px; object-fit: cover;") %>
+            <%= add_image(course, 'No image.png', class: 'card-img-right flex-auto d-none d-md-block', style: "width: 30%; object-fit: cover;") %>
           </div>
         </div>
       <% end %>
