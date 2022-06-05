@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  include Pundit
+  # include Pundit
+  include Pundit::Authorization
 
   # Pundit: white-list approach.
   before_action :configure_permitted_parameters, if: :devise_controller?
