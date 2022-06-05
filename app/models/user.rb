@@ -14,6 +14,10 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   after_update :send_update_email
 
+  def active_for_authentication?
+    super && !deactivated
+  end
+
   def select_label
     "#{first_name} #{last_name} <#{email}>"
   end
