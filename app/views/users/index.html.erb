@@ -37,9 +37,15 @@
               <%= link_to student_path(user), class: "text-dark" do %>
                 <%= user.first_name %> <%= user.last_name %>
               <% end %>
+              <% if user.deactivated == true %>
+                <span class="ms-2 text-dark"> (deactivated)</span>
+              <% end %>
             <% else %>
               <%= link_to tutor_path(user), class: "text-decoration-none" do %>
                 <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+              <% if user.deactivated == true %>
+                <span class="ms-2 text-dark"> (deactivated)</span>
               <% end %>
             <% end %>
           </td>

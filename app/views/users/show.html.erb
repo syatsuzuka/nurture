@@ -17,6 +17,17 @@
 </h3>
 
 <div class="container mt-5">
-  <p><i class="fas fa-envelope me-3"></i><%= @user.email %></p>
-  <p><i class="fas fa-users me-3"></i><%= @user.role %></p>
+  <p>
+    <% if @user.deactivated == true %>
+      <span><i class="fas fa-user-alt-slash me-3"></i>deactivated user</span>
+    <% else %>
+      <span><i class="fas fa-user me-3"></i> active user</span>
+    <% end %>
+  </p>
+  <p>
+    <i class="fas fa-envelope me-3"></i><%= @user.email %>
+  </p>
+  <p>
+    <i class="fas fa-users me-3"></i><%= @user.role %>
+  </p>
 </div>
