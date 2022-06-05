@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def check_role
-    errors.add(:role, "Role should be 'tutor' or 'student'") unless ["tutor", "student"].include?(role)
+    errors.add(:role, "Role should be 'tutor' or 'student'") unless ["admin", "tutor", "student"].include?(role)
   end
 
   private
