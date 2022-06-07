@@ -44,6 +44,17 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
+        env:
+          CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
+          MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
+          MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
+          MAIL_DOMAIN: ${{ secrets.MAIL_DOMAIN }}
+          MAIL_PORT: ${{ secrets.MAIL_PORT }}
+          MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
+          SERVER_HOSTNAME: ${{ secrets.SERVER_HOSTNAME }}
+          TEST_MAIL_ADDRESS: ${{ secrets.TEST_MAIL_ADDRESS }}
+          TEST_MAIL_PASSWORD: ${{ secrets.TEST_MAIL_PASSWORD }}
+          TWITTER_ACCOUNT: ${{ secrets.TWITTER_ACCOUNT }}
         run: bin/rspec
 
   lint:
