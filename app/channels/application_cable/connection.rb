@@ -3,11 +3,7 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-
+      nil
     end
-
-
-
-
   end
 end

@@ -9,11 +9,11 @@ class PagesController < ApplicationController
 
   def dashboard
     @courses =
-    if params[:q].present?
+      if params[:q].present?
         policy_scope(Course).search_by_name_and_description(params[:q])
-    else
-      policy_scope(Course)
-    end
+      else
+        policy_scope(Course)
+      end
 
     authorize @courses
 
