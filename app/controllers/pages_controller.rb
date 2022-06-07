@@ -1,10 +1,14 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: %i[home]
   before_action :set_active_dashboard, only: %i[dashboard]
   before_action :set_active_aboutus, only: %i[aboutus]
 
   def home
-    render layout: 'landing'
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
+      render layout: 'landing'
+    end
   end
 
   def dashboard
