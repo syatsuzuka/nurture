@@ -26,9 +26,8 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Show workflow info
+        run: echo "${{ github.ref }} triggered by ${{ github.event_name }} on a ${{ runner.os }}"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: List files in the repository
@@ -38,6 +37,8 @@ jobs:
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
         with:
           bundler-cache: true
+      - name: Get yarn cache
+        uses: c-hive/gha-yarn-cache@v2
       - name: Install js modules
         run: bin/yarn install
       - name: Set up database schema
