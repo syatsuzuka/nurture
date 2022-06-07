@@ -1,21 +1,15 @@
 module ChatHelper
-
   def youtube_link?(input)
-    if input.include? "www.youtube.com"
-      true
-    else
-      false
-    end
+    input.include? "www.youtube.com"
   end
 
   def url_clean(input)
-    return input.match(URI.regexp).to_s
+    return input.match(URI::DEFAULT_PARSER.make_regexp).to_s
   end
 
   def url?(input)
-    input == URI.regexp
+    input == URI::DEFAULT_PARSER.make_regexp
   end
-
 
   def text_or_youtube(message)
     if youtube_link?(message.content)
@@ -33,5 +27,4 @@ module ChatHelper
       "bg-dark"
     end
   end
-
 end

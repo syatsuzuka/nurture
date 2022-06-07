@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :tutor_users, :class_name => "Course", :foreign_key => :tutor_user_id
-  has_many :student_users, :class_name => "Course", :foreign_key => :student_user_team_id
+  has_many :tutor_users, class_name: "Course", foreign_key: :tutor_user_id
+  has_many :student_users, class_name: "Course", foreign_key: :student_user_team_id
   has_many :messages, dependent: :destroy
   has_one_attached :photo
   validates :first_name, presence: true

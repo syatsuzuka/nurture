@@ -8,9 +8,8 @@ class ProgressesController < ApplicationController
   before_action :set_active_courses
 
   def index
-
     all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
-    all_progresses.sort_by! { |progress| progress.date }
+    all_progresses.sort_by!(&:date)
 
     if current_user.role == "tutor"
       @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }
@@ -84,7 +83,7 @@ class ProgressesController < ApplicationController
 
   def export
     all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
-    all_progresses.sort_by! { |progress| progress.date }
+    all_progresses.sort_by!(&:date)
 
     if current_user.role == "tutor"
       @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }

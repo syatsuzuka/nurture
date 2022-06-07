@@ -41,8 +41,8 @@ class AssignmentsController < ApplicationController
     (start_date..end_date).each do |date|
       open_assignments = @assignments.select do |assignment|
         @data_flag = true
-        if [0, 1].include? assignment.status
-          assignment.start_date <= date and assignment.end_date >= date unless assignment.end_date.nil?
+        if ([0, 1].include? assignment.status) && !assignment.end_date.nil?
+          assignment.start_date <= date and assignment.end_date >= date
         end
       end
       count = open_assignments.count
@@ -59,7 +59,6 @@ class AssignmentsController < ApplicationController
 
   def show
     authorize @assignment
-
   end
 
   def new
@@ -149,7 +148,19 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :instruction, :instruction_url, :comment, :material_url, :checkpoint, :status, :review_comment, :start_date, :end_date, :course_id)
+    params.require(:assignment).permit(
+      :title,
+      :instruction,
+      :instruction_url,
+      :comment,
+      :material_url,
+      :checkpoint,
+      :status,
+      :review_comment,
+      :start_date,
+      :end_date,
+      :course_id
+    )
   end
 
   def set_course

@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
 
   def show
     authorize @course
-
   end
 
   def new
@@ -26,7 +25,12 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.save
-      UserMailer.with(user: @course.student, tutor: @course.tutor, course: @course.name, path: course_assignments_path(@course)).invitation_email.deliver_now
+      UserMailer.with(
+        user: @course.student,
+        tutor: @course.tutor,
+        course: @course.name,
+        path: course_assignments_path(@course)
+      ).invitation_email.deliver_now
       redirect_to courses_path
     else
       render :new

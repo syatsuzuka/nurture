@@ -9,7 +9,7 @@ class Progress < ApplicationRecord
       csv << attributes
 
       all.each do |progress|
-        csv << attributes.map{ |attr| progress.send(attr) }
+        csv << attributes.map { |attr| progress.send(attr) }
       end
     end
   end

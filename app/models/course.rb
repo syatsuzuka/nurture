@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
-  belongs_to :tutor, :class_name => "User", :foreign_key => :tutor_user_id
-  belongs_to :student, :class_name => "User", :foreign_key => :student_user_id
+  belongs_to :tutor, class_name: "User", foreign_key: :tutor_user_id
+  belongs_to :student, class_name: "User", foreign_key: :student_user_id
   has_many :assignments, dependent: :destroy
   has_many :targets, dependent: :destroy
   validates :name, :description, presence: true
@@ -8,8 +8,8 @@ class Course < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
-    against: [ :name, :description ],
-    using: {
-      tsearch: { prefix: true }
-    }
+                  against: %i[name description],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

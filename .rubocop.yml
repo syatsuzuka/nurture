@@ -41,3 +41,15 @@ Style/EmptyMethod:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/SoleNestedConditional:
+  Enabled: false
+Style/BlockComments:
+  Enabled: false

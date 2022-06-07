@@ -7,13 +7,17 @@ class Assignment < ApplicationRecord
 
   def check_instruction_url
     unless instruction_url.blank?
-      errors.add(:instruction_url, "need to be a valid URL") unless instruction_url =~ /\A#{URI::regexp(%w(http https))}\z/
+      unless instruction_url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
+        errors.add(:instruction_url, "need to be a valid URL")
+      end
     end
   end
 
   def check_material_url
     unless material_url.blank?
-      errors.add(:material_url, "need to be a valid URL") unless material_url =~ /\A#{URI::regexp(%w(http https))}\z/
+      unless material_url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
+        errors.add(:material_url, "need to be a valid URL")
+      end
     end
   end
 end
