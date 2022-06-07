@@ -9,7 +9,7 @@ feature 'create new user' do
     fill_in('user_first_name', with: 'First')
     fill_in('user_last_name', with: 'Last')
     fill_in('user_nickname', with: 'testuser')
-    select('user_role', from: 'tutor')
+    select('tutor', from: 'user_role')
     click_on('Sign up')
     expect(page).to have_content('Dashboard')
   end
