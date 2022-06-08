@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name email nickname role photo])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name email nickname role photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name email nickname role photo visible])
   end
 
   def default_url_options
