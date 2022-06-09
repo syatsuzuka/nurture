@@ -43,6 +43,8 @@ jobs:
         run: bin/yarn install
       - name: Set up database schema
         run: bin/rails db:schema:load
+      - name: Set up seed data
+        run: bin/rails db:seed
       - name: Run tests
         env:
           CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
