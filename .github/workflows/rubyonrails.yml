@@ -52,8 +52,12 @@ jobs:
           MAIL_PORT: ${{ secrets.MAIL_PORT }}
           MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
           SERVER_HOSTNAME: ${{ secrets.SERVER_HOSTNAME }}
-          TEST_MAIL_ADDRESS: ${{ secrets.TEST_MAIL_ADDRESS }}
-          TEST_MAIL_PASSWORD: ${{ secrets.TEST_MAIL_PASSWORD }}
+          TUTOR_LOGIN_ID: ${{ secrets.TUTOR_LOGIN_ADDRESS }}
+          TUTOR_LOGIN_PASSWORD: ${{ secrets.TUTOR_LOGIN_PASSWORD }}
+          STUDENT_LOGIN_ID: ${{ secrets.STUDENT_LOGIN_ADDRESS }}
+          STUDENT_LOGIN_PASSWORD: ${{ secrets.STUDENT_LOGIN_PASSWORD }}
+          TEST_LOGIN_ID: ${{ secrets.TEST_LOGIN_ADDRESS }}
+          TEST_LOGIN_PASSWORD: ${{ secrets.TEST_LOGIN_PASSWORD }}
           TWITTER_ACCOUNT: ${{ secrets.TWITTER_ACCOUNT }}
         run: bin/rspec
 
