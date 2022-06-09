@@ -23,12 +23,12 @@
         <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
           <div class="card flex-md-row mt-2 shadow rounded  h-100">
             <div class="card-body flex-column align-items-start p-4">
-              <div class="mb-2">
+              <div class="mb-3">
                 <%= link_to course_assignments_path(course), class: "fs-3" do %>
                   <%= course.name %>
                 <% end %>
                 <% if current_user.role == "tutor" %>
-                  <div>
+                  <div class="mt-2">
                   <%= link_to edit_course_path(course), class: "btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
@@ -38,25 +38,25 @@
                   </div>
                 <% end %>
               </div>
+              <div class="card-text ms-3 mb-3 text-secondary">
+                <%= course.description %>
+              </div>
               <div class="mb-1">
                 <% if current_user.role == "tutor" %>
-                  <span class="fs-5 me-2">
+                  <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                  <span class="fs-6 me-2">
                     <%= link_to student_path(course.student), class: "text-dark" do %>
                       <%= course.student.first_name %> <%= course.student.last_name %>
                     <% end %>
                   </span>
-                  <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% else %>
+                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                   <span class="fs-5 me-2">
                     <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
                       <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                     <% end %>
                   </span>
-                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% end %>
-              </div>
-              <div class="card-text ms-3 mb-auto text-secondary">
-                <%= course.description %>
               </div>
             </div>
             <%= add_image(course, 'No image.png', class: 'card-img-right flex-auto d-none d-md-block', style: "width: 30%; object-fit: cover;") %>

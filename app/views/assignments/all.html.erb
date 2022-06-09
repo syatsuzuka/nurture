@@ -14,32 +14,29 @@
       <% @assignments.each do |assignment| %>
         <div class="col-12">
           <div class="card flex-md-row mb-4 shadow rounded">
-            <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-5 d-flex flex-column align-items-start inline p-3">
-              <div class="mb-2">
+            <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-5 d-flex flex-column align-items-start inline p-4">
+              <div class="mb-3">
                 <%= link_to course_assignment_path(assignment.course, assignment), class: "fs-3" do %>
                   <%= assignment.title %>
                 <% end %>
               </div>
-              <div class="mb-1">
+              <div class="ms-3 mb-1">
                 <% if current_user.role == "tutor" %>
-                  <span class="fs-5 me-2">
+                  <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                  <span class="fs-6 me-2">
                     <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
                       <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
                     <% end %>
                   </span>
-                  <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% else %>
-                  <span class="fs-5 me-2">
+                  <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                  <span class="fs-6 me-2">
                     <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
                       <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
                     <% end %>
                   </span>
-                  <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                 <% end %>
               </div>
-              <p class="card-text ms-3 mb-auto text-secondary">
-                <%= assignment.instruction %>
-              </p>
             </div>
             <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-3 align-items-start align-self-center">
               <% unless assignment.end_date.nil? %>
