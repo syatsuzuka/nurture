@@ -7,9 +7,9 @@ class NewUserForm
   end
 
   def fill_in_with(params = {})
-    fill_in('user_email', with: params.fetch(:user_email, ENV['TEST_MAIL_ADDRESS']))
-    fill_in('user_password', with: params.fetch(:user_password, ENV['TEST_MAIL_PASSWORD']))
-    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV['TEST_MAIL_PASSWORD']))
+    fill_in('user_email', with: params.fetch(:user_email, ENV['TEST_LOGIN_ID']))
+    fill_in('user_password', with: params.fetch(:user_password, ENV['TEST_LOGIN_PASSWORD']))
+    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV['TEST_LOGIN_PASSWORD']))
     fill_in('user_first_name', with: params.fetch(:user_first_name, 'First'))
     fill_in('user_last_name', with: params.fetch(:user_last_name, 'Last'))
     fill_in('user_nickname', with: params.fetch(:user_nickname, 'testuser'))

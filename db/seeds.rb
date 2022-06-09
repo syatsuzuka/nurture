@@ -28,7 +28,7 @@ User.destroy_all
 puts '===================================='
 puts "Generating personal tutor seeds..."
 
-tutor_1 = User.create!(email: 'nurture-tutor@virago.sakura.ne.jp', nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: '11221122', role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+tutor_1 = User.create!(email: ENV['TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['TUTOR_LOGIN_PASSWORD'], role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random tutor seeds..."
 
@@ -37,7 +37,7 @@ puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts '===================================='
 puts "#{Faker::Hacker.ingverb} personal student seeds..."
 
-student_1 = User.create!(email: 'nurture-student@virago.sakura.ne.jp', nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: '11221122', role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+student_1 = User.create!(email: ENV['STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['STUDENT_LOGIN_PASSWORD'], role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generating random student seeds..."
 
