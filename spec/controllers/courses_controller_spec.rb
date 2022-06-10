@@ -2,6 +2,7 @@ require 'rails_helper'
 require_relative '../support/new_session_form'
 
 describe CoursesController do
+  nil
   # describe "GET new" do
 
   #   it "renders :new template" do
