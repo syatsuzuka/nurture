@@ -84,3 +84,5 @@ gem 'pg_search', '~> 2.3.0'
 gem 'youtube_addy'
 gem 'postmark-rails'
 gem 'letter_opener', group: :development
+gem 'chart-js-rails'
+gem 'gon'

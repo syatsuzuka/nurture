@@ -18,10 +18,9 @@
   <% end %>
 </div>
 
+<!-- <canvas id="myChart"></canvas> -->
 <div class="mt-5">
-
   <%= render 'alert' %>
-
   <% unless @courses.count == 0 %>
     <div class="row">
       <% @courses.each_with_index do |course, index| %>
@@ -70,3 +69,6 @@
     <span class="ms-5 text-secondary">No data</span>
   <% end %>
 </div>
+
+
+<%= javascript_pack_tag 'dashboard', 'data-turbolinks-track': 'reload', defer: true %>
