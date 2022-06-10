@@ -38,6 +38,8 @@ class PagesController < ApplicationController
 
     #======= Data Setup for graph =======
     @data = []
+    @data_test = []
+
     @courses.each do |course|
       data_hash = []
       disp_targets = course.targets.select { |target| target.display == true }
@@ -50,6 +52,7 @@ class PagesController < ApplicationController
       end
       @data << data_hash
     end
+    # gon.data_test = [12, 5, 3, 5, 2, 3]
   end
 
   def aboutus
