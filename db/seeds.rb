@@ -64,11 +64,11 @@ puts "Generated #{Assignment.all.count} Assignments successfully"
 
 puts '===================================='
 puts 'Generating targets...'
-target_11 = Target.create!(name: "Forhand Stroke (%)", description: "Achieve higher successful rate in Forehand Stroke.", score: 40, course_id: course_1.id, display: true )
-target_12 = Target.create!(name: "Backhand Stroke (%)", description: "Achieve higher successful rate in Backhand Stroke.", score: 20, course_id: course_1.id, display: true )
+target_11 = Target.create!(name: "Forhand Stroke (%)", fullpath: "/ Forhand Stroke (%)", description: "Achieve higher successful rate in Forehand Stroke.", score: 40, display: true, course_id: course_1.id, parent_id: nil )
+target_12 = Target.create!(name: "Backhand Stroke (%)", fullpath: "/ Backhand Stroke (%)", description: "Achieve higher successful rate in Backhand Stroke.", score: 20, display: true, course_id: course_1.id, parent_id: nil )
 
-target_21 = Target.create!(name: "Service Ace Rate (%)", description: "Achieve higher successful rate in Serviece Ace.", score: 30, course_id: course_2.id, display: true )
-target_22 = Target.create!(name: "Return Ace Rate (%)", description: "Achieve higher successful rate in Return Ace.", score: 10, course_id: course_2.id, display: true )
+target_21 = Target.create!(name: "Service Ace Rate (%)", fullpath: "/ Service Ace Rate (%)", description: "Achieve higher successful rate in Serviece Ace.", score: 30, display: true, course_id: course_2.id, parent_id: nil )
+target_22 = Target.create!(name: "Return Ace Rate (%)", fullpath: "/ Return Ace Rate (%)", description: "Achieve higher successful rate in Return Ace.", score: 10, display: true, course_id: course_2.id, parent_id: nil )
 
 puts "Generated #{Target.all.count} Targets successfully"
 

@@ -3,6 +3,7 @@ class TargetsController < ApplicationController
   before_action :set_course, only: %i[index new create edit update destroy close]
   before_action :set_target, only: %i[show edit update destroy close]
   before_action :set_active_courses
+  before_action :set_target_options, only: %i[new edit]
 
   def index
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
@@ -22,12 +23,17 @@ class TargetsController < ApplicationController
     @target = Target.new
     @target.course = @course
     authorize @target
+
+    set_target_options
   end
 
   def create
     @target = Target.new(target_params)
     @target.course = @course
+
     authorize @target
+
+    set_target_options
 
     if @target.save
       redirect_to course_assignments_path(@course)
@@ -39,11 +45,15 @@ class TargetsController < ApplicationController
   def edit
     @target.course = @course
     authorize @target
+
+    set_target_options
   end
 
   def update
     @target.course = @course
     authorize @target
+
+    set_target_options
 
     if @target.update(target_params)
       redirect_to course_assignments_path(@course)
@@ -62,7 +72,7 @@ class TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:name, :description, :score, :display, :course_id)
+    params.require(:target).permit(:name, :fullpath, :description, :score, :display, :course_id, :parent_id)
   end
 
   def set_course
@@ -75,5 +85,31 @@ class TargetsController < ApplicationController
 
   def set_active_courses
     @active_courses = "class=active"
+  end
+
+  def set_fullpath
+    if params[:target][:parent_id].nil? || params[:target][:parent_id].blank?
+      @target.fullpath = "/ #{@target.name}"
+    else
+      parent = Target.find(params[:target][:parent_id])
+      @target.fullpath = "#{parent.fullpath} / #{@target.name}"
+    end
+  end
+
+  def set_target_options
+    if @target.nil?
+      target_options = Target.where(course: @course).order(:name)
+    else
+      target_options = Target.where(course: @course).where.not(id: @target.id).order(:name)
+    end
+
+    @target_options = target_options.select do |target|
+      result = true
+      until target.parent.nil?
+        result = false if target.parent == @target
+        target = target.parent
+      end
+      result
+    end
   end
 end

@@ -33,6 +33,16 @@
       <td><%= @target.name %></td>
     </tr>
     <tr>
+      <td scope="row">Parent</td>
+      <td>
+        <% unless @target.parent.nil? %>
+          <%= link_to course_target_progresses_path(@target.course, @target.parent) do %>
+            <%= @target.parent.fullpath %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
       <td scope="row">Description</td>
       <td><%= @target.description %></td>
     </tr>
