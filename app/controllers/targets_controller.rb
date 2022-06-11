@@ -29,7 +29,10 @@ class TargetsController < ApplicationController
   def create
     @target = Target.new(target_params)
     @target.course = @course
+
     authorize @target
+
+    set_fullpath
 
     if @target.save
       redirect_to course_assignments_path(@course)
@@ -49,6 +52,8 @@ class TargetsController < ApplicationController
     @target.course = @course
     authorize @target
 
+    set_fullpath
+
     if @target.update(target_params)
       redirect_to course_assignments_path(@course)
     else
@@ -66,7 +71,7 @@ class TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:name, :description, :score, :display, :course_id, :parent_id)
+    params.require(:target).permit(:name, :fullpath, :description, :score, :display, :course_id, :parent_id)
   end
 
   def set_course
@@ -79,6 +84,15 @@ class TargetsController < ApplicationController
 
   def set_active_courses
     @active_courses = "class=active"
+  end
+
+  def set_fullpath
+    if params[:target][:parent_id].nil? or params[:target][:parent_id].blank?
+      @target.fullpath = "/ #{@target.name}"
+    else
+      parent = Target.find(params[:target][:parent_id])
+      @target.fullpath = "#{parent.fullpath} / #{@target.name}"
+    end
   end
 
   def set_target_options

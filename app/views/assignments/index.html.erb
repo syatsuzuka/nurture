@@ -30,8 +30,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Edit</th>
-        <th scope="col">Name</th>
-        <th scope="col">Parent</th>
+        <th scope="col">Name (Fullpath)</th>
         <th scope="col">Description</th>
         <th scope="col">Target Score</th>
         <th scope="col">Display</th>
@@ -53,17 +52,13 @@
             <% end %>
           </td>
           <td>
-            <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
-              <%= target.name %>
-            <% end %>
-          </td>
-          <td>
             <% unless target.parent.nil? %>
-              <%= link_to course_target_progresses_path(@course, target.parent), class: "text-dark" do %>
-                <%= target.parent.name %>
+              <%= link_to course_target_progresses_path(@course, target.parent), class: "text-secondary me-2" do %>
+                <%= target.parent.fullpath %>
               <% end %>
-            <% else %>
-              -
+            <% end %>
+            <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
+              / <strong><%= target.name %></strong>
             <% end %>
           </td>
           <td><%= target.description %></td>
