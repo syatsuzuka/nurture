@@ -22,6 +22,8 @@ class TargetsController < ApplicationController
     @target = Target.new
     @target.course = @course
     authorize @target
+
+    set_target_options
   end
 
   def create
@@ -39,6 +41,8 @@ class TargetsController < ApplicationController
   def edit
     @target.course = @course
     authorize @target
+
+    set_target_options
   end
 
   def update
@@ -75,5 +79,19 @@ class TargetsController < ApplicationController
 
   def set_active_courses
     @active_courses = "class=active"
+  end
+
+  def set_target_options
+    target_options = Target.where(course: @course).where.not(id: @target.id).order(:name)
+    @target_options = target_options.select do |target|
+      result = true
+      until target.parent.nil?
+        if target.parent == @target
+          result = false
+        end
+        target = target.parent
+      end
+      result
+    end
   end
 end
