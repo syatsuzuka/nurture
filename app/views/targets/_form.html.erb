@@ -1,5 +1,6 @@
   <%= simple_form_for [@course, @target] do |f| %>
     <%= f.input :name, required: true %>
+    <%= f.association :parent, collection: Target.where(course: @course).where.not(id: @target.id).order(:name) %>
     <%= f.input :description, required: true %>
     <%= f.input :score, required: true %>
     <%= f.input :display %>

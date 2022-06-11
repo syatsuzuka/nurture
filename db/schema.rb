@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_104235) do
+ActiveRecord::Schema.define(version: 2022_06_11_105346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +159,9 @@ ActiveRecord::Schema.define(version: 2022_06_11_104235) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "display", default: true
+    t.bigint "parent_id"
     t.index ["course_id"], name: "index_targets_on_course_id"
+    t.index ["parent_id"], name: "index_targets_on_parent_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -189,4 +191,5 @@ ActiveRecord::Schema.define(version: 2022_06_11_104235) do
   add_foreign_key "messages", "users"
   add_foreign_key "progresses", "targets"
   add_foreign_key "targets", "courses"
+  add_foreign_key "targets", "targets", column: "parent_id"
 end
