@@ -86,9 +86,7 @@ class TargetsController < ApplicationController
     @target_options = target_options.select do |target|
       result = true
       until target.parent.nil?
-        if target.parent == @target
-          result = false
-        end
+        result = false if target.parent == @target
         target = target.parent
       end
       result
