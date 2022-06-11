@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
     all_assignments.sort_by(&:created_at).reverse
-    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
+    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }.sort_by(&:name)
 
     if current_user.role == "tutor"
       @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }

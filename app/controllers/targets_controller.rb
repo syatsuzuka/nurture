@@ -5,7 +5,7 @@ class TargetsController < ApplicationController
   before_action :set_active_courses
 
   def index
-    all_targets = policy_scope(Target).sort_by(&:name).select { |target| target.course.id == @course.id }
+    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
 
     if current_user.role == "tutor"
       @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
