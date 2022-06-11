@@ -3,6 +3,7 @@ class TargetsController < ApplicationController
   before_action :set_course, only: %i[index new create edit update destroy close]
   before_action :set_target, only: %i[show edit update destroy close]
   before_action :set_active_courses
+  before_action :set_target_options, only: %i[new edit]
 
   def index
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
@@ -32,7 +33,7 @@ class TargetsController < ApplicationController
 
     authorize @target
 
-    set_fullpath
+    set_target_options
 
     if @target.save
       redirect_to course_assignments_path(@course)
@@ -52,7 +53,7 @@ class TargetsController < ApplicationController
     @target.course = @course
     authorize @target
 
-    set_fullpath
+    set_target_options
 
     if @target.update(target_params)
       redirect_to course_assignments_path(@course)
@@ -87,7 +88,7 @@ class TargetsController < ApplicationController
   end
 
   def set_fullpath
-    if params[:target][:parent_id].nil? or params[:target][:parent_id].blank?
+    if params[:target][:parent_id].nil? || params[:target][:parent_id].blank?
       @target.fullpath = "/ #{@target.name}"
     else
       parent = Target.find(params[:target][:parent_id])
@@ -96,7 +97,12 @@ class TargetsController < ApplicationController
   end
 
   def set_target_options
-    target_options = Target.where(course: @course).where.not(id: @target.id).order(:name)
+    if @target.nil?
+      target_options = Target.where(course: @course).order(:name)
+    else
+      target_options = Target.where(course: @course).where.not(id: @target.id).order(:name)
+    end
+
     @target_options = target_options.select do |target|
       result = true
       until target.parent.nil?
