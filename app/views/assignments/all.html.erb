@@ -43,8 +43,18 @@
                 <p><span class="badge rounded-pill bg-info ms-2 fs-7"><%= due_alert(assignment) %></span></p>
               <% end %>
               <p class="fs-5">
-                <i class="fas fa-calendar"></i> <%= assignment.start_date.strftime("%b.%d, %Y") %>
-                - <%= assignment.end_date.strftime("%b.%d, %Y") %>
+                <i class="fas fa-calendar"></i>
+                <% unless assignment.start_date.nil? %>
+                  <%= assignment.start_date.strftime("%b.%d, %Y") %>
+                <% else %>
+                  (Not determined)
+                <% end %>
+                -
+                <% unless assignment.end_date.nil? %>
+                  <%= assignment.end_date.strftime("%b.%d, %Y") %>
+                <% else %>
+                  (Not determined)
+                <% end %>
               </p>
             </div>
             <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">

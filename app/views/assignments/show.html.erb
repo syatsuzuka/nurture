@@ -91,7 +91,17 @@
         </div>
         <div class="ms-3 p-2">
           <p>
-            <%= @assignment.start_date.strftime("%b.%d, %Y") %> - <%= @assignment.end_date.strftime("%b.%d, %Y") %>
+            <% unless @assignment.start_date.nil? %>
+              <%= @assignment.start_date.strftime("%b.%d, %Y") %>
+            <% else %>
+              (Not determined)
+            <% end %>
+            -
+            <% unless @assignment.end_date.nil? %>
+              <%= @assignment.end_date.strftime("%b.%d, %Y") %>
+            <% else %>
+              (Not determined)
+            <% end %>
             <span class="badge rounded-pill bg-info ms-2 fs-7"><%= due_alert(@assignment) %></span>
           </p>
         </div>
