@@ -45,10 +45,7 @@ class AssignmentsController < ApplicationController
         @data_flag = true
         a_start_date = assignment.start_date.nil? ? Date.new(0, 1, 1) : assignment.start_date
         a_end_date = assignment.end_date.nil? ? Date.new(9999, 12, 31) : assignment.end_date
-
-        if ([0, 1].include? assignment.status)
-          a_start_date <= date and a_end_date >= date
-        end
+        a_start_date <= date and a_end_date >= date if [0, 1].include? assignment.status
       end
       count = open_assignments.count
       data << [date.strftime("%F"), count]
