@@ -9,7 +9,15 @@ class AssignmentsController < ApplicationController
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
     all_assignments.sort_by(&:created_at).reverse
     all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }.sort_by do |target|
-      [target.parent.nil? ? "/ #{target.name}" : "#{target.parent.fullpath} / #{target.name}"]
+      element = target
+      parentpath = ""
+
+      until element.parent.nil?
+        element = element.parent
+        parentpath = "/ #{element.name} #{parentpath}"
+      end
+
+      "#{parentpath}/ #{target.name}"
     end
 
     if current_user.role == "tutor"

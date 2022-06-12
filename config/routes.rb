@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
   put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
   put '/courses/:course_id/assignments/:id/done', to: 'assignments#done', as: :done_course_assignment
+  get '/courses/:course_id/targets/upload', to: 'targets#upload', as: :upload_course_targets
+  post '/courses/:course_id/targets/import', to: 'targets#import', as: :import_course_targets
   get '/courses/:course_id/targets/:target_id/progresses/export.csv', to: 'progresses#export', as: :export_progresses
   get '/tutors/', to: 'users#index', as: :tutors
   get '/tutors/:id', to: 'users#show', as: :tutor

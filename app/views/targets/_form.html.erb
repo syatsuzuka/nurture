@@ -1,9 +1,9 @@
-  <%= simple_form_for [@course, @target] do |f| %>
-    <%= f.input :name, required: true %>
-    <%= f.association :parent, collection: @target_options %>
-    <%= f.input :description, required: true %>
-    <%= f.input :score, required: true %>
-    <%= f.input :display %>
-    <%= f.submit 'Save', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-secondary text-light'%>
-  <% end %>
+<%= simple_form_for [@course, @target] do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.association :parent, collection: @target_options %>
+  <%= f.input :description, required: true %>
+  <%= f.input :score, required: true %>
+  <%= f.input :display %>
+  <%= f.submit 'Save', class: "btn btn-success text-light" %>
+  <%= link_to 'Cancel', course_assignments_path(@course), class: 'btn btn-secondary text-light'%>
+<% end %>

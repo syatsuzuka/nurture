@@ -33,4 +33,12 @@ class TargetPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def upload?
+    true
+  end
+
+  def import?
+    true
+  end
 end
