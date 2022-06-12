@@ -179,8 +179,24 @@
               <% end %>
             </td>
             <td><%= assignment.comment %></td>
-            <td>from: <%= assignment.start_date %><br>
-            to: <%= assignment.end_date %></td>
+            <td>
+              <div>
+                from:
+                <% unless assignment.start_date.nil? %>
+                  <%= assignment.start_date %>
+                <% else %>
+                  (Not determined)
+                <% end %>
+              </div>
+              <div>
+                to:
+                <% unless assignment.end_date.nil? %>
+                  <%= assignment.end_date %>
+                <% else %>
+                  (Not determined)
+                <% end %>
+              </div>
+            </td>
             <% if current_user.role == "tutor" %>
               <td>
                 <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
