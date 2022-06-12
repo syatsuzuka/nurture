@@ -67,46 +67,52 @@
   <i class="fas fa-download"></i>
   Download CSV
   <% end %>
+
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarProgressHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
+    <i class="fas fa-bars border p-2 rounded"></i>
+  </span>
 </h2>
 
-<% unless @progresses.count == 0 %>
-  <table class="table align-middle">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Date</th>
-        <th scope="col">Score</th>
-        <th scope="col">Comment</th>
-        <th scope="col">Delete</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @progresses.each_with_index do |progress, index| %>
+<div class="collapse" id="navbarProgressHeader">
+  <% unless @progresses.count == 0 %>
+    <table class="table align-middle">
+      <thead class="thead-dark">
         <tr>
-          <td>
-            <%= index + 1 %>
-          </td>
-          <td>
-            <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "btn btn-outline-success" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-          </td>
-          <td><%= progress.date %></td>
-          <td><%= progress.score %></td>
-          <td><%= progress.comment %></td>
-          <td>
-            <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </td>
-            <%#= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
-            <%#= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
+          <th scope="col">#</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Date</th>
+          <th scope="col">Score</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Delete</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <span class="ms-5 text-secondary">No data</span>
-<% end %>
+      </thead>
+      <tbody>
+        <% @progresses.each_with_index do |progress, index| %>
+          <tr>
+            <td>
+              <%= index + 1 %>
+            </td>
+            <td>
+              <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+            <td><%= progress.date %></td>
+            <td><%= progress.score %></td>
+            <td><%= progress.comment %></td>
+            <td>
+              <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+              <%#= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
+              <%#= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
+  <% end %>
+</div>

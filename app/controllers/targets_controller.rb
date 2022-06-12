@@ -1,6 +1,6 @@
 class TargetsController < ApplicationController
   before_action :target_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy close]
+  before_action :set_course, only: %i[index new create edit update destroy upload import close]
   before_action :set_target, only: %i[show edit update destroy close]
   before_action :set_active_courses
   before_action :set_target_options, only: %i[new edit]
@@ -33,6 +33,7 @@ class TargetsController < ApplicationController
 
     authorize @target
 
+    set_fullpath
     set_target_options
 
     if @target.save
@@ -53,6 +54,7 @@ class TargetsController < ApplicationController
     @target.course = @course
     authorize @target
 
+    set_fullpath
     set_target_options
 
     if @target.update(target_params)
@@ -65,6 +67,16 @@ class TargetsController < ApplicationController
   def destroy
     authorize @target
     @target.destroy
+
+    redirect_to course_assignments_path(@course)
+  end
+
+  def upload
+    nil
+  end
+
+  def import
+    Target.import(params[:file], @course)
 
     redirect_to course_assignments_path(@course)
   end
