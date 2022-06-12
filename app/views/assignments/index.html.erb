@@ -8,92 +8,116 @@
 
 <h1><i class="fas fa-university me-3"></i><%= @course.name %></h1>
 
-<%= line_chart  @data_hash,
-  title: "#{@course.name} - Progress",
-  xtitle: "Time",
-  ytitle: "Score",
-  download: {background: "#ffffff"}
-%>
+<!-- ======= Graph ======= -->
+<div class="mb-4">
+  <%= line_chart  @data_hash,
+    title: "#{@course.name} - Progress",
+    xtitle: "Time",
+    ytitle: "Score",
+    download: {background: "#ffffff"}
+  %>
+</div>
 
+<div>
+  <% if @data_flag %>
+    <%= line_chart  @data_assignment,
+      title: "#{@course.name} - # of Open Homework",
+      xtitle: "Time",
+      ytitle: "# of Open Homework",
+      points: false,
+      curve: false,
+      download: {background: "#ffffff"}
+    %>
+  <% end %>
+</div>
 
+<!-- ======= Target ======= -->
 <h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
 
   <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
     <i class="fas fa-plus"></i>
     Target
   <% end %>
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTargetHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
+    <i class="fas fa-bars border p-2 rounded"></i>
+  </span>
 </h3>
 
-<% unless @targets.count == 0 %>
-  <table class="table table-responsive table-hover align-middle">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Name (Fullpath)</th>
-        <th scope="col">Description</th>
-        <th scope="col">Target Score</th>
-        <th scope="col">Display</th>
-        <th scope="col">The Latest Score</th>
-        <th scope="col">The Best Score</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Delete</th>
-        <% end %>
-      </tr>
-    </thead>
+<div class="collapse" id="navbarTargetHeader">
 
-    <tbody>
-      <% @targets.each_with_index do |target, index| %>
+  <% unless @targets.count == 0 %>
+    <table class="table table-responsive table-hover align-middle">
+      <thead class="thead-dark">
         <tr>
-          <td scope="row"><%= index + 1 %></td>
-          <td>
-            <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-          </td>
-          <td>
-            <% unless target.parent.nil? %>
-              <%= link_to course_target_progresses_path(@course, target.parent), class: "text-secondary me-2" do %>
-                <%= target.parent.fullpath %>
-              <% end %>
-            <% end %>
-            <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
-              / <strong><%= target.name %></strong>
-            <% end %>
-          </td>
-          <td><%= target.description %></td>
-          <td><%= target.score %></td>
-          <td>
-            <i class="<%= target.display ? "fas fa-check-circle" : "fas fa-times-circle" %>"></i>
-          </td>
-          <td>
-            <% unless target.progresses.blank? %>
-              <%= target.progresses.order(date: :desc).first.score %> (<%= target.progresses.order(date: :desc).first.date %>)
-            <% else %>
-              -
-            <% end %>
-          </td>
-          <td>
-            <% unless target.progresses.blank? %>
-              <%= target.progresses.order(score: :desc).first.score %> (<%= target.progresses.order(score: :desc).first.date %>)
-            <% else %>
-              -
-            <% end %>
-          </td>
+          <th scope="col">#</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Name (Fullpath)</th>
+          <th scope="col">Description</th>
+          <th scope="col">Target Score</th>
+          <th scope="col">Display</th>
+          <th scope="col">The Latest Score</th>
+          <th scope="col">The Best Score</th>
           <% if current_user.role == "tutor" %>
-            <td>
-            <%= link_to course_target_path(target.course, target), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-            </td>
+            <th scope="col">Delete</th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <span class="ms-5 text-secondary">No data</span>
-<% end %>
+      </thead>
+
+      <tbody>
+        <% @targets.each_with_index do |target, index| %>
+          <tr>
+            <td scope="row"><%= index + 1 %></td>
+            <td>
+              <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+            <td>
+              <% unless target.parent.nil? %>
+                <%= link_to course_target_progresses_path(@course, target.parent), class: "text-secondary me-2" do %>
+                  <%= target.parent.fullpath %>
+                <% end %>
+              <% end %>
+              <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
+                / <strong><%= target.name %></strong>
+              <% end %>
+            </td>
+            <td><%= target.description %></td>
+            <td><%= target.score %></td>
+            <td>
+              <i class="<%= target.display ? "fas fa-check-circle" : "fas fa-times-circle" %>"></i>
+            </td>
+            <td>
+              <% unless target.progresses.blank? %>
+                <%= target.progresses.order(date: :desc).first.score %> (<%= target.progresses.order(date: :desc).first.date %>)
+              <% else %>
+                -
+              <% end %>
+            </td>
+            <td>
+              <% unless target.progresses.blank? %>
+                <%= target.progresses.order(score: :desc).first.score %> (<%= target.progresses.order(score: :desc).first.date %>)
+              <% else %>
+                -
+              <% end %>
+            </td>
+            <% if current_user.role == "tutor" %>
+              <td>
+              <%= link_to course_target_path(target.course, target), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="ms-5 text-secondary">No data</span>
+  <% end %>
+</div>
+
+<!-- ======= Homework ======= -->
 
 <h3 class="mt-5"><i class="fas fa-tasks me-3"></i>Homework
   <% if current_user.role == "tutor" %>
@@ -102,81 +126,76 @@
       Homework
     <% end %>
   <% end %>
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeworkHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
+    <i class="fas fa-bars border p-2 rounded"></i>
+  </span>
 </h3>
-<% if @data_flag %>
-  <%= line_chart  @data_assignment,
-    title: "#{@course.name} - # of Open Homework",
-    xtitle: "Time",
-    ytitle: "# of Open Homework",
-    points: false,
-    curve: false,
-    download: {background: "#ffffff"}
-  %>
-<% end %>
 
-<% unless @assignments.count == 0 %>
-  <table class="table table-responsive table-hover align-middle">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Title</th>
-        <th scope="col">Instruction</th>
-        <th scope="col">Checkpoints</th>
-        <th scope="col">Status</th>
-        <th scope="col">Comment</th>
-        <th scope="col">Period</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Delete</th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @assignments.each_with_index do |assignment, index| %>
+<div class="collapse" id="navbarHomeworkHeader">
+  <% unless @assignments.count == 0 %>
+    <table class="table table-responsive table-hover align-middle">
+      <thead class="thead-dark">
         <tr>
-          <td scope="row"><%= index + 1 %></td>
-            <td>
-              <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-            </td>
-          <td>
-            <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
-              <%= assignment.title %>
-            <% end %>
-          </td>
-          <td><%= assignment.instruction %></td>
-          <td><%= assignment.checkpoint %></td>
-          <td>
-            <% if assignment.status == 0 %>
-              Work In Process
-            <% elsif assignment.status == 1 %>
-              Done
-              <% if current_user.role == "tutor" %>
-                <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-success", data: { confirm: 'Do you really want to close this?' } %>
-              <% end %>
-            <% else %>
-              Closed
-            <% end %>
-          </td>
-          <td><%= assignment.comment %></td>
-          <td>from: <%= assignment.start_date %><br>
-          to: <%= assignment.end_date %></td>
+          <th scope="col">#</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Title</th>
+          <th scope="col">Instruction</th>
+          <th scope="col">Checkpoints</th>
+          <th scope="col">Status</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Period</th>
           <% if current_user.role == "tutor" %>
-            <td>
-              <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </td>
+            <th scope="col">Delete</th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <span class="text-secondary ms-5">No data</span>
-<% end %>
+      </thead>
+
+      <tbody>
+        <% @assignments.each_with_index do |assignment, index| %>
+          <tr>
+            <td scope="row"><%= index + 1 %></td>
+              <td>
+                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+            <td>
+              <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
+                <%= assignment.title %>
+              <% end %>
+            </td>
+            <td><%= assignment.instruction %></td>
+            <td><%= assignment.checkpoint %></td>
+            <td>
+              <% if assignment.status == 0 %>
+                Work In Process
+              <% elsif assignment.status == 1 %>
+                Done
+                <% if current_user.role == "tutor" %>
+                  <%= link_to "Close", close_course_assignment_path(@course, assignment), method: :put, class: "btn btn-success", data: { confirm: 'Do you really want to close this?' } %>
+                <% end %>
+              <% else %>
+                Closed
+              <% end %>
+            </td>
+            <td><%= assignment.comment %></td>
+            <td>from: <%= assignment.start_date %><br>
+            to: <%= assignment.end_date %></td>
+            <% if current_user.role == "tutor" %>
+              <td>
+                <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <span class="text-secondary ms-5">No data</span>
+  <% end %>
+</div>
 
 <div class="mt-5">
   <%= render 'chat' %>
