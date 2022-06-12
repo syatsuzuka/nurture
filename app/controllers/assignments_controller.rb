@@ -101,7 +101,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
     @assignment.destroy
 
-    redirect_to all_assignments_path
+    redirect_to course_assignments_path(@assignment.course)
   end
 
   def all
