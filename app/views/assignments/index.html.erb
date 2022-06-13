@@ -34,14 +34,16 @@
 <!-- ======= Target ======= -->
 <h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
 
-  <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-plus"></i>
-    Target
-  <% end %>
+  <% if current_user.role == "tutor" %>
+    <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
+      <i class="fas fa-plus"></i>
+      Target
+    <% end %>
 
-  <%= link_to upload_course_targets_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-upload"></i>
-    Target
+    <%= link_to upload_course_targets_path(@course), class: "btn btn-success text-light" do %>
+      <i class="fas fa-upload"></i>
+      Target
+    <% end %>
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTargetHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
@@ -137,11 +139,11 @@
       <i class="fas fa-plus"></i>
       Homework
     <% end %>
-  <% end %>
 
-  <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-upload"></i>
-    Homework
+    <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+      <i class="fas fa-upload"></i>
+      Homework
+    <% end %>
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeworkHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">

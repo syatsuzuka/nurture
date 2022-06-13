@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/courses/:course_id/targets/upload', to: 'targets#upload', as: :upload_course_targets
   post '/courses/:course_id/targets/import', to: 'targets#import', as: :import_course_targets
   get '/courses/:course_id/targets/:target_id/progresses/export.csv', to: 'progresses#export', as: :export_progresses
+  get '/courses/:course_id/targets/:target_id/progresses/upload', to: 'progresses#upload', as: :upload_progresses
+  post '/courses/:course_id/targets/:target_id/progresses/import', to: 'progresses#import', as: :import_progresses
   get '/tutors/', to: 'users#index', as: :tutors
   get '/tutors/:id', to: 'users#show', as: :tutor
   get '/students/', to: 'users#index', as: :students

@@ -57,15 +57,23 @@
   </tbody>
 </table>
 
-<h2 class="mt-5"> <i class="fas fa-chart-line me-3 "></i>Progress List
+<!-- ======= Progress ======= -->
+<h2 class="mt-5"> <i class="fas fa-chart-line me-3 "></i>
+  Progress List
+
   <%= link_to new_course_target_progress_path(@target.course, @target), class: "btn btn-success text-light ms-3" do %>
-  <i class="fas fa-plus"></i>
-  Add Progress
+    <i class="fas fa-plus"></i>
+    Progress
+  <% end %>
+
+  <%= link_to upload_progresses_path(@target.course, @target), class: "btn btn-success text-light" do %>
+    <i class="fas fa-upload"></i>
+    Progress
   <% end %>
 
   <%= link_to export_progresses_path(@target.course, @target), class: "btn btn-success text-light" do %>
-  <i class="fas fa-download"></i>
-  Download CSV
+    <i class="fas fa-download"></i>
+    Download CSV
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarProgressHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
@@ -73,7 +81,7 @@
   </span>
 </h2>
 
-<div class="collapse" id="navbarProgressHeader">
+<div class="collapse show" id="navbarProgressHeader">
   <% unless @progresses.count == 0 %>
     <table class="table align-middle">
       <thead class="thead-dark">
