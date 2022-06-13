@@ -20,4 +20,19 @@ class Assignment < ApplicationRecord
       end
     end
   end
+
+  def self.import(file, course)
+    CSV.foreach(file.path, headers: true) do |row|
+      assignment = new
+      assignment.title = row["title"]
+      assignment.instruction = row["instruction"]
+      assignment.instruction_url = row["instruction_url"]
+      assignment.checkpoint = row["checkpoint"]
+      assignment.status = 0
+      assignment.start_date = row["start_date"]
+      assignment.end_date = row["end_date"]
+      assignment.course = course
+      assignment.save
+    end
+  end
 end

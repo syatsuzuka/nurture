@@ -93,7 +93,11 @@
             <td><%= target.description %></td>
             <td><%= target.score %></td>
             <td>
-              <i class="<%= target.display ? "fas fa-check-circle" : "fas fa-times-circle" %>"></i>
+              <% if target.display == true %>
+                <i class="fas fa-check-circle"></i>
+              <% else %>
+                -
+              <% end %>
             </td>
             <td>
               <% unless target.progresses.blank? %>
@@ -134,6 +138,12 @@
       Homework
     <% end %>
   <% end %>
+
+  <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <i class="fas fa-upload"></i>
+    Homework
+  <% end %>
+
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeworkHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
