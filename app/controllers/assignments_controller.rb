@@ -14,10 +14,18 @@ class AssignmentsController < ApplicationController
 
       until element.parent.nil?
         element = element.parent
-        parentpath = "/ #{element.name} #{parentpath}"
+        if element.parent.nil?
+          parentpath = "#{element.name} #{parentpath}"
+        else
+          parentpath = "> #{element.name} #{parentpath}"
+        end
       end
 
-      "#{parentpath}/ #{target.name}"
+      if parentpath.blank?
+        target.name
+      else
+        "#{parentpath}> #{target.name}"
+      end
     end
 
     if current_user.role == "tutor"

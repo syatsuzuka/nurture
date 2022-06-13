@@ -85,11 +85,20 @@
               <% parentpath = "" %>
               <% until element.parent.nil? %>
                 <% element = element.parent %>
-                <% parentpath = "/ #{element.name} #{parentpath}" %>
+                <% if element.parent.nil? %>
+                  <% parentpath = "#{element.name} #{parentpath}" %>
+                <% else %>
+                  <% parentpath = "> #{element.name} #{parentpath}" %>
+                <% end %>
               <% end %>
-              <span class="text-secondary"><%= parentpath %></span>
+              <span class="text-secondary">
+                <%= parentpath %>
+                <% unless parentpath.blank? %>
+                  >
+                <% end %>
+              </span>
               <%= link_to course_target_progresses_path(@course, target), class: "text-dark" do %>
-                <strong>/ <%= target.name %></strong>
+                <strong><%= target.name %></strong>
               <% end %>
             </td>
             <td><%= target.description %></td>
