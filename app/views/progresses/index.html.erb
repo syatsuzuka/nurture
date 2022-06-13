@@ -37,8 +37,10 @@
       <td>
         <% unless @target.parent.nil? %>
           <%= link_to course_target_progresses_path(@target.course, @target.parent) do %>
-            <%= @target.parent.fullpath %>
+            <%= @target.parent.name %>
           <% end %>
+        <% else %>
+          -
         <% end %>
       </td>
     </tr>
