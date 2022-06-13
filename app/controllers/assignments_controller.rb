@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :assignment_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy review close close2 done]
+  before_action :set_course, only: %i[index new create edit update destroy review close close2 done upload import]
   before_action :set_assignment, only: %i[show edit update destroy review close close2 done]
   before_action :set_active_assignments, only: %i[all]
   before_action :set_active_courses, only: %i[index show new create edit update destroy review close close2 done]
@@ -153,6 +153,16 @@ class AssignmentsController < ApplicationController
 
     @assignment.save
     redirect_to all_assignments_path
+  end
+
+  def upload
+    nil
+  end
+
+  def import
+    Assignment.import(params[:file], @course)
+
+    redirect_to course_assignments_path(@course)
   end
 
   private

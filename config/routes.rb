@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/assignments', to: 'assignments#all', as: :all_assignments
+  get '/courses/:course_id/assignments/upload', to: 'assignments#upload', as: :upload_course_assignments
+  post '/courses/:course_id/assignments/import', to: 'assignments#import', as: :import_course_assignments
   get '/courses/:course_id/assignments/:id/review', to: 'assignments#review', as: :review_course_assignment
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
   put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
