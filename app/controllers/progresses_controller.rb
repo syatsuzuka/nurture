@@ -2,8 +2,8 @@ require 'csv'
 
 class ProgressesController < ApplicationController
   before_action :progress_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy export]
-  before_action :set_target, only: %i[index new create edit update destroy export]
+  before_action :set_course, only: %i[index new create edit update destroy upload import export]
+  before_action :set_target, only: %i[index new create edit update destroy upload import export]
   before_action :set_progress, only: %i[show edit update destroy]
   before_action :set_active_courses
 
@@ -77,6 +77,16 @@ class ProgressesController < ApplicationController
   def destroy
     authorize @progress
     @progress.destroy
+
+    redirect_to course_target_progresses_path(@course, @target)
+  end
+
+  def upload
+    nil
+  end
+
+  def import
+    Progress.import(params[:file], @target)
 
     redirect_to course_target_progresses_path(@course, @target)
   end
