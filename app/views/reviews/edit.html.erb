@@ -1,7 +1,7 @@
 <h1>Edit the Review</h1>
 <div>
   <%= simple_form_for [@tutor, @review], url: tutor_review_path, method: :patch do |f| %>
-    <%= f.input :stars, required: true %>
+    <%= f.input :stars, required: true, as: :select, collection: 1..5  %> %>
     <%= f.input :comment %>
     <%= f.input :anonymous %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
