@@ -18,11 +18,25 @@
   <% end %>
 </div>
 
+
+<% @courses.each do |course| %>
+  <% if course.status == 0 %>
+    <div class="alert alert-success mt-5" role="alert">
+      "<%= course.name %>" by "<%= link_to tutor_path(course.tutor) do %>
+        <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+      <% end %>
+      " is waiting for your accept.
+      (<%= link_to "Accept now", accept_course_path(course) %>)
+    </div>
+  <% end %>
+<% end %>
+
 <div class="mt-5">
   <%= render 'alert' %>
-  <% unless @courses.count == 0 %>
+  <% active_courses = @courses.select { |course| course.status == 1 } %>
+  <% unless active_courses.count == 0 %>
     <div class="row">
-      <% @courses.each_with_index do |course, index| %>
+      <% active_courses.each_with_index do |course, index| %>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
           <div class="card h-100 shadow p-4 m-1 rounded">
             <%= line_chart  @data[index],

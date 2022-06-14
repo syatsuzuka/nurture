@@ -1,10 +1,10 @@
 class CoursesController < ApplicationController
   before_action :courses_params, only: %i[create]
-  before_action :set_course, only: %i[show edit update destroy]
+  before_action :set_course, only: %i[show edit update destroy accept]
   before_action :set_active_courses
 
   def index
-    @courses = policy_scope(Course).sort_by(&:created_at).reverse
+    @courses = policy_scope(Course).sort_by { |course| [course.student_user_id, course.created_at] }
   end
 
   def show
@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(courses_params)
+    @course.status = 0
     @course.tutor_user_id = current_user.id
     @chatroom = Chatroom.create(name: "Assignment chat")
 
@@ -29,7 +30,7 @@ class CoursesController < ApplicationController
         user: @course.student,
         tutor: @course.tutor,
         course: @course.name,
-        path: course_assignments_path(@course)
+        path: accept_course_path(@course)
       ).invitation_email.deliver_now
       redirect_to courses_path
     else
@@ -58,10 +59,15 @@ class CoursesController < ApplicationController
     redirect_to courses_path
   end
 
+  def accept
+    @course.status = 1
+    authorize @course
+  end
+
   private
 
   def courses_params
-    params.require(:course).permit(:name, :description, :tutor_user_id, :student_user_id, :photo)
+    params.require(:course).permit(:name, :description, :status, :tutor_user_id, :student_user_id, :photo)
   end
 
   def set_course

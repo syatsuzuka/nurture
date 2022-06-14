@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get '/courses/:id/accept', to: 'courses#accept', as: :accept_course
   get '/assignments', to: 'assignments#all', as: :all_assignments
   get '/courses/:course_id/assignments/upload', to: 'assignments#upload', as: :upload_course_assignments
   post '/courses/:course_id/assignments/import', to: 'assignments#import', as: :import_course_assignments

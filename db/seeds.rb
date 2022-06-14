@@ -46,10 +46,10 @@ puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Beginner)", description: "Private Tennis Lesson for complete beginners.", tutor_user_id: tutor_1.id, student_user_id: student_1.id )
+course_1 = Course.create!(name: "Tennis Lesson (Beginner)", description: "Private Tennis Lesson for complete beginners.", status: 1, tutor_user_id: tutor_1.id, student_user_id: student_1.id )
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
-course_2 = Course.create!(name: "Tennis Lesson (Intermediate)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", tutor_user_id: tutor_1.id, student_user_id: student_1.id )
+course_2 = Course.create!(name: "Tennis Lesson (Intermediate)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", status: 1, tutor_user_id: tutor_1.id, student_user_id: student_1.id )
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
 
 puts "Generated #{Course.all.count} courses successfully"
