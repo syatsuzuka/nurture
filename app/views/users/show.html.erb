@@ -11,23 +11,23 @@
   </ol>
 </nav>
 
-<h3><%= @user.first_name %> <%= @user.last_name %>
+<h3>
   <%= add_image(@user, 'avatar.png', class: 'avatar-large', width:100, height:100) %>
-
+  <%= @user.first_name %> <%= @user.last_name %>
 </h3>
 
-<div class="container mt-5">
+<div class="mt-5 ms-5">
   <p>
     <% if @user.deactivated == true %>
       <span>
-        <i class="fas fa-user-alt-slash me-3"></i>deactivated user
+        <i class="fas fa-user-alt-slash me-2"></i>deactivated user
         <% unless @user.visible %>
           <i class="far fa-eye-slash"></i>
         <% end %>
       </span>
     <% else %>
       <span>
-        <i class="fas fa-user me-3"></i> active user
+        <i class="fas fa-user me-2"></i> active user
         <% unless @user.visible %>
           <i class="far fa-eye-slash"></i>
         <% end %>
@@ -35,9 +35,35 @@
     <% end %>
   </p>
   <p>
-    <i class="fas fa-envelope me-3"></i><%= @user.email %>
+    <i class="fas fa-envelope me-2"></i><%= @user.email %>
   </p>
   <p>
     <i class="fas fa-users me-3"></i><%= @user.role %>
   </p>
+
+  <div class="mt-5 ms-3">
+    <h3>Message</h3>
+    <% unless @user.message.nil? %>
+      <div class="border mt-3 ms-3 mb-3 p-3">
+        <pre>
+<%= @user.message %>
+        </pre>
+      </div>
+    <% else %>
+      <div class="mt-3 ms-3 mb-3 p-3 text-secondary">
+        (No entry)
+      </div>
+    <% end %>
+
+    <h3>Specialty / Interests</h3>
+    <% unless @user.specialty.nil? %>
+    <div class="border mt-3 ms-3 p-3">
+      <%= @user.specialty %>
+    </div>
+    <% else %>
+      <div class="mt-3 ms-3 mb-3 p-3 text-secondary">
+        (No entry)
+      </div>
+    <% end %>
+  </div>
 </div>
