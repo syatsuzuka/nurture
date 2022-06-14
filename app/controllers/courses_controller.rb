@@ -56,6 +56,13 @@ class CoursesController < ApplicationController
     authorize @course
     @course.destroy
 
+    UserMailer.with(
+      user: @course.student,
+      tutor: @course.tutor,
+      course: @course.name,
+      path: course_path(@course)
+    ).closing_course_email.deliver_now
+
     redirect_to courses_path
   end
 

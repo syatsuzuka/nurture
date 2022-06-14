@@ -21,4 +21,12 @@ class UserMailer < ApplicationMailer
     @url = ENV['SERVER_HOSTNAME'] + params[:path]
     mail(to: @user.email, subject: 'You are invited to a new course!')
   end
+
+  def closing_course_email
+    @user = params[:user]
+    @tutor = params[:tutor]
+    @course = params[:course]
+    @url = ENV['SERVER_HOSTNAME'] + params[:path]
+    mail(to: @user.email, subject: "'#{@course}' was closed")
+  end
 end
