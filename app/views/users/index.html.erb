@@ -21,6 +21,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Nickname</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
       </tr>
@@ -49,6 +50,7 @@
               <% end %>
             <% end %>
           </td>
+          <td><%= user.nickname %></td>
           <td><%= user.email %></td>
           <td><%= user.role %></td>
         </tr>
