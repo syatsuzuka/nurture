@@ -1,5 +1,7 @@
 class Assignment < ApplicationRecord
   belongs_to :course
+  delegate :tutor, to: :course
+  delegate :student, to: :course
   validates :title, uniqueness: { scope: :course_id }, presence: true
   validates :instruction, :checkpoint, :status, presence: true
   validate :check_instruction_url

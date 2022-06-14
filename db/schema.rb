@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_035549) do
+ActiveRecord::Schema.define(version: 2022_06_14_071812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,18 @@ ActiveRecord::Schema.define(version: 2022_06_14_035549) do
     t.index ["target_id"], name: "index_progresses_on_target_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "stars", null: false
+    t.text "comment"
+    t.boolean "anonymous", default: false
+    t.bigint "tutor_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_reviews_on_student_id"
+    t.index ["tutor_id"], name: "index_reviews_on_tutor_id"
+  end
+
   create_table "targets", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -195,6 +207,8 @@ ActiveRecord::Schema.define(version: 2022_06_14_035549) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "progresses", "targets"
+  add_foreign_key "reviews", "users", column: "student_id"
+  add_foreign_key "reviews", "users", column: "tutor_id"
   add_foreign_key "targets", "courses"
   add_foreign_key "targets", "targets", column: "parent_id"
 end

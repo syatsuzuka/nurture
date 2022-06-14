@@ -1,0 +1,7 @@
+  <%= simple_form_for [@review.tutor, @review] do |f| %>
+    <%= f.input :stars, required: true %>
+    <%= f.input :comment %>
+    <%= f.input :visible %>
+    <%= f.submit 'Save', class: "btn btn-success text-light" %>
+    <%= link_to 'Cancel', tutor_path(@review.tutor), class: 'btn btn-secondary text-light'%>
+  <% end %>

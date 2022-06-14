@@ -1,0 +1,10 @@
+<h1>Add a New Review</h1>
+<div>
+  <%= simple_form_for [@review.tutor, @review], url: tutor_reviews_path, method: :post do |f| %>
+    <%= f.input :stars, required: true %>
+    <%= f.input :comment %>
+    <%= f.input :anonymous %>
+    <%= f.submit 'Save', class: "btn btn-success text-light" %>
+    <%= link_to 'Cancel', tutor_path(@review.tutor), class: 'btn btn-secondary text-light'%>
+  <% end %>
+</div>

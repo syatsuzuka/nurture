@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :set_review, only: [:show]
   before_action :set_active_users
 
   def index
@@ -13,6 +14,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.role == "tutor"
+      @reviews = @user.student_reviews
+      @review_flag = @reviews.select { |review| review.tutor == current_user }.any?
+    else
+      @reviews = @user.tutor_reviews
+      @review_flag = @reviews.select { |review| review.student == current_user }.any?
+    end
+
+    #======= Calculate average score =======
+    sum_star = 0
+    @reviews.each do |review|
+      sum_star += review.stars
+    end
+    @average_star = sum_star.fdiv(@reviews.count)
+
     authorize @user
   end
 
@@ -20,6 +36,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_review
+    @review = Review.find_by(tutor: @user, student: current_user)
   end
 
   def set_active_users
