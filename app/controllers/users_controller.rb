@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     if current_user.role == "tutor"
       @users = @users.select do |student|
-        Course.where(tutor: current_user).where(student: student).any?
+        Course.where(tutor: current_user, student: student, status: 1).any?
       end
     end
   end

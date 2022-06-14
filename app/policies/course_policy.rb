@@ -37,6 +37,10 @@ class CoursePolicy < ApplicationPolicy
     true
   end
 
+  def accept?
+    true
+  end
+
   def dashboard?
     true
   end
