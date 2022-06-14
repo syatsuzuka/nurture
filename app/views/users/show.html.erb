@@ -55,15 +55,30 @@
       </div>
     <% end %>
 
-    <h3>Specialty / Interests</h3>
-    <% unless @user.specialty.nil? %>
-    <div class="border mt-3 ms-3 p-3">
-      <%= @user.specialty %>
-    </div>
+    <% if @user.role == "tutor" %>
+      <h3>Specialty</h3>
+
+      <% unless @user.specialty.nil? %>
+        <div class="border mt-3 ms-3 p-3">
+          <%= @user.specialty %>
+        </div>
+      <% else %>
+        <div class="mt-3 ms-3 mb-3 p-3 text-secondary">
+          (No entry)
+        </div>
+      <% end %>
     <% else %>
-      <div class="mt-3 ms-3 mb-3 p-3 text-secondary">
-        (No entry)
-      </div>
+      <h3>Interest</h3>
+
+      <% unless @user.interest.nil? %>
+        <div class="border mt-3 ms-3 p-3">
+          <%= @user.interest %>
+        </div>
+      <% else %>
+        <div class="mt-3 ms-3 mb-3 p-3 text-secondary">
+          (No entry)
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

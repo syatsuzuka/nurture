@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User).sort_by(&:first_name)
+
+    if current_user.role == "tutor"
+      @users = @users.select do |student|
+        Course.where(tutor: current_user).where(student: student).any?
+      end
+    end
   end
 
   def show

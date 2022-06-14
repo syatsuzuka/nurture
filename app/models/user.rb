@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def select_label
-    "#{first_name} #{last_name} <#{email}>"
+    "#{first_name} #{last_name} (#{nickname})"
   end
 
   def check_role

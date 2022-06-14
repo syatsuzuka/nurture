@@ -31,7 +31,11 @@
       <%= f.input :nickname, required: true %>
 
       <%= f.input :message %>
-      <%= f.input :specialty %>
+      <% if @user.role == "tutor" %>
+        <%= f.input :specialty %>
+      <% else %>
+        <%= f.input :interest %>
+      <% end %>
 
       <%= f.input :visible, label: 'Make your user info visible to other tutors/students' %>
       <%= f.input :photo, as: :file %>
