@@ -23,18 +23,22 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
 
-  resources :courses do
-    resources :assignments
-    resources :targets do
-      resources :progresses
-    end
-  end
-
   authenticate :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
   end
 
+  resources :courses, only: %i[index new create edit update destroy] do
+    resources :assignments, only: %i[index show new create edit update destroy]
+    resources :targets, only: %i[new create edit update destroy] do
+      resources :progresses, only: %i[index new create edit update destroy]
+    end
+  end
+
   resources :chatrooms, only: :show do
     resources :messages, only: :create
+  end
+
+  resources :tutors, only: %i[index show] do
+    resources :reviews, only: %i[new create edit update destroy]
   end
 end

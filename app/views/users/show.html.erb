@@ -59,7 +59,7 @@
       <h3>Specialty</h3>
 
       <% unless @user.specialty.nil? %>
-        <div class="border mt-3 ms-3 p-3">
+        <div class="border mt-3 mb-3 ms-3 p-3">
           <%= @user.specialty %>
         </div>
       <% else %>
@@ -67,6 +67,49 @@
           (No entry)
         </div>
       <% end %>
+
+      <h3>
+        Reviews <span class="fs-5 text-secondary">(ave: <%= @average_star %>)</span>
+        <% if current_user.role == "student" %>
+          <% unless @review_flag %>
+            <%= link_to new_tutor_review_path(@user), class: "btn btn-success text-light" do %>
+              <i class="fas fa-plus"></i>
+              Review
+            <% end %>
+          <% else %>
+            <%= link_to edit_tutor_review_path(@user, @review), class: "btn btn-outline-success" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to tutor_review_path(@user, @review), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the review?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </h3>
+
+      <div class="mb-3 ms-3 p-3">
+        <% @reviews.each do |review| %>
+          <div>
+            <div>
+              <% review.stars.times do %>
+                <i class="fas fa-star text-success"></i>
+              <% end %>
+            </div>
+            <blockquote class="blockquote mb-0">
+              <p><%= review.comment %></p>
+              <p class="blockquote-footer">
+                <% if review.anonymous == false %>
+                  <%= review.student.nickname %>
+                <% else %>
+                  anonymous
+                <% end %>
+                (<%= review.created_at.strftime('%F') %>)
+              </p>
+            </blockquote>
+          </div>
+        <% end %>
+      </div>
+
     <% else %>
       <h3>Interest</h3>
 
