@@ -52,12 +52,18 @@ jobs:
           MAIL_PORT: ${{ secrets.MAIL_PORT }}
           MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
           SERVER_HOSTNAME: ${{ secrets.SERVER_HOSTNAME }}
-          TUTOR_LOGIN_ID: ${{ secrets.TUTOR_LOGIN_ID }}
-          TUTOR_LOGIN_PASSWORD: ${{ secrets.TUTOR_LOGIN_PASSWORD }}
-          STUDENT_LOGIN_ID: ${{ secrets.STUDENT_LOGIN_ID }}
-          STUDENT_LOGIN_PASSWORD: ${{ secrets.STUDENT_LOGIN_PASSWORD }}
-          TEST_LOGIN_ID: ${{ secrets.TEST_LOGIN_ID }}
-          TEST_LOGIN_PASSWORD: ${{ secrets.TEST_LOGIN_PASSWORD }}
+          SAMPLE_TUTOR_LOGIN_ID: ${{ secrets.SAMPLE_TUTOR_LOGIN_ID }}
+          SAMPLE_TUTOR_LOGIN_PASSWORD: ${{ secrets.SAMPLE_TUTOR_LOGIN_PASSWORD }}
+          SAMPLE_STUDENT_LOGIN_ID: ${{ secrets.SAMPLE_STUDENT_LOGIN_ID }}
+          SAMPLE_STUDENT_LOGIN_PASSWORD: ${{ secrets.SAMPLE_STUDENT_LOGIN_PASSWORD }}
+          DEMO_TUTOR_LOGIN_ID: ${{ secrets.DEMO_TUTOR_LOGIN_ID }}
+          DEMO_TUTOR_LOGIN_PASSWORD: ${{ secrets.DEMO_TUTOR_LOGIN_PASSWORD }}
+          DEMO_STUDENT_LOGIN_ID: ${{ secrets.DEMO_STUDENT_LOGIN_ID }}
+          DEMO_STUDENT_LOGIN_PASSWORD: ${{ secrets.DEMO_STUDENT_LOGIN_PASSWORD }}
+          TEST_TUTOR_LOGIN_ID: ${{ secrets.TEST_TUTOR_LOGIN_ID }}
+          TEST_TUTOR_LOGIN_PASSWORD: ${{ secrets.TEST_TUTOR_LOGIN_PASSWORD }}
+          TEST_STUDENT_LOGIN_ID: ${{ secrets.TEST_STUDENT_LOGIN_ID }}
+          TEST_STUDENT_LOGIN_PASSWORD: ${{ secrets.TEST_STUDENT_LOGIN_PASSWORD }}
           TWITTER_ACCOUNT: ${{ secrets.TWITTER_ACCOUNT }}
         run: bin/rspec
 
