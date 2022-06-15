@@ -57,9 +57,9 @@ class PagesController < ApplicationController
     @open_assignments = assignments.select { |assignment| assignment.status.zero? }
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
-        user_name = "#{assignment.course.student.first_name}"
+        user_name = assignment.course.student.first_name
       else
-        user_name = "#{assignment.course.tutor.first_name}"
+        user_name = assignment.course.tutor.first_name
       end
       gon.courses << {
         "name" => assignment.course.name,
