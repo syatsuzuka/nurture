@@ -18,6 +18,7 @@ courses = [];
 gon.courses.forEach(element => {
   course =   {
     name: element.name,
+    user_name: element.user_name,
     current: 0,
     homeworks: [
       {
@@ -44,6 +45,7 @@ series = courses.map(function (course, i) {
     });
     return {
         name: course.name,
+        user_name: course.user_name,
         data: data,
         current: course.homeworks[course.current]
     };
@@ -88,14 +90,21 @@ Highcharts.ganttChart('gannt-chart', {
         grid: {
             columns: [{
                 title: {
-                    text: 'Course Name'
+                    text: 'Course'
                 },
                 categories: series.map(function (s) {
                     return s.name;
                 })
             }, {
                 title: {
-                    text: 'Homework Title'
+                    text: ''
+                },
+                categories: series.map(function (s) {
+                    return s.user_name;
+                })
+            }, {
+                title: {
+                    text: 'Homework'
                 },
                 categories: series.map(function (s) {
                     return s.current.title;
