@@ -35,7 +35,7 @@ class PagesController < ApplicationController
       assignment.status == 1
     end
 
-    #======= Data Setup for graph =======
+    #======= Data Setup for Line Chart =======
     @data = []
     @data_test = []
 
@@ -51,7 +51,26 @@ class PagesController < ApplicationController
       end
       @data << data_hash
     end
+
+    #======= Data Setup for Gannt Chart =======
     # gon.data_test = [12, 5, 3, 5, 2, 3]
+    gon.courses = []
+    gon.courses << {
+      "name" => "Course.A",
+      "homework" => {
+        "title" => "Homework.A-1",
+        "start_date" => -1,
+        "end_date" => 1
+      }
+    }
+    gon.courses << {
+      "name" => "Course.B",
+      "homework" => {
+        "title" => "Homework.B-1",
+        "start_date" => -2,
+        "end_date" => -1
+      }
+    }
   end
 
   def aboutus

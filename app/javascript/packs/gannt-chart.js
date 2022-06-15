@@ -12,39 +12,30 @@ today.setUTCSeconds(0);
 today.setUTCMilliseconds(0);
 today = today.getTime();
 
-courses = [{
-    name: 'Course.A',
+courses = [
+  {
+    name: gon.courses[0].name,
     current: 0,
-    homeworks: [{
-        title: 'Homework.A-1',
-        from: today - 1 * day,
-        to: today + 2 * day
-    }, {
-        title: 'Homework.A-2',
-        from: today - 3 * day,
-        to: today - 2 * day
-    }, {
-        title: 'Homework.A-3',
-        from: today + 5 * day,
-        to: today + 6 * day
-    }]
-}, {
-    name: 'Course.B',
+    homeworks: [
+      {
+        title: gon.courses[0].homework.title,
+        from: today + gon.courses[0].homework.start_date * day,
+        to: today + gon.courses[0].homework.end_date * day
+      }
+    ]
+  },
+  {
+    name: gon.courses[1].name,
     current: 0,
-    homeworks: [{
-        title: 'Homework.B-1',
-        from: today - 2 * day,
-        to: today + 1 * day
-    }, {
-        title: 'Homework.B-2',
-        from: today - 2 * day,
-        to: today + 1 * day
-    }, {
-        title: 'Homework.B-3',
-        from: today + 2 * day,
-        to: today + 6 * day
-    }]
-}];
+    homeworks: [
+      {
+        title: gon.courses[1].homework.title,
+        from: today + gon.courses[1].homework.start_date * day,
+        to: today + gon.courses[1].homework.end_date * day
+      }
+    ]
+  }
+];
 
 // Parse car data into series.
 series = courses.map(function (course, i) {
