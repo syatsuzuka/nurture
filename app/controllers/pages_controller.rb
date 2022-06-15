@@ -53,24 +53,18 @@ class PagesController < ApplicationController
     end
 
     #======= Data Setup for Gannt Chart =======
-    # gon.data_test = [12, 5, 3, 5, 2, 3]
     gon.courses = []
-    gon.courses << {
-      "name" => "Course.A",
-      "homework" => {
-        "title" => "Homework.A-1",
-        "start_date" => -1,
-        "end_date" => 1
+    @open_assignments = assignments.select { |assignment| assignment.status.zero? }
+    @open_assignments.each do |assignment|
+      gon.courses << {
+        "name" => assignment.course.name,
+        "homework" => {
+          "title" => assignment.title,
+          "start_date" => (assignment.start_date - Date.today).to_i,
+          "end_date" => (assignment.end_date - Date.today).to_i
+        }
       }
-    }
-    gon.courses << {
-      "name" => "Course.B",
-      "homework" => {
-        "title" => "Homework.B-1",
-        "start_date" => -2,
-        "end_date" => -1
-      }
-    }
+    end
   end
 
   def aboutus
