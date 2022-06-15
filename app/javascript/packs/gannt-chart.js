@@ -1,3 +1,5 @@
+const { Hash } = require("webpack/lib/util/createHash");
+
 // Set to 00:00:00:000 today
 var today = new Date(),
     day = 1000 * 60 * 60 * 24,
@@ -12,113 +14,50 @@ today.setUTCSeconds(0);
 today.setUTCMilliseconds(0);
 today = today.getTime();
 
-cars = [{
-    model: 'Nissan Leaf',
+courses = [];
+gon.courses.forEach(element => {
+  course =   {
+    name: element.name,
+    user_name: element.user_name,
     current: 0,
-    deals: [{
-        rentedTo: 'Lisa Star',
-        from: today - 1 * day,
-        to: today + 2 * day
-    }, {
-        rentedTo: 'Shane Long',
-        from: today - 3 * day,
-        to: today - 2 * day
-    }, {
-        rentedTo: 'Jack Coleman',
-        from: today + 5 * day,
-        to: today + 6 * day
-    }]
-}, {
-    model: 'Jaguar E-type',
-    current: 0,
-    deals: [{
-        rentedTo: 'Martin Hammond',
-        from: today - 2 * day,
-        to: today + 1 * day
-    }, {
-        rentedTo: 'Linda Jackson',
-        from: today - 2 * day,
-        to: today + 1 * day
-    }, {
-        rentedTo: 'Robert Sailor',
-        from: today + 2 * day,
-        to: today + 6 * day
-    }]
-}, {
-    model: 'Volvo V60',
-    current: 0,
-    deals: [{
-        rentedTo: 'Mona Ricci',
-        from: today + 0 * day,
-        to: today + 3 * day
-    }, {
-        rentedTo: 'Jane Dockerman',
-        from: today + 3 * day,
-        to: today + 4 * day
-    }, {
-        rentedTo: 'Bob Shurro',
-        from: today + 6 * day,
-        to: today + 8 * day
-    }]
-}, {
-    model: 'Volkswagen Golf',
-    current: 0,
-    deals: [{
-        rentedTo: 'Hailie Marshall',
-        from: today - 1 * day,
-        to: today + 1 * day
-    }, {
-        rentedTo: 'Morgan Nicholson',
-        from: today - 3 * day,
-        to: today - 2 * day
-    }, {
-        rentedTo: 'William Harriet',
-        from: today + 2 * day,
-        to: today + 3 * day
-    }]
-}, {
-    model: 'Peugeot 208',
-    current: 0,
-    deals: [{
-        rentedTo: 'Harry Peterson',
-        from: today - 1 * day,
-        to: today + 2 * day
-    }, {
-        rentedTo: 'Emma Wilson',
-        from: today + 3 * day,
-        to: today + 4 * day
-    }, {
-        rentedTo: 'Ron Donald',
-        from: today + 5 * day,
-        to: today + 6 * day
-    }]
-}];
+    homeworks: [
+      {
+        title: element.homework.title,
+        from: today + element.homework.start_date * day,
+        to: today + element.homework.end_date * day
+      }
+    ]
+  };
+  courses.push(course)
+});
+
 
 // Parse car data into series.
-series = cars.map(function (car, i) {
-    var data = car.deals.map(function (deal) {
+series = courses.map(function (course, i) {
+    var data = course.homeworks.map(function (homework) {
         return {
-            id: 'deal-' + i,
-            rentedTo: deal.rentedTo,
-            start: deal.from,
-            end: deal.to,
+            id: 'homework-' + i,
+            title: homework.title,
+            start: homework.from,
+            end: homework.to,
             y: i
         };
     });
     return {
-        name: car.model,
+        name: course.name,
+        user_name: course.user_name,
         data: data,
-        current: car.deals[car.current]
+        current: course.homeworks[course.current]
     };
 });
 
 Highcharts.ganttChart('gannt-chart', {
     series: series,
     title: {
-        text: 'Car Rental Schedule'
+        text: 'Remaining Homework Schedule'
     },
     tooltip: {
-        pointFormat: '<span>Rented To: {point.rentedTo}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+        pointFormat: '<span>Title: {point.title}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
     },
     lang: {
         accessibility: {
@@ -135,11 +74,11 @@ Highcharts.ganttChart('gannt-chart', {
             }
         },
         point: {
-            valueDescriptionFormat: 'Rented to {point.rentedTo} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+            valueDescriptionFormat: 'Title {point.title} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
         },
         series: {
             descriptionFormatter: function (series) {
-                return series.name + ', car ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+                return series.name + ', course ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
             }
         }
     },
@@ -151,17 +90,24 @@ Highcharts.ganttChart('gannt-chart', {
         grid: {
             columns: [{
                 title: {
-                    text: 'Model'
+                    text: 'Course'
                 },
                 categories: series.map(function (s) {
                     return s.name;
                 })
             }, {
                 title: {
-                    text: 'Rented To'
+                    text: ''
                 },
                 categories: series.map(function (s) {
-                    return s.current.rentedTo;
+                    return s.user_name;
+                })
+            }, {
+                title: {
+                    text: 'Homework'
+                },
+                categories: series.map(function (s) {
+                    return s.current.title;
                 })
             }, {
                 title: {

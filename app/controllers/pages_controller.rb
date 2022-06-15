@@ -35,7 +35,7 @@ class PagesController < ApplicationController
       assignment.status == 1
     end
 
-    #======= Data Setup for graph =======
+    #======= Data Setup for Line Chart =======
     @data = []
     @data_test = []
 
@@ -51,7 +51,26 @@ class PagesController < ApplicationController
       end
       @data << data_hash
     end
-    # gon.data_test = [12, 5, 3, 5, 2, 3]
+
+    #======= Data Setup for Gannt Chart =======
+    gon.courses = []
+    @open_assignments = assignments.select { |assignment| assignment.status.zero? }
+    @open_assignments.each do |assignment|
+      if current_user.role == "tutor"
+        user_name = assignment.course.student.first_name
+      else
+        user_name = assignment.course.tutor.first_name
+      end
+      gon.courses << {
+        "name" => assignment.course.name,
+        "user_name" => user_name,
+        "homework" => {
+          "title" => assignment.title,
+          "start_date" => (assignment.start_date - Date.today).to_i,
+          "end_date" => (assignment.end_date - Date.today).to_i
+        }
+      }
+    end
   end
 
   def aboutus
