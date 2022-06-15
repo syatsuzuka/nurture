@@ -26,30 +26,24 @@ puts 'Cleaning up users...'
 User.destroy_all
 
 puts '===================================='
-puts "Generating personal tutor seeds..."
+puts "Generating sample users seeds..."
 
-tutor_1 = User.create!(email: ENV['TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['TUTOR_LOGIN_PASSWORD'], role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+sample_tutor = User.create!(email: ENV['SAMPLE_TUTOR_LOGIN_ID'], nickname: "Sample Tutor", first_name: 'Sample', last_name: 'Tutor', password: ENV['SAMPLE_TUTOR_LOGIN_PASSWORD'], role: 'tutor', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", specialty: "To help users for better learning experiences", avatar_url: "#{Faker::LoremPixel.image}")
+sample_student = User.create!(email: ENV['SAMPLE_STUDENT_LOGIN_ID'], nickname: "Sample Student", first_name: 'Sample', last_name: 'Student', password: ENV['SAMPLE_STUDENT_LOGIN_PASSWORD'], role: 'student', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", interest: "To help users for better learning experiences", avatar_url: "#{Faker::LoremPixel.image}")
 
-puts "Generating random tutor seeds..."
+demo_tutor = User.create!(email: ENV['DEMO_TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'], role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
+demo_student = User.create!(email: ENV['DEMO_STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'], role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
 
 puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
-
-puts '===================================='
-puts "#{Faker::Hacker.ingverb} personal student seeds..."
-
-student_1 = User.create!(email: ENV['STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['STUDENT_LOGIN_PASSWORD'], role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
-
-puts "Generating random student seeds..."
-
 puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
 puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Beginner)", description: "Private Tennis Lesson for complete beginners.", status: 1, tutor_user_id: tutor_1.id, student_user_id: student_1.id )
+course_1 = Course.create!(name: "Tennis Lesson (Beginner)", description: "Private Tennis Lesson for complete beginners.", status: 1, tutor: demo_tutor, student: demo_student )
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
-course_2 = Course.create!(name: "Tennis Lesson (Intermediate)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", status: 1, tutor_user_id: tutor_1.id, student_user_id: student_1.id )
+course_2 = Course.create!(name: "Tennis Lesson (Intermediate)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", status: 1, tutor: demo_tutor, student: demo_student )
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
 
 puts "Generated #{Course.all.count} courses successfully"
