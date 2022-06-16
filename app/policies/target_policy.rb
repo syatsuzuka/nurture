@@ -41,4 +41,8 @@ class TargetPolicy < ApplicationPolicy
   def import?
     true
   end
+
+  def export?
+    true
+  end
 end

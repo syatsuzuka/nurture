@@ -1,0 +1,14 @@
+<% headers = ['course.name', 'title', 'instruction', 'instruction_url', 'checkpoint', 'start_date', 'end_date', 'created_at', 'updated_at'] %>
+<%= CSV.generate_line headers -%>
+<% @assignments.each do |assignment| %>
+<%= CSV.generate_line([
+  assignment.course.name,
+  assignment.title,
+  assignment.instruction,
+  assignment.instruction_url,
+  assignment.start_date,
+  assignment.end_date,
+  assignment.created_at,
+  assignment.updated_at
+]) -%>
+<% end %>

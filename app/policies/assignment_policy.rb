@@ -56,4 +56,8 @@ class AssignmentPolicy < ApplicationPolicy
   def done?
     true
   end
+
+  def export?
+    true
+  end
 end
