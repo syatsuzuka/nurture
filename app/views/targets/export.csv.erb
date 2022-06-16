@@ -1,0 +1,19 @@
+<% headers = ['course.name', 'name', 'description', 'parent', 'score', 'display', 'created_at', 'updated_at'] %>
+<%= CSV.generate_line headers -%>
+<% @targets.each do |target| %>
+<% unless target.parent.nil? %>
+  <% parent_name = target.parent.name %>
+<% else %>
+  <% parent_name = "" %>
+<% end %>
+<%= CSV.generate_line([
+  target.course.name,
+  target.name,
+  target.description,
+  parent_name,
+  target.score,
+  target.display,
+  target.created_at,
+  target.updated_at
+]) -%>
+<% end %>

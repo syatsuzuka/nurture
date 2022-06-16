@@ -44,6 +44,11 @@
       <i class="fas fa-upload"></i>
       Target
     <% end %>
+
+    <%= link_to export_course_targets_path(@course), class: "btn btn-success text-light" do %>
+      <i class="fas fa-download"></i>
+      Download CSV
+    <% end %>
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTargetHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
@@ -152,6 +157,11 @@
     <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
       Homework
+    <% end %>
+
+    <%= link_to export_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+      <i class="fas fa-download"></i>
+      Download CSV
     <% end %>
   <% end %>
 

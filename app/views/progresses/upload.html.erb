@@ -1,6 +1,5 @@
 <h1 class="mb-5">Upload Progress data (CSV)</h1>
 
-
 <%= form_tag import_progresses_path(@target.course, @target), multipart: true do %>
   <div class="mt-5 mb-5">
     <div>
@@ -8,7 +7,7 @@
     </div>
     <%= file_field_tag :file %>
 
-    <%= link_to "/sample/progress_sample.csv", class: "btn btn-success text-light" do %>
+    <%= link_to "/sample/nurture_progress_sample.csv", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Sample CSV
     <% end %>

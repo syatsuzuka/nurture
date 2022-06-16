@@ -18,12 +18,6 @@ class ProgressesController < ApplicationController
     end
 
     #===== Data set for graph =====
-
-    # data = @progresses.map do |progress|
-    #   [progress.date.strftime("%F"), progress.score]
-    # end
-    # @data_hash = { name: @target.name, data: data }
-
     @data = []
     data_hash_progress = []
     data_hash_target = []
@@ -92,22 +86,15 @@ class ProgressesController < ApplicationController
   end
 
   def export
-    all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
-    all_progresses.sort_by!(&:date)
-
-    if current_user.role == "tutor"
-      @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }
-    else
-      @progresses = all_progresses.select { |progress| progress.target.course.student_user_id == current_user.id }
-    end
+    @progresses = policy_scope(Progress).select { |progress| progress.target == @target }
+    @progresses.sort_by!(&:date)
 
     authorize Progress
 
     respond_to do |format|
-      # format.csv { send_data @progresses.to_csv, filename: "progresses-#{Date.today}.csv" }
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
-        response.headers['Content-Disposition'] = "attachments; filename=progresses.csv"
+        response.headers['Content-Disposition'] = "attachments; filename=nurture_progresses.csv"
         render "export.csv.erb"
       end
     end
