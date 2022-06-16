@@ -11,9 +11,15 @@
 
 <div class="mt-3">
   <% if current_user.role == "tutor" %>
-    <h1>Student List</h1>
+    <h1>
+      <i class="fas fa-user"></i>
+      Student List
+    </h1>
   <% else %>
-    <h1>Tutor List</h1>
+    <h1>
+      <i class="fas fa-chalkboard-teacher"></i>
+      Tutor List
+    </h1>
   <% end %>
 
   <table class="table mt-5 table-responsive table-hover align-middle">

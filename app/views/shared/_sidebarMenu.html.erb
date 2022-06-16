@@ -32,6 +32,16 @@
         <% end %>
         </h5>
       </li>
+      <li class="nav-item p-3">
+        <h5 class="m-3">
+        <%= link_to knowledge_path, class: "card-link text-dark text-decoration-none" do %>
+          <div <%= @active_knowledge %>>
+            <i class="fas fa-book-open text-secondary me-1"></i>
+            Knowledge
+          </div>
+        <% end %>
+        </h5>
+      </li>
       <% if current_user.role == "student" %>
         <li class="nav-item p-3">
         <h5 class="m-3">

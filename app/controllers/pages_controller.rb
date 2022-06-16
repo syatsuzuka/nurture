@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
   before_action :set_active_dashboard, only: %i[dashboard]
+  before_action :set_active_knowledge, only: %i[knowledge]
   before_action :set_active_aboutus, only: %i[aboutus]
 
   def home
@@ -73,6 +74,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def knowledge
+  end
+
   def aboutus
   end
 
@@ -80,6 +84,10 @@ class PagesController < ApplicationController
 
   def set_active_dashboard
     @active_dashboard = "class=active"
+  end
+
+  def set_active_knowledge
+    @active_knowledge = "class=active"
   end
 
   def set_active_aboutus
