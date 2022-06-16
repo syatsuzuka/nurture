@@ -74,7 +74,6 @@ class User < ApplicationRecord
     )
     target1 = Target.create!(
       name: "Forhand Stroke (%)",
-      fullpath: "/ Forhand Stroke (%)",
       description: "Achieve higher successful rate in Forehand Stroke.",
       score: 40,
       display: true,
@@ -83,7 +82,6 @@ class User < ApplicationRecord
     )
     target2 = Target.create!(
       name: "Backhand Stroke (%)",
-      fullpath: "/ Backhand Stroke (%)",
       description: "Achieve higher successful rate in Backhand Stroke.",
       score: 20,
       display: true,

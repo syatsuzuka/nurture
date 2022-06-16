@@ -11,12 +11,7 @@ class Target < ApplicationRecord
       target = new
       target.name = row["name"]
       target.description = row["description"]
-      if row["parent"].blank?
-        target.fullpath = "/ #{target.name}"
-      else
-        target.parent = Target.find_by(name: row["parent"])
-        target.fullpath = "#{target.parent.fullpath} / #{target.name}"
-      end
+      target.parent = Target.find_by(name: row["parent"])
       target.score = row["score"]
       target.display = row["display"]
       target.course = course
