@@ -2,10 +2,10 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
-      <li class="breadcrumb-item active" aria-current="page"><%= link_to "Students", students_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to "Students", students_path, class: "text-secondary" %></li>
       <li class="breadcrumb-item active" aria-current="page">Student Detail</li>
     <% else %>
-      <li class="breadcrumb-item active" aria-current="page"><%= link_to "Tutors", tutors_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tutors", tutors_path, class: "text-secondary" %></li>
       <li class="breadcrumb-item active" aria-current="page">Tutor Detail</li>
     <% end %>
   </ol>

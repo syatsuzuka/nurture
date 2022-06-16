@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/students/', to: 'users#index', as: :students
   get '/students/:id', to: 'users#show', as: :student
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get '/knowledge', to: 'pages#knowledge', as: :knowledge
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
 
   authenticate :user, ->(user) { user.admin? } do
