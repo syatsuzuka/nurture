@@ -49,27 +49,29 @@ class AssignmentsController < ApplicationController
       @data_hash << { name: target.name, data: data }
     end
 
-    #======= Data Setup for graph (assignment) =======
-    num_days = 100
-    end_date = Date.today
-    start_date = end_date - num_days
-
-    @data_assignment = []
-    data = []
-    @data_flag = false
-
-    (start_date..end_date).each do |date|
-      open_assignments = @assignments.select do |assignment|
-        @data_flag = true
-        a_start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
-        a_end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
-        a_start_date <= date and a_end_date >= date if [0, 1].include? assignment.status
+    #======= Data Setup for Gannt Chart =======
+    gon.courses = []
+    @open_assignments = @assignments.select { |assignment| assignment.status.zero? }
+    @open_assignments.each do |assignment|
+      if current_user.role == "tutor"
+        user_name = assignment.course.student.first_name
+      else
+        user_name = assignment.course.tutor.first_name
       end
-      count = open_assignments.count
-      data << [date.strftime("%F"), count]
-    end
 
-    @data_assignment << { name: "assignment", data: data }
+      start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
+      end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
+
+      gon.courses << {
+        "name" => assignment.course.name,
+        "user_name" => user_name,
+        "homework" => {
+          "title" => assignment.title,
+          "start_date" => (start_date - Date.today).to_i,
+          "end_date" => (end_date - Date.today).to_i
+        }
+      }
+    end
 
     #======= Chatroom =======
     @chatroom = Chatroom.find(params[:course_id])
