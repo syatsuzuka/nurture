@@ -62,13 +62,17 @@ class PagesController < ApplicationController
       else
         user_name = assignment.course.tutor.first_name
       end
+
+      start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
+      end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
+
       gon.courses << {
         "name" => assignment.course.name,
         "user_name" => user_name,
         "homework" => {
           "title" => assignment.title,
-          "start_date" => (assignment.start_date - Date.today).to_i,
-          "end_date" => (assignment.end_date - Date.today).to_i
+          "start_date" => (start_date - Date.today).to_i,
+          "end_date" => (end_date - Date.today).to_i
         }
       }
     end
