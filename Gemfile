@@ -87,3 +87,4 @@ gem 'letter_opener', group: :development
 gem 'chart-js-rails'
 gem 'gon'
 gem 'roo'
+gem 'gemoji'

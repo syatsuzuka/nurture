@@ -3,6 +3,7 @@
     <li class="breadcrumb-item active" aria-current="page">Home</li>
   </ol>
 </nav>
+
 <div class="d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
     <i class="fas fa-home fa-2x mb-2 me-2"></i>
@@ -35,11 +36,17 @@
   <%= render 'alert' %>
 
   <div class="row">
-    <% unless @open_assignments.count == 0 %>
-      <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+    <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+      <% unless @open_assignments.count == 0 %>
         <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
+      <% else %>
+        <div class="card flex-md-row shadow p-4 rounded">
+          (No Homework remained!!
+          <span class="ms-2"><%= emojify(":tada::tada::tada:") %></span>
+          )
+        </div>
+      <% end %>
       </div>
-    <% end %>
   </div>
 
   <% active_courses = @courses.select { |course| course.status == 1 } %>
