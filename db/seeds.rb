@@ -28,11 +28,11 @@ User.destroy_all
 puts '===================================='
 puts "Generating sample users seeds..."
 
-sample_tutor = User.create!(email: ENV['SAMPLE_TUTOR_LOGIN_ID'], nickname: "Sample Tutor", first_name: 'Sample', last_name: 'Tutor', password: ENV['SAMPLE_TUTOR_LOGIN_PASSWORD'], role: 'tutor', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", specialty: "To help users for better learning experiences", avatar_url: "#{Faker::LoremPixel.image}")
-sample_student = User.create!(email: ENV['SAMPLE_STUDENT_LOGIN_ID'], nickname: "Sample Student", first_name: 'Sample', last_name: 'Student', password: ENV['SAMPLE_STUDENT_LOGIN_PASSWORD'], role: 'student', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", interest: "To help users for better learning experiences", avatar_url: "#{Faker::LoremPixel.image}")
+sample_tutor = User.create!(email: ENV['SAMPLE_TUTOR_LOGIN_ID'], nickname: "Sample Tutor", first_name: 'Sample', last_name: 'Tutor', password: ENV['SAMPLE_TUTOR_LOGIN_PASSWORD'], role: 'tutor', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", specialty: "To help users for better learning experiences")
+sample_student = User.create!(email: ENV['SAMPLE_STUDENT_LOGIN_ID'], nickname: "Sample Student", first_name: 'Sample', last_name: 'Student', password: ENV['SAMPLE_STUDENT_LOGIN_PASSWORD'], role: 'student', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", interest: "To help users for better learning experiences")
 
-demo_tutor = User.create!(email: ENV['DEMO_TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'], role: 'tutor', avatar_url: "#{Faker::LoremPixel.image}")
-demo_student = User.create!(email: ENV['DEMO_STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'], role: 'student', avatar_url: "#{Faker::LoremPixel.image}")
+demo_tutor = User.create!(email: ENV['DEMO_TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'], role: 'tutor')
+demo_student = User.create!(email: ENV['DEMO_STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'], role: 'student')
 
 puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
