@@ -130,5 +130,3 @@ progress_2217 = Progress.create!(date: "2022-04-01", score: target_22.score + 1.
 progress_2218 = Progress.create!(date: "2022-05-01", score: target_22.score + 2.0 + rand(8)-4, target_id: target_22.id, comment: "the score in championship league")
 
 puts "Generated #{Progress.all.count} Progresses successfully"
-
-puts "Remember :#{Faker::Marketing.buzzwords}"
