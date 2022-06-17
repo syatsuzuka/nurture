@@ -41,8 +41,14 @@
         <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
       <% else %>
         <div class="card flex-md-row shadow p-4 rounded">
-          (No Homework remained!!
-          <span class="ms-2"><%= emojify(":tada::tada::tada:") %></span>
+          (No Homework remained
+            <span class="ms-2">
+              <% if current_user.role == "tutor" %>
+                <%= emojify(":thinking:") %>
+              <% else %>
+                <%= emojify(":tada::tada::tada:") %>
+              <% end %>
+            </span>
           )
         </div>
       <% end %>
