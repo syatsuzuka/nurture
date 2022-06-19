@@ -1,13 +1,26 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def new
-
+    @post = Post.new()
+    authorize @post
   end
 
   def create
+    @post = Post.new(post_params)
+    @post.user = current_user
+    @post.post_board_id = 1
+    if @post.save
+      redirect_to @post
+
+    else
+      render :new
+    end
+    authorize @post
   end
 
   def show
+    @post = Post.find(params[:id])
+    authorize @post
   end
 
   def index
@@ -23,5 +36,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end
