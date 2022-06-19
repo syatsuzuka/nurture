@@ -1,13 +1,14 @@
-class MessagePolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+     def resolve
+       true
+
+     end
   end
 
-  def create?
+  def index?
     true
   end
-
 end
