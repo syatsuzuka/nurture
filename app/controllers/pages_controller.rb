@@ -79,7 +79,7 @@ class PagesController < ApplicationController
   end
 
   def knowledge
-
+    @posts = Post.all
   end
 
   def aboutus
