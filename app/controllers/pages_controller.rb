@@ -79,6 +79,7 @@ class PagesController < ApplicationController
   end
 
   def knowledge
+
   end
 
   def aboutus

@@ -4,4 +4,5 @@
   <% @posts.each do |p| %>
     <h2> <%= p.title %> </h2>
     <p><%= p.content %></p>
+    <%= link_to "View Post", "posts/#{p.id}" %>
   <% end %>
