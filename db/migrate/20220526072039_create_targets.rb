@@ -5,7 +5,6 @@ class CreateTargets < ActiveRecord::Migration[6.1]
       t.text :description
       t.float :score
       t.references :course, null: false, foreign_key: true
-
       t.timestamps
     end
   end

@@ -1,0 +1,7 @@
+<%= simple_form_for [@assignment_templates_set] do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.input :category, required: true %>
+  <%= f.input :visible %>
+  <%= f.submit 'Save', class: "btn btn-success text-light" %>
+  <%= link_to 'Cancel', knowledge_path, class: 'btn btn-secondary text-light'%>
+<% end %>

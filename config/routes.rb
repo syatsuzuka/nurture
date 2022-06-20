@@ -44,4 +44,7 @@ Rails.application.routes.draw do
   resources :tutors, only: %i[index show] do
     resources :reviews, only: %i[new create edit update destroy]
   end
+
+  resources :target_templates_sets
+  resources :assignment_templates_sets
 end
