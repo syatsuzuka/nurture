@@ -7,12 +7,14 @@ class PostPolicy < ApplicationPolicy
 
      end
   end
+
   def create?
     true
   end
   def show?
     true
   end
+
   def new?
     true
   end
@@ -21,9 +23,14 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    true
+  end
+
   def index?
     true
   end
+
   def destroy?
     true
   end
