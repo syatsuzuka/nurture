@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb d-flex align-items-center">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to "Template", template_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page">Target Template</li>
+  </ol>
+</nav>
+
+<h1><i class="fas fa-bullseye me-3"></i>Target Template - <%= @target_templates_set.name %>
+  <%= link_to new_target_templates_set_target_template_path(@target_templates_set), class: "btn btn-success text-light ms-3" do %>
+    <i class="fas fa-plus"></i>
+    Target Template
+  <% end %>
+</h1>
+
+<% unless @target_templates.count == 0 %>
+  <table class="table table-responsive table-hover align-middle">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Score</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @target_templates.each_with_index do |target_template, index| %>
+        <tr>
+          <td scope="row"><%= index + 1 %></td>
+          <td>
+            <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template), class: "btn btn-outline-success" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
+          <td><%= target_template.name %></td>
+          <td><%= target_template.description %></td>
+          <td><%= target_template.score %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <span class="ms-5 text-secondary">No data</span>
+<% end %>

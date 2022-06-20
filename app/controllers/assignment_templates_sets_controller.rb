@@ -20,6 +20,29 @@ class AssignmentTemplatesSetsController < ApplicationController
     end
   end
 
+  def edit
+    @assignment_templates_set.user = current_user
+    authorize @assignment_templates_set
+  end
+
+  def update
+    @assignment_templates_set.user = current_user
+    authorize @assignment_templates_set
+
+    if @assignment_templates_set.update(assignment_templates_sets_params)
+      redirect_to template_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    authorize @assignment_templates_set
+    @assignment_templates_set.destroy
+
+    redirect_to template_path
+  end
+
   private
 
   def assignment_templates_sets_params
