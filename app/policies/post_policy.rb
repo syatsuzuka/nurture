@@ -17,6 +17,10 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    true
+  end
+
   def index?
     true
   end
