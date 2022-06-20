@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  # get 'like_counts/add_like'
 
-  # get 'comments/create'
-  # get 'comments/index'
-  # get 'comments/edit'
-  # get 'comments/destroy'
-  # get 'posts/new'
-  # get 'posts/create'
-  # get 'posts/show'
-  # get 'posts/index'
-  # get 'posts/edit'
-  # get 'posts/update'
-  # get 'posts/destroy'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'pages#home'
@@ -38,7 +26,6 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   get '/knowledge', to: 'pages#knowledge', as: :knowledge
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
-  # get 'posts/new', to: 'posts#new'
   authenticate :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
   end
