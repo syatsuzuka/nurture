@@ -144,3 +144,13 @@ puts 'Generating Posts...'
 end
 
 puts "Generated #{Post.all.count} Posts successfully"
+
+puts '===================================='
+puts 'Generating Comments...'
+30.times do
+  Comment.create!(content: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 3),
+                  user: User.find(rand(1...4)),
+                  post: Post.find(rand(1...10)))
+end
+
+puts "Generated #{Comment.all.count} Comments successfully"
