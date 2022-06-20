@@ -14,7 +14,7 @@ class AssignmentTemplatesSetsController < ApplicationController
     authorize @assignment_templates_set
 
     if @assignment_templates_set.save
-      redirect_to knowledge_path
+      redirect_to template_path
     else
       render :new
     end

@@ -32,6 +32,18 @@
         <% end %>
         </h5>
       </li>
+      <% if current_user.role == "tutor" %>
+        <li class="nav-item p-3">
+          <h5 class="m-3">
+          <%= link_to template_path, class: "card-link text-dark text-decoration-none" do %>
+            <div <%= @active_template %>>
+              <i class="fas fa-sticky-note text-secondary me-1"></i>
+              Template
+            </div>
+          <% end %>
+          </h5>
+        </li>
+      <% end %>
       <li class="nav-item p-3">
         <h5 class="m-3">
         <%= link_to knowledge_path, class: "card-link text-dark text-decoration-none" do %>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/students/', to: 'users#index', as: :students
   get '/students/:id', to: 'users#show', as: :student
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get '/template', to: 'pages#template', as: :template
   get '/knowledge', to: 'pages#knowledge', as: :knowledge
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
 
@@ -45,6 +46,10 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create edit update destroy]
   end
 
-  resources :target_templates_sets
-  resources :assignment_templates_sets
+  resources :target_templates_sets do
+    resources :target_templates
+  end
+  resources :assignment_templates_sets do
+    resources :assignment_templates
+  end
 end

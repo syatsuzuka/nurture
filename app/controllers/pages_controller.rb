@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
   before_action :set_active_dashboard, only: %i[dashboard]
+  before_action :set_active_template, only: %i[template]
   before_action :set_active_knowledge, only: %i[knowledge]
   before_action :set_active_aboutus, only: %i[aboutus]
 
@@ -78,6 +79,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def template
+    @target_templates_sets = policy_scope(TargetTemplatesSet)
+    @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+  end
+
   def knowledge
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
@@ -90,6 +96,10 @@ class PagesController < ApplicationController
 
   def set_active_dashboard
     @active_dashboard = "class=active"
+  end
+
+  def set_active_template
+    @active_template = "class=active"
   end
 
   def set_active_knowledge

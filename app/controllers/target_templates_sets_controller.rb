@@ -14,7 +14,7 @@ class TargetTemplatesSetsController < ApplicationController
     authorize @target_templates_set
 
     if @target_templates_set.save
-      redirect_to knowledge_path
+      redirect_to template_path
     else
       render :new
     end

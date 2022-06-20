@@ -1,0 +1,148 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page">Template</li>
+  </ol>
+</nav>
+
+<div class="mt-3">
+  <h1>
+    <i class="fas fa-sticky-note"></i>
+    Template
+  </h1>
+</div>
+
+<div class="mt-5">
+  <h3>
+    <i class="fas fa-bullseye me-3"></i>
+    Target Template
+    <% if current_user.role == "tutor" %>
+      <%= link_to new_target_templates_set_path, class: "btn btn-success text-light ms-3" do %>
+        <i class="fas fa-plus"></i>
+        Target Template
+      <% end %>
+    <% end %>
+  </h3>
+</div>
+
+<% unless @target_templates_sets.count == 0 %>
+  <table class="table table-responsive table-hover align-middle">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Edit</th>
+        <% end %>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Owner</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Delete</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @target_templates_sets.each_with_index do |target_templates_set, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <% if target_templates_set.user == current_user %>
+                <%= link_to edit_target_templates_set_path(target_templates_set), class: "btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= target_templates_set.name %>
+          </td>
+          <td><%= target_templates_set.category %></td>
+          <td>
+            <%= link_to tutor_path(target_templates_set.user) do %>
+              <%= target_templates_set.user.first_name %> <%= target_templates_set.user.last_name %>
+            <% end %>
+          </td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <% if target_templates_set.user == current_user %>
+                <%= link_to target_templates_set_path(target_templates_set), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  (No Templates for Target is registered)
+<% end %>
+
+
+<div class="mt-5">
+  <h3>
+    <i class="fas fa-tasks me-3"></i>
+    Homework Template
+    <% if current_user.role == "tutor" %>
+      <%= link_to new_assignment_templates_set_path, class: "btn btn-success text-light ms-3" do %>
+        <i class="fas fa-plus"></i>
+        Homework Template
+      <% end %>
+    <% end %>
+  </h3>
+</div>
+
+<% unless @assignment_templates_sets.count == 0 %>
+  <table class="table table-responsive table-hover align-middle">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Edit</th>
+        <% end %>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Owner</th>
+        <% if current_user.role == "tutor" %>
+          <th scope="col">Delete</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @assignment_templates_sets.each_with_index do |assignment_templates_set, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <% if assignment_templates_set.user == current_user %>
+                <%= link_to edit_assignment_templates_set_path(assignment_templates_set), class: "btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          <td><%= assignment_templates_set.name %></td>
+          <td><%= assignment_templates_set.category %></td>
+          <td>
+            <%= link_to tutor_path(assignment_templates_set.user) do %>
+              <%= assignment_templates_set.user.first_name %> <%= assignment_templates_set.user.last_name %>
+            <% end %>
+          </td>
+          <% if current_user.role == "tutor" %>
+            <td>
+              <% if assignment_templates_set.user == current_user %>
+                <%= link_to assignment_templates_set_path(assignment_templates_set), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  (No Templates for Target is registered)
+<% end %>
