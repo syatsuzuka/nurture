@@ -11,15 +11,18 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    @comments = @post.comments
   end
 
   def edit
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    @comment.delete
+    authorize @comment
+    @comment.destroy
+    redirect_to @post
   end
 end
 

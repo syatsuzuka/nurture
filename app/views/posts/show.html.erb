@@ -8,12 +8,16 @@
 <%= link_to 'delete', post_path(@post), confirm?: 'Are you sure?', method: :delete %>
 <%= link_to 'edit', edit_post_path(@post)%>
 
-<%= simple_form_for([@post, @post.comments.create])   do |f| %>
-  <%= f.input :content %>
-  <%= f.button :submit %>
-<% end %>
+
 
 <h2>Comments...</h2>
 <% @post.comments.each  do |c| %>
   <p><%= c.content %></p>
+  <%# <%= raise %> %>
+  <%= link_to 'delete', post_comment_path(c.post, c), method: :delete %>
+
+<% end %>
+<%= simple_form_for([@post, @post.comments.create])   do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
 <% end %>
