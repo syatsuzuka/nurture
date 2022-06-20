@@ -20,6 +20,29 @@ class TargetTemplatesSetsController < ApplicationController
     end
   end
 
+  def edit
+    @target_templates_set.user = current_user
+    authorize @target_templates_set
+  end
+
+  def update
+    @target_templates_set.user = current_user
+    authorize @target_templates_set
+
+    if @target_templates_set.update(target_templates_sets_params)
+      redirect_to template_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    authorize @target_templates_set
+    @target_templates_set.destroy
+
+    redirect_to template_path
+  end
+
   private
 
   def target_templates_sets_params
