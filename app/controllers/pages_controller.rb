@@ -79,6 +79,7 @@ class PagesController < ApplicationController
   end
 
   def knowledge
+    @target_templates_sets = policy_scope(TargetTemplatesSet)
   end
 
   def aboutus

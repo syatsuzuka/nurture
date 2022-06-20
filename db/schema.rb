@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_065232) do
+ActiveRecord::Schema.define(version: 2022_06_20_035711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,26 @@ ActiveRecord::Schema.define(version: 2022_06_16_065232) do
     t.index ["tutor_id"], name: "index_reviews_on_tutor_id"
   end
 
+  create_table "target_templates", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.float "score", null: false
+    t.bigint "target_templates_set_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["target_templates_set_id"], name: "index_target_templates_on_target_templates_set_id"
+  end
+
+  create_table "target_templates_sets", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category", null: false
+    t.boolean "visible"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_target_templates_sets_on_user_id"
+  end
+
   create_table "targets", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -207,6 +227,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_065232) do
   add_foreign_key "progresses", "targets"
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "tutor_id"
+  add_foreign_key "target_templates", "target_templates_sets"
+  add_foreign_key "target_templates_sets", "users"
   add_foreign_key "targets", "courses"
   add_foreign_key "targets", "targets", column: "parent_id"
 end
