@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_035711) do
+ActiveRecord::Schema.define(version: 2022_06_20_073209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,27 @@ ActiveRecord::Schema.define(version: 2022_06_20_035711) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "assignment_templates", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "instruction", null: false
+    t.string "instruction_url"
+    t.text "checkpoint", null: false
+    t.bigint "assignment_templates_set_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assignment_templates_set_id"], name: "index_assignment_templates_on_assignment_templates_set_id"
+  end
+
+  create_table "assignment_templates_sets", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category", null: false
+    t.boolean "visible"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_assignment_templates_sets_on_user_id"
   end
 
   create_table "assignments", force: :cascade do |t|
@@ -221,6 +242,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_035711) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assignment_templates", "assignment_templates_sets"
+  add_foreign_key "assignment_templates_sets", "users"
   add_foreign_key "assignments", "courses"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

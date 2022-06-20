@@ -46,5 +46,5 @@ Rails.application.routes.draw do
   end
 
   resources :target_templates_sets
-  resources :homework_templates_sets
+  resources :assignment_templates_sets
 end
