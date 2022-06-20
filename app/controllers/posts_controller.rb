@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.post_board_id = 1
+    # @post.post_board_id = 1
     if @post.save
       redirect_to @post
 
@@ -36,6 +36,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+
+    @post = Post.find(params[:id])
+    authorize @post
+    @post.destroy
+    redirect_to '/knowledge'
   end
 
   private
