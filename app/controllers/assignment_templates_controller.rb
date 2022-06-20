@@ -50,7 +50,13 @@ class AssignmentTemplatesController < ApplicationController
   private
 
   def assignment_templates_params
-    params.require(:assignment_template).permit(:title, :instruction, :instruction_url, :checkpoint, :assignment_templates_set)
+    params.require(:assignment_template).permit(
+      :title,
+      :instruction,
+      :instruction_url,
+      :checkpoint,
+      :assignment_templates_set
+    )
   end
 
   def set_assignment_templates_set
