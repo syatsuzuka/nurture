@@ -1,0 +1,21 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<%= link_to "New Post", "posts/new" %>
+  <% @posts.each do |p| %>
+    <div class="card mb-3" style="max-width: auto;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= p.title %></h5>
+            <p class="card-text"><%= p.content %></p>
+            <p class="card-text"><small class="text-muted"><%="Created #{time_ago_in_words(p.created_at)} ago"%></small></p>
+            <%= link_to "View Post", "posts/#{p.id}" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>

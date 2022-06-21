@@ -1,0 +1,8 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title, wrapper_html: {class: "col-6 " }%>
+
+  <%= f.input :content, as: :text, wrapper_html: {class: "col-6 " }  %>
+  <%= f.submit %>
+  <% end %>

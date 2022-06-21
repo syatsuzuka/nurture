@@ -24,7 +24,10 @@ puts 'Cleaning up courses...'
 Course.destroy_all
 puts 'Cleaning up users...'
 User.destroy_all
-
+puts 'Cleaning up posts...'
+Post.destroy_all
+puts 'Cleaning up comments...'
+Comment.destroy_all
 puts '===================================='
 puts "Generating sample users seeds..."
 
@@ -131,4 +134,23 @@ progress_2218 = Progress.create!(date: "2022-05-01", score: target_22.score + 2.
 
 puts "Generated #{Progress.all.count} Progresses successfully"
 
-puts "Remember :#{Faker::Marketing.buzzwords}"
+puts '===================================='
+puts 'Generating Posts...'
+
+10.times do
+  Post.create!(title: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 3),
+               content: Faker::Lorem.paragraph_by_chars(number: 500),
+               user: User.find(rand(1...4)))
+end
+
+puts "Generated #{Post.all.count} Posts successfully"
+
+puts '===================================='
+puts 'Generating Comments...'
+30.times do
+  Comment.create!(content: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 3),
+                  user: User.find(rand(1...4)),
+                  post: Post.find(rand(1...10)))
+end
+
+puts "Generated #{Comment.all.count} Comments successfully"

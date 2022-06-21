@@ -1,4 +1,4 @@
-class MessagePolicy < ApplicationPolicy
+class CommentPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -10,4 +10,7 @@ class MessagePolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    true
+  end
 end

@@ -143,6 +143,16 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -153,6 +163,14 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
     t.integer "status"
   end
 
+  create_table "like_counts", force: :cascade do |t|
+    t.integer "likes", default: 0
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_like_counts_on_post_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -161,6 +179,15 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "progresses", force: :cascade do |t|
@@ -245,8 +272,12 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
   add_foreign_key "assignment_templates", "assignment_templates_sets"
   add_foreign_key "assignment_templates_sets", "users"
   add_foreign_key "assignments", "courses"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "like_counts", "posts"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "progresses", "targets"
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "tutor_id"
