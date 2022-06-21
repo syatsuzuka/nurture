@@ -21,13 +21,19 @@
 
 <% @courses.each do |course| %>
   <% if course.status == 0 %>
-    <div class="alert alert-success mt-5" role="alert">
-      "<%= course.name %>" by "<%= link_to tutor_path(course.tutor) do %>
-        <%= course.tutor.first_name %> <%= course.tutor.last_name %>
-      <% end %>
-      " is waiting for your accept.
-      (<%= link_to "Accept now", accept_course_path(course) %>)
-    </div>
+    <% if current_user.role == "student" %>
+      <div class="alert alert-success mt-5" role="alert">
+        Course "<%= course.name %>" created by "<%= link_to tutor_path(course.tutor) do %>
+          <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+        <% end %>
+        " is waiting for your accept.
+        (<%= link_to "Accept now", accept_course_path(course) %>)
+      </div>
+    <% else %>
+      <div class="alert alert-success mt-5" role="alert">
+        Newly created "<%= course.name %>" is waiting for the accept by <%= course.student.nickname %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 
