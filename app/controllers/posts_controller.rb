@@ -23,11 +23,11 @@ class PostsController < ApplicationController
     authorize @post
   end
 
-  def index
-    @posts = Post.all
-    authorize @posts
-    skip_policy_scope
-  end
+  # def index
+  #   @pagy, @posts = pagy(Post.order(created_at: :desc))
+  #   authorize @posts
+  #   skip_policy_scope
+  # end
 
   def edit
     @post = Post.find(params[:id])

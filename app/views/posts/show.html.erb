@@ -2,22 +2,22 @@
 <%= add_image(@post.user, 'avatar.png',class: "avatar-large",
               crop: :thumb, width:100, height:100) %>
 </h2>
-  <%= @post.content %>
-<ul class= "list-inline">
-  <%= link_to 'back', '/knowledge'  %>
-  <%= link_to 'delete', post_path(@post), confirm?: 'Are you sure?', method: :delete, class: "btn btn-secondary" %>
-  <%= link_to 'edit', edit_post_path(@post)%>
-</ul>
 
+    <%= @post.content %>
+  <ul class= "list-inline">
+    <%= link_to 'back', '/knowledge'  %>
+    <%= link_to 'delete', post_path(@post), confirm?: 'Are you sure?', method: :delete, class: "btn btn-secondary" %>
+    <%= link_to 'edit', edit_post_path(@post)%>
+  </ul>
 
-  <h3>Comments (<%= @post.comments.count %>)</h2>
+    <h3>Comments (<%= @post.comments.count %>)</h2>
 
-  <% @post.comments.each  do |c| %>
-    <p><%= c.content %></p>
-    <%= link_to 'delete', post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" %>
-  <% end %>
+    <% @post.comments.each  do |c| %>
+      <p><%= c.content %></p>
+      <%= link_to 'delete', post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" %>
+    <% end %>
 
-  <%= simple_form_for([@post, @post.comments.create])   do |f| %>
-    <%= f.input :content, as: :text, wrapper_html: {class: "col-6 " } %>
-    <%= f.button :submit, class: "btn btn-success"%>
-  <% end %>
+    <%= simple_form_for([@post, @post.comments.create])   do |f| %>
+      <%= f.input :content, as: :text, wrapper_html: {class: "col-6 " } %>
+      <%= f.button :submit, class: "btn btn-success"%>
+    <% end %>

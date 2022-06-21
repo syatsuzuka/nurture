@@ -1,4 +1,7 @@
 module ApplicationHelper
+  #For serverside rendering of pagination
+  include Pagy::Frontend
+
   def add_image(course, filename, options = {})
     if defined? course.photo.key
       cl_image_tag(course.photo.key, options)
