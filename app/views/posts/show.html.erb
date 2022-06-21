@@ -10,8 +10,10 @@
     <%= link_to 'edit', edit_post_path(@post)%>
   </ul>
 
-    <h3>Comments (<%= @post.comments.count %>)</h2>
-
+    <h3>Comments  (<%= @post.comments.count %>) <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
+    <i class="fas fa-bars border p-2 rounded"></i>
+  </span></h2>
+  <div class="collapse" id="navbarHeader">
     <% @post.comments.each  do |c| %>
       <p><%= c.content %></p>
       <%= link_to 'delete', post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" %>
@@ -21,3 +23,4 @@
       <%= f.input :content, as: :text, wrapper_html: {class: "col-6 " } %>
       <%= f.button :submit, class: "btn btn-success"%>
     <% end %>
+  </div>
