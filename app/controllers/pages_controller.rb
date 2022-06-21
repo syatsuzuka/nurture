@@ -15,18 +15,22 @@ class PagesController < ApplicationController
 
   def dashboard
     #======= PGsearch =======
-    @courses =
+    courses =
       if params[:q].present?
         policy_scope(Course).search_by_name_and_description(params[:q])
       else
         policy_scope(Course)
       end
 
-    authorize @courses
+    @courses = courses.select do |course|
+      course.status == 1
+    end
 
     #======= Collecting done status assignments for toast =======
     if current_user.role == "tutor"
-      assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
+      assignments = policy_scope(Assignment).select do |assignment|
+        assignment.course.tutor_user_id == current_user.id
+      end
     else
       assignments = policy_scope(Assignment).select do |assignment|
         assignment.course.student_user_id == current_user.id
