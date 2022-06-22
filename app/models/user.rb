@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :student_reviews, class_name: "Review", foreign_key: :student_id, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :target_templates_sets, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true

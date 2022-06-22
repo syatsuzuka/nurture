@@ -1,0 +1,22 @@
+
+<%= link_to "New Post", "posts/new", class: "btn btn-success" %>
+ <%== pagy_bootstrap_nav(@pagy) %>
+  <% @posts.each do |p| %>
+    <div class="card mb-3" style="max-width: auto;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= add_image(p, 'No image.png', class: '', width:300, height:200) %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= p.title %></h5>
+            <p class="card-text"><%= truncate(p.content, length: 100, separator: ' ') %></p>
+            <p class="card-text"><small class="text-muted"><%="Created #{time_ago_in_words(p.created_at)} ago by #{p.user.first_name}"%></small>
+            <%= add_image(p.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %></p>
+            <%= link_to "View Post", "posts/#{p.id}", class:"btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+ <%== pagy_bootstrap_nav(@pagy) %>

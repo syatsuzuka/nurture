@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # include Pundit
   include Pundit::Authorization
-
+  # For post pagination
+  include Pagy::Backend
   # Pundit: white-list approach.
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :verify_authorized, except: %i[index all upload import], unless: :skip_pundit?

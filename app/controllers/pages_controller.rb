@@ -91,6 +91,8 @@ class PagesController < ApplicationController
   def knowledge
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+    # @posts = Post.all
+    @pagy, @posts = pagy(Post.order(created_at: :desc))
   end
 
   def aboutus

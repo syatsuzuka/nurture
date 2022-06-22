@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'pages#home'
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   get '/template', to: 'pages#template', as: :template
   get '/knowledge', to: 'pages#knowledge', as: :knowledge
   get '/aboutus', to: 'pages#aboutus', as: :aboutus
-
   authenticate :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
   end
@@ -49,7 +49,12 @@ Rails.application.routes.draw do
   resources :target_templates_sets do
     resources :target_templates
   end
+
   resources :assignment_templates_sets do
     resources :assignment_templates
+  end
+
+  resources :posts do
+    resources :comments
   end
 end
