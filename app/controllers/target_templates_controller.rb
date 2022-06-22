@@ -115,7 +115,9 @@ class TargetTemplatesController < ApplicationController
     if @target_template.nil?
       target_template_options = TargetTemplate.where(target_templates_set: @target_templates_set).order(:name)
     else
-      target_template_options = TargetTemplate.where(target_templates_set: @target_templates_set).where.not(id: @target_template.id).order(:name)
+      target_template_options = TargetTemplate.where(
+        target_templates_set: @target_templates_set
+      ).where.not(id: @target_template.id).order(:name)
     end
 
     @target_template_options = target_template_options.select do |target_template|
