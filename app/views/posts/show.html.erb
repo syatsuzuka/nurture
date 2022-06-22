@@ -7,19 +7,18 @@
     <li class="breadcrumb-item active" aria-current="page">User Post</li>
   </ol>
 </nav>
+
 <h2><%= @post.title %>
-<%= add_image(@post.user, 'avatar.png',class: "avatar-large",
+  <span><%= add_image(@post.user, 'avatar.png',class: "avatar-large ml-auto",
               crop: :thumb, width:100, height:100) %>
+  </span>
 </h2>
   <%# Links for edit new post and back to index %>
   <ul class= "list-inline">
-    <%= link_to '/knowledge', class:"btn btn-secondary"  do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
-    <%= link_to  post_path(@post), confirm?: 'Are you sure?', method: :delete, class:"btn btn-secondary" do%>
+    <%= link_to  post_path(@post), method: :delete, class:"btn btn-secondary" do%>
       <i class="fas fa-trash"></i>
     <% end %>
-    <%= link_to edit_post_path(@post), class:"btn btn-secondary" do%>
+    <%= link_to edit_post_path(@post), class:"btn btn-success" do%>
       <i class="fas fa-edit"></i>
     <% end %>
   </ul>
@@ -36,11 +35,14 @@
 
     <h3>Comments  (<%= @post.comments.count %>) <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle chatroom">
     <i class="fas fa-bars border p-2 rounded"></i>
-  </span></h2>
+  </span></h3>
+
   <div class="collapse" id="navbarHeader">
     <% @post.comments.each  do |c| %>
       <p><%= c.content %></p>
-      <%= link_to 'delete', post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" %>
+      <%= link_to post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" do%>
+        <i class="fas fa-trash"></i>
+      <% end %>
     <% end %>
 
     <%= simple_form_for([@post, @post.comments.create])   do |f| %>
