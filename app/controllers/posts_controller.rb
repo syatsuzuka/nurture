@@ -10,8 +10,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     # @post.post_board_id = 1
     if @post.save
-      redirect_to @post
-
+      redirect_to post_path(@post)
     else
       render :new
     end
