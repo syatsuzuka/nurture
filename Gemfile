@@ -42,6 +42,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'rubocop'
   gem 'rubocop-discourse'
+  gem "rails-erd"
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
