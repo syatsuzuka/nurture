@@ -1,5 +1,6 @@
 <%= simple_form_for [@target_templates_set, @target_template] do |f| %>
   <%= f.input :name, required: true %>
+  <%= f.association :parent, collection: @target_template_options %>
   <%= f.input :description, required: true %>
   <%= f.input :score, required: true %>
   <%= f.submit 'Save', class: "btn btn-success text-light" %>

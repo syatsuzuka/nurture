@@ -31,7 +31,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Edit</th>
-        <th scope="col">Name</th>
+        <th scope="col">Name (Fullpath)</th>
         <th scope="col">Description</th>
         <th scope="col">Score</th>
         <th scope="col">Delete</th>
@@ -49,7 +49,25 @@
               <% end %>
             <% end %>
           </td>
-          <td><%= target_template.name %></td>
+          <td>
+            <% element = target_template %>
+            <% parentpath = "" %>
+            <% until element.parent.nil? %>
+              <% element = element.parent %>
+              <% if element.parent.nil? %>
+                <% parentpath = "#{element.name} #{parentpath}" %>
+              <% else %>
+                <% parentpath = "> #{element.name} #{parentpath}" %>
+              <% end %>
+            <% end %>
+            <span class="text-secondary">
+              <%= parentpath %>
+              <% unless parentpath.blank? %>
+                >
+              <% end %>
+            </span>
+            <strong class="text-dark"><%= target_template.name %></strong>
+          </td>
           <td><%= target_template.description %></td>
           <td><%= target_template.score %></td>
           <% if current_user.role == "tutor" %>

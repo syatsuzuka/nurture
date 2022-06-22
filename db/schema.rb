@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_073209) do
+ActiveRecord::Schema.define(version: 2022_06_22_081449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,6 +219,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
     t.bigint "target_templates_set_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_target_templates_on_parent_id"
     t.index ["target_templates_set_id"], name: "index_target_templates_on_target_templates_set_id"
   end
 
@@ -281,6 +283,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_073209) do
   add_foreign_key "progresses", "targets"
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "tutor_id"
+  add_foreign_key "target_templates", "target_templates", column: "parent_id"
   add_foreign_key "target_templates", "target_templates_sets"
   add_foreign_key "target_templates_sets", "users"
   add_foreign_key "targets", "courses"
