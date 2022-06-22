@@ -61,10 +61,9 @@
       </div>
   </div>
 
-  <% active_courses = @courses.select { |course| course.status == 1 } %>
-  <% unless active_courses.count == 0 %>
+  <% unless @courses.count == 0 %>
     <div class="row">
-      <% active_courses.each_with_index do |course, index| %>
+      <% @courses.each_with_index do |course, index| %>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
           <div class="card h-100 shadow p-4 rounded">
             <%= line_chart  @data[index],
