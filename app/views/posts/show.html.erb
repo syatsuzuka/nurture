@@ -1,6 +1,12 @@
 
 
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item"><%= link_to "Knowledge", knowledge_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page">User Post</li>
+  </ol>
+</nav>
 <h2><%= @post.title %>
 <%= add_image(@post.user, 'avatar.png',class: "avatar-large",
               crop: :thumb, width:100, height:100) %>
