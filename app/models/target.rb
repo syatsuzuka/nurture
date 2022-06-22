@@ -11,7 +11,7 @@ class Target < ApplicationRecord
       target = new
       target.name = row["name"]
       target.description = row["description"]
-      target.parent = Target.find_by(name: row["parent"])
+      target.parent = Target.find_by(name: row["parent"], course_id: course.id)
       target.score = row["score"]
       target.display = row["display"]
       target.course = course

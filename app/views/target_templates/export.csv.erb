@@ -1,10 +1,16 @@
-<% headers = ['target_templates_set.name', 'name', 'description', 'score', 'created_at', 'updated_at'] %>
+<% headers = ['target_templates_set.name', 'name', 'description', 'parent', 'score', 'created_at', 'updated_at'] %>
 <%= CSV.generate_line headers -%>
 <% @target_templates.each do |target_template| %>
+<% unless target_template.parent.nil? %>
+  <% parent_name = target_template.parent.name %>
+<% else %>
+  <% parent_name = "" %>
+<% end %>
 <%= CSV.generate_line([
   target_template.target_templates_set.name,
   target_template.name,
   target_template.description,
+  parent_name,
   target_template.score,
   target_template.created_at,
   target_template.updated_at
