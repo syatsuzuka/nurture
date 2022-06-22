@@ -1,8 +1,8 @@
 <%= simple_form_for @post do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :title, wrapper_html: {class: "col-6 " }%>
-
-  <%= f.input :content, as: :text, wrapper_html: {class: "col-6 " }  %>
-  <%= f.submit %>
+  <%= f.input :title, wrapper_html: {class: "offset-2 col-6 " }%>
+  <%= f.input :photo, as: :file, wrapper_html: {class: "offset-2 col-6 " } %>
+  <%= f.input :content, as: :text, wrapper_html: {class: "offset-2 col-6 " }  %>
+  <%= f.submit class: "btn btn-success offset-2  "  %>
   <% end %>

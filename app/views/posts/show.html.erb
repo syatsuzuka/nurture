@@ -18,6 +18,13 @@
     <% end %>
   </ul>
 
+
+  <% unless @post.photo.key.nil? %>
+     <div class="img-container">
+        <%= cl_image_tag @post.photo.key, width: 0.5, crop: :fill %>
+     </div>
+     <% end %>
+
     <%= @post.content %>
 
 
