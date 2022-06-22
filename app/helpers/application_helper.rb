@@ -1,5 +1,5 @@
 module ApplicationHelper
-  #For serverside rendering of pagination
+  # For serverside rendering of pagination
   include Pagy::Frontend
 
   def add_image(course, filename, options = {})

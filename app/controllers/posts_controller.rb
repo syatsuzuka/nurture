@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def new
-    @post = Post.new()
+    @post = Post.new
     authorize @post
   end
 
@@ -46,7 +46,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-
     @post = Post.find(params[:id])
     authorize @post
     @post.destroy
