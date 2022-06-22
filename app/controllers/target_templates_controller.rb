@@ -4,7 +4,9 @@ class TargetTemplatesController < ApplicationController
   before_action :set_target_templates_set, only: %i[index show new create edit update destroy upload import export]
 
   def index
-    @target_templates = policy_scope(TargetTemplate).select { |target_template| target_template.target_templates_set == @target_templates_set }
+    @target_templates = policy_scope(TargetTemplate).select do |target_template|
+      target_template.target_templates_set == @target_templates_set
+    end
   end
 
   def new
@@ -58,7 +60,9 @@ class TargetTemplatesController < ApplicationController
   end
 
   def export
-    @target_templates = policy_scope(TargetTemplate).select { |target_template| target_template.target_templates_set == @target_templates_set }
+    @target_templates = policy_scope(TargetTemplate).select do |target_template|
+      target_template.target_templates_set == @target_templates_set
+    end
     @target_templates.sort_by!(&:name)
 
     authorize Target
