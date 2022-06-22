@@ -1,10 +1,10 @@
 class TargetTemplatesController < ApplicationController
   before_action :target_templates_params, only: %i[create update]
   before_action :set_target_template, only: %i[show edit update destroy]
-  before_action :set_target_templates_set, only: %i[index show new create edit update destroy]
+  before_action :set_target_templates_set, only: %i[index show new create edit update destroy upload import export]
 
   def index
-    @target_templates = policy_scope(TargetTemplate)
+    @target_templates = policy_scope(TargetTemplate).select { |target_template| target_template.target_templates_set == @target_templates_set }
   end
 
   def new
@@ -45,6 +45,31 @@ class TargetTemplatesController < ApplicationController
     @target_template.destroy
 
     redirect_to target_templates_set_target_templates_path(@target_templates_set)
+  end
+
+  def upload
+    nil
+  end
+
+  def import
+    TargetTemplate.import(params[:file], @target_templates_set)
+
+    redirect_to target_templates_set_target_templates_path(@target_templates_set)
+  end
+
+  def export
+    @target_templates = policy_scope(TargetTemplate).select { |target_template| target_template.target_templates_set == @target_templates_set }
+    @target_templates.sort_by!(&:name)
+
+    authorize Target
+
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachments; filename=nurture_target_templates.csv"
+        render "export.csv.erb"
+      end
+    end
   end
 
   private
