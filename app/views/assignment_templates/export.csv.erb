@@ -1,0 +1,13 @@
+<% headers = ['homework_templates_set.name', 'title', 'instruction', 'instruction_url', 'checkpoint', 'created_at', 'updated_at'] %>
+<%= CSV.generate_line headers -%>
+<% @assignment_templates.each do |assignment_template| %>
+<%= CSV.generate_line([
+  assignment_template.assignment_templates_set.name,
+  assignment_template.title,
+  assignment_template.instruction,
+  assignment_template.instruction_url,
+  assignment_template.checkpoint,
+  assignment_template.created_at,
+  assignment_template.updated_at
+]) -%>
+<% end %>

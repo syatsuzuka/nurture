@@ -7,9 +7,21 @@
 </nav>
 
 <h1><i class="fas fa-bullseye me-3"></i>Homework Template - <%= @assignment_templates_set.name %>
-  <%= link_to new_assignment_templates_set_assignment_template_path(@assignment_templates_set), class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-plus"></i>
-    Homework Template
+  <% if @assignment_templates_set.user == current_user %>
+    <%= link_to new_assignment_templates_set_assignment_template_path(@assignment_templates_set), class: "btn btn-success text-light ms-3" do %>
+      <i class="fas fa-plus"></i>
+      Homework Template
+    <% end %>
+
+    <%= link_to upload_assignment_templates_path(@assignment_templates_set), class: "btn btn-success text-light" do %>
+      <i class="fas fa-upload"></i>
+      Homework Template
+    <% end %>
+  <% end %>
+
+  <%= link_to export_assignment_templates_path(@assignment_templates_set), class: "btn btn-success text-light" do %>
+    <i class="fas fa-download"></i>
+    Download CSV
   <% end %>
 </h1>
 
@@ -32,21 +44,25 @@
         <tr>
           <td scope="row"><%= index + 1 %></td>
           <td>
-            <%= link_to edit_assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), class: "btn btn-outline-success" do %>
-              <i class="fas fa-edit"></i>
+            <% if assignment_template.assignment_templates_set.user == current_user %>
+              <%= link_to edit_assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), class: "btn btn-outline-success" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
             <% end %>
           </td>
           <td><%= assignment_template.title %></td>
           <td><%= assignment_template.instruction %></td>
           <td><%= assignment_template.instruction_url %></td>
           <td><%= assignment_template.checkpoint %></td>
-          <% if current_user.role == "tutor" %>
-            <td>
-              <%= link_to assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the assignment template?' } do %>
-                <i class="fas fa-trash-alt"></i>
+          <td>
+            <% if current_user.role == "tutor" %>
+              <% if assignment_template.assignment_templates_set.user == current_user %>
+                <%= link_to assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the assignment template?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
               <% end %>
-            </td>
-          <% end %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
