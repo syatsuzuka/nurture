@@ -67,17 +67,17 @@
 <h2> <i class="fas fa-chart-line me-3 "></i>
   Progress List
 
-  <%= link_to new_course_target_progress_path(@target.course, @target), class: "btn btn-success text-light ms-3" do %>
+  <%= link_to new_course_target_progress_path(@target.course, @target), id: "add-progress", class: "btn btn-success text-light ms-3" do %>
     <i class="fas fa-plus"></i>
     Progress
   <% end %>
 
-  <%= link_to upload_progresses_path(@target.course, @target), class: "btn btn-success text-light" do %>
+  <%= link_to upload_progresses_path(@target.course, @target), id: "upload-progress", class: "btn btn-success text-light" do %>
     <i class="fas fa-upload"></i>
     Progress
   <% end %>
 
-  <%= link_to export_progresses_path(@target.course, @target), class: "btn btn-success text-light" do %>
+  <%= link_to export_progresses_path(@target.course, @target), id: "download-progress", class: "btn btn-success text-light" do %>
     <i class="fas fa-download"></i>
     Download CSV
   <% end %>

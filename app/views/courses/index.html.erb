@@ -10,7 +10,7 @@
   <h1>Course List</h1>
 </div>
 <% if current_user.role == "tutor" %>
-  <%= link_to new_course_path, class: "btn btn-success text-light" do %>
+  <%= link_to new_course_path, id: "add-course", class: "btn btn-success text-light" do %>
     <i class="fas fa-plus"></i>
     Course
   <% end %>
