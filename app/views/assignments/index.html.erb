@@ -38,17 +38,17 @@
 <h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
 
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <%= link_to new_course_target_path(@course), id: "add-target", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
       Target
     <% end %>
 
-    <%= link_to upload_course_targets_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to upload_course_targets_path(@course), id: "upload-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
       Target
     <% end %>
 
-    <%= link_to export_course_targets_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to export_course_targets_path(@course), id: "download-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>
@@ -152,17 +152,17 @@
 
 <h3 class="mt-5"><i class="fas fa-tasks me-3"></i>Homework
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
       Homework
     <% end %>
 
-    <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to upload_course_assignments_path(@course), id: "upload-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
       Homework
     <% end %>
 
-    <%= link_to export_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to export_course_assignments_path(@course), id: "download-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>

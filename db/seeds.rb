@@ -142,3 +142,58 @@ progress_2217 = Progress.create!(date: "2022-04-01", score: target_22.score + 1.
 progress_2218 = Progress.create!(date: "2022-05-01", score: target_22.score + 2.0 + rand(8)-4, target_id: target_22.id, comment: "the score in championship league")
 
 puts "Generated #{Progress.all.count} Progresses successfully"
+
+puts '===================================='
+puts 'Generating Target Template Set...'
+
+target_templates_set_1 = TargetTemplatesSet.create!(
+  name: "Tennis Lesson (Beginner)",
+  category: "Tennis",
+  visible: true,
+  user: demo_tutor
+)
+
+puts "Generated #{TargetTemplatesSet.all.count} TargetTemplateSets successfully"
+
+puts '===================================='
+puts 'Generating Target Templates...'
+
+target_templates_1 = TargetTemplate.create!(
+  name: "Backhand Stroke (%)",
+  description: "Achieve higher successful rate in Backhand Stroke.",
+  score: 20,
+  target_templates_set: target_templates_set_1
+)
+target_templates_2 = TargetTemplate.create!(
+  name: "Forehand Stroke (%)",
+  description: "Achieve higher successful rate in Forehand Stroke.",
+  score: 40,
+  target_templates_set: target_templates_set_1
+)
+
+puts "Generated #{TargetTemplate.all.count} TargetTemplates successfully"
+
+puts '===================================='
+puts 'Generating Homework Template Set...'
+
+assignment_templates_set_1 = AssignmentTemplatesSet.create!(
+  name: "Tennis Lesson (Beginner)",
+  category: "Tennis",
+  visible: true,
+  user: demo_tutor
+)
+
+puts "Generated #{AssignmentTemplatesSet.all.count} AssignmentTemplateSets successfully"
+
+puts '===================================='
+puts 'Generating Assignment Templates...'
+
+assignment_templates_1 = AssignmentTemplate.create!(
+  title: "Swing Practice every day",
+  instruction: "Take 30mins for shadow swing everyday.",
+  instruction_url: "https://www.nurture.pw/",
+  checkpoint: "Take 60mins every days",
+  assignment_templates_set: assignment_templates_set_1
+)
+
+puts "Generated #{AssignmentTemplate.all.count} AssignmentTemplates successfully"

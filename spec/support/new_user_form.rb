@@ -13,7 +13,7 @@ class NewUserForm
     fill_in('user_first_name', with: params.fetch(:user_first_name, 'First'))
     fill_in('user_last_name', with: params.fetch(:user_last_name, 'Last'))
     fill_in('user_nickname', with: params.fetch(:user_nickname, 'testuser'))
-    select(params.fetch(:user_role, 'tutor'), from: 'user_role')
+    select(params.fetch(:user_role, 'student'), from: 'user_role')
     self
   end
 
