@@ -122,7 +122,7 @@
 
 # Bootstrap extra: Add nav, nav_js and combo_nav_js helpers and templates for Bootstrap pagination
 # See https://ddnexus.github.io/pagy/extras/bootstrap
-  require 'pagy/extras/bootstrap'
+require 'pagy/extras/bootstrap'
 
 # Bulma extra: Add nav, nav_js and combo_nav_js helpers and templates for Bulma pagination
 # See https://ddnexus.github.io/pagy/extras/bulma
@@ -141,7 +141,11 @@
 # so require this extra only if you need the unstyled version
 # See https://ddnexus.github.io/pagy/extras/navs
 # require 'pagy/extras/navs'
-
+  # def index
+  #   @pagy, @posts = pagy(Post.order(created_at: :desc))
+  #   authorize @posts
+  #   skip_policy_scope
+  # end
 # Semantic extra: Add nav, nav_js and combo_nav_js helpers for Semantic UI pagination
 # See https://ddnexus.github.io/pagy/extras/semantic
 # require 'pagy/extras/semantic'
