@@ -197,3 +197,25 @@ assignment_templates_1 = AssignmentTemplate.create!(
 )
 
 puts "Generated #{AssignmentTemplate.all.count} AssignmentTemplates successfully"
+
+puts '===================================='
+puts 'Generating Posts...'
+
+post_1 = Post.create!(
+  title: "I could improve my serve thanks to the homework",
+  content: "I couldn't have higher score in service ace rate, but my score is getting improved thanks to #{demo_tutor.first_name}'s training menu",
+  user: demo_student
+)
+
+puts "Generated #{Post.all.count} Posts successfully"
+
+puts '===================================='
+puts 'Generating Comment...'
+
+comment_1 = Comment.create!(
+  content: "Wonderful!!",
+  post: post_1,
+  user: demo_tutor
+)
+
+puts "Generated #{Comment.all.count} Comments successfully"
