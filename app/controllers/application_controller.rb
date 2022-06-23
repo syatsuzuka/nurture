@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   # Pundit: white-list approach.
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :ensure_domain
   after_action :verify_authorized, except: %i[index all upload import], unless: :skip_pundit?
   after_action :verify_policy_scoped, only: %i[index all], unless: :skip_pundit?
 
@@ -31,5 +32,11 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def ensure_domain
+    return unless /\.herokuapp.com/ =~ request.host
+
+    redirect_to "#{ENV['SERVER_HOSTNAME']}/#{request.path}", status: :moved_permanently
   end
 end
