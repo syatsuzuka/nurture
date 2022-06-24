@@ -71,6 +71,8 @@ jobs:
         with:
           name: simplecov report
           path: coverage/
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
       - name: Create ERD
         run: bin/rails erd
       - name: Upload ERD
