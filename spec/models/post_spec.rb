@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-    #  -----Present validations-----
+  #  -----Present validations-----
   it "is valid with valid attributes" do
     expect(build(:post)).to be_valid
   end
@@ -34,6 +34,4 @@ RSpec.describe Post, type: :model do
     expect(build(:post, content: 'x' * 3002)).to_not be_valid
   end
   #  -----Uniqueness validations-----
-
-
 end
