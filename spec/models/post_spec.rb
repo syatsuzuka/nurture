@@ -16,5 +16,4 @@ RSpec.describe Post, type: :model do
   it "is not valid without a user" do
     expect(build(:post, user: nil)).to_not be_valid
   end
-
 end

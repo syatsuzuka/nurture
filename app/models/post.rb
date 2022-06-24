@@ -5,5 +5,4 @@ class Post < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
 
   validates :title, :content, presence: true
-
 end
