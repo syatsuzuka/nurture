@@ -3,4 +3,6 @@ class Post < ApplicationRecord
   # has_many :likes
   has_many :comments, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
+
+  validates :title, :content, presence: true
 end
