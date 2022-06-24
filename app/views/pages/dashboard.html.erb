@@ -19,7 +19,7 @@
   <% end %>
 </div>
 
-<% @courses.each do |course| %>
+<% @waiting_courses.each do |course| %>
   <% if course.status == 0 %>
     <% if current_user.role == "student" %>
       <div class="alert alert-success mt-5" role="alert">

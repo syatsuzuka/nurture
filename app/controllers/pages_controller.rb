@@ -26,6 +26,8 @@ class PagesController < ApplicationController
       course.status == 1
     end
 
+    @waiting_courses = courses.select { |course| course.status.zero? }
+
     #======= Collecting done status assignments for toast =======
     if current_user.role == "tutor"
       assignments = policy_scope(Assignment).select do |assignment|

@@ -41,3 +41,9 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+
+# Ignore local ERD
+erd.pdf
+
+# Ignore simplecov report
+/coverage/*
