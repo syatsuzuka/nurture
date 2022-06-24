@@ -90,6 +90,3 @@ gem 'gon'
 gem 'roo'
 gem 'gemoji'
 gem 'pagy', '~> 5.10'
-group :development do
-  gem "rails-erd"
-end
