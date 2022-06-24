@@ -44,4 +44,25 @@ feature 'course' do
     click_on("Save")
     expect(page).to have_content('test_name')
   end
+
+  scenario 'edits a new course' do
+    #======= Access to course menu =======
+    new_session_form = NewSessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    new_session_form.visit_page.fill_in_with(session_params).submit
+    click_on('Courses')
+    expect(page).to have_content('Course List')
+
+    #======= Edits an existing course =======
+    find('div.row > div:nth-child(1) div.card > div.card-body a.edit-course').click
+    new_course_form = NewCourseForm.new
+    course_params = {
+      course_name: "test_name",
+      course_description: "test_description",
+      course_student_user_id: "shingo"
+    }
+    new_course_form.fill_in_with(course_params).submit
+    expect(page).to have_content('Course List')
+    expect(page).to have_content('test_name')
+  end
 end
