@@ -9,8 +9,12 @@ RSpec.describe Post, type: :model do
     expect(build(:post, title: nil)).to_not be_valid
   end
 
-  it "is not valid without a content"
-  it "is not valid without a user"
-  it "is not valid without a start_date"
-  it "is not valid without a start_date"
+  it "is not valid without a content" do
+    expect(build(:post, content: nil)).to_not be_valid
+  end
+
+  it "is not valid without a user" do
+    expect(build(:post, user: nil)).to_not be_valid
+  end
+
 end

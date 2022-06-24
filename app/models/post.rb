@@ -4,5 +4,6 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, :content, presence: true
+
 end
