@@ -131,6 +131,9 @@ GEM
     execjs (2.7.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
@@ -431,7 +434,7 @@ DEPENDENCIES
   cloudinary (~> 1.16.0)
   devise
   dotenv-rails
-  factory_bot
+  factory_bot_rails
   faker
   font-awesome-sass (~> 5.6.1)
   gemoji

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+
   it "is valid with valid attributes" do
-    expect(Post.new(user: sample_student)).to be_valid
+    expect(Post.new(user: (build :user))).to be_valid
   end
 
   it "is not valid without a title"
