@@ -94,7 +94,16 @@ class PagesController < ApplicationController
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
     # @posts = Post.all
-    @pagy, @posts = pagy(Post.order(created_at: :desc))
+
+    #======= PGsearch =======
+    posts =
+      if params[:q].present?
+        Post.all.search_knowledge(params[:q])
+      else
+        Post.all
+      end
+
+    @pagy, @posts = pagy(posts.order(created_at: :desc))
   end
 
   def aboutus

@@ -1,5 +1,15 @@
 
-<%= link_to "New Post", "posts/new", class: "btn btn-success" %>
+<div class="d-flex justify-content-between">
+  <%= link_to "New Post", "posts/new", class: "btn btn-success mb-3" %>
+  <%= form_tag knowledge_path, class: "d-flex h-25 w-50", method: :get do %>
+      <%= text_field_tag :q,
+        params[:q],
+        class: "form-control searchbar",
+        placeholder: "Find a post"
+      %>
+      <%= submit_tag "Search", class: "btn btn-success searchbox" %>
+  <% end %>
+</div>
  <%== pagy_bootstrap_nav(@pagy) %>
   <% @posts.each do |p| %>
     <div class="card mb-3" style="max-width: auto;">
