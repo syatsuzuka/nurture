@@ -54,7 +54,7 @@
     <% end %>
   <% end %>
 
-  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#targets" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#targets" aria-controls="targets" aria-expanded="false" aria-label="Toggle Target">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
 </h3>
@@ -168,12 +168,12 @@
     <% end %>
   <% end %>
 
-  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeworkHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#assignments" aria-controls="assignments" aria-expanded="false" aria-label="Toggle Homework">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
 </h3>
 
-<div class="collapse show" id="navbarHomeworkHeader">
+<div class="collapse show" id="assignments">
   <% unless @assignments.count == 0 %>
     <table class="table table-responsive table-hover align-middle">
       <thead class="thead-dark">
@@ -197,7 +197,7 @@
           <tr>
             <td scope="row"><%= index + 1 %></td>
               <td>
-                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "btn btn-outline-success" do %>
+                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "edit-assignment btn btn-outline-success" do %>
                   <i class="fas fa-edit"></i>
                 <% end %>
               </td>
@@ -241,7 +241,7 @@
             </td>
             <% if current_user.role == "tutor" %>
               <td>
-                <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
+                <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "delete-assignment btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
               </td>

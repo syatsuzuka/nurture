@@ -82,12 +82,12 @@
     Download CSV
   <% end %>
 
-  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarProgressHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Homework">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#progresses" aria-controls="progresses" aria-expanded="false" aria-label="Toggle Homework">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
 </h2>
 
-<div class="collapse show" id="navbarProgressHeader">
+<div class="collapse show" id="progresses">
   <% unless @progresses.count == 0 %>
     <table class="table align-middle">
       <thead class="thead-dark">
@@ -108,7 +108,7 @@
               <%= index + 1 %>
             </td>
             <td>
-              <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "btn btn-outline-success" do %>
+              <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "edit-progress btn btn-outline-success" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             </td>
@@ -116,12 +116,10 @@
             <td><%= progress.score %></td>
             <td><%= progress.comment %></td>
             <td>
-              <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
+              <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "delete-progress btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             </td>
-              <%#= link_to "Edit", edit_course_target_progress_path(@course, @target, progress), class: "btn btn-success text-light" %>
-              <%#= link_to "Delete", course_target_progress_path(@course, @target, progress), method: :delete, class: "btn btn-danger text-light", data: { confirm: 'Do you really want to delete the progress info?' }  %>
           </tr>
         <% end %>
       </tbody>
