@@ -33,4 +33,8 @@ class PostPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def knowledge?
+    true
+  end
 end

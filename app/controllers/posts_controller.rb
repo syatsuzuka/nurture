@@ -23,9 +23,9 @@ class PostsController < ApplicationController
   end
 
   # def index
-  #   @pagy, @posts = pagy(Post.order(created_at: :desc))
-  #   authorize @posts
-  #   skip_policy_scope
+      #   @pagy, @posts = pagy(Post.order(created_at: :desc))
+      #   authorize @posts
+      #   skip_policy_scope
   # end
 
   def edit
