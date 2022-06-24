@@ -27,11 +27,11 @@ RSpec.describe Post, type: :model do
   end
 
   it "is not valid with a content less than 30 characters" do
-    expect(build(:post, title: 'x' * 28)).to_not be_valid
+    expect(build(:post, content: 'x' * 28)).to_not be_valid
   end
 
   it "is not valid with a content over 3000 characters" do
-    expect(build(:post, title: 'x' * 3002)).to_not be_valid
+    expect(build(:post, content: 'x' * 3002)).to_not be_valid
   end
   #  -----Uniqueness validations-----
 

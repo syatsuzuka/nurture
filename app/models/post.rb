@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
 
   validates :title, :content, presence: true
+  validates :title, presence: true, length: { in: 6...70 }
+  validates :content, presence: true, length: { in: 30...3000 }
 end
