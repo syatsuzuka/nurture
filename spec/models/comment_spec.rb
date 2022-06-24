@@ -25,5 +25,4 @@ RSpec.describe Comment, type: :model do
   it "is not valid with a content less than 6 characters" do
     expect(build(:comment, content: 'x' * 5)).to_not be_valid
   end
-
 end
