@@ -66,6 +66,18 @@ jobs:
           TEST_STUDENT_LOGIN_PASSWORD: ${{ secrets.TEST_STUDENT_LOGIN_PASSWORD }}
           TWITTER_ACCOUNT: ${{ secrets.TWITTER_ACCOUNT }}
         run: bin/rspec
+      - name: Upload Simplecov Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: simplecov report
+          path: coverage/
+      - name: Create ERD
+        run: bin/rails erd
+      - name: Upload ERD
+        uses: actions/upload-artifact@v3
+        with:
+          name: erd
+          path: erd.pdf
 
   lint:
     runs-on: ubuntu-latest
