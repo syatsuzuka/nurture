@@ -38,28 +38,28 @@
 <h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
 
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_target_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <%= link_to new_course_target_path(@course), id: "add-target", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
       Target
     <% end %>
 
-    <%= link_to upload_course_targets_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to upload_course_targets_path(@course), id: "upload-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
       Target
     <% end %>
 
-    <%= link_to export_course_targets_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to export_course_targets_path(@course), id: "download-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>
   <% end %>
 
-  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTargetHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
+  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#targets" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle Target">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
 </h3>
 
-<div class="collapse show" id="navbarTargetHeader">
+<div class="collapse show" id="targets">
 
   <% unless @targets.count == 0 %>
     <table class="table table-responsive table-hover align-middle">
@@ -84,7 +84,7 @@
           <tr>
             <td scope="row"><%= index + 1 %></td>
             <td>
-              <%= link_to edit_course_target_path(target.course, target), class: "btn btn-outline-success" do %>
+              <%= link_to edit_course_target_path(target.course, target), class: "edit-target btn btn-outline-success" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             </td>
@@ -134,7 +134,7 @@
             </td>
             <% if current_user.role == "tutor" %>
               <td>
-              <%= link_to course_target_path(target.course, target), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
+              <%= link_to course_target_path(target.course, target), method: :delete, class: "delete-target btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
               </td>
@@ -152,17 +152,17 @@
 
 <h3 class="mt-5"><i class="fas fa-tasks me-3"></i>Homework
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_assignment_path(@course), class: "btn btn-success text-light ms-3" do %>
+    <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
       Homework
     <% end %>
 
-    <%= link_to upload_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to upload_course_assignments_path(@course), id: "upload-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
       Homework
     <% end %>
 
-    <%= link_to export_course_assignments_path(@course), class: "btn btn-success text-light" do %>
+    <%= link_to export_course_assignments_path(@course), id: "download-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>

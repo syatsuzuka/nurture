@@ -1,3 +1,7 @@
+# Simplecov needs to be ran at the beginning
+require 'simplecov'
+SimpleCov.start
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'support/factory_bot'
 require 'spec_helper'
