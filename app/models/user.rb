@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   validates :first_name, presence: true, length: { minimum: 1, maximum: 60 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 60 }
-  validates :nickname, uniqueness: true, presence: true
+  validates :nickname, uniqueness: true, presence: true, length: { maximum: 60 }
   validates :email, length: { maximum: 254 }
   validate :check_role
   after_create :send_welcome_email
