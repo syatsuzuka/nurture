@@ -9,9 +9,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    authorize @like
     @like = current_user.likes.find(params[:id])
-    @like.destroy
+    authorize @like
+    like = @like
+    like.destroy
     redirect_to @like.post
   end
 

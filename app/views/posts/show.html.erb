@@ -13,6 +13,7 @@
               crop: :thumb, width:100, height:100) %>
   </span>
 </h2>
+<h4><%= @post.likes.count %> likes</h4>
   <%# Links for edit new post and back to index %>
   <ul class= "list-inline">
     <%= link_to  post_path(@post), method: :delete, class:"btn btn-secondary" do%>
@@ -23,12 +24,20 @@
     <% end %>
 
     <%# <%= simple_form_for likes_path, method: :post, class: "btn btn-success" do |f| %>
-
-    <form action="/likes" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="like[post_id]" value="<%= @post.id %>">
-      <input type="submit" value="Like" class="btn btn-success">
-    </form>
+    <% like = current_user.likes.find_by(post: @post) %>
+    <% if like.nil? %>
+      <form action="/likes" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="like[post_id]" value="<%= @post.id %>">
+        <input type="submit" value="Like" class="btn btn-success">
+      </form>
+      <% else %>
+      <form action="<%= like_path(like)%>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Unlike" class="btn btn-success">
+      </form>
+      <% end %>
   </ul>
 
 

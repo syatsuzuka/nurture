@@ -20,6 +20,7 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><%= p.title %></h5>
+            <p><%= p.likes.count %> likes</p>
             <p class="card-text"><%= truncate(p.content, length: 100, separator: ' ') %></p>
             <p class="card-text"><small class="text-muted"><%="Created #{time_ago_in_words(p.created_at)} ago by #{p.user.first_name}"%></small>
             <%= add_image(p.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %></p>
