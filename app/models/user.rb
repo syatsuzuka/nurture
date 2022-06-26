@@ -12,9 +12,10 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :photo
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :nickname, uniqueness: true, presence: true
+  validates :first_name, presence: true, length: { minimum: 1, maximum: 60 }
+  validates :last_name, presence: true, length: { minimum: 1, maximum: 60 }
+  validates :nickname, uniqueness: true, presence: true, length: { maximum: 60 }
+  validates :email, length: { maximum: 254 }
   validate :check_role
   after_create :send_welcome_email
   after_create :create_sample_course
