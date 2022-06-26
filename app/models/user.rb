@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :target_templates_sets, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes
   has_one_attached :photo
   validates :first_name, presence: true, length: { minimum: 1, maximum: 60 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 60 }
