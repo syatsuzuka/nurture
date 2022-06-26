@@ -1,10 +1,15 @@
 Greeting from Nurture, <%= @user.first_name %>!
 
-Your account setting was updated.<br>
+The following account setting was updated.<br>
+
+<% @user.changes.each do |key, value| %>
+  <% if key != "updated_at" %>
+  * <%= key %>
+  <% end %>
+<% end %>
+
 To check your update, access to the link: <%= @url %>.
-
 Good luck in your studies!
-
 
 Cheers,
 Nurture Dev Team
