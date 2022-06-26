@@ -1,4 +1,4 @@
-class NewAssignmentTemplatesSetForm
+class AssignmentTemplatesSetForm
   include Capybara::DSL
 
   def visit_page

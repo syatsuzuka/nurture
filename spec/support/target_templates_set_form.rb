@@ -1,4 +1,4 @@
-class NewTargetTemplatesSetForm
+class TargetTemplatesSetForm
   include Capybara::DSL
 
   def visit_page

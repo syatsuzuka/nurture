@@ -1,13 +1,13 @@
 require 'rails_helper'
-require_relative '../support/new_session_form'
-require_relative '../support/new_progress_form'
+require_relative '../support/session_form'
+require_relative '../support/progress_form'
 
 feature 'progress' do
   scenario 'creates a new progress' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
     click_on('Courses')
@@ -17,21 +17,21 @@ feature 'progress' do
 
     #======= Create a new Progress =======
     find('#add-progress').click
-    new_progress_form = NewProgressForm.new
+    progress_form = ProgressForm.new
     progress_params = {
       progress_date: "2022-06-01",
       progress_score: 100,
       progress_comment: "test_comment"
     }
-    new_progress_form.fill_in_with(progress_params).submit
+    progress_form.fill_in_with(progress_params).submit
     expect(page).to have_content('test_comment')
   end
 
   scenario 'edits an existing progress' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
     click_on('Courses')
@@ -41,13 +41,13 @@ feature 'progress' do
 
     #======= Create a new Progress =======
     find('#progresses > table > tbody > tr:nth-child(1) > td > a.edit-progress').click
-    new_progress_form = NewProgressForm.new
+    progress_form = ProgressForm.new
     progress_params = {
       progress_date: "2022-06-01",
       progress_score: 100,
       progress_comment: "test_comment"
     }
-    new_progress_form.fill_in_with(progress_params).submit
+    progress_form.fill_in_with(progress_params).submit
     expect(page).to have_content('2022-06-01')
     expect(page).to have_content('100')
     expect(page).to have_content('test_comment')
@@ -56,9 +56,9 @@ feature 'progress' do
 
   scenario 'uploades new progresses' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
     click_on('Courses')

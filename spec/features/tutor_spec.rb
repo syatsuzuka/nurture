@@ -1,11 +1,11 @@
 require 'rails_helper'
-require_relative '../support/new_session_form'
+require_relative '../support/session_form'
 
 feature 'tutor' do
   scenario 'accesses to tutor detail' do
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
     click_on('Tutors')
     expect(page).to have_content('Tutor List')
     click_on('Sample Tutor')

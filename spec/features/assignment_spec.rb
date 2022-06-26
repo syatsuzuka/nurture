@@ -1,13 +1,13 @@
 require 'rails_helper'
-require_relative '../support/new_session_form'
-require_relative '../support/new_assignment_form'
+require_relative '../support/session_form'
+require_relative '../support/assignment_form'
 
 feature 'homework (assignment))' do
   scenario 'creates a new homework (assignment)' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to homework detail =======
     click_on('Homework')
@@ -21,7 +21,7 @@ feature 'homework (assignment))' do
     #======= Add a new homework =======
     find('#add-assignment').click
     expect(page).to have_content('Add a New Homework')
-    new_assignment_form = NewAssignmentForm.new
+    assignment_form = AssignmentForm.new
     assignment_params = {
       assignment_title: "test_title",
       assignment_instruction: "test_instruction",
@@ -30,15 +30,15 @@ feature 'homework (assignment))' do
       assignment_start_date: "2022-01-01",
       assignment_end_date: "2022-12-31"
     }
-    new_assignment_form.fill_in_with(assignment_params).submit
+    assignment_form.fill_in_with(assignment_params).submit
     expect(page).to have_content('test_title')
   end
 
   scenario 'uploads new homeworks (assignment)' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to homework detail =======
     click_on('Homework')
@@ -60,9 +60,9 @@ feature 'homework (assignment))' do
 
   scenario 'edits the existing homework (assignment)' do
     #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
+    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
+    session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to course detail =======
     click_on('Courses')
@@ -72,7 +72,7 @@ feature 'homework (assignment))' do
     #======= Add a new homework =======
     find('#assignments > table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
     expect(page).to have_content('Edit the Homework')
-    new_assignment_form = NewAssignmentForm.new
+    assignment_form = AssignmentForm.new
     assignment_params = {
       assignment_title: "test_title",
       assignment_instruction: "test_instruction",
@@ -85,7 +85,7 @@ feature 'homework (assignment))' do
       assignment_start_date: "2022-01-01",
       assignment_end_date: "2022-12-31"
     }
-    new_assignment_form.fill_in_with2(assignment_params).submit
+    assignment_form.fill_in_with2(assignment_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
     expect(page).to have_content('https://www.nurture.pw')

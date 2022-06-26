@@ -1,4 +1,4 @@
-class NewTargetForm
+class TargetForm
   include Capybara::DSL
 
   def fill_in_with(params = {})

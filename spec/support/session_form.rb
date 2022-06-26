@@ -1,4 +1,4 @@
-class NewSessionForm
+class SessionForm
   include Capybara::DSL
 
   def visit_page

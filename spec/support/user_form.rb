@@ -1,4 +1,4 @@
-class NewUserForm
+class UserForm
   include Capybara::DSL
 
   def visit_page

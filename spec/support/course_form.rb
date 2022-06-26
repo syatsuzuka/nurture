@@ -1,4 +1,4 @@
-class NewCourseForm
+class CourseForm
   include Capybara::DSL
 
   def visit_page
