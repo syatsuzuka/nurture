@@ -1,7 +1,6 @@
 require 'rails_helper'
 require_relative '../support/user_form'
 require_relative '../support/session_form'
-require_relative '../support/navbar'
 
 feature 'user' do
   scenario 'creates a new tutor' do

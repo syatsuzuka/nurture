@@ -16,4 +16,9 @@ class SessionForm
     click_button('Sign in')
     self
   end
+
+  def logout
+    click_on('Log out')
+    self
+  end
 end

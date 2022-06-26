@@ -1,7 +1,6 @@
 require 'rails_helper'
 require_relative '../support/session_form'
 require_relative '../support/course_form'
-require_relative '../support/navbar'
 
 feature 'course' do
   scenario 'creates a new course' do
@@ -27,11 +26,9 @@ feature 'course' do
     expect(page).to have_content('shingo')
 
     #======= Logout =======
-    navbar = Navbar.new
-    navbar.logout
+    session_form.logout
 
     #======= Log in with Demo Student =======
-    session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
     expect(page).to have_content('test_name')
