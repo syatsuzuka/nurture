@@ -28,6 +28,27 @@ feature 'target' do
     expect(page).to have_content('test_name')
   end
 
+  scenario 'Uploads new targets' do
+    #======= Login with Tutor ID =======
+    new_session_form = NewSessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    new_session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target Setting =======
+    click_on('Courses')
+    click_on('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Upload new Targets =======
+    find('#upload-target').click
+    attach_file('file', 'public/sample/nurture_target_sample.csv')
+    click_on('Import')
+    expect(page).to have_content('test')
+    expect(page).to have_content('test > test2')
+    expect(page).to have_content('test > test2 > test3')
+    expect(page).to have_content('test > test2 > test3 > test4')
+  end
+
   scenario 'edits an existing target' do
     #======= Login with Tutor ID =======
     new_session_form = NewSessionForm.new
@@ -51,26 +72,5 @@ feature 'target' do
     }
     new_target_form.fill_in_with(target_params).submit
     expect(page).to have_content('test_name')
-  end
-
-  scenario 'Uploads new targets' do
-    #======= Login with Tutor ID =======
-    new_session_form = NewSessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    new_session_form.visit_page.fill_in_with(session_params).submit
-
-    #======= Access to Target Setting =======
-    click_on('Courses')
-    click_on('Tennis Lesson (Beginner)')
-    expect(page).to have_content('Tennis Lesson (Beginner)')
-
-    #======= Upload new Targets =======
-    find('#upload-target').click
-    attach_file('file', 'public/sample/nurture_target_sample.csv')
-    click_on('Import')
-    expect(page).to have_content('test')
-    expect(page).to have_content('test > test2')
-    expect(page).to have_content('test > test2 > test3')
-    expect(page).to have_content('test > test2 > test3 > test4')
   end
 end

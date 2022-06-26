@@ -26,7 +26,7 @@
 </h1>
 
 <% unless @assignment_templates.count == 0 %>
-  <table class="table table-responsive table-hover align-middle">
+  <table id="assignment_templates" class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -45,7 +45,7 @@
           <td scope="row"><%= index + 1 %></td>
           <td>
             <% if assignment_template.assignment_templates_set.user == current_user %>
-              <%= link_to edit_assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), class: "btn btn-outline-success" do %>
+              <%= link_to edit_assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), class: "edit-assignment_template btn btn-outline-success" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             <% end %>
@@ -57,7 +57,7 @@
           <td>
             <% if current_user.role == "tutor" %>
               <% if assignment_template.assignment_templates_set.user == current_user %>
-                <%= link_to assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the assignment template?' } do %>
+                <%= link_to assignment_templates_set_assignment_template_path(assignment_template.assignment_templates_set, assignment_template), method: :delete, class: "delete-assignment_template btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the assignment template?' } do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>

@@ -34,6 +34,30 @@ feature 'homework (assignment))' do
     expect(page).to have_content('test_title')
   end
 
+  scenario 'uploads new homeworks (assignment)' do
+    #======= Login with Tutor ID =======
+    new_session_form = NewSessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    new_session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to homework detail =======
+    click_on('Homework')
+    click_on('Smash Practice')
+    expect(page).to have_content('Smash Practice')
+
+    #======= Access to course detail =======
+    click_on('Course Detail')
+    expect(page).to have_content('Tennis Lesson (Intermediate)')
+
+    #======= Add a new homework =======
+    find('#upload-assignment').click
+    attach_file('file', 'public/sample/nurture_homework_sample.csv')
+    click_on('Import')
+    expect(page).to have_content('test')
+    expect(page).to have_content('test2')
+    expect(page).to have_content('test3')
+  end
+
   scenario 'edits the existing homework (assignment)' do
     #======= Login with Tutor ID =======
     new_session_form = NewSessionForm.new
