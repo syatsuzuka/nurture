@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validate :check_role
   after_create :send_welcome_email
   after_create :create_sample_course
-  after_update :send_update_email
+  before_update :send_update_email
 
   def active_for_authentication?
     super && !deactivated
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def send_update_email
-    # UserMailer.with(user: self).update_email.deliver_now
+    UserMailer.with(user: self).update_email.deliver_now if has_changes_to_save?
   end
 
   def add_sample_data(course)
