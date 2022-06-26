@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../support/new_session_form'
+require_relative '../support/session_form'
 
 describe CoursesController do
   nil

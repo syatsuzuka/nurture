@@ -1,4 +1,4 @@
-class NewProgressForm
+class ProgressForm
   include Capybara::DSL
 
   def fill_in_with(params = {})

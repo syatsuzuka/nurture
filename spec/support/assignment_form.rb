@@ -1,4 +1,4 @@
-class NewAssignmentForm
+class AssignmentForm
   include Capybara::DSL
 
   def fill_in_with(params = {})
