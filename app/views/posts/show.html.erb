@@ -21,6 +21,14 @@
     <%= link_to edit_post_path(@post), class:"btn btn-success" do%>
       <i class="fas fa-edit"></i>
     <% end %>
+
+    <%# <%= simple_form_for likes_path, method: :post, class: "btn btn-success" do |f| %>
+
+    <form action="/likes" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="like[post_id]" value="<%= @post.id %>">
+      <input type="submit" value="Like" class="btn btn-success">
+    </form>
   </ul>
 
 
