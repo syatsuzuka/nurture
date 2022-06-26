@@ -9,8 +9,12 @@ feature 'homework (assignment))' do
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
+    #======= Check the list of homework =======
+    click_on('homework-menu')
+    expect(page.all('div.row > div').count).to eq 3
+
     #======= Access to course detail =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
@@ -28,6 +32,10 @@ feature 'homework (assignment))' do
     }
     assignment_form.fill_in_with(assignment_params).submit
     expect(page).to have_content('test_title')
+
+    #======= Check the list of homework =======
+    click_on('homework-menu')
+    expect(page.all('div.row > div').count).to eq 4
   end
 
   scenario 'uploads new homeworks (assignment)' do
