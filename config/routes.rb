@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post '/courses/:course_id/assignments/import', to: 'assignments#import', as: :import_course_assignments
   get '/courses/:course_id/assignments/:id/review', to: 'assignments#review', as: :review_course_assignment
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
-  put '/courses/:course_id/assignments/:id/close2', to: 'assignments#close2', as: :close2_course_assignment
   put '/courses/:course_id/assignments/:id/done', to: 'assignments#done', as: :done_course_assignment
   get '/courses/:course_id/targets/export.csv', to: 'targets#export', as: :export_course_targets
   get '/courses/:course_id/targets/upload', to: 'targets#upload', as: :upload_course_targets

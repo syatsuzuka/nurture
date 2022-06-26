@@ -1,11 +1,11 @@
 class AssignmentsController < ApplicationController
   before_action :assignment_params, only: %i[create update]
   before_action :set_course, only: %i[
-    index new create edit update destroy review close close2 done upload import export
+    index new create edit update destroy review close done upload import export
   ]
-  before_action :set_assignment, only: %i[show edit update destroy review close close2 done]
+  before_action :set_assignment, only: %i[show edit update destroy review close done]
   before_action :set_active_assignments, only: %i[all]
-  before_action :set_active_courses, only: %i[index show new create edit update destroy review close close2 done]
+  before_action :set_active_courses, only: %i[index show new create edit update destroy review close done]
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
@@ -147,15 +147,6 @@ class AssignmentsController < ApplicationController
 
     @assignment.save
     redirect_to course_assignments_path(@course)
-  end
-
-  def close2
-    @assignment.course = @course
-    @assignment.status = 2
-    authorize @assignment
-
-    @assignment.save
-    redirect_to all_assignments_path
   end
 
   def done

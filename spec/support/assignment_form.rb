@@ -25,6 +25,15 @@ class AssignmentForm
     self
   end
 
+  def fill_in_with3(params = {})
+    select(params.fetch(:assignment_status, "Done"), from: 'assignment_status')
+    fill_in('assignment_comment', with: params.fetch(:assignment_comment, "test_comment"))
+    fill_in('assignment_material_url', with: params.fetch(:assignment_material_url, "https://www.nurture.pw"))
+    find('#assignment_start_date').set(params.fetch(:assignment_start_date, "2022-01-01"))
+    find('#assignment_end_date').set(params.fetch(:assignment_end_date, "2022-12-31"))
+    self
+  end
+
   def submit
     click_button('Save')
     self
