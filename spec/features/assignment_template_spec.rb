@@ -10,7 +10,7 @@ feature 'homework template (assignment_template)' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
-    click_on('Template')
+    click_on('template-menu')
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
@@ -37,7 +37,7 @@ feature 'homework template (assignment_template)' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
-    click_on('Template')
+    click_on('template-menu')
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
@@ -57,7 +57,7 @@ feature 'homework template (assignment_template)' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
-    click_on('Template')
+    click_on('template-menu')
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 

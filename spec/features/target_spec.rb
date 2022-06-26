@@ -10,7 +10,7 @@ feature 'target' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
@@ -35,7 +35,7 @@ feature 'target' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
@@ -56,7 +56,7 @@ feature 'target' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
 

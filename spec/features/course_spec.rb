@@ -8,7 +8,7 @@ feature 'course' do
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
-    click_on('Courses')
+    click_on('courses-menu')
     expect(page).to have_content('Course List')
 
     #======= Create a new course =======
@@ -47,7 +47,7 @@ feature 'course' do
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
-    click_on('Courses')
+    click_on('courses-menu')
     expect(page).to have_content('Course List')
 
     #======= Edits an existing course =======

@@ -10,7 +10,7 @@ feature 'target_templates_set' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Template menu =======
-    click_on('Template')
+    click_on('template-menu')
     expect(page).to have_content('Template')
 
     #======= Create a new Target Templates Set =======
@@ -32,7 +32,7 @@ feature 'target_templates_set' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Template menu =======
-    click_on('Template')
+    click_on('template-menu')
     expect(page).to have_content('Template')
 
     #======= Create a new Target Templates Set =======
