@@ -22,5 +22,29 @@ feature 'target_templates_set' do
     }
     target_templates_set_form.visit_page.fill_in_with(target_templates_set_params).submit
     expect(page).to have_content('test_name')
+    expect(page).to have_content('test_category')
+  end
+
+  scenario 'edits a new target_templates_set' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Template menu =======
+    click_on('Template')
+    expect(page).to have_content('Template')
+
+    #======= Create a new Target Templates Set =======
+    find("#target-templates-sets > tbody > tr:nth-child(1) > td > a.edit-target-templates-set").click
+    target_templates_set_form = TargetTemplatesSetForm.new
+    target_templates_set_params = {
+      target_templates_set_name: "test_name",
+      target_templates_set_category: "test_category",
+      target_templates_set_visible: true
+    }
+    target_templates_set_form.fill_in_with(target_templates_set_params).submit
+    expect(page).to have_content('test_name')
+    expect(page).to have_content('test_category')
   end
 end

@@ -26,7 +26,7 @@
 </h1>
 
 <% unless @target_templates.count == 0 %>
-  <table class="table table-responsive table-hover align-middle">
+  <table id="target_templates" class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -44,7 +44,7 @@
           <td scope="row"><%= index + 1 %></td>
           <td>
             <% if @target_templates_set.user == current_user %>
-              <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template), class: "btn btn-outline-success" do %>
+              <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template), class: "edit-target_template btn btn-outline-success" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             <% end %>
@@ -73,7 +73,7 @@
           <% if current_user.role == "tutor" %>
             <td>
               <% if @target_templates_set.user == current_user %>
-                <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
+                <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template), method: :delete, class: "delete-target_template btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>
