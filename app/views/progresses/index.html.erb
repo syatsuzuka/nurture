@@ -69,17 +69,17 @@
 
   <%= link_to new_course_target_progress_path(@target.course, @target), id: "add-progress", class: "btn btn-success text-light ms-3" do %>
     <i class="fas fa-plus"></i>
-    Progress
+    Add
   <% end %>
 
   <%= link_to upload_progresses_path(@target.course, @target), id: "upload-progress", class: "btn btn-success text-light" do %>
     <i class="fas fa-upload"></i>
-    Progress
+    Import
   <% end %>
 
   <%= link_to export_progresses_path(@target.course, @target, format: :csv), id: "download-progress", class: "btn btn-success text-light" do %>
     <i class="fas fa-download"></i>
-    Download CSV
+    Export
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#progresses" aria-controls="progresses" aria-expanded="false" aria-label="Toggle Homework">

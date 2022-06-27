@@ -20,7 +20,7 @@
     <% if current_user.role == "tutor" %>
       <%= link_to new_target_templates_set_path, class: "btn btn-success text-light ms-3" do %>
         <i class="fas fa-plus"></i>
-        Target Template Set
+        Add
       <% end %>
     <% end %>
   </h3>
@@ -92,7 +92,7 @@
     <% if current_user.role == "tutor" %>
       <%= link_to new_assignment_templates_set_path, class: "btn btn-success text-light ms-3" do %>
         <i class="fas fa-plus"></i>
-        Homework Template Set
+        Add
       <% end %>
     <% end %>
   </h3>

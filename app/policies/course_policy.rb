@@ -10,30 +10,30 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.role == "tutor"
   end
 
   def new?
-    create?
+    user.role == "tutor"
   end
 
   def update?
-    true
+    record.tutor == user or record.student == user # when accept the course
   end
 
   def edit?
-    update?
+    record.tutor == user
   end
 
   def destroy?
-    true
+    record.tutor == user
   end
 
   def accept?
-    true
+    record.student == user
   end
 
   def dashboard?
-    true
+    record.tutor == user or record.student == user
   end
 end
