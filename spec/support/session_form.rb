@@ -18,7 +18,7 @@ class SessionForm
   end
 
   def logout
-    click_on('Log out')
+    find('#logout-menu').click
     self
   end
 end

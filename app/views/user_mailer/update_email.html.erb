@@ -6,7 +6,18 @@
   <body>
     <h1>Greeting from Nurture, <%= @user.first_name %>!</h1>
     <p>
-      Your account setting was updated.<br>
+      The following account setting was updated.
+    </p>
+    <p>
+      <ul>
+      <% @user.changes.each do |key, value| %>
+        <% if key != "updated_at" %>
+          <li><%= key %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    </p>
+    <p>
       To check your update, access to this link: <%= @url %>.
     </p>
     <p>Good luck in your studies!</p>
