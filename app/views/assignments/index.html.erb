@@ -48,7 +48,7 @@
       Target
     <% end %>
 
-    <%= link_to export_course_targets_path(@course), id: "download-target", class: "btn btn-success text-light" do %>
+    <%= link_to export_course_targets_path(@course, format: :csv), id: "download-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>
@@ -162,7 +162,7 @@
       Homework
     <% end %>
 
-    <%= link_to export_course_assignments_path(@course), id: "download-assignment", class: "btn btn-success text-light" do %>
+    <%= link_to export_course_assignments_path(@course, format: :csv), id: "download-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
       Download CSV
     <% end %>

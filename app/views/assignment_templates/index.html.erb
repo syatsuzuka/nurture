@@ -19,7 +19,7 @@
     <% end %>
   <% end %>
 
-  <%= link_to export_assignment_templates_path(@assignment_templates_set), id: "download-assignment-template", class: "btn btn-success text-light" do %>
+  <%= link_to export_assignment_templates_path(@assignment_templates_set, format: :csv), id: "download-assignment-template", class: "btn btn-success text-light" do %>
     <i class="fas fa-download"></i>
     Download CSV
   <% end %>

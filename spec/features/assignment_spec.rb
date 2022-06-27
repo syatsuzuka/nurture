@@ -151,4 +151,20 @@ feature 'homework (assignment))' do
     expect(page).to have_content('Jan.01, 2022')
     expect(page).to have_content('Dec.31, 2022')
   end
+
+  scenario 'exports homework (assignment) list' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to course detail =======
+    click_on('Courses')
+    click_on('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Edit an existing homework =======
+    find('#download-assignment').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+  end
 end

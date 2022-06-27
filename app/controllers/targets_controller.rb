@@ -89,7 +89,6 @@ class TargetsController < ApplicationController
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_targets.csv"
-        render "export.csv.erb"
       end
     end
   end

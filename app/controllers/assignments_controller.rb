@@ -169,7 +169,6 @@ class AssignmentsController < ApplicationController
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_homework.csv"
-        render "export.csv.erb"
       end
     end
   end
