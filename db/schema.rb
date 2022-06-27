@@ -163,6 +163,14 @@ ActiveRecord::Schema.define(version: 2022_06_26_111824) do
     t.integer "status"
   end
 
+  create_table "like_counts", force: :cascade do |t|
+    t.integer "likes", default: 0
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_like_counts_on_post_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -278,6 +286,7 @@ ActiveRecord::Schema.define(version: 2022_06_26_111824) do
   add_foreign_key "assignments", "courses"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "like_counts", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"

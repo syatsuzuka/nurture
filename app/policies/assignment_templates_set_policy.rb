@@ -6,14 +6,6 @@ class AssignmentTemplatesSetPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
     true
   end

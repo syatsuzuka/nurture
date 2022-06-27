@@ -5,10 +5,6 @@ class AssignmentPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    true
-  end
-
   def show?
     true
   end
@@ -33,23 +29,11 @@ class AssignmentPolicy < ApplicationPolicy
     true
   end
 
-  def all?
-    true
-  end
-
-  def dashboard?
-    true
-  end
-
   def review?
     true
   end
 
   def close?
-    true
-  end
-
-  def done?
     true
   end
 

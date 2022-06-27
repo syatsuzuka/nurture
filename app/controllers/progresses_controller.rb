@@ -30,10 +30,6 @@ class ProgressesController < ApplicationController
     @data << { name: "progress", data: data_hash_progress }
   end
 
-  def show
-    authorize @progress
-  end
-
   def new
     @progress = Progress.new
     @progress.target = @target
