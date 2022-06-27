@@ -288,6 +288,7 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
   add_foreign_key "assignments", "courses"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "like_counts", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

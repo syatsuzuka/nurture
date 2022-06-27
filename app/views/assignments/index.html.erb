@@ -40,17 +40,19 @@
   <% if current_user.role == "tutor" %>
     <%= link_to new_course_target_path(@course), id: "add-target", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
-      Target
+      Add
     <% end %>
 
     <%= link_to upload_course_targets_path(@course), id: "upload-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
-      Target
+      Import
     <% end %>
+  <% end %>
 
+  <% if current_user.role.in?(["tutor", "student"]) %>
     <%= link_to export_course_targets_path(@course, format: :csv), id: "download-target", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
-      Download CSV
+      Export
     <% end %>
   <% end %>
 
@@ -154,17 +156,19 @@
   <% if current_user.role == "tutor" %>
     <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "btn btn-success text-light ms-3" do %>
       <i class="fas fa-plus"></i>
-      Homework
+      Add
     <% end %>
 
     <%= link_to upload_course_assignments_path(@course), id: "upload-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-upload"></i>
-      Homework
+      Import
     <% end %>
+  <% end %>
 
+  <% if current_user.role.in?(["tutor", "student"]) %>
     <%= link_to export_course_assignments_path(@course, format: :csv), id: "download-assignment", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
-      Download CSV
+      Export
     <% end %>
   <% end %>
 
