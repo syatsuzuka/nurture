@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     authorize @like
     flash[:notice] = @like.errors.messages unless @like.save
 
-    redirect_to @like.likeable
+    redirect_back(fallback_location: posts_path)
   end
 
   def destroy
@@ -12,7 +12,8 @@ class LikesController < ApplicationController
     authorize @like
     like = @like
     like.destroy
-    redirect_to @like.likeable
+    redirect_back(fallback_location: posts_path)
+
   end
 
   private

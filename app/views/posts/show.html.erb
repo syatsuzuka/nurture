@@ -43,6 +43,8 @@
   <div class="collapse" id="navbarHeader">
     <% @post.comments.each  do |c| %>
       <p><%= c.content %></p>
+        <%= render partial: 'likes/button', locals: { likeable: c } %>
+        <p><%= c.likes.count %> likes</p>
       <%= link_to post_comment_path(c.post, c), method: :delete, class:"btn btn-secondary" do%>
         <i class="fas fa-trash"></i>
       <% end %>
