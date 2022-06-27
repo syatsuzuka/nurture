@@ -76,4 +76,40 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('https://www.nurture.pw')
     expect(page).to have_content('test_checkpoint')
   end
+
+  scenario 'uploads new assignment templates' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Create a new Assignment Template =======
+    find('#upload-assignment-template').click
+    attach_file('file', 'public/sample/nurture_homework_template_sample.csv')
+    click_on('Import')
+    expect(page).to have_content('test')
+    expect(page).to have_content('test2')
+    expect(page).to have_content('test3')
+  end
+
+  scenario 'export assignment templates list' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Create a new Assignment Template =======
+    find('#download-assignment-template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+  end
 end

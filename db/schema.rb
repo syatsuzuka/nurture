@@ -163,6 +163,14 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
     t.integer "status"
   end
 
+  create_table "like_counts", force: :cascade do |t|
+    t.integer "likes", default: 0
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_like_counts_on_post_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "likeable_id", null: false

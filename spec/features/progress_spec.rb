@@ -76,4 +76,21 @@ feature 'progress' do
     expect(page).to have_content('100')
     expect(page).to have_content('test')
   end
+
+  scenario 'exports an existing progress' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target detail =======
+    click_on('courses-menu')
+    click_on('Tennis Lesson (Beginner)')
+    click_on('Backhand Stroke (%)')
+    expect(page).to have_content('Backhand Stroke (%)')
+
+    #======= Create a new Progress =======
+    find('#download-progress').click
+    expect(page).to have_content('Backhand Stroke (%)')
+  end
 end

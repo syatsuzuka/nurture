@@ -77,7 +77,7 @@
     Progress
   <% end %>
 
-  <%= link_to export_progresses_path(@target.course, @target), id: "download-progress", class: "btn btn-success text-light" do %>
+  <%= link_to export_progresses_path(@target.course, @target, format: :csv), id: "download-progress", class: "btn btn-success text-light" do %>
     <i class="fas fa-download"></i>
     Download CSV
   <% end %>

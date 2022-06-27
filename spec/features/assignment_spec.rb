@@ -30,7 +30,7 @@ feature 'homework (assignment))' do
       assignment_start_date: "2022-01-01",
       assignment_end_date: "2022-12-31"
     }
-    assignment_form.fill_in_with(assignment_params).submit
+    assignment_form.fill_in_new_with(assignment_params).submit
     expect(page).to have_content('test_title')
 
     #======= Check the list of homework =======
@@ -69,7 +69,7 @@ feature 'homework (assignment))' do
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
-    #======= Add a new homework =======
+    #======= Edit an existing homework =======
     find('#assignments > table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
     expect(page).to have_content('Edit the Homework')
     assignment_form = AssignmentForm.new
@@ -85,7 +85,7 @@ feature 'homework (assignment))' do
       assignment_start_date: "2022-01-01",
       assignment_end_date: "2022-12-31"
     }
-    assignment_form.fill_in_with2(assignment_params).submit
+    assignment_form.fill_in_edit_with(assignment_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
     expect(page).to have_content('https://www.nurture.pw')
@@ -97,7 +97,7 @@ feature 'homework (assignment))' do
     expect(page).to have_content('Dec.31, 2022')
   end
 
-  scenario 'create and close a homework (assignment)' do
+  scenario 'review and close a homework (assignment)' do
     #======= Login with Student ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
@@ -119,7 +119,7 @@ feature 'homework (assignment))' do
       assignment_start_date: "2022-01-01",
       assignment_end_date: "2022-12-31"
     }
-    assignment_form.fill_in_with3(assignment_params).submit
+    assignment_form.fill_in_done_with(assignment_params).submit
     expect(page).to have_content('Pending')
     expect(page).to have_content('test_comment')
     expect(page).to have_content('Jan.01, 2022')
@@ -132,9 +132,39 @@ feature 'homework (assignment))' do
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
-    #======= Mark as completed =======
+    #======= Check "Mark as completed" =======
     expect(page).to have_content('Waiting for your review!')
     click_on('Swing Practice every day')
     expect(page).to have_content('Mark as completed')
+
+    #======= Review the homework =======
+    click_on('Add your review?')
+    assignment_params = {
+      assignment_status: "Closed",
+      assignment_review_comment: "test_review_comment",
+      assignment_start_date: "2022-01-01",
+      assignment_end_date: "2022-12-31"
+    }
+    assignment_form.fill_in_review_with(assignment_params).submit
+    expect(page).to have_content('Closed')
+    expect(page).to have_content('test_review_comment')
+    expect(page).to have_content('Jan.01, 2022')
+    expect(page).to have_content('Dec.31, 2022')
+  end
+
+  scenario 'exports homework (assignment) list' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to course detail =======
+    click_on('Courses')
+    click_on('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Edit an existing homework =======
+    find('#download-assignment').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
   end
 end

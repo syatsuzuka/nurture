@@ -7,10 +7,6 @@ class CoursesController < ApplicationController
     @courses = policy_scope(Course).sort_by { |course| [course.student_user_id, course.created_at] }
   end
 
-  def show
-    authorize @course
-  end
-
   def new
     @course = Course.new
 

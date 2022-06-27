@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post '/courses/:course_id/assignments/import', to: 'assignments#import', as: :import_course_assignments
   get '/courses/:course_id/assignments/:id/review', to: 'assignments#review', as: :review_course_assignment
   put '/courses/:course_id/assignments/:id/close', to: 'assignments#close', as: :close_course_assignment
-  put '/courses/:course_id/assignments/:id/done', to: 'assignments#done', as: :done_course_assignment
   get '/courses/:course_id/targets/export.csv', to: 'targets#export', as: :export_course_targets
   get '/courses/:course_id/targets/upload', to: 'targets#upload', as: :upload_course_targets
   post '/courses/:course_id/targets/import', to: 'targets#import', as: :import_course_targets
@@ -63,12 +62,12 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create edit update destroy]
   end
 
-  resources :target_templates_sets do
-    resources :target_templates
+  resources :target_templates_sets, only: %i[new create edit update destroy] do
+    resources :target_templates, only: %i[index new create edit update destroy]
   end
 
-  resources :assignment_templates_sets do
-    resources :assignment_templates
+  resources :assignment_templates_sets, only: %i[new create edit update destroy] do
+    resources :assignment_templates, only: %i[index new create edit update destroy]
   end
 
   resources :posts do

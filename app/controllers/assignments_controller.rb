@@ -3,9 +3,9 @@ class AssignmentsController < ApplicationController
   before_action :set_course, only: %i[
     index new create edit update destroy review close done upload import export
   ]
-  before_action :set_assignment, only: %i[show edit update destroy review close done]
+  before_action :set_assignment, only: %i[show edit update destroy review close]
   before_action :set_active_assignments, only: %i[all]
-  before_action :set_active_courses, only: %i[index show new create edit update destroy review close done]
+  before_action :set_active_courses, only: %i[index show new create edit update destroy review close]
 
   def index
     all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
@@ -149,15 +149,6 @@ class AssignmentsController < ApplicationController
     redirect_to course_assignments_path(@course)
   end
 
-  def done
-    @assignment.course = @course
-    @assignment.status = 1
-    authorize @assignment
-
-    @assignment.save
-    redirect_to all_assignments_path
-  end
-
   def upload
     nil
   end
@@ -178,7 +169,6 @@ class AssignmentsController < ApplicationController
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_homework.csv"
-        render "export.csv.erb"
       end
     end
   end
