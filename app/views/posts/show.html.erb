@@ -23,22 +23,7 @@
       <i class="fas fa-edit"></i>
     <% end %>
 
-    <%# <%= simple_form_for likes_path, method: :post, class: "btn btn-success" do |f| %>
-    <% like = current_user.likes.find_by(likeable: @post) %>
-    <% if like.nil? %>
-      <form action="/likes" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="like[likeable_id]" value="<%= @post.id %>">
-        <input type="hidden" name="like[likeable_type]" value="<%= "Post" %>">
-        <input type="submit" value="Like" class="btn btn-success">
-      </form>
-      <% else %>
-      <form action="<%= like_path(like)%>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Unlike" class="btn btn-success">
-      </form>
-      <% end %>
+    <%= render partial: 'likes/button', locals: { likeable: @post } %>
   </ul>
 
 
