@@ -74,8 +74,8 @@ feature 'target' do
     expect(page).to have_content('test_name')
   end
 
-  scenario 'exports the course list' do
-    #======= Access to course menu =======
+  scenario 'exports the target list' do
+    #======= Access to target menu =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit

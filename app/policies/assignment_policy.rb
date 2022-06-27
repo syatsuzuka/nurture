@@ -2,7 +2,7 @@ class AssignmentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.all.select { |assignment| assignment.course.tutor == user }
+        scope.select { |assignment| assignment.course.tutor == user }
       else
         scope.select { |assignment| assignment.course.student == user }
       end
@@ -13,20 +13,20 @@ class AssignmentPolicy < ApplicationPolicy
     record.course.tutor == user or record.course.student == user
   end
 
-  def new?
-    user.role == "tutor"
-  end
-
   def create?
     user.role == "tutor"
   end
 
-  def edit?
-    record.course.tutor == user or record.course.student == user
+  def new?
+    create?
   end
 
   def update?
     record.course.tutor == user or record.course.student == user
+  end
+
+  def edit?
+    update?
   end
 
   def destroy?
@@ -39,9 +39,5 @@ class AssignmentPolicy < ApplicationPolicy
 
   def close?
     record.course.tutor == user
-  end
-
-  def export?
-    record.course.tutor == user or record.course.student == user
   end
 end

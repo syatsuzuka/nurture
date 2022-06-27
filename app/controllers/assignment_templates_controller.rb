@@ -65,8 +65,6 @@ class AssignmentTemplatesController < ApplicationController
     end
     @assignment_templates.sort_by!(&:title)
 
-    authorize @assignment_templates
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
@@ -89,6 +87,7 @@ class AssignmentTemplatesController < ApplicationController
 
   def set_assignment_templates_set
     @assignment_templates_set = AssignmentTemplatesSet.find(params[:assignment_templates_set_id])
+    authorize @assignment_templates_set
   end
 
   def set_assignment_template

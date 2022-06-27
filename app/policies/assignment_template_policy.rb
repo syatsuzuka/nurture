@@ -2,12 +2,12 @@ class AssignmentTemplatePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.select { |assignment_template| assignment_template.assignment_templates_set.user == user }
     end
   end
 
   def create?
-    true
+    user.role == "tutor"
   end
 
   def new?
@@ -15,7 +15,7 @@ class AssignmentTemplatePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.assignment_templates_set.user == user
   end
 
   def edit?
@@ -23,10 +23,6 @@ class AssignmentTemplatePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
-  end
-
-  def export?
-    true
+    record.assignment_templates_set.user == user
   end
 end

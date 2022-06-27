@@ -18,7 +18,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def new?
-    user.role == "tutor"
+    create?
   end
 
   def update?
@@ -26,7 +26,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    record.tutor == user or record.student == user
+    update?
   end
 
   def destroy?
@@ -46,7 +46,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def upload?
-    record.tutor == user or record.student == user
+    import?
   end
 
   def review?

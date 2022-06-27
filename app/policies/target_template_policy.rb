@@ -2,12 +2,12 @@ class TargetTemplatePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.select { |target_template| target_template.target_templates_set.user == user }
     end
   end
 
   def create?
-    true
+    user.role == "tutor"
   end
 
   def new?
@@ -15,7 +15,7 @@ class TargetTemplatePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.target_templates_set.user == user
   end
 
   def edit?
@@ -23,6 +23,14 @@ class TargetTemplatePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.target_templates_set.user == user
+  end
+
+  def import?
+    user.role == "tutor"
+  end
+
+  def upload?
+    import?
   end
 end
