@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     authorize @like
     flash[:notice] = @like.errors.messages unless @like.save
 
-    redirect_to @like.post
+    redirect_back(fallback_location: posts_path)
   end
 
   def destroy
@@ -12,12 +12,12 @@ class LikesController < ApplicationController
     authorize @like
     like = @like
     like.destroy
-    redirect_to @like.post
+    redirect_back(fallback_location: posts_path)
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:post_id)
+    params.require(:like).permit(:likeable_id, :likeable_type)
   end
 end
