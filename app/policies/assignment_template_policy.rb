@@ -25,4 +25,8 @@ class AssignmentTemplatePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def export?
+    true
+  end
 end

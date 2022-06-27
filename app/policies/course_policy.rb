@@ -9,6 +9,10 @@ class CoursePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    record.tutor == user or record.student == user # when accept the course
+  end
+
   def create?
     user.role == "tutor"
   end
@@ -22,7 +26,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    record.tutor == user
+    record.tutor == user or record.student == user
   end
 
   def destroy?
@@ -34,6 +38,22 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def dashboard?
+    record.tutor == user or record.student == user
+  end
+
+  def import?
+    record.tutor == user or record.student == user
+  end
+
+  def upload?
+    record.tutor == user or record.student == user
+  end
+
+  def review?
+    record.tutor == user
+  end
+
+  def export?
     record.tutor == user or record.student == user
   end
 end
