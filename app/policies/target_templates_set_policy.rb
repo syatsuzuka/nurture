@@ -2,12 +2,16 @@ class TargetTemplatesSetPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.all if user.role == "tutor"
     end
   end
 
+  def index?
+    record.user == user
+  end
+
   def create?
-    true
+    user.role == "tutor"
   end
 
   def new?
@@ -15,7 +19,7 @@ class TargetTemplatesSetPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def edit?
@@ -23,9 +27,18 @@ class TargetTemplatesSetPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.user == user
   end
 
-  def knowledge?
+  def import?
+    record.user == user
+  end
+
+  def upload?
+    import?
+  end
+
+  def export?
+    record.user == user
   end
 end

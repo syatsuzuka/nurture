@@ -1,19 +1,9 @@
 class TargetsController < ApplicationController
   before_action :target_params, only: %i[create update]
-  before_action :set_course, only: %i[index new create edit update destroy upload import close export]
+  before_action :set_course, only: %i[new create edit update destroy upload import close export]
   before_action :set_target, only: %i[show edit update destroy close]
   before_action :set_active_courses
   before_action :set_target_options, only: %i[new edit]
-
-  def index
-    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }
-
-    if current_user.role == "tutor"
-      @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
-    else
-      @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
-    end
-  end
 
   def show
     authorize @target
@@ -83,8 +73,6 @@ class TargetsController < ApplicationController
     @targets = policy_scope(Target).select { |target| target.course == @course }
     @targets.sort_by!(&:name)
 
-    authorize Target
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
@@ -101,6 +89,7 @@ class TargetsController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id])
+    authorize @course
   end
 
   def set_target

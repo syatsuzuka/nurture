@@ -8,9 +8,12 @@ class AssignmentsController < ApplicationController
   before_action :set_active_courses, only: %i[index show new create edit update destroy review close]
 
   def index
-    all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
-    all_assignments.sort_by(&:created_at).reverse
-    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }.sort_by do |target|
+    @assignments =  policy_scope(Assignment)
+                    .select { |assignment| assignment.course.id == @course.id }
+                    .sort_by(&:created_at)
+    @targets =  policy_scope(Target)
+                .select { |target| target.course.id == @course.id }
+                .sort_by do |target|
       element = target
       parentpath = ""
 
@@ -28,14 +31,6 @@ class AssignmentsController < ApplicationController
       else
         "#{parentpath}> #{target.name}"
       end
-    end
-
-    if current_user.role == "tutor"
-      @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
-      @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
-    else
-      @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
-      @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
 
     #======= Data setting for Graph (target) =======
@@ -162,8 +157,6 @@ class AssignmentsController < ApplicationController
   def export
     @assignments = policy_scope(Assignment).select { |assignment| assignment.course == @course }
     @assignments.sort_by!(&:title)
-
-    authorize @assignments
 
     respond_to do |format|
       format.csv do
