@@ -163,7 +163,7 @@ class AssignmentsController < ApplicationController
     @assignments = policy_scope(Assignment).select { |assignment| assignment.course == @course }
     @assignments.sort_by!(&:title)
 
-    authorize Assignment
+    authorize @assignments
 
     respond_to do |format|
       format.csv do
@@ -193,10 +193,12 @@ class AssignmentsController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id])
+    authorize @course
   end
 
   def set_assignment
     @assignment = Assignment.find(params[:id])
+    authorize @assignment
   end
 
   def set_active_assignments

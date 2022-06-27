@@ -23,7 +23,7 @@
   <% end %>
 <% end %>
 
-<%= link_to export_target_templates_path(@target_templates_set), id: "download-target-template", class: "btn btn-success text-light" do %>
+<%= link_to export_target_templates_path(@target_templates_set, format: :csv), id: "download-target-template", class: "btn btn-success text-light" do %>
   <i class="fas fa-download"></i>
   Export
 <% end %>

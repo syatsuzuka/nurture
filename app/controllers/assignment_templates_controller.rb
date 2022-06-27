@@ -65,7 +65,7 @@ class AssignmentTemplatesController < ApplicationController
     end
     @assignment_templates.sort_by!(&:title)
 
-    authorize Assignment
+    authorize @assignment_templates
 
     respond_to do |format|
       format.csv do
