@@ -50,7 +50,7 @@ feature 'target_template' do
     expect(page).to have_content('test > test2 > test3 > test4')
   end
 
-  scenario 'edits a new target template' do
+  scenario 'edits an existing target template' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
@@ -61,7 +61,7 @@ feature 'target_template' do
     find('#target-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
-    #======= Create a new Target Template =======
+    #======= Edit an existing Target Template =======
     find('#target_templates > tbody > tr:nth-child(1) > td > a.edit-target_template').click
     target_template_form = TargetTemplateForm.new
     target_template_params = {
@@ -74,6 +74,24 @@ feature 'target_template' do
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_description')
     expect(page).to have_content('30')
+  end
+
+  scenario 'deletes an existing target template' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target Template =======
+    click_on('template-menu')
+    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#target_templates > tbody > tr').count).to eq 2
+
+    #======= Delete an existing Target Template =======
+    find('#target_templates > tbody > tr:nth-child(1) > td > a.delete-target_template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#target_templates > tbody > tr').count).to eq 1
   end
 
   scenario 'uploads new target templates' do

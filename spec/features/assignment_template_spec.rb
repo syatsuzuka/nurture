@@ -50,7 +50,7 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('test3')
   end
 
-  scenario 'edits new assignment templates' do
+  scenario 'edits an existing assignment templates' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
@@ -61,7 +61,7 @@ feature 'homework template (assignment_template)' do
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
-    #======= Create a new Assignment Template =======
+    #======= Edit an existing Assignment Template =======
     find('#assignment_templates > tbody > tr:nth-child(1) > td > a.edit-assignment_template').click
     assignment_template_form = AssignmentTemplateForm.new
     assignment_template_params = {
@@ -75,6 +75,24 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('test_instruction')
     expect(page).to have_content('https://www.nurture.pw')
     expect(page).to have_content('test_checkpoint')
+  end
+
+  scenario 'deletes an existing assignment templates' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
+
+    #======= Delete an existing Assignment Template =======
+    find('#assignment_templates > tbody > tr:nth-child(1) > td > a.delete-assignment_template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 0
   end
 
   scenario 'uploads new assignment templates' do

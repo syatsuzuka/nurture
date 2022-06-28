@@ -38,26 +38,6 @@ feature 'homework (assignment))' do
     expect(page.all('div.row > div').count).to eq 4
   end
 
-  scenario 'uploads new homeworks (assignment)' do
-    #======= Login with Tutor ID =======
-    session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
-    session_form.visit_page.fill_in_with(session_params).submit
-
-    #======= Access to course detail =======
-    click_on('Courses')
-    click_on('Tennis Lesson (Beginner)')
-    expect(page).to have_content('Tennis Lesson (Beginner)')
-
-    #======= Add a new homework =======
-    find('#upload-assignment').click
-    attach_file('file', 'public/sample/nurture_homework_sample.csv')
-    click_on('Import')
-    expect(page).to have_content('test')
-    expect(page).to have_content('test2')
-    expect(page).to have_content('test3')
-  end
-
   scenario 'edits the existing homework (assignment)' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
@@ -95,6 +75,44 @@ feature 'homework (assignment))' do
     expect(page).to have_content('test_review_comment')
     expect(page).to have_content('Jan.01, 2022')
     expect(page).to have_content('Dec.31, 2022')
+  end
+
+  scenario 'deletes the existing homework (assignment)' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to course detail =======
+    click_on('Courses')
+    click_on('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignments >table > tbody > tr').count).to eq 1
+
+    #======= Delete an existing homework =======
+    find('#assignments > table > tbody > tr:nth-child(1) > td > a.delete-assignment').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignments >table > tbody > tr').count).to eq 0
+  end
+
+  scenario 'uploads new homeworks (assignment)' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to course detail =======
+    click_on('Courses')
+    click_on('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Add a new homework =======
+    find('#upload-assignment').click
+    attach_file('file', 'public/sample/nurture_homework_sample.csv')
+    click_on('Import')
+    expect(page).to have_content('test')
+    expect(page).to have_content('test2')
+    expect(page).to have_content('test3')
   end
 
   scenario 'review and close a homework (assignment)' do

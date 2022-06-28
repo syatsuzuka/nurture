@@ -25,12 +25,4 @@ class TargetTemplatePolicy < ApplicationPolicy
   def destroy?
     record.target_templates_set.user == user
   end
-
-  def import?
-    user.role == "tutor"
-  end
-
-  def upload?
-    import?
-  end
 end
