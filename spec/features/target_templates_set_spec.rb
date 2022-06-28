@@ -12,6 +12,7 @@ feature 'target_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
+    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
 
     #======= Create a new Target Templates Set =======
     target_templates_set_form = TargetTemplatesSetForm.new
@@ -23,6 +24,7 @@ feature 'target_templates_set' do
     target_templates_set_form.visit_page.fill_in_with(target_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
+    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 2
   end
 
   scenario 'edits an existing target_templates_set' do
@@ -34,6 +36,7 @@ feature 'target_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
+    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
 
     #======= Edit an existing Target Templates Set =======
     find("#target-templates-sets > tbody > tr:nth-child(1) > td > a.edit-target-templates-set").click
@@ -46,6 +49,7 @@ feature 'target_templates_set' do
     target_templates_set_form.fill_in_with(target_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
+    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
   end
 
   scenario 'deletes an existing target_templates_set' do

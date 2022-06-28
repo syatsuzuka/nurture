@@ -12,6 +12,9 @@ feature 'assignment_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
+    expect(page).to have_no_content('test_name')
+    expect(page).to have_no_content('test_category')
+    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
 
     #======= Create a new Assignment Templates Set =======
     assignment_templates_set_form = AssignmentTemplatesSetForm.new
@@ -23,6 +26,7 @@ feature 'assignment_templates_set' do
     assignment_templates_set_form.visit_page.fill_in_with(assignment_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
+    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 2
   end
 
   scenario 'edits an existing assignment_templates_set' do
@@ -34,6 +38,7 @@ feature 'assignment_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
+    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
 
     #======= Edit an existing Assignment Templates Set =======
     find("#assignment-templates-sets > tbody > tr:nth-child(1) > td > a.edit-assignment-templates-set").click
@@ -46,6 +51,7 @@ feature 'assignment_templates_set' do
     assignment_templates_set_form.fill_in_with(assignment_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
+    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
   end
 
   scenario 'deletes an existing assignment_templates_set' do

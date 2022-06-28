@@ -53,6 +53,10 @@ class CoursePolicy < ApplicationPolicy
     record.tutor == user
   end
 
+  def close?
+    record.tutor == user
+  end
+
   def export?
     record.tutor == user or record.student == user
   end

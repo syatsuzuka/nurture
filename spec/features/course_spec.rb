@@ -10,6 +10,9 @@ feature 'course' do
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     expect(page).to have_content('Course List')
+    expect(page).to have_no_content('test_name')
+    expect(page).to have_no_content('shingo')
+    expect(page.all('div.row > div').count).to eq 3
 
     #======= Create a new course =======
     course_form = CourseForm.new
@@ -20,10 +23,9 @@ feature 'course' do
     }
     course_form.visit_page.fill_in_with(course_params).submit
     expect(page).to have_content('Course List')
-
-    click_on('Courses')
     expect(page).to have_content('test_name')
     expect(page).to have_content('shingo')
+    expect(page.all('div.row > div').count).to eq 4
 
     #======= Logout =======
     session_form.logout
@@ -49,6 +51,8 @@ feature 'course' do
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     expect(page).to have_content('Course List')
+    expect(page).to have_no_content('test_name')
+    expect(page.all('div.row > div').count).to eq 3
 
     #======= Edits an existing course =======
     find('div.row > div:nth-child(1) div.card > div.card-body a.edit-course').click
@@ -61,6 +65,7 @@ feature 'course' do
     course_form.fill_in_with(course_params).submit
     expect(page).to have_content('Course List')
     expect(page).to have_content('test_name')
+    expect(page.all('div.row > div').count).to eq 3
   end
 
   scenario 'deletes an existing course' do
