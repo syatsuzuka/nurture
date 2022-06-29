@@ -45,4 +45,21 @@ class UsersController < ApplicationController
   def set_active_users
     @active_users = "class=active"
   end
+
+  def set_manager_options
+    if @manager.nil?
+      manager_options = User.where(role: "tutor").order(:name)
+    else
+      manager_options = User.where(role: "tutor").where.not(id: @user.id).order(:name)
+    end
+
+    @manager_options = manager_options.select do |manager|
+      result = true
+      until manager.parent.nil?
+        result = false if manager.parent == @user
+        manager = manager.parent
+      end
+      result
+    end
+  end
 end
