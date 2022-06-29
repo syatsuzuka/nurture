@@ -120,14 +120,7 @@ class AssignmentsController < ApplicationController
   end
 
   def all
-    if current_user.role == "tutor"
-      @assignments = policy_scope(Assignment).select { |assignment| assignment.course.tutor_user_id == current_user.id }
-    else
-      @assignments = policy_scope(Assignment).select do |assignment|
-        assignment.course.student_user_id == current_user.id
-      end
-    end
-    @assignments.sort_by!(&:status)
+    @assignments = policy_scope(Assignment).sort_by!(&:status)
   end
 
   def review
