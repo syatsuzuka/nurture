@@ -11,7 +11,7 @@
             data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
           >
 
-            <div id="messages" class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
+            <div id="messages" class="messages d-flex flex-column-reverse align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
               <% @chatroom.messages.each do |message| %>
                 <%= render "messages/message", message: message %>
               <% end %>
