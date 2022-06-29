@@ -40,11 +40,84 @@ User.destroy_all
 puts '===================================='
 puts "Generating sample users seeds..."
 
-sample_tutor = User.create!(email: ENV['SAMPLE_TUTOR_LOGIN_ID'], nickname: "Sample Tutor", first_name: 'Sample', last_name: 'Tutor', password: ENV['SAMPLE_TUTOR_LOGIN_PASSWORD'], role: 'tutor', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", specialty: "To help users for better learning experiences")
-sample_student = User.create!(email: ENV['SAMPLE_STUDENT_LOGIN_ID'], nickname: "Sample Student", first_name: 'Sample', last_name: 'Student', password: ENV['SAMPLE_STUDENT_LOGIN_PASSWORD'], role: 'student', message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.", interest: "To help users for better learning experiences")
+sample_tutor = User.create!(
+  email: ENV['SAMPLE_TUTOR_LOGIN_ID'],
+  nickname: "Sample Tutor",
+  first_name: 'Sample',
+  last_name: 'Tutor',
+  password: ENV['SAMPLE_TUTOR_LOGIN_PASSWORD'],
+  role: 'tutor',
+  message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.",
+  specialty: "To help users for better learning experiences"
+)
 
-demo_tutor = User.create!(email: ENV['DEMO_TUTOR_LOGIN_ID'], nickname: "ed", first_name: 'Ed', last_name: 'Oz', password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'], role: 'tutor')
-demo_student = User.create!(email: ENV['DEMO_STUDENT_LOGIN_ID'], nickname: "shingo", first_name: 'Shingo', last_name: 'Kubomura', password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'], role: 'student')
+sample_student = User.create!(
+  email: ENV['SAMPLE_STUDENT_LOGIN_ID'],
+  nickname: "Sample Student",
+  first_name: 'Sample',
+  last_name: 'Student',
+  password: ENV['SAMPLE_STUDENT_LOGIN_PASSWORD'],
+  role: 'student',
+  message: "Welcome to Nurture! Please feel free to ask any questions about our Nurture platform.",
+  interest: "To help users for better learning experiences"
+)
+
+demo_manager = User.create!(
+  email: ENV['DEMO_MANAGER_LOGIN_ID'],
+  nickname: "james",
+  first_name: 'James',
+  last_name: 'Reed',
+  password: ENV['DEMO_MANAGER_LOGIN_PASSWORD'],
+  role: 'tutor',
+  message: "Hi there! This is James, a manager for Nurture's demo.",
+  interest: "Tennis course management"
+)
+
+demo_tutor = User.create!(
+  email: ENV['DEMO_TUTOR_LOGIN_ID'],
+  nickname: "ed",
+  first_name: 'Ed',
+  last_name: 'Oz',
+  password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'],
+  role: 'tutor',
+  manager: demo_manager,
+  message: "Hi there! This is Ed, a tutor for Nurture's demo.",
+  interest: "Tennis"
+)
+
+demo_tutor2 = User.create!(
+  email: ENV['DEMO_TUTOR2_LOGIN_ID'],
+  nickname: "shunjiro",
+  first_name: 'Shunjiro',
+  last_name: 'Yatsuzuka',
+  password: ENV['DEMO_TUTOR2_LOGIN_PASSWORD'],
+  role: 'tutor',
+  manager: demo_manager,
+  message: "Hi there! This is Shunjiro, a tutor for Nurture's demo.",
+  interest: "Tennis"
+)
+
+demo_student = User.create!(
+  email: ENV['DEMO_STUDENT_LOGIN_ID'],
+  nickname: "shingo",
+  first_name: 'Shingo',
+  last_name: 'Kubomura',
+  password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'],
+  role: 'student',
+  message: "Hi there! This is Shingo, a student for Nurture's demo.",
+  interest: "Tennis"
+)
+
+demo_student2 = User.create!(
+  email: ENV['DEMO_STUDENT2_LOGIN_ID'],
+  nickname: "doug",
+  first_name: 'Douglas',
+  last_name: 'Berkeley',
+  password: ENV['DEMO_STUDENT2_LOGIN_PASSWORD'],
+  role: 'student',
+  message: "Hi there! This is Doug, a student for Nurture's demo.",
+  interest: "Tennis"
+)
 
 puts "Generated #{user_count("tutor")} #{Faker::Emotion.adjective} new tutors"
 puts "Generated #{user_count("student")} #{Faker::Emotion.adjective} new students"
@@ -52,36 +125,171 @@ puts '===================================='
 
 puts '===================================='
 puts "Generating courses..."
-course_1 = Course.create!(name: "Tennis Lesson (Beginner)", description: "Private Tennis Lesson for complete beginners.", status: 1, tutor: demo_tutor, student: demo_student )
+course_1 = Course.create!(
+  name: "Tennis Lesson (Beginner)",
+  description: "Private Tennis Lesson for complete beginners.",
+  status: 1,
+  tutor: demo_tutor,
+  student: demo_student
+)
 chatroom_1 = Chatroom.create!(name: "Assignment chat")
 
-course_2 = Course.create!(name: "Tennis Lesson (Intermediate)", description: "Private Tennis Lesson to help to win the junior high school student's championship.", status: 1, tutor: demo_tutor, student: demo_student )
+course_2 = Course.create!(
+  name: "Tennis Lesson (Intermediate)",
+  description: "Private Tennis Lesson to help to win the junior high school student's championship.",
+  status: 1,
+  tutor: demo_tutor,
+  student: demo_student
+)
 chatroom_2 = Chatroom.create!(name: "Assignment chat")
+
+course_3 = Course.create!(
+  name: "Tennis Lesson (Beginner)",
+  description: "Private Tennis Lesson for complete beginners.",
+  status: 1,
+  tutor: demo_tutor2,
+  student: demo_student2
+)
+chatroom_3 = Chatroom.create!(name: "Assignment chat")
+
+course_4 = Course.create!(
+  name: "Tennis Lesson (Intermediate)",
+  description: "Private Tennis Lesson to help to win the junior high school student's championship.",
+  status: 1,
+  tutor: demo_tutor2,
+  student: demo_student2
+)
+chatroom_4 = Chatroom.create!(name: "Assignment chat")
 
 puts "Generated #{Course.all.count} courses successfully"
 
 puts '===================================='
 puts 'Generating assignments...'
 
-assignment_11 = Assignment.create!(title: "Swing Practice every day", instruction: "Take 30mins for shadow swing everyday", comment: "", checkpoint: "Take 60mins every days", course_id: course_1.id, status: 2, start_date: "2020-09-01", end_date: "2020-12-31")
-assignment_21 = Assignment.create!(title: "Smash Practice", instruction: "Practice Smash with machine", comment: "", checkpoint: "Have 5 sets of 10 times every two days", course_id: course_2.id, status: 2, start_date: "2022-01-01", end_date: "2022-03-31")
+assignment_11 = Assignment.create!(
+  title: "Swing Practice every day",
+  instruction: "Take 30mins for shadow swing everyday",
+  comment: "",
+  checkpoint: "Take 60mins every days",
+  course_id: course_1.id,
+  status: 2,
+  start_date: "2020-09-01",
+  end_date: "2020-12-31"
+)
+
+assignment_21 = Assignment.create!(
+  title: "Smash Practice",
+  instruction: "Practice Smash with machine",
+  comment: "",
+  checkpoint: "Have 5 sets of 10 times every two days",
+  course_id: course_2.id,
+  status: 2,
+  start_date: "2022-01-01",
+  end_date: "2022-03-31"
+)
+
+assignment_31 = Assignment.create!(
+  title: "Swing Practice every day",
+  instruction: "Take 30mins for shadow swing everyday",
+  comment: "",
+  checkpoint: "Take 60mins every days",
+  course_id: course_3.id,
+  status: 2,
+  start_date: "2020-09-01",
+  end_date: "2020-12-31"
+)
+
+assignment_41 = Assignment.create!(
+  title: "Smash Practice",
+  instruction: "Practice Smash with machine",
+  comment: "",
+  checkpoint: "Have 5 sets of 10 times every two days",
+  course_id: course_4.id,
+  status: 2,
+  start_date: "2022-01-01",
+  end_date: "2022-03-31"
+)
 
 puts "Generated #{Assignment.all.count} Assignments successfully"
 
 puts '===================================='
 puts 'Generating targets...'
-target_11 = Target.create!(name: "Forhand Stroke (%)", description: "Achieve higher successful rate in Forehand Stroke.", score: 40, display: true, course_id: course_1.id, parent_id: nil )
-target_12 = Target.create!(name: "Backhand Stroke (%)", description: "Achieve higher successful rate in Backhand Stroke.", score: 20, display: true, course_id: course_1.id, parent_id: nil )
+target_11 = Target.create!(
+  name: "Forhand Stroke (%)",
+  description: "Achieve higher successful rate in Forehand Stroke.",
+  score: 40,
+  display: true,
+  course_id: course_1.id,
+  parent_id: nil
+)
+target_12 = Target.create!(
+  name: "Backhand Stroke (%)",
+  description: "Achieve higher successful rate in Backhand Stroke.",
+  score: 20,
+  display: true,
+  course_id: course_1.id,
+  parent_id: nil
+)
 
-target_21 = Target.create!(name: "Service Ace Rate (%)", description: "Achieve higher successful rate in Serviece Ace.", score: 30, display: true, course_id: course_2.id, parent_id: nil )
-target_22 = Target.create!(name: "Return Ace Rate (%)", description: "Achieve higher successful rate in Return Ace.", score: 10, display: true, course_id: course_2.id, parent_id: nil )
+target_21 = Target.create!(
+  name: "Service Ace Rate (%)",
+  description: "Achieve higher successful rate in Serviece Ace.",
+  score: 30,
+  display: true,
+  course_id: course_2.id,
+  parent_id: nil
+)
+
+target_22 = Target.create!(
+  name: "Return Ace Rate (%)",
+  description: "Achieve higher successful rate in Return Ace.",
+  score: 10,
+  display: true,
+  course_id: course_2.id,
+  parent_id: nil
+)
+
+target_31 = Target.create!(
+  name: "Forhand Stroke (%)",
+  description: "Achieve higher successful rate in Forehand Stroke.",
+  score: 40,
+  display: true,
+  course_id: course_3.id,
+  parent_id: nil
+)
+target_32 = Target.create!(
+  name: "Backhand Stroke (%)",
+  description: "Achieve higher successful rate in Backhand Stroke.",
+  score: 20,
+  display: true,
+  course_id: course_3.id,
+  parent_id: nil
+)
+
+target_41 = Target.create!(
+  name: "Service Ace Rate (%)",
+  description: "Achieve higher successful rate in Serviece Ace.",
+  score: 30,
+  display: true,
+  course_id: course_4.id,
+  parent_id: nil
+)
+
+target_42 = Target.create!(
+  name: "Return Ace Rate (%)",
+  description: "Achieve higher successful rate in Return Ace.",
+  score: 10,
+  display: true,
+  course_id: course_4.id,
+  parent_id: nil
+)
 
 puts "Generated #{Target.all.count} Targets successfully"
 
 puts '===================================='
 puts 'Generating progresses...'
 
-# Tennis Lesson (Beginner) - tutor_1 / student_1
+# Tennis Lesson (Beginner) - tutor / student
 progress_1101 = Progress.create!(date: "2020-04-01", score: target_11.score - 2.0 + rand(8)-4, target_id: target_11.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_1102 = Progress.create!(date: "2020-05-01", score: target_11.score - 1.5 + rand(8)-4, target_id: target_11.id, comment: "the score in private game with John of the same junior high school")
 progress_1103 = Progress.create!(date: "2020-06-01", score: target_11.score - 1.0 + rand(8)-4, target_id: target_11.id, comment: "the score in championship league")
@@ -102,7 +310,7 @@ progress_1207 = Progress.create!(date: "2020-10-01", score: target_12.score + 1.
 progress_1208 = Progress.create!(date: "2020-11-01", score: target_12.score + 1.5 + rand(8)-4, target_id: target_12.id, comment: "the score in private game with John of the same junior high school")
 progress_1209 = Progress.create!(date: "2020-12-01", score: target_12.score + 2.0 + rand(8)-4, target_id: target_12.id, comment: "the score in championship league")
 
-# Tennis Lesson (Intermediate) - tutor_1 / student_1
+# Tennis Lesson (Intermediate) - tutor / student
 progress_2101 = Progress.create!(date: "2020-12-01", score: target_21.score - 5.5 + rand(8)-4, target_id: target_21.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_2102 = Progress.create!(date: "2021-01-01", score: target_21.score - 5.0 + rand(8)-4, target_id: target_21.id, comment: "the score in private game with John of the same junior high school")
 progress_2103 = Progress.create!(date: "2021-02-01", score: target_21.score - 4.5 + rand(8)-4, target_id: target_21.id, comment: "the score in championship league")
@@ -140,6 +348,67 @@ progress_2215 = Progress.create!(date: "2022-02-01", score: target_22.score + 0.
 progress_2216 = Progress.create!(date: "2022-03-01", score: target_22.score + 1.0 + rand(8)-4, target_id: target_22.id, comment: "the score in official game with Mike of ABC junior high school")
 progress_2217 = Progress.create!(date: "2022-04-01", score: target_22.score + 1.5 + rand(8)-4, target_id: target_22.id, comment: "the score in private game with John of the same junior high school")
 progress_2218 = Progress.create!(date: "2022-05-01", score: target_22.score + 2.0 + rand(8)-4, target_id: target_22.id, comment: "the score in championship league")
+
+# Tennis Lesson (Beginner) - tutor2 / student
+progress_3101 = Progress.create!(date: "2020-04-01", score: target_31.score - 2.0 + rand(8)-4, target_id: target_31.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3102 = Progress.create!(date: "2020-05-01", score: target_31.score - 1.5 + rand(8)-4, target_id: target_31.id, comment: "the score in private game with John of the same junior high school")
+progress_3103 = Progress.create!(date: "2020-06-01", score: target_31.score - 1.0 + rand(8)-4, target_id: target_31.id, comment: "the score in championship league")
+progress_3104 = Progress.create!(date: "2020-07-01", score: target_31.score - 0.5 + rand(8)-4, target_id: target_31.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3105 = Progress.create!(date: "2020-08-01", score: target_31.score + 0.0 + rand(8)-4, target_id: target_31.id, comment: "the score in private game with John of the same junior high school")
+progress_3106 = Progress.create!(date: "2020-09-01", score: target_31.score + 0.5 + rand(8)-4, target_id: target_31.id, comment: "the score in championship league")
+progress_3107 = Progress.create!(date: "2020-10-01", score: target_31.score + 1.0 + rand(8)-4, target_id: target_31.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3108 = Progress.create!(date: "2020-11-01", score: target_31.score + 1.5 + rand(8)-4, target_id: target_31.id, comment: "the score in private game with John of the same junior high school")
+progress_3109 = Progress.create!(date: "2020-12-01", score: target_31.score + 2.0 + rand(8)-4, target_id: target_31.id, comment: "the score in championship league")
+
+progress_3201 = Progress.create!(date: "2020-04-01", score: target_32.score - 2.0 + rand(8)-4, target_id: target_32.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3202 = Progress.create!(date: "2020-05-01", score: target_32.score - 1.5 + rand(8)-4, target_id: target_32.id, comment: "the score in private game with John of the same junior high school")
+progress_3203 = Progress.create!(date: "2020-06-01", score: target_32.score - 1.0 + rand(8)-4, target_id: target_32.id, comment: "the score in championship league")
+progress_3204 = Progress.create!(date: "2020-07-01", score: target_32.score - 0.5 + rand(8)-4, target_id: target_32.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3205 = Progress.create!(date: "2020-08-01", score: target_32.score + 0.0 + rand(8)-4, target_id: target_32.id, comment: "the score in private game with John of the same junior high school")
+progress_3206 = Progress.create!(date: "2020-09-01", score: target_32.score + 0.5 + rand(8)-4, target_id: target_32.id, comment: "the score in championship league")
+progress_3207 = Progress.create!(date: "2020-10-01", score: target_32.score + 1.0 + rand(8)-4, target_id: target_32.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_3208 = Progress.create!(date: "2020-11-01", score: target_32.score + 1.5 + rand(8)-4, target_id: target_32.id, comment: "the score in private game with John of the same junior high school")
+progress_3209 = Progress.create!(date: "2020-12-01", score: target_32.score + 2.0 + rand(8)-4, target_id: target_32.id, comment: "the score in championship league")
+
+# Tennis Lesson (Intermediate) - tutor2 / student
+progress_4101 = Progress.create!(date: "2020-12-01", score: target_41.score - 5.5 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4102 = Progress.create!(date: "2021-01-01", score: target_41.score - 5.0 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4103 = Progress.create!(date: "2021-02-01", score: target_41.score - 4.5 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+progress_4104 = Progress.create!(date: "2021-03-01", score: target_41.score - 4.0 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4105 = Progress.create!(date: "2021-04-01", score: target_41.score - 3.5 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4106 = Progress.create!(date: "2021-05-01", score: target_41.score - 3.0 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+progress_4107 = Progress.create!(date: "2021-06-01", score: target_41.score - 2.5 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4108 = Progress.create!(date: "2021-07-01", score: target_41.score - 2.0 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4109 = Progress.create!(date: "2021-08-01", score: target_41.score - 1.5 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+progress_4110 = Progress.create!(date: "2021-09-01", score: target_41.score - 1.0 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4111 = Progress.create!(date: "2021-10-01", score: target_41.score - 0.5 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4112 = Progress.create!(date: "2021-11-01", score: target_41.score - 0.0 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+progress_4113 = Progress.create!(date: "2021-12-01", score: target_41.score + 0.5 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4114 = Progress.create!(date: "2022-01-01", score: target_41.score + 1.0 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4115 = Progress.create!(date: "2022-02-01", score: target_41.score + 1.5 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+progress_4116 = Progress.create!(date: "2022-03-01", score: target_41.score + 2.0 + rand(8)-4, target_id: target_41.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4117 = Progress.create!(date: "2022-04-01", score: target_41.score + 2.5 + rand(8)-4, target_id: target_41.id, comment: "the score in private game with John of the same junior high school")
+progress_4118 = Progress.create!(date: "2022-05-01", score: target_41.score + 3.0 + rand(8)-4, target_id: target_41.id, comment: "the score in championship league")
+
+progress_4201 = Progress.create!(date: "2020-12-01", score: target_42.score - 5.5 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4202 = Progress.create!(date: "2021-01-01", score: target_42.score - 5.0 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4203 = Progress.create!(date: "2021-02-01", score: target_42.score - 4.5 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+progress_4204 = Progress.create!(date: "2021-03-01", score: target_42.score - 4.0 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4205 = Progress.create!(date: "2021-04-01", score: target_42.score - 4.5 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4206 = Progress.create!(date: "2021-05-01", score: target_42.score - 4.0 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+progress_4207 = Progress.create!(date: "2021-06-01", score: target_42.score - 3.5 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4208 = Progress.create!(date: "2021-07-01", score: target_42.score - 3.0 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4209 = Progress.create!(date: "2021-08-01", score: target_42.score - 2.5 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+progress_4210 = Progress.create!(date: "2021-09-01", score: target_42.score - 2.0 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4211 = Progress.create!(date: "2021-10-01", score: target_42.score - 1.5 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4212 = Progress.create!(date: "2021-11-01", score: target_42.score - 1.0 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+progress_4213 = Progress.create!(date: "2021-12-01", score: target_42.score - 0.5 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4214 = Progress.create!(date: "2022-01-01", score: target_42.score + 0.0 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4215 = Progress.create!(date: "2022-02-01", score: target_42.score + 0.5 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+progress_4216 = Progress.create!(date: "2022-03-01", score: target_42.score + 1.0 + rand(8)-4, target_id: target_42.id, comment: "the score in official game with Mike of ABC junior high school")
+progress_4217 = Progress.create!(date: "2022-04-01", score: target_42.score + 1.5 + rand(8)-4, target_id: target_42.id, comment: "the score in private game with John of the same junior high school")
+progress_4218 = Progress.create!(date: "2022-05-01", score: target_42.score + 2.0 + rand(8)-4, target_id: target_42.id, comment: "the score in championship league")
+
 
 puts "Generated #{Progress.all.count} Progresses successfully"
 
