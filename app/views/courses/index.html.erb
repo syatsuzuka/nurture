@@ -26,9 +26,15 @@
             <div class="card-body flex-column align-items-start p-4">
               <div class="mb-3">
                 <% if course.status == 1 %>
-                  <%= link_to course_assignments_path(course), class: "fs-3" do %>
-                    <%= course.name %>
-                  <% end %>
+                  <div class="fs-3">
+                    <% unless current_user.role == "tutor" and current_user != course.tutor %>
+                      <%= link_to course_assignments_path(course) do %>
+                        <%= course.name %>
+                      <% end %>
+                    <% else %>
+                      <%= course.name %>
+                    <% end %>
+                  </div>
                 <% else %>
                   <span class="fs-3 text-muted">
                     <%= course.name %> (waiting for accept)
@@ -37,14 +43,18 @@
 
                 <% if current_user.role == "tutor" %>
                   <div class="mt-2">
-                  <% if course.status == 1 %>
-                    <%= link_to edit_course_path(course), class: "edit-course btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
-                      <i class="fas fa-edit"></i>
+                    <% if course.status == 1 %>
+                      <% if current_user == course.tutor %>
+                        <%= link_to edit_course_path(course), class: "edit-course btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <%= link_to course_path(course), method: :delete, class: "delete-course btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
-                    <i class="fas fa-trash-alt"></i>
-                  <% end %>
+                    <% if current_user == course.tutor %>
+                      <%= link_to course_path(course), method: :delete, class: "delete-course btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
+                        <i class="fas fa-trash-alt"></i>
+                      <% end %>
+                    <% end %>
                   </div>
                 <% end %>
               </div>

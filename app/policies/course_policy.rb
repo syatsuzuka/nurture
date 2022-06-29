@@ -12,7 +12,9 @@ class CoursePolicy < ApplicationPolicy
             manager = manager.manager
           end
 
-          result = false if course.tutor != user and course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+          if course.tutor != user && course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+            result = false
+          end
           result
         end.sort_by!(&:name)
       else

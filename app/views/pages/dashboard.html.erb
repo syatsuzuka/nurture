@@ -74,8 +74,12 @@
             %>
             <div class="card-body row">
               <div class="col-sm-12 col-md-12 col-lg-8">
-                <h5 class="card-title">
-                  <%= link_to course_assignments_path(course), class: "text-dark" do %>
+                <h5 class="card-title text-dark">
+                  <% unless current_user.role == "tutor" and current_user != course.tutor %>
+                    <%= link_to course_assignments_path(course) do %>
+                      <%= course.name %>
+                    <% end %>
+                  <% else %>
                     <%= course.name %>
                   <% end %>
                 </h5>
