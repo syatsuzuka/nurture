@@ -2,7 +2,19 @@ class CoursePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.where(tutor_user_id: user.id)
+        scope.select do |course|
+          result = false
+          result = true if course.tutor == user
+          manager = course.tutor
+
+          until manager.manager.nil?
+            result = true if manager.manager == user
+            manager = manager.manager
+          end
+
+          result = false if course.tutor != user and course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+          result
+        end.sort_by!(&:name)
       else
         scope.where(student_user_id: user.id)
       end
