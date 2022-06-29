@@ -29,16 +29,7 @@ class PagesController < ApplicationController
     @waiting_courses = courses.select { |course| course.status.zero? }
 
     #======= Collecting done status assignments for toast =======
-    if current_user.role == "tutor"
-      assignments = policy_scope(Assignment).select do |assignment|
-        assignment.course.tutor_user_id == current_user.id
-      end
-    else
-      assignments = policy_scope(Assignment).select do |assignment|
-        assignment.course.student_user_id == current_user.id
-      end
-    end
-
+    assignments = policy_scope(Assignment)
     @assignments = assignments.select do |assignment|
       assignment.status == 1
     end
@@ -66,15 +57,19 @@ class PagesController < ApplicationController
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
         user_name = assignment.course.student.first_name
+        if current_user.users.any?
+          title = "#{assignment.course.name} by #{assignment.course.tutor.first_name}"
+        else
+          title = assignment.course.name
+        end
       else
         user_name = assignment.course.tutor.first_name
       end
-
       start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
       end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
 
       gon.courses << {
-        "name" => assignment.course.name,
+        "name" => title,
         "user_name" => user_name,
         "homework" => {
           "title" => assignment.title,
