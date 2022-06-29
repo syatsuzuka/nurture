@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes
+  has_many :users, foreign_key: :manager_id
   has_one_attached :photo
+  belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
   validates :first_name, presence: true, length: { minimum: 1, maximum: 60 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 60 }
   validates :nickname, uniqueness: true, presence: true, length: { maximum: 60 }
@@ -26,8 +28,12 @@ class User < ApplicationRecord
     super && !deactivated
   end
 
-  def select_label
+  def select_label_nickname
     nickname
+  end
+
+  def select_label_fullname
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   def check_role

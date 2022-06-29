@@ -30,6 +30,24 @@
       <%= f.input :last_name, required: true %>
       <%= f.input :nickname, required: true %>
 
+      <%
+        manager_options = User.where(role: "tutor").where.not(id: @user.id).order(:first_name, :last_name)
+
+        @manager_options = manager_options.select do |user|
+          result = true
+          until user.manager.nil?
+            result = false if user.manager == @user
+            user = user.manager
+          end
+          result
+        end
+      %>
+
+      <%= f.association :manager,
+        collection: @manager_options,
+        label: "Manager",
+        label_method: :select_label_fullname
+      %>
       <%= f.input :message %>
       <% if @user.role == "tutor" %>
         <%= f.input :specialty %>

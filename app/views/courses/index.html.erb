@@ -26,9 +26,15 @@
             <div class="card-body flex-column align-items-start p-4">
               <div class="mb-3">
                 <% if course.status == 1 %>
-                  <%= link_to course_assignments_path(course), class: "fs-3" do %>
-                    <%= course.name %>
-                  <% end %>
+                  <div class="fs-3">
+                    <% unless current_user.role == "tutor" and current_user != course.tutor %>
+                      <%= link_to course_assignments_path(course) do %>
+                        <%= course.name %>
+                      <% end %>
+                    <% else %>
+                      <%= course.name %>
+                    <% end %>
+                  </div>
                 <% else %>
                   <span class="fs-3 text-muted">
                     <%= course.name %> (waiting for accept)
@@ -37,14 +43,18 @@
 
                 <% if current_user.role == "tutor" %>
                   <div class="mt-2">
-                  <% if course.status == 1 %>
-                    <%= link_to edit_course_path(course), class: "edit-course btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
-                      <i class="fas fa-edit"></i>
+                    <% if course.status == 1 %>
+                      <% if current_user == course.tutor %>
+                        <%= link_to edit_course_path(course), class: "edit-course btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <%= link_to course_path(course), method: :delete, class: "delete-course btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
-                    <i class="fas fa-trash-alt"></i>
-                  <% end %>
+                    <% if current_user == course.tutor %>
+                      <%= link_to course_path(course), method: :delete, class: "delete-course btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
+                        <i class="fas fa-trash-alt"></i>
+                      <% end %>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -52,27 +62,33 @@
                 <%= course.description %>
               </div>
               <div class="mb-1">
-                <% if current_user.role == "tutor" %>
-                  <% if course.status == 1 %>
-                    <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                <% if current_user.role == "student" or current_user.users.any? %>
+                  <p>
+                    <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                     <span class="fs-6 me-2">
-                      <%= link_to student_path(course.student), class: "text-dark" do %>
-                        <%= course.student.first_name %> <%= course.student.last_name %>
+                      <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                        <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                       <% end %>
+                      (Tutor)
                     </span>
-                  <% else %>
-                    <span class="fs-6 me-2">
-                      <%= add_image("", 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-                      <%= course.student.nickname %>
-                    </span>
-                  <% end %>
-                <% else %>
-                  <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-                  <span class="fs-5 me-2">
-                    <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
-                      <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                  </p>
+                <% end %>
+                <% if current_user.role == "tutor" %>
+                  <p>
+                    <% if course.status == 1 %>
+                      <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                      <span class="fs-6 me-2">
+                        <%= link_to student_path(course.student), class: "text-dark" do %>
+                          <%= course.student.first_name %> <%= course.student.last_name %>
+                        <% end %>
+                      </span>
+                    <% else %>
+                      <span class="fs-6 me-2">
+                        <%= add_image("", 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                        <%= course.student.nickname %>
+                      </span>
                     <% end %>
-                  </span>
+                  </p>
                 <% end %>
               </div>
             </div>
