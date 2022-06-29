@@ -4,42 +4,45 @@
   </span>
 </h3>
 
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-md">
-      <div id="chatroom" class="modal-content container rounded border-success"
-        data-controller="chatroom-subscription"
-        data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-      >
-        <div id="messages" class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
-          <% @chatroom.messages.each do |message| %>
-            <%= render "messages/message", message: message %>
-          <% end %>
-        </div>
-        <div>
-          <%= simple_form_for [@chatroom, @message],
-            remote: true,
-            html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "row" } do |f|
-          %>
-          <%= f.input :content,
-            label: false,
-            as: :text,
-            placeholder: "Message ##{@chatroom.name}",
-            wrapper_html: {class: "col-12  flex-space-between"}
-          %>
+  <div class="modal fade" id="myModal" >
+    <div class="modal-dialog modal-lg">
+          <div id="chatroom" class="modal-content d-flex flex-column-reverse container rounded border-success"
+            data-controller="chatroom-subscription"
+            data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+          >
 
-          <%= f.input :photo,
-          as: :file,
-          inline_label: "Image upload",
-          wrapper_html: {class: "col-6 " }
-          %>
-              <%= f.input :video,
-          as: :file,
-          inline_label: "Video upload",
-          wrapper_html: {class: "col-6 "}
-          %>
-          <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
-        <% end %>
-        </div>
+            <div id="messages" class="messages d-flex flex-column align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
+              <% @chatroom.messages.each do |message| %>
+                <%= render "messages/message", message: message %>
+              <% end %>
+            </div>
+            <div>
+            <div class= "modal-footer" >
+              <%= simple_form_for [@chatroom, @message],
+                remote: true,
+                html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "row" } do |f|
+              %>
+              <%= f.input :content,
+                label: false,
+                as: :text,
+                placeholder: "Message ##{@chatroom.name}",
+                wrapper_html: {class: "col-12  flex-space-between"}
+              %>
+
+              <%= f.input :photo,
+              as: :file,
+              inline_label: "Image upload",
+              wrapper_html: {class: "col-6 " }
+              %>
+                  <%= f.input :video,
+              as: :file,
+              inline_label: "Video upload",
+              wrapper_html: {class: "col-6 "}
+              %>
+              <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
+            <% end %>
+            </div>
+            </div>
       </div>
     </div>
   </div>
