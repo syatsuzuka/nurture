@@ -13,6 +13,7 @@ feature 'homework template (assignment_template)' do
     click_on('template-menu')
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
     #======= Create a new Assignment Template =======
     find('#add-assignment-template').click
@@ -28,6 +29,55 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('test_instruction')
     expect(page).to have_content('https://www.nurture.pw')
     expect(page).to have_content('test_checkpoint')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 2
+  end
+
+  scenario 'edits an existing assignment templates' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
+
+    #======= Edit an existing Assignment Template =======
+    find('#assignment_templates > tbody > tr:nth-child(1) > td > a.edit-assignment_template').click
+    assignment_template_form = AssignmentTemplateForm.new
+    assignment_template_params = {
+      assignment_template_title: "test_title",
+      assignment_template_instruction: "test_instruction",
+      assignment_template_instruction_url: "https://www.nurture.pw",
+      assignment_template_checkpoint: "test_checkpoint"
+    }
+    assignment_template_form.fill_in_with(assignment_template_params).submit
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page).to have_content('test_title')
+    expect(page).to have_content('test_instruction')
+    expect(page).to have_content('https://www.nurture.pw')
+    expect(page).to have_content('test_checkpoint')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
+  end
+
+  scenario 'deletes an existing assignment templates' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
+
+    #======= Delete an existing Assignment Template =======
+    find('#assignment_templates > tbody > tr:nth-child(1) > td > a.delete-assignment_template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 0
   end
 
   scenario 'uploads new assignment templates' do
@@ -40,6 +90,7 @@ feature 'homework template (assignment_template)' do
     click_on('template-menu')
     find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
     #======= Create a new Assignment Template =======
     find('#upload-assignment-template').click
@@ -48,9 +99,10 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('test')
     expect(page).to have_content('test2')
     expect(page).to have_content('test3')
+    expect(page.all('#assignment_templates > tbody > tr').count).to eq 4
   end
 
-  scenario 'edits new assignment templates' do
+  scenario 'export assignment templates list' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
@@ -62,18 +114,7 @@ feature 'homework template (assignment_template)' do
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Create a new Assignment Template =======
-    find('#assignment_templates > tbody > tr:nth-child(1) > td > a.edit-assignment_template').click
-    assignment_template_form = AssignmentTemplateForm.new
-    assignment_template_params = {
-      assignment_template_title: "test_title",
-      assignment_template_instruction: "test_instruction",
-      assignment_template_instruction_url: "https://www.nurture.pw",
-      assignment_template_checkpoint: "test_checkpoint"
-    }
-    assignment_template_form.fill_in_with(assignment_template_params).submit
-    expect(page).to have_content('test_title')
-    expect(page).to have_content('test_instruction')
-    expect(page).to have_content('https://www.nurture.pw')
-    expect(page).to have_content('test_checkpoint')
+    find('#download-assignment-template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
   end
 end

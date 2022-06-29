@@ -1,21 +1,16 @@
 class TargetPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      if user.role == "tutor"
+        scope.select { |target| target.course.tutor == user }
+      else
+        scope.select { |target| target.course.student == user }
+      end
     end
   end
 
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
-    true
+    user.role == "tutor"
   end
 
   def new?
@@ -23,7 +18,7 @@ class TargetPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user.role == "tutor"
   end
 
   def edit?
@@ -31,18 +26,6 @@ class TargetPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
-  end
-
-  def upload?
-    true
-  end
-
-  def import?
-    true
-  end
-
-  def export?
     true
   end
 end

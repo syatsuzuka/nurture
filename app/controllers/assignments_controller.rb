@@ -3,14 +3,17 @@ class AssignmentsController < ApplicationController
   before_action :set_course, only: %i[
     index new create edit update destroy review close done upload import export
   ]
-  before_action :set_assignment, only: %i[show edit update destroy review close done]
+  before_action :set_assignment, only: %i[show edit update destroy review close]
   before_action :set_active_assignments, only: %i[all]
-  before_action :set_active_courses, only: %i[index show new create edit update destroy review close done]
+  before_action :set_active_courses, only: %i[index show new create edit update destroy review close]
 
   def index
-    all_assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
-    all_assignments.sort_by(&:created_at).reverse
-    all_targets = policy_scope(Target).select { |target| target.course.id == @course.id }.sort_by do |target|
+    @assignments =  policy_scope(Assignment)
+                    .select { |assignment| assignment.course.id == @course.id }
+                    .sort_by(&:created_at)
+    @targets =  policy_scope(Target)
+                .select { |target| target.course.id == @course.id }
+                .sort_by do |target|
       element = target
       parentpath = ""
 
@@ -28,14 +31,6 @@ class AssignmentsController < ApplicationController
       else
         "#{parentpath}> #{target.name}"
       end
-    end
-
-    if current_user.role == "tutor"
-      @assignments = all_assignments.select { |assignment| assignment.course.tutor_user_id == current_user.id }
-      @targets = all_targets.select { |target| target.course.tutor_user_id == current_user.id }
-    else
-      @assignments = all_assignments.select { |assignment| assignment.course.student_user_id == current_user.id }
-      @targets = all_targets.select { |target| target.course.student_user_id == current_user.id }
     end
 
     #======= Data setting for Graph (target) =======
@@ -149,15 +144,6 @@ class AssignmentsController < ApplicationController
     redirect_to course_assignments_path(@course)
   end
 
-  def done
-    @assignment.course = @course
-    @assignment.status = 1
-    authorize @assignment
-
-    @assignment.save
-    redirect_to all_assignments_path
-  end
-
   def upload
     nil
   end
@@ -172,13 +158,10 @@ class AssignmentsController < ApplicationController
     @assignments = policy_scope(Assignment).select { |assignment| assignment.course == @course }
     @assignments.sort_by!(&:title)
 
-    authorize Assignment
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_homework.csv"
-        render "export.csv.erb"
       end
     end
   end
@@ -203,10 +186,12 @@ class AssignmentsController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id])
+    authorize @course
   end
 
   def set_assignment
     @assignment = Assignment.find(params[:id])
+    authorize @assignment
   end
 
   def set_active_assignments

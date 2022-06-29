@@ -65,13 +65,10 @@ class AssignmentTemplatesController < ApplicationController
     end
     @assignment_templates.sort_by!(&:title)
 
-    authorize Assignment
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_homework_templates.csv"
-        render "export.csv.erb"
       end
     end
   end
@@ -90,6 +87,7 @@ class AssignmentTemplatesController < ApplicationController
 
   def set_assignment_templates_set
     @assignment_templates_set = AssignmentTemplatesSet.find(params[:assignment_templates_set_id])
+    authorize @assignment_templates_set
   end
 
   def set_assignment_template

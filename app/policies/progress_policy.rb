@@ -1,21 +1,16 @@
 class ProgressPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      if user.role == "tutor"
+        scope.select { |progress| progress.target.course.tutor == user }
+      else
+        scope.select { |progress| progress.target.course.student == user }
+      end
     end
   end
 
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
-    true
+    user.role == "tutor" or user.role == "student"
   end
 
   def new?
@@ -23,7 +18,7 @@ class ProgressPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.target.course.tutor == user or record.target.course.student == user
   end
 
   def edit?
@@ -31,10 +26,6 @@ class ProgressPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
-  end
-
-  def export?
-    true
+    record.target.course.tutor == user or record.target.course.student == user
   end
 end

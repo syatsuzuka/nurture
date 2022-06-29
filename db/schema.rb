@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_27_053156) do
+ActiveRecord::Schema.define(version: 2022_06_29_050210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,14 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
     t.integer "status"
   end
 
+  create_table "like_counts", force: :cascade do |t|
+    t.integer "likes", default: 0
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_like_counts_on_post_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "likeable_id", null: false
@@ -269,7 +277,9 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
     t.text "message"
     t.string "specialty"
     t.string "interest"
+    t.bigint "manager_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["manager_id"], name: "index_users_on_manager_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -280,6 +290,7 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
   add_foreign_key "assignments", "courses"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "like_counts", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
@@ -292,4 +303,5 @@ ActiveRecord::Schema.define(version: 2022_06_27_053156) do
   add_foreign_key "target_templates_sets", "users"
   add_foreign_key "targets", "courses"
   add_foreign_key "targets", "targets", column: "parent_id"
+  add_foreign_key "users", "users", column: "manager_id"
 end

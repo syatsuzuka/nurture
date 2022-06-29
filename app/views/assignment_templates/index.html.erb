@@ -6,27 +6,30 @@
   </ol>
 </nav>
 
-<h1><i class="fas fa-bullseye me-3"></i>Homework Template - <%= @assignment_templates_set.name %>
-  <% if @assignment_templates_set.user == current_user %>
-    <%= link_to new_assignment_templates_set_assignment_template_path(@assignment_templates_set), id: "add-assignment-template", class: "btn btn-success text-light ms-3" do %>
-      <i class="fas fa-plus"></i>
-      Homework Template
-    <% end %>
-
-    <%= link_to upload_assignment_templates_path(@assignment_templates_set), id: "upload-assignment-template", class: "btn btn-success text-light" do %>
-      <i class="fas fa-upload"></i>
-      Homework Template
-    <% end %>
-  <% end %>
-
-  <%= link_to export_assignment_templates_path(@assignment_templates_set), id: "download-assignment-template", class: "btn btn-success text-light" do %>
-    <i class="fas fa-download"></i>
-    Download CSV
-  <% end %>
+<h1 class="mb-3">
+  <i class="fas fa-bullseye me-2"></i>
+  Homework Template - <%= @assignment_templates_set.name %>
 </h1>
 
+<% if @assignment_templates_set.user == current_user %>
+  <%= link_to new_assignment_templates_set_assignment_template_path(@assignment_templates_set), id: "add-assignment-template", class: "btn btn-success text-light ms-3" do %>
+    <i class="fas fa-plus"></i>
+    Add
+  <% end %>
+
+  <%= link_to upload_assignment_templates_path(@assignment_templates_set), id: "upload-assignment-template", class: "btn btn-success text-light" do %>
+    <i class="fas fa-upload"></i>
+    Import
+  <% end %>
+<% end %>
+
+<%= link_to export_assignment_templates_path(@assignment_templates_set, format: :csv), id: "download-assignment-template", class: "btn btn-success text-light" do %>
+  <i class="fas fa-download"></i>
+  Export
+<% end %>
+
 <% unless @assignment_templates.count == 0 %>
-  <table id="assignment_templates" class="table table-responsive table-hover align-middle">
+  <table id="assignment_templates" class="table table-responsive table-hover align-middle mt-3">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>

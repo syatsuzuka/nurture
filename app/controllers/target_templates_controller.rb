@@ -86,13 +86,10 @@ class TargetTemplatesController < ApplicationController
     end
     @target_templates.sort_by!(&:name)
 
-    authorize Target
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_target_templates.csv"
-        render "export.csv.erb"
       end
     end
   end
@@ -105,6 +102,7 @@ class TargetTemplatesController < ApplicationController
 
   def set_target_templates_set
     @target_templates_set = TargetTemplatesSet.find(params[:target_templates_set_id])
+    authorize @target_templates_set
   end
 
   def set_target_template

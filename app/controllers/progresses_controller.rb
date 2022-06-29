@@ -8,14 +8,7 @@ class ProgressesController < ApplicationController
   before_action :set_active_courses
 
   def index
-    all_progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }
-    all_progresses.sort_by!(&:date)
-
-    if current_user.role == "tutor"
-      @progresses = all_progresses.select { |progress| progress.target.course.tutor_user_id == current_user.id }
-    else
-      @progresses = all_progresses.select { |progress| progress.target.course.student_user_id == current_user.id }
-    end
+    @progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }.sort_by!(&:date)
 
     #===== Data set for graph =====
     @data = []
@@ -28,10 +21,6 @@ class ProgressesController < ApplicationController
     end
     @data << { name: "target", data: data_hash_target }
     @data << { name: "progress", data: data_hash_progress }
-  end
-
-  def show
-    authorize @progress
   end
 
   def new
@@ -89,13 +78,10 @@ class ProgressesController < ApplicationController
     @progresses = policy_scope(Progress).select { |progress| progress.target == @target }
     @progresses.sort_by!(&:date)
 
-    authorize Progress
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
         response.headers['Content-Disposition'] = "attachments; filename=nurture_progresses.csv"
-        render "export.csv.erb"
       end
     end
   end
@@ -108,6 +94,7 @@ class ProgressesController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id])
+    authorize @course
   end
 
   def set_target
