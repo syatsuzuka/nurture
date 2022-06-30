@@ -78,6 +78,100 @@ class PagesController < ApplicationController
         }
       }
     end
+
+    #======= Data Setup for Org Chart =======
+    gon.org_nodes = []
+    gon.org_data = []
+
+    #----- Add Current User -----
+    org_node = {
+      id: current_user.nickname,
+      title: current_user.nickname,
+      color: '#980104',
+      name: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"
+    }
+    gon.org_nodes << org_node
+
+    if current_user.role == "tutor"
+      #----- Add Each Tutors / Students in courses -----
+      @courses.each do |course|
+        #----- Skip Sample Student -----
+        next if course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+
+        #----- Add Student -----
+        org_node = {
+          id: course.student.nickname,
+          title: course.student.nickname,
+          color: '#359154',
+          name: "#{course.student.first_name.capitalize} #{course.student.last_name.capitalize}"
+        }
+        gon.org_nodes << org_node
+
+        #----- Add Tutor -----
+        if course.tutor != current_user
+          org_node = {
+            id: course.tutor.nickname,
+            title: course.tutor.nickname,
+            name: "#{course.tutor.first_name.capitalize} #{course.tutor.last_name.capitalize}"
+          }
+          gon.org_nodes << org_node
+        end
+
+        org_data = [course.tutor.nickname, course.student.nickname]
+        gon.org_data << org_data
+
+        #----- Add Manager -----
+        tutor = course.tutor
+        until tutor.manager.nil?
+          org_node = {
+            id: tutor.manager.nickname,
+            title: tutor.manager.nickname,
+            name: "#{tutor.manager.first_name.capitalize} #{tutor.manager.last_name.capitalize}"
+          }
+          gon.org_nodes << org_node
+
+          org_data = [tutor.manager.nickname, tutor.nickname]
+          gon.org_data << org_data
+
+          tutor = tutor.manager
+        end
+      end
+    else
+      #----- Add Tutor / Student -----
+      @courses.each do |course|
+        #----- Skip Sample Tutor -----
+        next if course.tutor == User.find_by(email: ENV['SAMPLE_TUTOR_LOGIN_ID'])
+
+        #----- Add Tutor -----
+        org_node = {
+          id: course.tutor.nickname,
+          title: course.tutor.nickname,
+          name: "#{course.tutor.first_name.capitalize} #{course.tutor.last_name.capitalize}"
+        }
+        gon.org_nodes << org_node
+
+        org_data = [course.tutor.nickname, course.student.nickname]
+        gon.org_data << org_data
+
+        #----- Add Manager -----
+        tutor = course.tutor
+        until tutor.manager.nil?
+          org_node = {
+            id: tutor.manager.nickname,
+            title: tutor.manager.nickname,
+            name: "#{tutor.manager.first_name.capitalize} #{tutor.manager.last_name.capitalize}"
+          }
+          gon.org_nodes << org_node
+
+          org_data = [tutor.manager.nickname, tutor.nickname]
+          gon.org_data << org_data
+
+          tutor = tutor.manager
+        end
+      end
+    end
+    gon.org_nodes.uniq!
+    gon.org_data.uniq!
   end
 
   def template

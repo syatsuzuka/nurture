@@ -41,7 +41,6 @@
       <div class="row flex-grow-1">
         <% unless request.fullpath.start_with?('/users/') or current_user.nil? %>
           <%= render 'shared/sidebarMenu'%>
-          <%#= render 'shared/sidebarDefault'%>
         <% end %>
         <main class="col-md-9 col-lg-10 px-md-4">
           <div class="m-4">
