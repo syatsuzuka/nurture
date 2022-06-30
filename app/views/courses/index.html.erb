@@ -69,7 +69,9 @@
                       <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
                         <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                       <% end %>
+                      <% if current_user.users.any? %>
                       (Tutor)
+                      <% end %>
                     </span>
                   </p>
                 <% end %>
@@ -80,6 +82,9 @@
                       <span class="fs-6 me-2">
                         <%= link_to student_path(course.student), class: "text-dark" do %>
                           <%= course.student.first_name %> <%= course.student.last_name %>
+                        <% end %>
+                        <% if current_user.users.any? %>
+                        (Student)
                         <% end %>
                       </span>
                     <% else %>
