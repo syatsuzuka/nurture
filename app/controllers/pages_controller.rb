@@ -58,7 +58,7 @@ class PagesController < ApplicationController
       if current_user.role == "tutor"
         user_name = assignment.course.student.first_name
         if current_user.users.any?
-          title = "#{assignment.course.name} by #{assignment.course.tutor.first_name}"
+          title = "#{assignment.course.name} with #{assignment.course.tutor.first_name}"
         else
           title = assignment.course.name
         end
