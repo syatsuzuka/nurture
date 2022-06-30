@@ -80,17 +80,20 @@
                       <%= course.name %>
                     <% end %>
                   <% else %>
-                    <%= course.name %> with <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                    <%= course.name %>
                   <% end %>
                 </h5>
                 <p class="card-text ms-3 text-secondary"><%= course.description %></p>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-8">
-                <% if current_user.role == "student" %>
+                <% if current_user.role == "student" or current_user.users.any? %>
                   <p>
                     <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
                     <%= link_to student_path(course.tutor.id), class: "text-dark" do %>
                       <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                    <% end %>
+                    <% if current_user.users.any? %>
+                    (Tutor)
                     <% end %>
                   </p>
                 <% end %>
@@ -99,6 +102,9 @@
                     <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
                     <%= link_to student_path(course.student.id), class: "text-dark" do %>
                       <%= course.student.first_name %> <%= course.student.last_name %>
+                    <% end %>
+                    <% if current_user.users.any? %>
+                    (Student)
                     <% end %>
                   </p>
                 <% end %>

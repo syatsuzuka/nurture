@@ -14,8 +14,8 @@
       <% @assignments.each do |assignment| %>
         <div class="col-12">
           <div class="card flex-md-row mb-4 shadow rounded">
-            <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-5 d-flex flex-column align-items-start inline p-4">
-              <div class="fs-3 mb-3">
+            <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
+              <div class="fs-3">
                 <% if assignment.course.tutor == current_user or assignment.course.student == current_user %>
                 <%= link_to course_assignment_path(assignment.course, assignment) do %>
                   <%= assignment.title %>
@@ -24,56 +24,57 @@
                   <%= assignment.title %>
                 <% end %>
               </div>
-              <div class="ms-3 mb-1">
-                <% if current_user.role == "tutor" %>
-                  <% if current_user.users.any? %>
-                    <div>
-                      <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-                      <span class="fs-6 me-2">
-                        <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
-                          <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %> (Tutor)
-                        <% end %>
-                      </span>
-                    </div>
-                  <% end %>
-                  <div>
-                    <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-                    <span class="fs-6 me-2">
-                      <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
-                        <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
-                      <% end %>
-                    </span>
-                  </div>
-                <% else %>
+              <div class="ms-3 mt-3 mb-1">
+                <% if current_user.role == "student" or current_user.users.any? %>
                   <div>
                     <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                     <span class="fs-6 me-2">
                       <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
                         <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
                       <% end %>
+                      <% if current_user.users.any? %>
+                      (Tutor)
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+                <% if current_user.role == "tutor" %>
+                  <div>
+                    <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                    <span class="fs-6 me-2">
+                      <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
+                        <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
+                      <% end %>
+                      <% if current_user.users.any? %>
+                      (Student)
+                      <% end %>
                     </span>
                   </div>
                 <% end %>
               </div>
             </div>
-            <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-3 align-items-start align-self-center">
+            <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-start align-self-center">
               <% unless assignment.end_date.nil? %>
-                <p><span class="badge rounded-pill bg-info ms-2 fs-7"><%= due_alert(assignment) %></span></p>
+                <div><span class="badge rounded-pill bg-info ms-2 fs-7"><%= due_alert(assignment) %></span></div>
               <% end %>
-              <p class="fs-5">
-                <i class="fas fa-calendar"></i>
-                <% unless assignment.start_date.nil? %>
-                  <%= assignment.start_date.strftime("%b.%d, %Y") %>
-                <% else %>
-                  (Not determined)
-                <% end %>
-                -
-                <% unless assignment.end_date.nil? %>
-                  <%= assignment.end_date.strftime("%b.%d, %Y") %>
-                <% else %>
-                  (Not determined)
-                <% end %>
-              </p>
+              <div class="fs-5">
+                <div>
+                  <i class="fas fa-calendar"></i>
+                  <% unless assignment.start_date.nil? %>
+                    <%= assignment.start_date.strftime("%b.%d, %Y") %>
+                  <% else %>
+                    (Not determined)
+                  <% end %>
+                </div>
+                <div>
+                  -
+                  <% unless assignment.end_date.nil? %>
+                    <%= assignment.end_date.strftime("%b.%d, %Y") %>
+                  <% else %>
+                    (Not determined)
+                  <% end %>
+                </div>
+              </div>
             </div>
             <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
               <% if assignment.status == 0 %>
@@ -84,7 +85,7 @@
                 <span class="badge rounded-pill bg-secondary fs-5 me-3">Completed</span>
               <% end %>
             </div>
-            <%= add_image(assignment.course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-100', style: "object-fit:cover;") %>
+            <%= add_image(assignment.course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>
           </div>
         </div>
       <% end %>
