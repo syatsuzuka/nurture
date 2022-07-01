@@ -21,7 +21,7 @@ feature 'course' do
       course_description: "test_description",
       course_student_user_id: "shingo"
     }
-    course_form.visit_page.fill_in_with(course_params).submit
+    course_form.visit_page.fill_in_new_with(course_params).submit
     expect(page).to have_content('Course List')
     expect(page).to have_content('test_name')
     expect(page).to have_content('shingo')
@@ -59,10 +59,9 @@ feature 'course' do
     course_form = CourseForm.new
     course_params = {
       course_name: "test_name",
-      course_description: "test_description",
-      course_student_user_id: "shingo"
+      course_description: "test_description"
     }
-    course_form.fill_in_with(course_params).submit
+    course_form.fill_in_edit_with(course_params).submit
     expect(page).to have_content('Course List')
     expect(page).to have_content('test_name')
     expect(page.all('div.row > div').count).to eq 3
@@ -77,7 +76,7 @@ feature 'course' do
     expect(page).to have_content('Course List')
     expect(page.all('div.row > div').count).to eq 3
 
-    #======= Edits an existing course =======
+    #======= Deletes an existing course =======
     find('div.row > div:nth-child(1) div.card > div.card-body a.delete-course').click
     expect(page).to have_content('Course List')
     expect(page.all('div.row > div').count).to eq 2
