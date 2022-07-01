@@ -1,12 +1,27 @@
   <%= simple_form_for @course do |f| %>
     <%= f.input :name, required: true %>
     <%= f.input :description, required: true %>
-    <%= f.association :student,
-      collection: User.where(role: "student", visible: true).order(:first_name, :last_name),
-      required: true,
-      label: "Student (Nickname)",
-      label_method: :select_label_nickname
-    %>
+    <% unless @course.id.nil? %>
+      <%= f.association :tutor,
+        collection: User.where(role: "tutor", visible: true).order(:first_name, :last_name),
+        required: true,
+        label: "Tutor",
+        label_method: :select_label_fullname
+      %>
+    <% end %>
+    <% if @course.id.nil? %>
+      <%= f.association :student,
+        collection: User.where(role: "student", visible: true).order(:first_name, :last_name),
+        required: true,
+        label: "Student (Nickname)",
+        label_method: :select_label_nickname
+      %>
+    <% else %>
+      <span>Student</span>
+      <div class="border mt-2 mb-3 p-2">
+        <%= @course.student.first_name.capitalize %> <%= @course.student.last_name.capitalize %>
+      </div>
+    <% end %>
     <%= f.input :photo, as: :file %>
     <%= f.submit 'Save', class: "btn btn-success text-light" %>
     <%= link_to 'Cancel', courses_path, class: 'btn btn-secondary text-light'%>
