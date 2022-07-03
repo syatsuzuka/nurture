@@ -9,11 +9,31 @@
         <%# <h1 class=" mb-4 display-4 font-weight-bolder mb-3 text-light" style="font-size: 100px; text-shadow: 0 0 10px #2e2e1f, 0 0 5px #2e2e1f;">Nurture</h1> %>
         <%= image_tag("Nuture2.png", style: "width:400px; height: auto;") %>
         <p class="lead mb-5 mt-1 text-light " style="font-size: 28px, text-shadow: 0 0 10px #2e2e1f, 0 0 5px #2e2e1f;">
-          The easiest way to help tutors engage with students and guide their progress
+          <%= t 'pages.home.text_subtitle' %>
         </p>
-        <br>
-        <p>
-          <%= link_to "Start learning", new_user_session_path, class:"enter" %>
+        <p class="fs-5 text-light">
+          [
+            <% unless request.path.include?("en") %>
+              <%= link_to "English", "/en" %>
+            <% else %>
+              <span>
+                English
+              </span>
+            <% end %>
+            |
+            <% unless request.path.include?("ja") %>
+              <%= link_to "Japanese", "/ja/" %>
+            <% else %>
+              <span>
+                Japanese
+              </span>
+            <% end %>
+          ]
+        </p>
+        <p class="mt-5">
+          <%= link_to new_user_session_path, class:"enter" do %>
+            <%= t 'pages.home.btn_start' %>
+          <% end %>
         </p>
       </div>
     </div>
