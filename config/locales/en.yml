@@ -30,4 +30,32 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  shared:
+    sidebarMenu:
+      text_dashboard: "Dashboard"
+      text_courses: "Courses"
+      text_homework: "Homework"
+      text_template: "Template"
+      text_knowledge: "Knowledge"
+      text_tutors: "Tutors"
+      text_students: "Students"
+      text_other_pages: "OTHER PAGES"
+      text_about_us: "About us"
+  pages:
+    home:
+      text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
+      btn_start: "Start learning"
+  devise:
+    sessions:
+      new:
+        text_title: "Sign in"
+  courses:
+  assignments:
+  targets:
+  progresses:
+  target_templates_sets:
+  target_templates:
+  assignment_templates_sets:
+  assignment_templates:
+  users:
+  reviews:

@@ -1,2 +1,32 @@
 ja:
-  welcome: "ようこそ!"
+  shared:
+    sidebarMenu:
+      text_dashboard: "ダッシュボード"
+      text_courses: "コース"
+      text_homework: "課題"
+      text_template: "テンプレート"
+      text_knowledge: "ナレッジ"
+      text_tutors: "トレーナー"
+      text_students: "受講者"
+      text_other_pages: "その他のページ"
+      text_about_us: "About us"
+  pages:
+    home:
+      text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
+      btn_start: "スタート"
+    dashboard:
+
+  devise:
+    sessions:
+      new:
+        text_title: "ログイン"
+  courses:
+  assignments:
+  targets:
+  progresses:
+  target_templates_sets:
+  target_templates:
+  assignment_templates_sets:
+  assignment_templates:
+  users:
+  reviews:
