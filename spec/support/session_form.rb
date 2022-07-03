@@ -2,7 +2,7 @@ class SessionForm
   include Capybara::DSL
 
   def visit_page
-    visit('/users/sign_in')
+    visit('/en/users/sign_in')
     self
   end
 

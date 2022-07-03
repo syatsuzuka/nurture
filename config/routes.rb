@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
   root to: 'pages#home'
+  scope "/:locale" do
+  devise_for :users
 
   get '/courses/:id/accept', to: 'courses#accept', as: :accept_course
   get '/assignments', to: 'assignments#all', as: :all_assignments
@@ -75,4 +76,5 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: %i[create destroy]
+end
 end

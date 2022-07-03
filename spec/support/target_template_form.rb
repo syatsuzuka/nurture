@@ -2,7 +2,7 @@ class TargetTemplateForm
   include Capybara::DSL
 
   def visit_page
-    visit('/target_template/new')
+    visit('/en/target_template/new')
     self
   end
 
