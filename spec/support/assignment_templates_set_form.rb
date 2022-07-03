@@ -2,7 +2,7 @@ class AssignmentTemplatesSetForm
   include Capybara::DSL
 
   def visit_page
-    visit('/assignment_templates_sets/new')
+    visit('/en/assignment_templates_sets/new')
     self
   end
 

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend # For post pagination
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :ensure_domain
+  before_action :set_locale
   after_action :verify_authorized, except: %i[index all upload import], unless: :skip_pundit?
   after_action :verify_policy_scoped, only: %i[index all], unless: :skip_pundit?
 
@@ -35,5 +36,16 @@ class ApplicationController < ActionController::Base
     return unless /\.herokuapp.com/ =~ request.host
 
     redirect_to "#{ENV['SERVER_HOSTNAME']}/#{request.path}", status: :moved_permanently
+  end
+
+  def set_locale
+    locale = params[:locale].to_s.strip.to_sym
+    I18n.locale = I18n.available_locales.include?(locale) ?
+        locale :
+        I18n.default_locale
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
   end
 end

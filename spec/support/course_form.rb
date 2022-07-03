@@ -2,7 +2,7 @@ class CourseForm
   include Capybara::DSL
 
   def visit_page
-    visit('/courses/new')
+    visit('/en/courses/new')
     self
   end
 

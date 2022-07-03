@@ -2,7 +2,7 @@ class PostForm
   include Capybara::DSL
 
   def visit_page
-    visit('/posts/new')
+    visit('/en/posts/new')
     self
   end
 
