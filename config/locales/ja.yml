@@ -17,6 +17,21 @@ ja:
     dashboard:
 
   devise:
+    registrations:
+      new:
+        text_title: "ユーザー登録"
+        text_warning_note: "現バージョンのNurtureでは、「トレーナー」としてユーザー登録すると、その登録したユーザープロファイル情報は全ての受講者から参照可能な状態になります。
+        もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールいただければと存じます。"
+        text_field_email: "Email"
+        text_field_password: "パスワード"
+        text_field_password_confirmation: "パスワード再確認"
+        text_field_first_name: "名"
+        text_field_last_name: "姓"
+        text_field_nickname: "ニックネーム"
+        select_role: "役割"
+        file_photo: "画像"
+        btn_sign_up: "ユーザー登録"
+        btn_cancel: "キャンセル"
     sessions:
       new:
         text_title: "ログイン"
@@ -28,6 +43,7 @@ ja:
     shared:
       links:
         btn_sign_up: "ユーザー登録"
+        btn_sign_in: "ログイン"
         btn_forget: "パスワードリセット"
   courses:
   assignments:

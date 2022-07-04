@@ -1,39 +1,68 @@
 <div class="container m-5  col-6">
-  <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+  <h1 class="h3 mb-3 fw-normal"><%= t('.text_title') %></h1>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="alert alert-warning" role="alert">
       <strong>!! WARNING !!</strong>
       <p>
-      In the current version of Nurture, your registered profile will be visible among students, if you sign up with "tutor" role.
-      Please send an email for nurture-admin [at] virago.sakura.ne.jp if you want to deactivate your account to make it invisible to any other users in the platform.
+        <%= t('.text_warning_note') %>
       </p>
     </div>
 
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
+                  label: t('.text_field_email'),
                   autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+                  input_html: { autocomplete: "email" }
+      %>
       <%= f.input :password,
                   required: true,
+                  label: t('.text_field_password'),
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { autocomplete: "new-password" }
+      %>
       <%= f.input :password_confirmation,
                   required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :first_name, required: true %>
-      <%= f.input :last_name, required: true %>
-      <%= f.input :nickname, required: true %>
-      <%= f.input :role, required: true, as: :select, collection: ["tutor", "student"], include_blank: true %>
-      <%= f.input :photo, as: :file %>
+                  label: t('.text_field_password_confirmation'),
+                  input_html: { autocomplete: "new-password" }
+      %>
+      <%= f.input :first_name,
+                  required: true,
+                  label: t('.text_field_first_name')
+      %>
+      <%= f.input :last_name,
+                  required: true,
+                  label: t('.text_field_last_name')
+      %>
+      <%= f.input :nickname,
+                  required: true,
+                  label: t('.text_field_nickname')
+      %>
+      <%= f.input :role,
+                  required: true,
+                  label: t('.select_role'),
+                  as: :select,
+                  collection: ["tutor", "student"],
+                  include_blank: true
+      %>
+      <%= f.input :photo,
+                  as: :file,
+                  label: t('.file_photo')
+      %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn btn-success text-light" %>
+      <%= f.button :submit,
+                    t('.btn_sign_up'),
+                    class: "btn btn-success text-light"
+      %>
       <%= render "devise/shared/links" %>
-      <%= link_to 'Cancel', root_path, class: "btn btn-danger text-light" %>
+      <%= link_to t('.btn_cancel'),
+                  root_path,
+                  class: "btn btn-danger text-light"
+      %>
     </div>
   <% end %>
 </div>

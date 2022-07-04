@@ -15,6 +15,21 @@ en:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
   devise:
+    registrations:
+      new:
+        text_title: "Sign up"
+        text_warning_note: "In the current version of Nurture, your registered profile will be visible among students, if you sign up with 'tutor' role.
+        Please send an email for nurture-admin [at] nurture.pw if you want to deactivate your account to make it invisible to any other users in the platform."
+        text_field_email: "Email"
+        text_field_password: "Password"
+        text_field_password_confirmation: "Password confirmation"
+        text_field_first_name: "First name"
+        text_field_last_name: "Last name"
+        text_field_nickname: "Nickname"
+        select_role: "Role"
+        file_photo: "Photo"
+        btn_sign_up: "Sign up"
+        btn_cancel: "Cancel"
     sessions:
       new:
         text_title: "Sign in"
@@ -26,8 +41,8 @@ en:
     shared:
       links:
         btn_sign_up: "Sign up"
+        btn_sign_in: "Sign in"
         btn_forget: "Forgot your password?"
-
   courses:
   assignments:
   targets:
