@@ -1,25 +1,25 @@
 <div class="container m-5  col-6">
   <h1 class="h3 mb-3 fw-normal">
-    <%= t('devise.sessions.new.text_title') %>
+    <%= t('.text_title') %>
   </h1>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
-                  label: t('devise.sessions.new.text_field_email'),
+                  label: t('.text_field_email'),
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
       <%= f.input :password,
                   required: false,
-                  label: t('devise.sessions.new.text_field_password'),
+                  label: t('.text_field_password'),
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, label: t('devise.sessions.new.checkbox_remember_me'), as: :boolean if devise_mapping.rememberable? %>
+      <%= f.input :remember_me, label: t('.checkbox_remember_me'), as: :boolean if devise_mapping.rememberable? %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, t('devise.sessions.new.btn_sign_in'), class: "btn btn-success text-light" %>
+      <%= f.button :submit, t('.btn_sign_in'), class: "btn btn-success text-light" %>
       <%= render "devise/shared/links" %>
-      <%= link_to t('devise.sessions.new.btn_cancel'), :back, class: "btn btn-secondary text-light" %>
+      <%= link_to t('.btn_cancel'), :back, class: "btn btn-secondary text-light" %>
     </div>
   <% end %>
 </div>
