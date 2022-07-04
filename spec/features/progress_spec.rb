@@ -105,7 +105,7 @@ feature 'progress' do
     expect(page.all('#progresses >table > tbody > tr').count).to eq 8
   end
 
-  scenario 'uploades new progresses' do
+  scenario 'uploades new progresses with tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
@@ -130,10 +130,52 @@ feature 'progress' do
     expect(page.all('#progresses >table > tbody > tr').count).to eq 12
   end
 
-  scenario 'exports an existing progress' do
+  scenario 'uploades new progresses with student account' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target detail =======
+    click_on('courses-menu')
+    click_on('Tennis Lesson (Beginner)')
+    click_on('Backhand Stroke (%)')
+    expect(page).to have_content('Backhand Stroke (%)')
+    expect(page.all('#progresses >table > tbody > tr').count).to eq 9
+
+    #======= Create a new Progress =======
+    find('#upload-progress').click
+    attach_file('file', 'public/sample/nurture_progress_sample.csv')
+    click_on('Import')
+    expect(page).to have_content('2022-06-01')
+    expect(page).to have_content('2022-07-01')
+    expect(page).to have_content('2022-08-01')
+    expect(page).to have_content('100')
+    expect(page).to have_content('test')
+    expect(page.all('#progresses >table > tbody > tr').count).to eq 12
+  end
+
+  scenario 'exports an existing progress with Tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target detail =======
+    click_on('courses-menu')
+    click_on('Tennis Lesson (Beginner)')
+    click_on('Backhand Stroke (%)')
+    expect(page).to have_content('Backhand Stroke (%)')
+
+    #======= Create a new Progress =======
+    find('#download-progress').click
+    expect(page).to have_content('Backhand Stroke (%)')
+  end
+
+  scenario 'exports an existing progress with Student account' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
