@@ -53,16 +53,18 @@
       %>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions mb-3">
       <%= f.button :submit,
                     t('.btn_sign_up'),
                     class: "btn btn-success text-light"
       %>
-      <%= render "devise/shared/links" %>
       <%= link_to t('.btn_cancel'),
                   root_path,
-                  class: "btn btn-danger text-light"
+                  class: "btn btn-secondary text-light"
       %>
+    </div>
+    <div>
+      <%= render "devise/shared/links" %>
     </div>
   <% end %>
 </div>
