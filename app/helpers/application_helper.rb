@@ -17,4 +17,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def get_fullname(user)
+    "#{user.first_name.capitalize} #{user.last_name.capitalize}"
+  end
 end

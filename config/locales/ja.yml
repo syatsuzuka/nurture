@@ -15,8 +15,15 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
-
+      bread_crumbs_home: "Home"
+      text_title: "ダッシュボード"
+      btn_search: "検索"
   devise:
+    passwords:
+      new:
+        text_field_email: "Email"
+        btn_password_reset: "パスワードリセット"
+        btn_cancel: "キャンセル"
     registrations:
       new:
         text_title: "ユーザー登録"

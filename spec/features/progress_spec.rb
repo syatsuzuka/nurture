@@ -3,10 +3,37 @@ require_relative '../support/session_form'
 require_relative '../support/progress_form'
 
 feature 'progress' do
-  scenario 'creates a new progress' do
+  scenario 'creates a new progress with tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target detail =======
+    click_on('courses-menu')
+    click_on('Tennis Lesson (Beginner)')
+    click_on('Backhand Stroke (%)')
+    expect(page).to have_content('Backhand Stroke (%)')
+    expect(page).to have_no_content('test_comment')
+    expect(page.all('#progresses >table > tbody > tr').count).to eq 9
+
+    #======= Create a new Progress =======
+    find('#add-progress').click
+    progress_form = ProgressForm.new
+    progress_params = {
+      progress_date: "2022-06-01",
+      progress_score: 100,
+      progress_comment: "test_comment"
+    }
+    progress_form.fill_in_with(progress_params).submit
+    expect(page).to have_content('test_comment')
+    expect(page.all('#progresses >table > tbody > tr').count).to eq 10
+  end
+
+  scenario 'creates a new progress with student account' do
+    #======= Login with Student ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======

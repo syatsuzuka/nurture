@@ -25,6 +25,10 @@ class ProgressPolicy < ApplicationPolicy
     update?
   end
 
+  def export?
+    true
+  end
+
   def destroy?
     record.target.course.tutor == user or record.target.course.student == user
   end

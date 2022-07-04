@@ -28,7 +28,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def create?
-    user.role == "tutor"
+    user.role == "tutor" or record.student == user
   end
 
   def new?
