@@ -10,10 +10,12 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions mb-3">
       <%= f.button :submit, "Send me reset password instructions", class: "btn btn-success text-light" %>
+      <%= link_to 'Cancel', root_path, class: "btn btn-secondary text-light" %>
+    </div>
+    <div>
       <%= render "devise/shared/links" %>
-      <%= link_to 'Cancel', root_path, class: "btn btn-danger text-light" %>
     </div>
   <% end %>
 </div>
