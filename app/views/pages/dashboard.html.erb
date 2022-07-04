@@ -1,13 +1,13 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('.bread_crumbs_home') %></li>
   </ol>
 </nav>
 
 <div class="d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
     <i class="fas fa-home fa-2x mb-2 me-2"></i>
-    <h1>Dashboard</h1>
+    <h1><%= t('.text_title') %></h1>
   </div>
   <%= form_tag dashboard_path, class: "d-flex h-25 w-50", method: :get do %>
     <%= text_field_tag :q,
@@ -15,25 +15,15 @@
       class: "form-control searchbar",
       placeholder: "Find a dashboard"
     %>
-    <%= submit_tag "Search", class: "btn btn-success searchbox" %>
+    <%= submit_tag t('.btn_search'), class: "btn btn-success searchbox" %>
   <% end %>
 </div>
 
 <% @waiting_courses.each do |course| %>
   <% if course.status == 0 %>
-    <% if current_user.role == "student" %>
-      <div class="alert alert-success mt-5" role="alert">
-        Course "<%= course.name %>" created by "<%= link_to tutor_path(course.tutor) do %>
-          <%= course.tutor.first_name %> <%= course.tutor.last_name %>
-        <% end %>
-        " is waiting for your accept.
-        (<%= link_to "Accept now", accept_course_path(course) %>)
-      </div>
-    <% else %>
-      <div class="alert alert-success mt-5" role="alert">
-        Newly created "<%= course.name %>" is waiting for the accept by <%= course.student.nickname %>
-      </div>
-    <% end %>
+    <div class="alert alert-success mt-5" role="alert">
+      <%= show_course_accept_request(course).html_safe %>
+    </div>
   <% end %>
 <% end %>
 
@@ -46,16 +36,8 @@
       <% unless @open_assignments.count == 0 %>
         <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
       <% else %>
-        <div class="card flex-md-row shadow p-4 rounded">
-          (No Homework remained
-            <span class="ms-2">
-              <% if current_user.role == "tutor" %>
-                <%= emojify(":thinking:") %>
-              <% else %>
-                <%= emojify(":tada::tada::tada:") %>
-              <% end %>
-            </span>
-          )
+        <div class="card flex-md-row shadow p-4 text-secondary rounded">
+          <%= show_no_homework_message.html_safe %>
         </div>
       <% end %>
       </div>

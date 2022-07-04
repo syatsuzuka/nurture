@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :ensure_domain
   before_action :set_locale
   after_action :verify_authorized, except: %i[index all upload import], unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: %i[index all], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: %i[index all export], unless: :skip_pundit?
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb

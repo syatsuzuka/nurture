@@ -14,7 +14,16 @@ en:
     home:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
+    dashboard:
+      bread_crumbs_home: "Home"
+      text_title: "Dashboard"
+      btn_search: "Search"
   devise:
+    passwords:
+      new:
+        text_field_email: "Email"
+        btn_password_reset: "Send me reset password instructions"
+        btn_cancel: "Cancel"
     registrations:
       new:
         text_title: "Sign up"
