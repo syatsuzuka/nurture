@@ -34,11 +34,31 @@ feature 'homework (assignment))' do
     }
     assignment_form.fill_in_new_with(assignment_params).submit
     expect(page).to have_content('test_title')
+    expect(page).to have_content('test_instruction')
+    expect(page).to have_content('test_checkpoint')
     expect(page.all('#assignments > table > tbody > tr').count).to eq 2
 
     #======= Check the list of homework =======
     click_on('homework-menu')
     expect(page.all('div.row > div').count).to eq 4
+
+    #======= Logout =======
+    session_form.logout
+
+    #======= Login with Student ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Check the list of homework =======
+    click_on('homework-menu')
+    click_on('test_title')
+    expect(page).to have_content('test_title')
+    expect(page).to have_content('test_instruction')
+    expect(page).to have_content('https://www.nurture.pw')
+    expect(page).to have_content('test_checkpoint')
+    expect(page).to have_content('Jan.01, 2022')
+    expect(page).to have_content('Dec.31, 2022')
   end
 
   scenario 'edits the existing homework (assignment)' do

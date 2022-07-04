@@ -1,5 +1,9 @@
 en:
   shared:
+    bread_crumbs:
+      home: "Home"
+      courses: "Courses"
+      homework: "Homework"
     sidebarMenu:
       text_dashboard: "Dashboard"
       text_courses: "Courses"
@@ -18,6 +22,10 @@ en:
       bread_crumbs_home: "Home"
       text_title: "Dashboard"
       btn_search: "Search"
+    template:
+      text_title: "Template"
+      text_target_template_set: "Target Template Set"
+      text_assignment_template_set: "Homework Template Set"
   devise:
     passwords:
       new:
@@ -53,7 +61,12 @@ en:
         btn_sign_in: "Sign in"
         btn_forget: "Forgot your password?"
   courses:
+    index:
+      text_title: "Course List"
+      btn_add: "Add"
   assignments:
+    all:
+      text_title: "Homework List"
   targets:
   progresses:
   target_templates_sets:

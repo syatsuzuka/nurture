@@ -1,19 +1,19 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Courses</li>
+    <li class="breadcrumb-item"><%= link_to t('shared.bread_crumbs.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('shared.bread_crumbs.courses') %></li>
   </ol>
 </nav>
 
 <h1 class="mb-3">
   <i class="fas fa-university me-2"></i>
-  Course List
+  <%= t('.text_title') %>
 </h1>
 
 <% if current_user.role == "tutor" %>
   <%= link_to new_course_path, id: "add-course", class: "btn btn-success text-light" do %>
     <i class="fas fa-plus"></i>
-    Add
+    <%= t('.btn_add') %>
   <% end %>
 <% end %>
 

@@ -1,5 +1,9 @@
 ja:
   shared:
+    bread_crumbs:
+      home: "Home"
+      courses: "コース"
+      homework: "課題"
     sidebarMenu:
       text_dashboard: "ダッシュボード"
       text_courses: "コース"
@@ -15,9 +19,12 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
-      bread_crumbs_home: "Home"
       text_title: "ダッシュボード"
       btn_search: "検索"
+    template:
+      text_title: "テンプレート"
+      text_target_template_set: "目標テンプレートセット"
+      text_assignment_template_set: "課題テンプレートセット"
   devise:
     passwords:
       new:
@@ -53,7 +60,12 @@ ja:
         btn_sign_in: "ログイン"
         btn_forget: "パスワードリセット"
   courses:
+    index:
+      text_title: "コース一覧"
+      btn_add: "登録"
   assignments:
+    all:
+      text_title: "課題一覧"
   targets:
   progresses:
   target_templates_sets:
