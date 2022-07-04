@@ -20,6 +20,15 @@ ja:
     sessions:
       new:
         text_title: "ログイン"
+        text_field_email: "Email"
+        text_field_password: "パスワード"
+        checkbox_remember_me: "パスワードの保存"
+        btn_sign_in: "ログイン"
+        btn_cancel: "キャンセル"
+    shared:
+      links:
+        btn_sign_up: "ユーザー登録"
+        btn_forget: "パスワードリセット"
   courses:
   assignments:
   targets:

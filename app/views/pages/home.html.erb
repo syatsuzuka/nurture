@@ -13,7 +13,7 @@
         </p>
         <p class="fs-5 text-light">
           [
-            <% unless request.path.include?("en") %>
+            <% unless I18n.locale.to_s == "en" %>
               <%= link_to "English", "/en" %>
             <% else %>
               <span>
@@ -21,7 +21,7 @@
               </span>
             <% end %>
             |
-            <% unless request.path.include?("ja") %>
+            <% unless I18n.locale.to_s == "ja" %>
               <%= link_to "日本語", "/ja/" %>
             <% else %>
               <span>
