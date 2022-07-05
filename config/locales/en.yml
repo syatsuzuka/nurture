@@ -8,6 +8,7 @@ en:
     target: "Target"
     progress: "Progress"
     assignment: "Homework"
+    chatroom: "Chatroom"
     template: "Template"
     knowledge: "Knowledge"
     tutor: "Tutor"
@@ -31,15 +32,36 @@ en:
     save: "Save"
     cancel: "Cancel"
     search: "Search"
-  profile:
-    email: "Email"
-    password: "Password"
-    first_name: "First Name"
-    last_name: "Last Name"
-    nickname: "Nickname"
-    role: "Role"
-    manager: "Manager"
-    photo: "Photo"
+  label:
+    user:
+      email: "Email"
+      password: "Password"
+      name: "Full Name"
+      first_name: "First Name"
+      last_name: "Last Name"
+      nickname: "Nickname"
+      role: "Role"
+      manager: "Manager"
+      photo: "Photo"
+    target:
+      name_fullpath: "Name"
+      description: "Description"
+      target_score: "Target Score"
+      display: "Display"
+      latest_score: "Latest Score"
+      best_score: "Best Score"
+      parent: "Parent"
+    progress:
+      date: "Date"
+      score: "Score"
+      comment: "Comment"
+    assignment:
+      title: "Title"
+      instruction: "Instruction"
+      checkpoints: "Checkpoint"
+      status: "Status"
+      comment: "Comment"
+      period: "Period"
   prefix:
   suffix:
     list: " List"
@@ -73,6 +95,7 @@ en:
     index:
   assignments:
     all:
+    index:
   targets:
   progresses:
   target_templates_sets:

@@ -4,9 +4,10 @@ ja:
     dashboard: "ダッシュボード"
     course: "コース"
     course_detail: "コース詳細"
-    target: "目標"
-    progress: "進捗"
+    target: "目標設定"
+    progress: "進捗状況"
     assignment: "課題"
+    chatroom: "Chatroom"
     template: "テンプレート"
     knowledge: "ナレッジ"
     tutor: "トレーナー"
@@ -30,15 +31,36 @@ ja:
     save: "保存"
     cancel: "キャンセル"
     search: "検索"
-  profile:
-    email: "メールアドレス"
-    password: "パスワード"
-    first_name: "名"
-    last_name: "姓"
-    nickname: "ニックネーム"
-    role: "役割"
-    manager: "管理者"
-    photo: "画像"
+  label:
+    user:
+      email: "メールアドレス"
+      password: "パスワード"
+      name: "氏名"
+      first_name: "名"
+      last_name: "姓"
+      nickname: "ニックネーム"
+      role: "役割"
+      manager: "管理者"
+      photo: "画像"
+    target:
+      name: "名称"
+      description: "摘要"
+      target_score: "目標スコア"
+      display: "グラフ表示"
+      latest_score: "最新スコア"
+      best_score: "最高スコア"
+      parent: "上位目標"
+    progress:
+      date: "日付"
+      score: "スコア"
+      comment: "コメント"
+    assignment:
+      title: "タイトル"
+      instruction: "インストラクション"
+      checkpoints: "チェックポイント"
+      status: "ステータス"
+      comment: "コメント"
+      period: "期間"
   prefix:
   suffix:
     list: "一覧"
@@ -72,8 +94,11 @@ ja:
     index:
   assignments:
     all:
+    index:
+
   targets:
   progresses:
+    index:
   target_templates_sets:
   target_templates:
   assignment_templates_sets:
