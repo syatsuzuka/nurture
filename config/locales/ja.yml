@@ -3,6 +3,7 @@ ja:
     home: "Home"
     dashboard: "ダッシュボード"
     course: "コース"
+    course_detail: "コース詳細"
     target: "目標"
     progress: "進捗"
     assignment: "課題"
@@ -38,6 +39,10 @@ ja:
     role: "役割"
     manager: "管理者"
     photo: "画像"
+  prefix:
+  suffix:
+    list: "一覧"
+    detail: "詳細"
   shared:
     sidebarMenu:
       text_other_pages: "その他のページ"

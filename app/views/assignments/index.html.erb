@@ -1,8 +1,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb d-flex align-items-center">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Course Detail</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course'), courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.course') %><%= t('suffix.detail') %></li>
   </ol>
 </nav>
 
