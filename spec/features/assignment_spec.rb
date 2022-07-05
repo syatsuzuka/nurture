@@ -142,7 +142,7 @@ feature 'homework (assignment))' do
     #======= Add a new homework =======
     find('#upload-assignment').click
     attach_file('file', 'public/sample/nurture_homework_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('test')
     expect(page).to have_content('test2')
     expect(page).to have_content('test3')

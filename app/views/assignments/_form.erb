@@ -1,59 +1,99 @@
+<%= simple_form_for [@course, @assignment] do |f| %>
+  <% if current_user.role == "tutor" %>
+    <%= f.input :title,
+                placeholder: "Title of homework",
+                required: true,
+                label: t('label.assignment.title')
+    %>
+    <%= f.input :instruction,
+                placeholder: "What do you want your student to achieve?",
+                required: true,
+                label: t('label.assignment.instruction')
+    %>
+    <%= f.input :instruction_url,
+                placeholder: "Put the URL for the instruction",
+                label: t('label.assignment.instruction_url')
+    %>
+    <%= f.input :checkpoint,
+                placeholder: "List the tasks you think are indicitive of success in your student's instruction?",
+                required: true,
+                label: t('label.assignment.checkpoint')
+    %>
+  <% else %>
+    <span><%= t('label.assignment.title') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @assignment.title %>
+    </div>
 
-  <%= simple_form_for [@course, @assignment] do |f| %>
-    <% if current_user.role == "tutor" %>
-      <%= f.input :title, placeholder: "Title of homework", required: true %>
-      <%= f.input :instruction, placeholder: "What do you want your student to achieve?", required: true %>
-      <%= f.input :instruction_url, placeholder: "Put the URL for the instruction" %>
-      <%= f.input :checkpoint, placeholder: "List the tasks you think are indicitive of success in your student's instruction?", required: true %>
-    <% else %>
-      <span>Title</span>
+    <span><%= t('label.assignment.instruction') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @assignment.instruction %>
+    </div>
+
+    <% unless @assignment.instruction_url.blank? %>
+      <span><%= t('label.assignment.instruction_url') %></span>
       <div class="border mt-2 mb-3 p-2">
-        <%= @assignment.title %>
-      </div>
-
-      <span>Instruction</span>
-      <div class="border mt-2 mb-3 p-2">
-        <%= @assignment.instruction %>
-      </div>
-
-      <% unless @assignment.instruction_url.blank? %>
-        <span>Instruction Material</span>
-        <div class="border mt-2 mb-3 p-2">
-          <%= @assignment.instruction_url %>
-        </div>
-      <% end %>
-
-      <span>Checkpoint</span>
-      <div class="border mt-2 mb-3 p-2">
-        <%= @assignment.checkpoint %>
+        <%= @assignment.instruction_url %>
       </div>
     <% end %>
-    <% unless @assignment.id.nil? %>
-      <% if current_user.role == "tutor" %>
-        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], include_blank: false %>
-      <% else %>
-        <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], include_blank: false %>
-      <% end %>
-    <% end %>
-    <% unless @assignment.id.nil? %>
-      <%= f.input :comment, placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank" %>
-      <%= f.input :material_url, placeholder: "Put the url for the material your would like to share with Tutor" %>
 
-      <% if current_user.role == "tutor" %>
-        <%= f.input :review_comment, placeholder: "Put review comment" %>
-      <% else %>
-        <span>Review Comment</span>
-        <% unless @assignment.review_comment.blank? %>
-        <div class="border mt-2 mb-3 p-2">
-          <%= @assignment.review_comment %>
-        </div>
-        <% else %>
-          <div class="ms-3 p-2 text-secondary">No data</div>
-        <% end %>
-      <% end %>
-    <% end %>
-    <%= f.input :start_date, html5: true %>
-    <%= f.input :end_date, html5: true %>
-    <%= f.submit 'Save', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', course_assignments_path, class: 'btn btn-secondary text-light'%>
+    <span><%= t('label.assignment.checkpoint') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @assignment.checkpoint %>
+    </div>
   <% end %>
+
+  <% unless @assignment.id.nil? %>
+    <% if current_user.role == "tutor" %>
+      <%= f.input :status,
+                  collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]],
+                  include_blank: false,
+                  label: t('label.assignment.status')
+      %>
+    <% else %>
+      <%= f.input :status,
+                  collection: [["Work In Process", 0], ["Done", 1]],
+                  include_blank: false,
+                  label: t('label.assignment.status')
+      %>
+    <% end %>
+  <% end %>
+
+  <% unless @assignment.id.nil? %>
+    <%= f.input :comment,
+                placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank",
+                label: t('label.assignment.comment')
+    %>
+    <%= f.input :material_url,
+                placeholder: "Put the url for the material your would like to share with Tutor",
+                  label: t('label.assignment.material_url')
+    %>
+
+    <% if current_user.role == "tutor" %>
+      <%= f.input :review_comment,
+                  placeholder: "Put review comment",
+                  label: t('label.assignment.review_comment')
+      %>
+    <% else %>
+      <span>Review Comment</span>
+      <% unless @assignment.review_comment.blank? %>
+      <div class="border mt-2 mb-3 p-2">
+        <%= @assignment.review_comment %>
+      </div>
+      <% else %>
+        <div class="ms-3 p-2 text-secondary">No data</div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :start_date,
+              html5: true,
+              label: t('label.assignment.start_date')
+  %>
+  <%= f.input :end_date,
+              html5: true,
+              label: t('label.assignment.end_date')
+  %>
+  <%= f.submit t('actions.save'), class: "btn btn-success text-light" %>
+  <%= link_to t('actions.cancel'), course_assignments_path, class: 'btn btn-secondary text-light'%>
+<% end %>

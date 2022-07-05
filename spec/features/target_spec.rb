@@ -46,7 +46,7 @@ feature 'target' do
     #======= Upload new Targets =======
     find('#upload-target').click
     attach_file('file', 'public/sample/nurture_target_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('test')
     expect(page).to have_content('test > test2')
     expect(page).to have_content('test > test2 > test3')
