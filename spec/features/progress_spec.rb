@@ -121,7 +121,7 @@ feature 'progress' do
     #======= Create a new Progress =======
     find('#upload-progress').click
     attach_file('file', 'public/sample/nurture_progress_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('2022-06-01')
     expect(page).to have_content('2022-07-01')
     expect(page).to have_content('2022-08-01')
@@ -146,7 +146,7 @@ feature 'progress' do
     #======= Create a new Progress =======
     find('#upload-progress').click
     attach_file('file', 'public/sample/nurture_progress_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('2022-06-01')
     expect(page).to have_content('2022-07-01')
     expect(page).to have_content('2022-08-01')

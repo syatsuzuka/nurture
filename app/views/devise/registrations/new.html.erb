@@ -13,13 +13,13 @@
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
-                  label: t('profile.email'),
+                  label: t('label.user.email'),
                   autofocus: true,
                   input_html: { autocomplete: "email" }
       %>
       <%= f.input :password,
                   required: true,
-                  label: t('profile.password'),
+                  label: t('label.user.password'),
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" }
       %>
@@ -30,26 +30,26 @@
       %>
       <%= f.input :first_name,
                   required: true,
-                  label: t('profile.first_name')
+                  label: t('label.user.first_name')
       %>
       <%= f.input :last_name,
                   required: true,
-                  label: t('profile.last_name')
+                  label: t('label.user.last_name')
       %>
       <%= f.input :nickname,
                   required: true,
-                  label: t('profile.nickname')
+                  label: t('label.user.nickname')
       %>
       <%= f.input :role,
                   required: true,
-                  label: t('profile.role'),
+                  label: t('label.user.role'),
                   as: :select,
                   collection: ["tutor", "student"],
                   include_blank: true
       %>
       <%= f.input :photo,
                   as: :file,
-                  label: t('profile.photo')
+                  label: t('label.user.photo')
       %>
     </div>
 

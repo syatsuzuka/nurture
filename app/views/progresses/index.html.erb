@@ -1,13 +1,13 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Course Detail", course_assignments_path(@target.course), class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Target Detail</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course'), courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.detail'), course_assignments_path(@target.course), class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.target') %><%= t('suffix.detail') %></li>
   </ol>
 </nav>
 
-<h1>Target Detail - <%= @target.name %></h1>
+<h1><%= t('resources.target') %><%= t('suffix.detail') %> - <%= @target.name %></h1>
 
 <div class="card flex-md-row shadow mt-5 p-4 rounded">
   <%= line_chart  @data,
@@ -22,21 +22,21 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col"><i class="fas fa-bullseye"></i> Your Target</th>
+      <th scope="col"><i class="fas fa-bullseye"></i> <%= t('resources.target') %></th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td scope="row">Course</td>
+      <td scope="row"><%= t('resources.course') %></td>
       <td><%= @target.course.name %></td>
     </tr>
     <tr>
-      <td scope="row">Name</td>
+      <td scope="row"><%= t('label.target.name') %></td>
       <td><%= @target.name %></td>
     </tr>
     <tr>
-      <td scope="row">Parent</td>
+      <td scope="row"><%= t('label.target.parent') %></td>
       <td>
         <% unless @target.parent.nil? %>
           <%= link_to course_target_progresses_path(@target.course, @target.parent) do %>
@@ -48,15 +48,15 @@
       </td>
     </tr>
     <tr>
-      <td scope="row">Description</td>
+      <td scope="row"><%= t('label.target.description') %></td>
       <td><%= @target.description %></td>
     </tr>
     <tr>
-      <td scope="row">Score</td>
+      <td scope="row"><%= t('label.target.score') %></td>
       <td><%= @target.score %></td>
     </tr>
     <tr>
-      <td scope="row">Display</td>
+      <td scope="row"><%= t('label.target.display') %></td>
       <td><%= @target.display %></td>
     </tr>
   </tbody>
@@ -65,7 +65,7 @@
 
 <!-- ======= Progress ======= -->
 <h2> <i class="fas fa-chart-line me-3 "></i>
-  Progress List
+  <%= t('resources.progress') %><%= t('suffix.list') %>
 
   <%= link_to new_course_target_progress_path(@target.course, @target), id: "add-progress", class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
   <%= link_to upload_progresses_path(@target.course, @target), id: "upload-progress" do %><%= show_upload_button.html_safe %><% end %>
@@ -82,11 +82,11 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Date</th>
-          <th scope="col">Score</th>
-          <th scope="col">Comment</th>
-          <th scope="col">Delete</th>
+          <th scope="col"><%= t('actions.edit') %></th>
+          <th scope="col"><%= t('label.progress.date') %></th>
+          <th scope="col"><%= t('label.progress.score') %></th>
+          <th scope="col"><%= t('label.progress.comment') %></th>
+          <th scope="col"><%= t('actions.delete') %></th>
           <th></th>
         </tr>
       </thead>

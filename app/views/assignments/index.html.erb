@@ -21,21 +21,15 @@
 <% unless @open_assignments.count == 0 %>
   <div id="gannt-chart" class="card flex-md-row shadow mb-5 p-4 rounded"></div>
 <% else %>
-  <div class="card flex-md-row shadow mb-5 p-4 rounded">
-    (No Homework remained
-      <span class="ms-2">
-        <% if current_user.role == "tutor" %>
-          <%= emojify(":thinking:") %>
-        <% else %>
-          <%= emojify(":tada::tada::tada:") %>
-        <% end %>
-      </span>
-    )
+  <div class="card flex-md-row shadow mb-5 p-4 rounded text-secondary">
+    <%= show_no_homework_message.html_safe %>
   </div>
 <% end %>
 
 <!-- ======= Target ======= -->
-<h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
+<h3 class="my-3">
+  <i class="fas fa-bullseye me-3"></i>
+  <%= t('resources.target') %><%= t('suffix.list') %>
 
   <% if current_user.role == "tutor" %>
     <%= link_to new_course_target_path(@course), id: "add-target", class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
@@ -58,15 +52,15 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Name (Fullpath)</th>
-          <th scope="col">Description</th>
-          <th scope="col">Target Score</th>
-          <th scope="col">Display</th>
-          <th scope="col">The Latest Score</th>
-          <th scope="col">The Best Score</th>
+          <th scope="col"><%= t('actions.edit') %></th>
+          <th scope="col"><%= t('label.target.name') %></th>
+          <th scope="col"><%= t('label.target.description') %></th>
+          <th scope="col"><%= t('label.target.score') %></th>
+          <th scope="col"><%= t('label.target.display') %></th>
+          <th scope="col"><%= t('label.target.latest_score') %></th>
+          <th scope="col"><%= t('label.target.best_score') %></th>
           <% if current_user.role == "tutor" %>
-            <th scope="col">Delete</th>
+            <th scope="col"><%= t('actions.delete') %></th>
           <% end %>
         </tr>
       </thead>
@@ -142,7 +136,10 @@
 
 <!-- ======= Homework ======= -->
 
-<h3 class="mt-5"><i class="fas fa-tasks me-3"></i>Homework
+<h3 class="mt-5">
+  <i class="fas fa-tasks me-3"></i>
+  <%= t('resources.assignment') %><%= t('suffix.list') %>
+
   <% if current_user.role == "tutor" %>
     <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
     <%= link_to upload_course_assignments_path(@course), id: "upload-assignment" do %><%= show_upload_button.html_safe %><% end %>
@@ -163,15 +160,15 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Title</th>
-          <th scope="col">Instruction</th>
-          <th scope="col">Checkpoints</th>
-          <th scope="col">Status</th>
-          <th scope="col">Comment</th>
-          <th scope="col">Period</th>
+          <th scope="col"><%= t('actions.edit') %></th>
+          <th scope="col"><%= t('label.assignment.title') %></th>
+          <th scope="col"><%= t('label.assignment.instruction') %></th>
+          <th scope="col"><%= t('label.assignment.checkpoint') %></th>
+          <th scope="col"><%= t('label.assignment.status') %></th>
+          <th scope="col"><%= t('label.assignment.comment') %></th>
+          <th scope="col"><%= t('label.assignment.period') %></th>
           <% if current_user.role == "tutor" %>
-            <th scope="col">Delete</th>
+            <th scope="col"><%= t('actions.delete') %></th>
           <% end %>
         </tr>
       </thead>

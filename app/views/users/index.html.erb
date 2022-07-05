@@ -1,10 +1,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
-      <li class="breadcrumb-item active" aria-current="page">Students</li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.student') %></li>
     <% else %>
-      <li class="breadcrumb-item active" aria-current="page">Tutors</li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.tutor') %></li>
     <% end %>
   </ol>
 </nav>
@@ -13,12 +13,12 @@
   <% if current_user.role == "tutor" %>
     <h1>
       <i class="fas fa-user"></i>
-      Student List
+      <%= t('resources.student') %><%= t('suffix.list') %>
     </h1>
   <% else %>
     <h1>
       <i class="fas fa-chalkboard-teacher"></i>
-      Tutor List
+      <%= t('resources.tutor') %><%= t('suffix.list') %>
     </h1>
   <% end %>
 
@@ -26,10 +26,10 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Nickname</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
+        <th scope="col"><%= t('label.user.name') %></th>
+        <th scope="col"><%= t('label.user.nickname') %></th>
+        <th scope="col"><%= t('label.user.email') %></th>
+        <th scope="col"><%= t('label.user.role') %></th>
       </tr>
     </thead>
 

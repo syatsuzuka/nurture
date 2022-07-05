@@ -95,7 +95,7 @@ feature 'homework template (assignment_template)' do
     #======= Create a new Assignment Template =======
     find('#upload-assignment-template').click
     attach_file('file', 'public/sample/nurture_homework_template_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('test')
     expect(page).to have_content('test2')
     expect(page).to have_content('test3')

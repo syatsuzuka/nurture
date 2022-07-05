@@ -15,7 +15,7 @@
   </div>
 
   <div>
-    <%= submit_tag 'Import', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', assignment_templates_set_assignment_templates_path(@assignment_templates_set), class: "btn btn-secondary text-light" %>
+    <%= submit_tag t('actions.upload'), class: "btn btn-success text-light" %>
+    <%= link_to t('actions.cancel'), assignment_templates_set_assignment_templates_path(@assignment_templates_set), class: "btn btn-secondary text-light" %>
   </div>
 <% end %>

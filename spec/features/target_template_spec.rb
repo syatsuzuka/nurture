@@ -94,7 +94,7 @@ feature 'target_template' do
     #======= Create a new Target Template =======
     find('#upload-target-template').click
     attach_file('file', 'public/sample/nurture_target_template_sample.csv')
-    click_on('Import')
+    click_on('Upload')
     expect(page).to have_content('test')
     expect(page).to have_content('test > test2')
     expect(page).to have_content('test > test2 > test3')

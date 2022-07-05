@@ -8,6 +8,7 @@ en:
     target: "Target"
     progress: "Progress"
     assignment: "Homework"
+    chatroom: "Chatroom"
     template: "Template"
     knowledge: "Knowledge"
     tutor: "Tutor"
@@ -31,15 +32,47 @@ en:
     save: "Save"
     cancel: "Cancel"
     search: "Search"
-  profile:
-    email: "Email"
-    password: "Password"
-    first_name: "First Name"
-    last_name: "Last Name"
-    nickname: "Nickname"
-    role: "Role"
-    manager: "Manager"
-    photo: "Photo"
+  label:
+    user:
+      email: "Email"
+      password: "Password"
+      name: "Full Name"
+      first_name: "First Name"
+      last_name: "Last Name"
+      nickname: "Nickname"
+      role: "Role"
+      manager: "Manager"
+      photo: "Photo"
+    course:
+      name: "Name"
+      description: "Description"
+      tutor: "Tutor"
+      student: "Student"
+      photo: "Photo"
+    target:
+      name_fullpath: "Name"
+      description: "Description"
+      score: "Target Score"
+      display: "Display"
+      latest_score: "Latest Score"
+      best_score: "Best Score"
+      parent: "Parent"
+    progress:
+      date: "Date"
+      score: "Score"
+      comment: "Comment"
+    assignment:
+      title: "Title"
+      instruction: "Instruction"
+      instruction_url: "Instruction (URL)"
+      checkpoint: "Checkpoint"
+      status: "Status"
+      comment: "Comment"
+      material_url: "Report (URL)"
+      review_comment: "Review Comment"
+      period: "Period"
+      start_date: "Start Date"
+      end_date: "End Date"
   prefix:
   suffix:
     list: " List"
@@ -71,9 +104,30 @@ en:
       links:
   courses:
     index:
+    new:
+      text_title: "Add a New Course"
+    edit:
+      text_title: "Edit the Course"
   assignments:
     all:
+    index:
+    new:
+      text_title: "Add a New Homework"
+    edit:
+      text_title: "Edit the Homework"
+    upload:
+      text_title: "Upload Homework data"
+      text_file_select: "Choose CSV file"
+      btn_sample_csv: "Sample CSV"
   targets:
+    new:
+      text_title: "Add a New Target"
+    edit:
+      text_title: "Edit the Target"
+    upload:
+      text_title: "Upload Target data"
+      text_file_select: "Choose CSV file"
+      btn_sample_csv: "Sample CSV"
   progresses:
   target_templates_sets:
   target_templates:
