@@ -3,6 +3,8 @@ en:
     home: "Home"
     dashboard: "Dashboard"
     course: "Course"
+    course_list: "Course List"
+    course_detail: "Course Detail"
     target: "Target"
     progress: "Progress"
     assignment: "Homework"
@@ -38,6 +40,10 @@ en:
     role: "Role"
     manager: "Manager"
     photo: "Photo"
+  prefix:
+  suffix:
+    list: " List"
+    detail: " Detail"
   shared:
     sidebarMenu:
       text_other_pages: "OTHER PAGES"
@@ -47,6 +53,8 @@ en:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
     dashboard:
+      text_gannt_title: "Remaining Homework Schedule"
+      text_org_title: "Relevant Parties"
     template:
   devise:
     passwords:

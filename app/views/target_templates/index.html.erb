@@ -12,21 +12,15 @@
 </h1>
 
 <% if @target_templates_set.user == current_user %>
-  <%= link_to new_target_templates_set_target_template_path(@target_templates_set), id: "add-target-template", class: "btn btn-success text-light ms-3" do %>
-    <i class="fas fa-plus"></i>
-    Add
-  <% end %>
-
-  <%= link_to upload_target_templates_path(@target_templates_set), id: "upload-target-template", class: "btn btn-success text-light" do %>
-    <i class="fas fa-upload"></i>
-    Import
-  <% end %>
+  <%= link_to new_target_templates_set_target_template_path(@target_templates_set),
+      id: "add-target-template",
+      class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
+  <%= link_to upload_target_templates_path(@target_templates_set),
+      id: "upload-target-template" do %><%= show_upload_button.html_safe %><% end %>
 <% end %>
 
-<%= link_to export_target_templates_path(@target_templates_set, format: :csv), id: "download-target-template", class: "btn btn-success text-light" do %>
-  <i class="fas fa-download"></i>
-  Export
-<% end %>
+<%= link_to export_target_templates_path(@target_templates_set, format: :csv),
+    id: "download-target-template" do %><%= show_download_button.html_safe %><% end %>
 
 <% unless @target_templates.count == 0 %>
   <table id="target_templates" class="table table-responsive table-hover align-middle mt-3">
@@ -47,9 +41,8 @@
           <td scope="row"><%= index + 1 %></td>
           <td>
             <% if @target_templates_set.user == current_user %>
-              <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template), class: "edit-target_template btn btn-outline-success" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
+              <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template),
+                  class: "edit-target_template" do %><%= show_edit_button.html_safe %><% end %>
             <% end %>
           </td>
           <td>
@@ -76,9 +69,10 @@
           <% if current_user.role == "tutor" %>
             <td>
               <% if @target_templates_set.user == current_user %>
-                <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template), method: :delete, class: "delete-target_template btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
+                <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template),
+                    method: :delete,
+                    class: "delete-target_template ms-1",
+                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
               <% end %>
             </td>
           <% end %>

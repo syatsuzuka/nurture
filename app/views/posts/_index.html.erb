@@ -1,13 +1,15 @@
 
 <div class="d-flex justify-content-between">
-  <%= link_to "New Post", "posts/new", class: "btn btn-success mb-3" %>
-  <%= form_tag knowledge_path, class: "d-flex h-25 w-50", method: :get do %>
+  <%= link_to "posts/new" do %>
+    <%= show_add_button.html_safe %>
+  <% end %>
+  <%= form_tag knowledge_path, class: "d-flex h-25 w-50 mt-3", method: :get do %>
       <%= text_field_tag :q,
         params[:q],
         class: "form-control searchbar",
         placeholder: "Find a post"
       %>
-      <%= submit_tag "Search", class: "btn btn-success searchbox" %>
+      <%= submit_tag t('actions.search'), class: "btn btn-success searchbox" %>
   <% end %>
 </div>
  <%== pagy_bootstrap_nav(@pagy) %>
@@ -21,10 +23,12 @@
           <div class="card-body">
             <h5 class="card-title"><%= p.title %></h5>
             <p><%= p.likes.count %> likes</p>
+            <!--
             <p class="card-text"><%= truncate(p.content, length: 100, separator: ' ') %></p>
+            -->
             <p class="card-text"><small class="text-muted"><%="Created #{time_ago_in_words(p.created_at)} ago by #{p.user.first_name}"%></small>
             <%= add_image(p.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %></p>
-            <%= link_to "View Post", "posts/#{p.id}", class:"btn btn-success" %>
+            <%= link_to "View Post", post_path(p), class:"btn btn-success" %>
           </div>
         </div>
       </div>

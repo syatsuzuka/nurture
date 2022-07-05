@@ -13,7 +13,7 @@ feature 'post' do
     expect(page.all('div.card').count).to eq 1
 
     #======= Create a new Post =======
-    click_on('New Post')
+    click_on('Add')
     post_form = PostForm.new
     post_params = { post_title: "test_title", post_content: "test_content_01234567890123456789" }
     post_form.fill_in_with(post_params).submit

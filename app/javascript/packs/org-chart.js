@@ -5,7 +5,7 @@ Highcharts.chart('org-chart', {
   },
 
   title: {
-      text: 'Organization'
+      text: gon.org_title
   },
 
   accessibility: {
@@ -25,39 +25,7 @@ Highcharts.chart('org-chart', {
       name: 'Highsoft',
       keys: ['from', 'to'],
       data: gon.org_data,
-      // data: [
-      //     ['test', 'james'],
-      //     ['james', 'ed'],
-      //     ['james', 'shunjiro'],
-      //     ['ed', 'shingo'],
-      //     ['shunjiro', 'doug']
-      // ],
       nodes: gon.org_nodes,
-    //   nodes: [{
-    //     id: 'test',
-    //     title: 'test',
-    //     name: 'James Reed'
-    // }, {
-    //       id: 'james',
-    //       title: 'james',
-    //       name: 'James Reed'
-    //   }, {
-    //       id: 'ed',
-    //       title: 'ed',
-    //       name: 'Ed Oz'
-    //   }, {
-    //       id: 'shunjiro',
-    //       title: 'shunjiro',
-    //       name: 'Shunjiro Yatsuzuka'
-    //   }, {
-    //       id: 'shingo',
-    //       title: 'shingo',
-    //       name: 'Shingo Kubomura'
-    //   }, {
-    //       id: 'doug',
-    //       title: 'doug',
-    //       name: 'Doug Berkeley'
-    //   }],
       colorByPoint: false,
       color: '#007ad0',
       dataLabels: {

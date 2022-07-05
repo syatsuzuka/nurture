@@ -53,6 +53,7 @@ class PagesController < ApplicationController
 
     #======= Data Setup for Gannt Chart =======
     gon.courses = []
+    gon.gannt_title = t('.text_gannt_title')
     @open_assignments = assignments.select { |assignment| assignment.status.zero? }
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
@@ -82,6 +83,7 @@ class PagesController < ApplicationController
     #======= Data Setup for Org Chart =======
     gon.org_nodes = []
     gon.org_data = []
+    gon.org_title = t('.text_org_title')
 
     #----- Add Current User -----
     org_node = {

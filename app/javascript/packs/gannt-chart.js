@@ -31,6 +31,7 @@ gon.courses.forEach(element => {
   courses.push(course)
 });
 
+gannt_title = gon.gannt_title
 
 // Parse car data into series.
 series = courses.map(function (course, i) {
@@ -54,7 +55,7 @@ series = courses.map(function (course, i) {
 Highcharts.ganttChart('gannt-chart', {
     series: series,
     title: {
-        text: 'Remaining Homework Schedule'
+        text: gannt_title
     },
     tooltip: {
         pointFormat: '<span>Title: {point.title}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'

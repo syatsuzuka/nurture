@@ -21,4 +21,24 @@ module ApplicationHelper
   def get_fullname(user)
     "#{user.first_name.capitalize} #{user.last_name.capitalize}"
   end
+
+  def show_add_button
+    "<span class='btn btn-success text-light'><i class='fas fa-plus'></i> #{t('actions.add')}</span>"
+  end
+
+  def show_upload_button
+    "<span class='btn btn-success text-light'><i class='fas fa-upload'></i> #{t('actions.upload')}</span>"
+  end
+
+  def show_download_button
+    "<span class='btn btn-success text-light'><i class='fas fa-download'></i> #{t('actions.download')}</span>"
+  end
+
+  def show_edit_button
+    "<span class='btn btn-outline-success'><i class='fas fa-edit'></i></span>"
+  end
+
+  def show_delete_button
+    "<span class='btn btn-outline-secondary'><i class='fas fa-trash-alt'></i></span>"
+  end
 end
