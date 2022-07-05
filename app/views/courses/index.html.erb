@@ -44,15 +44,15 @@
                   <div class="mt-2">
                     <% if course.status == 1 %>
                       <% if current_user == course.tutor %>
-                        <%= link_to edit_course_path(course), class: "edit-course btn btn-outline-success text-success ms-3", style: ".btn-outline-success:hover" do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
+                        <%= link_to edit_course_path(course),
+                            class: "edit-course ms-3" do %><%= show_edit_button.html_safe %><% end %>
                       <% end %>
                     <% end %>
                     <% if current_user == course.tutor %>
-                      <%= link_to course_path(course), method: :delete, class: "delete-course btn btn-outline-secondary text-secondary ms-1", data: { confirm: 'Do you really want to delete the course?' } do %>
-                        <i class="fas fa-trash-alt"></i>
-                      <% end %>
+                      <%= link_to course_path(course),
+                          method: :delete,
+                          class: "delete-course ms-1",
+                          data: { confirm: 'Do you really want to delete the course?' } do %><%= show_delete_button.html_safe %><% end %>
                     <% end %>
                   </div>
                 <% end %>

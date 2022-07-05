@@ -77,12 +77,11 @@
               Review
             <% end %>
           <% else %>
-            <%= link_to edit_tutor_review_path(@user, @review), class: "btn btn-outline-success" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-            <%= link_to tutor_review_path(@user, @review), method: :delete, class: "btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the review?' } do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
+            <%= link_to edit_tutor_review_path(@user, @review) do %><%= show_edit_button.html_safe %><% end %>
+            <%= link_to tutor_review_path(@user, @review),
+                method: :delete,
+                class: "ms-1",
+                data: { confirm: 'Do you really want to delete the review?' } do %><%= show_delete_button.html_safe %><% end %>
           <% end %>
         <% end %>
       </h3>

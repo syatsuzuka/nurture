@@ -76,9 +76,8 @@
           <tr>
             <td scope="row"><%= index + 1 %></td>
             <td>
-              <%= link_to edit_course_target_path(target.course, target), class: "edit-target btn btn-outline-success" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
+              <%= link_to edit_course_target_path(target.course, target),
+                  class: "edit-target" do %><%= show_edit_button.html_safe %><% end %>
             </td>
             <td>
               <% element = target %>
@@ -126,9 +125,10 @@
             </td>
             <% if current_user.role == "tutor" %>
               <td>
-              <%= link_to course_target_path(target.course, target), method: :delete, class: "delete-target btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target?' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
+                <%= link_to course_target_path(target.course, target),
+                    method: :delete,
+                    class: "delete-target ms-1",
+                    data: { confirm: 'Do you really want to delete the target?' } do %><%= show_delete_button.html_safe %><% end %>
               </td>
             <% end %>
           </tr>
@@ -181,9 +181,8 @@
           <tr>
             <td scope="row"><%= index + 1 %></td>
               <td>
-                <%= link_to edit_course_assignment_path(assignment.course, assignment), class: "edit-assignment btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_course_assignment_path(assignment.course, assignment),
+                    class: "edit-assignment" do %><%= show_edit_button.html_safe %><% end %>
               </td>
             <td>
               <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
@@ -225,9 +224,10 @@
             </td>
             <% if current_user.role == "tutor" %>
               <td>
-                <%= link_to course_assignment_path(assignment.course, assignment), method: :delete, class: "delete-assignment btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the homework?' } do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
+                <%= link_to course_assignment_path(assignment.course, assignment),
+                    method: :delete,
+                    class: "delete-assignment",
+                    data: { confirm: 'Do you really want to delete the homework?' } do %><%= show_delete_button.html_safe %><% end %>
               </td>
             <% end %>
           </tr>

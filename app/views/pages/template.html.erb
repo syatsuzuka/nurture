@@ -68,9 +68,10 @@
           <% if current_user.role == "tutor" %>
             <td>
               <% if target_templates_set.user == current_user %>
-                <%= link_to target_templates_set_path(target_templates_set), method: :delete, class: "delete-target-templates-set btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
+                <%= link_to target_templates_set_path(target_templates_set),
+                    method: :delete,
+                    class: "delete-target-templates-set ms-1",
+                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
               <% end %>
             </td>
           <% end %>
@@ -119,9 +120,8 @@
           <% if current_user.role == "tutor" %>
             <td>
               <% if assignment_templates_set.user == current_user %>
-                <%= link_to edit_assignment_templates_set_path(assignment_templates_set), class: "edit-assignment-templates-set btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_assignment_templates_set_path(assignment_templates_set),
+                    class: "edit-assignment-templates-set" do %><%= show_edit_button.html_safe %><% end %>
               <% end %>
             </td>
           <% end %>
@@ -139,9 +139,10 @@
           <% if current_user.role == "tutor" %>
             <td>
               <% if assignment_templates_set.user == current_user %>
-                <%= link_to assignment_templates_set_path(assignment_templates_set), method: :delete, class: "delete-assignment-templates-set btn btn-outline-secondary ms-1", data: { confirm: 'Do you really want to delete the target template?' } do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
+                <%= link_to assignment_templates_set_path(assignment_templates_set),
+                    method: :delete,
+                    class: "delete-assignment-templates-set ms-1",
+                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
               <% end %>
             </td>
           <% end %>

@@ -97,17 +97,17 @@
               <%= index + 1 %>
             </td>
             <td>
-              <%= link_to edit_course_target_progress_path(@course, @target, progress), class: "edit-progress btn btn-outline-success" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
+              <%= link_to edit_course_target_progress_path(@course, @target, progress),
+                  class: "edit-progress" do %><%= show_edit_button.html_safe %><% end %>
             </td>
             <td><%= progress.date %></td>
             <td><%= progress.score %></td>
             <td><%= progress.comment %></td>
             <td>
-              <%= link_to course_target_progress_path(@course, @target, progress), method: :delete, class: "delete-progress btn btn-outline-secondary", data: { confirm: 'Do you really want to delete the progress info?' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
+              <%= link_to course_target_progress_path(@course, @target, progress),
+                  method: :delete,
+                  class: "delete-progress",
+                  data: { confirm: 'Do you really want to delete the progress info?' } do %><%= show_delete_button.html_safe %><% end %>
             </td>
           </tr>
         <% end %>
