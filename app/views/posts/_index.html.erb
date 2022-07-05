@@ -1,10 +1,9 @@
 
 <div class="d-flex justify-content-between">
-  <%= link_to "posts/new", class: "btn btn-success mb-3" do %>
-    <i class="fas fa-plus"></i>
-    <%= t('actions.add') %>
+  <%= link_to "posts/new" do %>
+    <%= show_add_button.html_safe %>
   <% end %>
-  <%= form_tag knowledge_path, class: "d-flex h-25 w-50", method: :get do %>
+  <%= form_tag knowledge_path, class: "d-flex h-25 w-50 mt-3", method: :get do %>
       <%= text_field_tag :q,
         params[:q],
         class: "form-control searchbar",

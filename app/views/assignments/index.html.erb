@@ -38,22 +38,12 @@
 <h3 class="my-3"><i class="fas fa-bullseye me-3"></i>Target Settings
 
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_target_path(@course), id: "add-target", class: "btn btn-success text-light ms-3" do %>
-      <i class="fas fa-plus"></i>
-      Add
-    <% end %>
-
-    <%= link_to upload_course_targets_path(@course), id: "upload-target", class: "btn btn-success text-light" do %>
-      <i class="fas fa-upload"></i>
-      Import
-    <% end %>
+    <%= link_to new_course_target_path(@course), id: "add-target", class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
+    <%= link_to upload_course_targets_path(@course), id: "upload-target" do %><%= show_upload_button.html_safe %><% end %>
   <% end %>
 
   <% if current_user.role.in?(["tutor", "student"]) %>
-    <%= link_to export_course_targets_path(@course, format: :csv), id: "download-target", class: "btn btn-success text-light" do %>
-      <i class="fas fa-download"></i>
-      Export
-    <% end %>
+    <%= link_to export_course_targets_path(@course, format: :csv), id: "download-target" do %><%= show_download_button.html_safe %><% end %>
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#targets" aria-controls="targets" aria-expanded="false" aria-label="Toggle Target">
@@ -154,22 +144,12 @@
 
 <h3 class="mt-5"><i class="fas fa-tasks me-3"></i>Homework
   <% if current_user.role == "tutor" %>
-    <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "btn btn-success text-light ms-3" do %>
-      <i class="fas fa-plus"></i>
-      Add
-    <% end %>
-
-    <%= link_to upload_course_assignments_path(@course), id: "upload-assignment", class: "btn btn-success text-light" do %>
-      <i class="fas fa-upload"></i>
-      Import
-    <% end %>
+    <%= link_to new_course_assignment_path(@course), id: "add-assignment", class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
+    <%= link_to upload_course_assignments_path(@course), id: "upload-assignment" do %><%= show_upload_button.html_safe %><% end %>
   <% end %>
 
   <% if current_user.role.in?(["tutor", "student"]) %>
-    <%= link_to export_course_assignments_path(@course, format: :csv), id: "download-assignment", class: "btn btn-success text-light" do %>
-      <i class="fas fa-download"></i>
-      Export
-    <% end %>
+    <%= link_to export_course_assignments_path(@course, format: :csv), id: "download-assignment" do %><%= show_download_button.html_safe %><% end %>
   <% end %>
 
   <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#assignments" aria-controls="assignments" aria-expanded="false" aria-label="Toggle Homework">

@@ -11,9 +11,8 @@
 </h1>
 
 <% if current_user.role == "tutor" %>
-  <%= link_to new_course_path, id: "add-course", class: "btn btn-success text-light" do %>
-    <i class="fas fa-plus"></i>
-    <%= t('actions.add') %>
+  <%= link_to new_course_path, id: "add-course" do %>
+    <%= show_add_button.html_safe %>
   <% end %>
 <% end %>
 
