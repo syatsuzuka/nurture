@@ -1,9 +1,34 @@
 en:
+  resources:
+    home: "Home"
+    dashboard: "Dashboard"
+    course: "Course"
+    target: "Target"
+    progress: "Progress"
+    assignment: "Homework"
+    template: "Template"
+    knowledge: "Knowledge"
+    tutor: "Tutor"
+    student: "Student"
+    user: "User"
+    target_templates_set: "Target Templates Set"
+    target_template: "Target Template"
+    assignment_templates_set: "Homework Templates Set"
+    assignment_template: "Homework Template"
+  actions:
+    add: "Add"
+    edit: "Edit"
+    delete: "Delete"
+    upload: "Upload"
+    download: "Download"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    log_out: "Log out"
+    ok: "OK"
+    save: "Save"
+    cancel: "Cancel"
+    search: "Search"
   shared:
-    bread_crumbs:
-      home: "Home"
-      courses: "Courses"
-      homework: "Homework"
     sidebarMenu:
       text_dashboard: "Dashboard"
       text_courses: "Courses"
@@ -19,8 +44,6 @@ en:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
     dashboard:
-      bread_crumbs_home: "Home"
-      text_title: "Dashboard"
       btn_search: "Search"
     template:
       text_title: "Template"

@@ -1,14 +1,14 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Template</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.template') %></li>
   </ol>
 </nav>
 
 <div class="mt-3">
   <h1>
     <i class="fas fa-sticky-note"></i>
-    <%= t('.text_title') %>
+    <%= t('resources.template') %>
   </h1>
 </div>
 

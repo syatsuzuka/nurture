@@ -1,9 +1,34 @@
 ja:
+  resources:
+    home: "Home"
+    dashboard: "ダッシュボード"
+    course: "コース"
+    target: "目標"
+    progress: "進捗"
+    assignment: "課題"
+    template: "テンプレート"
+    knowledge: "ナレッジ"
+    tutor: "トレーナー"
+    student: "受講者"
+    user: "ユーザー"
+    target_templates_set: "目標テンプレートセット"
+    target_template: "目標テンプレート"
+    assignment_templates_set: "課題テンプレートセット"
+    assignment_template: "課題テンプレート"
+  actions:
+    add: "登録"
+    edit: "編集"
+    delete: "削除"
+    upload: "アップロード"
+    download: "ダウンロード"
+    sign_in: "ログイン"
+    sign_up: "ユーザー登録"
+    sign_out: "ログアウト"
+    ok: "OK"
+    save: "保存"
+    cancel: "キャンセル"
+    search: "検索"
   shared:
-    bread_crumbs:
-      home: "Home"
-      courses: "コース"
-      homework: "課題"
     sidebarMenu:
       text_dashboard: "ダッシュボード"
       text_courses: "コース"
@@ -19,12 +44,10 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
-      text_title: "ダッシュボード"
-      btn_search: "検索"
     template:
-      text_title: "テンプレート"
       text_target_template_set: "目標テンプレートセット"
       text_assignment_template_set: "課題テンプレートセット"
+      btn_add: "登録"
   devise:
     passwords:
       new:
