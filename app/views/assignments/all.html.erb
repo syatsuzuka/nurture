@@ -1,12 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.homework') %></li></ol>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.assignment') %></li></ol>
 </nav>
 
 <div class="d-flex align-items-center mb-3">
   <i class="fas fa-tasks fa-2x me-3 mb-1"></i>
-  <h1><%= t('.text_title') %></h1>
+  <h1><%= t('resources.assignment') %></h1>
 </div>
 <div class="mt-2">
   <% unless @assignments.count == 0 %>

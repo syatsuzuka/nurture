@@ -32,14 +32,14 @@
   </head>
   <%# header section %>
   <body class="bg-white">
-    <% unless request.path.match(%r{/[a-z]{2}/users/}) %>
+    <% unless request.path.match(%r{/[a-z]{2}/users}) %>
       <%= render 'shared/navbar'%>
     <% end %>
 
     <%# main section %>
     <div class="container-fluid d-flex flex-column h-100 section-container">
       <div class="row flex-grow-1">
-        <% unless request.path.match(%r{/[a-z]{2}/users/}) %>
+        <% unless request.path.match(%r{/[a-z]{2}/users}) %>
           <%= render 'shared/sidebarMenu'%>
           <main class="col-md-9 col-lg-10 px-md-4">
             <div class="m-4">
@@ -47,7 +47,7 @@
             </div>
           </main>
         <% else %>
-          <main class="col-12 px-md-4">
+          <main class="col-12re px-md-4">
             <div class="m-4">
               <%= yield %>
             </div>

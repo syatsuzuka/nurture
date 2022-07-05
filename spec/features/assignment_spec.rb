@@ -116,7 +116,7 @@ feature 'homework (assignment))' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to course detail =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignments >table > tbody > tr').count).to eq 1
@@ -134,7 +134,7 @@ feature 'homework (assignment))' do
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to course detail =======
-    click_on('Courses')
+    click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignments >table > tbody > tr').count).to eq 1

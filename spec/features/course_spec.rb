@@ -9,7 +9,7 @@ feature 'course' do
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page).to have_no_content('test_name')
     expect(page).to have_no_content('shingo')
     expect(page.all('div.row > div').count).to eq 3
@@ -22,7 +22,7 @@ feature 'course' do
       course_student_user_id: "shingo"
     }
     course_form.visit_page.fill_in_new_with(course_params).submit
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page).to have_content('test_name')
     expect(page).to have_content('shingo')
     expect(page.all('div.row > div').count).to eq 4
@@ -50,7 +50,7 @@ feature 'course' do
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page).to have_no_content('test_name')
     expect(page.all('div.row > div').count).to eq 3
 
@@ -62,7 +62,7 @@ feature 'course' do
       course_description: "test_description"
     }
     course_form.fill_in_edit_with(course_params).submit
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page).to have_content('test_name')
     expect(page.all('div.row > div').count).to eq 3
   end
@@ -73,12 +73,12 @@ feature 'course' do
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page.all('div.row > div').count).to eq 3
 
     #======= Deletes an existing course =======
     find('div.row > div:nth-child(1) div.card > div.card-body a.delete-course').click
-    expect(page).to have_content('Course List')
+    expect(page).to have_content('Course')
     expect(page.all('div.row > div').count).to eq 2
   end
 end
