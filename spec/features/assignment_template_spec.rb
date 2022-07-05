@@ -102,10 +102,26 @@ feature 'homework template (assignment_template)' do
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 4
   end
 
-  scenario 'export assignment templates list' do
+  scenario 'export assignment templates list with owner' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Assignment Template =======
+    click_on('template-menu')
+    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Create a new Assignment Template =======
+    find('#download-assignment-template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+  end
+
+  scenario 'export assignment templates list with other tutor' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR2_LOGIN_ID'], user_password: ENV['DEMO_TUTOR2_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======

@@ -2,7 +2,7 @@ class TargetTemplatePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.select { |target_template| target_template.target_templates_set.user == user }
+      scope.all
     end
   end
 

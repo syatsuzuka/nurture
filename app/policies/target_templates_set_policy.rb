@@ -7,7 +7,7 @@ class TargetTemplatesSetPolicy < ApplicationPolicy
   end
 
   def index?
-    record.user == user
+    user.role == "tutor"
   end
 
   def create?
@@ -39,6 +39,6 @@ class TargetTemplatesSetPolicy < ApplicationPolicy
   end
 
   def export?
-    record.user == user
+    user.role == "tutor"
   end
 end

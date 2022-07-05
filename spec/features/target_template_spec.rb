@@ -102,10 +102,26 @@ feature 'target_template' do
     expect(page.all('#target_templates > tbody > tr').count).to eq 6
   end
 
-  scenario 'downloads target templates list' do
+  scenario 'downloads target templates list with owner' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
     session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_form.visit_page.fill_in_with(session_params).submit
+
+    #======= Access to Target Template =======
+    click_on('template-menu')
+    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+
+    #======= Create a new Target Template =======
+    find('#download-target-template').click
+    expect(page).to have_content('Tennis Lesson (Beginner)')
+  end
+
+  scenario 'downloads target templates list with other tutor' do
+    #======= Login with Tutor ID =======
+    session_form = SessionForm.new
+    session_params = { user_email: ENV['DEMO_TUTOR2_LOGIN_ID'], user_password: ENV['DEMO_TUTOR2_LOGIN_PASSWORD'] }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
