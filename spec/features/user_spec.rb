@@ -20,6 +20,23 @@ feature 'user' do
     expect(page).to have_content('Test Tutor')
   end
 
+  scenario 'creates a new student' do
+    #======= Signup as a Student =======
+    user_form = UserForm.new
+    user_params = {
+      user_email: ENV['TEST_STUDENT_LOGIN_ID'],
+      user_password: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
+      user_password_confirmation: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
+      user_first_name: 'Test',
+      user_last_name: 'Student',
+      user_nickname: 'test-student',
+      user_role: 'student'
+    }
+    user_form.visit_page.fill_in_with(user_params).submit
+    expect(page).to have_content('Dashboard')
+    expect(page).to have_content('Test Student')
+  end
+
   scenario 'updates an existing tutor' do
     #======= Login as a Student =======
     session_form = SessionForm.new

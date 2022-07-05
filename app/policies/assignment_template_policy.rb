@@ -2,7 +2,7 @@ class AssignmentTemplatePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.select { |assignment_template| assignment_template.assignment_templates_set.user == user }
+      scope.all
     end
   end
 
