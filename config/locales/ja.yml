@@ -47,6 +47,8 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
+      text_gannt_title: "未完了の課題スケジュール"
+      text_org_title: "関係者"
     template:
   devise:
     passwords:

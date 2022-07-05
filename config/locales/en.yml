@@ -47,6 +47,8 @@ en:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
     dashboard:
+      text_gannt_title: "Remaining Homework Schedule"
+      text_org_title: "Relevant Parties"
     template:
   devise:
     passwords:
