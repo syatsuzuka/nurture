@@ -6,17 +6,17 @@
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
-                  label: t('.text_field_email'),
+                  label: t('profile.email'),
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
     </div>
 
     <div class="form-actions mb-3">
       <%= f.button  :submit,
-                    t('.btn_password_reset'),
+                    t('actions.password_reset'),
                     class: "btn btn-success text-light"
       %>
-      <%= link_to t('.btn_cancel'),
+      <%= link_to t('actions.cancel'),
                   root_path,
                   class: "btn btn-secondary text-light"
       %>

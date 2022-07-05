@@ -7,7 +7,7 @@
           <%= link_to dashboard_path, id: 'dashboard-menu', class: "card-link text-dark text-decoration-none" do %>
             <div <%= @active_dashboard %>>
               <i class="fas fa-home text-secondary me-1"></i>
-              <%= t 'shared.sidebarMenu.text_dashboard' %>
+              <%= t('resources.dashboard') %>
             </div>
           <% end %>
         </h5>
@@ -17,7 +17,7 @@
         <%= link_to courses_path, id: 'courses-menu', class: "card-link text-dark text-decoration-none" do %>
           <div <%= @active_courses %>>
             <i class="fas fa-university text-secondary me-1"></i>
-            <%= t 'shared.sidebarMenu.text_courses' %>
+            <%= t('resources.course') %>
           </div>
         <% end %>
         </h5>
@@ -27,7 +27,7 @@
         <%= link_to all_assignments_path, id: 'homework-menu', class: "card-link text-dark text-decoration-none" do %>
           <div <%= @active_assignments %>>
             <i class="fas fa-tasks text-secondary me-1"></i>
-            <%= t 'shared.sidebarMenu.text_homework' %>
+            <%= t('resources.assignment') %>
           </div>
         <% end %>
         </h5>
@@ -38,7 +38,7 @@
           <%= link_to template_path, id: 'template-menu', class: "card-link text-dark text-decoration-none" do %>
             <div <%= @active_template %>>
               <i class="fas fa-sticky-note text-secondary me-1"></i>
-              <%= t 'shared.sidebarMenu.text_template' %>
+              <%= t('resources.template') %>
             </div>
           <% end %>
           </h5>
@@ -49,7 +49,7 @@
         <%= link_to knowledge_path, id: 'knowledge-menu', class: "card-link text-dark text-decoration-none" do %>
           <div <%= @active_knowledge %>>
             <i class="fas fa-book-open text-secondary me-1"></i>
-            <%= t 'shared.sidebarMenu.text_knowledge' %>
+            <%= t('resources.knowledge') %>
           </div>
         <% end %>
         </h5>
@@ -60,7 +60,7 @@
           <%= link_to tutors_path, id: 'tutors-menu', class: "card-link text-dark text-decoration-none" do %>
             <div <%= @active_users %>>
               <i class="fas fa-chalkboard-teacher text-secondary me-1"></i>
-              <%= t 'shared.sidebarMenu.text_tutors' %>
+              <%= t('resources.tutors') %>
             </div>
           <% end %>
         </h5>
@@ -72,7 +72,7 @@
           <%= link_to students_path, id: 'students-menu', class: "card-link text-dark text-decoration-none" do %>
             <div <%= @active_users %>>
               <i class="fas fa-user text-secondary me-1"></i>
-              <%= t 'shared.sidebarMenu.text_students' %>
+              <%= t('resources.student') %>
             </div>
           <% end %>
           </h5>
@@ -82,7 +82,7 @@
 
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <span>
-        <%= t 'shared.sidebarMenu.text_other_pages' %>
+        <%= t('.text_other_pages') %>
       </span>
     </h6>
     <ul class="nav flex-column mb-2">
@@ -90,7 +90,7 @@
         <%= link_to aboutus_path, id: 'aboutus-menu', class: "nav-link, text-muted text-decoration-none" do %>
           <div <%= @active_aboutus %>>
             <i class="fas fa-user-friends text-secondary me-1"></i>
-            <%= t 'shared.sidebarMenu.text_about_us' %>
+            <%= t('.text_about_us') %>
           </div>
         <% end %>
         </a>

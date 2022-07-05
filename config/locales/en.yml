@@ -1,17 +1,45 @@
 en:
+  resources:
+    home: "Home"
+    dashboard: "Dashboard"
+    course: "Course"
+    target: "Target"
+    progress: "Progress"
+    assignment: "Homework"
+    template: "Template"
+    knowledge: "Knowledge"
+    tutor: "Tutor"
+    student: "Student"
+    user: "User"
+    target_templates_set: "Target Templates Set"
+    target_template: "Target Template"
+    assignment_templates_set: "Homework Templates Set"
+    assignment_template: "Homework Template"
+  actions:
+    add: "Add"
+    edit: "Edit"
+    delete: "Delete"
+    upload: "Upload"
+    download: "Download"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    log_out: "Log out"
+    password_reset: "Password Reset"
+    ok: "OK"
+    save: "Save"
+    cancel: "Cancel"
+    search: "Search"
+  profile:
+    email: "Email"
+    password: "Password"
+    first_name: "First Name"
+    last_name: "Last Name"
+    nickname: "Nickname"
+    role: "Role"
+    manager: "Manager"
+    photo: "Photo"
   shared:
-    bread_crumbs:
-      home: "Home"
-      courses: "Courses"
-      homework: "Homework"
     sidebarMenu:
-      text_dashboard: "Dashboard"
-      text_courses: "Courses"
-      text_homework: "Homework"
-      text_template: "Template"
-      text_knowledge: "Knowledge"
-      text_tutors: "Tutors"
-      text_students: "Students"
       text_other_pages: "OTHER PAGES"
       text_about_us: "About us"
   pages:
@@ -19,54 +47,24 @@ en:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
       btn_start: "Start learning"
     dashboard:
-      bread_crumbs_home: "Home"
-      text_title: "Dashboard"
-      btn_search: "Search"
     template:
-      text_title: "Template"
-      text_target_template_set: "Target Template Set"
-      text_assignment_template_set: "Homework Template Set"
   devise:
     passwords:
       new:
-        text_field_email: "Email"
-        btn_password_reset: "Send me reset password instructions"
-        btn_cancel: "Cancel"
     registrations:
       new:
-        text_title: "Sign up"
         text_warning_note: "In the current version of Nurture, your registered profile will be visible among students, if you sign up with 'tutor' role.
         Please send an email for nurture-admin [at] nurture.pw if you want to deactivate your account to make it invisible to any other users in the platform."
-        text_field_email: "Email"
-        text_field_password: "Password"
         text_field_password_confirmation: "Password confirmation"
-        text_field_first_name: "First name"
-        text_field_last_name: "Last name"
-        text_field_nickname: "Nickname"
-        select_role: "Role"
-        file_photo: "Photo"
-        btn_sign_up: "Sign up"
-        btn_cancel: "Cancel"
     sessions:
       new:
-        text_title: "Sign in"
-        text_field_email: "Email"
-        text_field_password: "Password"
         checkbox_remember_me: "Remember me"
-        btn_sign_in: "Sign in"
-        btn_cancel: "Cancel"
     shared:
       links:
-        btn_sign_up: "Sign up"
-        btn_sign_in: "Sign in"
-        btn_forget: "Forgot your password?"
   courses:
     index:
-      text_title: "Course List"
-      btn_add: "Add"
   assignments:
     all:
-      text_title: "Homework List"
   targets:
   progresses:
   target_templates_sets:

@@ -1,17 +1,45 @@
 ja:
+  resources:
+    home: "Home"
+    dashboard: "ダッシュボード"
+    course: "コース"
+    target: "目標"
+    progress: "進捗"
+    assignment: "課題"
+    template: "テンプレート"
+    knowledge: "ナレッジ"
+    tutor: "トレーナー"
+    student: "受講者"
+    user: "ユーザー"
+    target_templates_set: "目標テンプレートセット"
+    target_template: "目標テンプレート"
+    assignment_templates_set: "課題テンプレートセット"
+    assignment_template: "課題テンプレート"
+  actions:
+    add: "登録"
+    edit: "編集"
+    delete: "削除"
+    upload: "アップロード"
+    download: "ダウンロード"
+    sign_in: "ログイン"
+    sign_up: "ユーザー登録"
+    sign_out: "ログアウト"
+    password_reset: "パスワードリセット"
+    ok: "OK"
+    save: "保存"
+    cancel: "キャンセル"
+    search: "検索"
+  profile:
+    email: "メールアドレス"
+    password: "パスワード"
+    first_name: "名"
+    last_name: "姓"
+    nickname: "ニックネーム"
+    role: "役割"
+    manager: "管理者"
+    photo: "画像"
   shared:
-    bread_crumbs:
-      home: "Home"
-      courses: "コース"
-      homework: "課題"
     sidebarMenu:
-      text_dashboard: "ダッシュボード"
-      text_courses: "コース"
-      text_homework: "課題"
-      text_template: "テンプレート"
-      text_knowledge: "ナレッジ"
-      text_tutors: "トレーナー"
-      text_students: "受講者"
       text_other_pages: "その他のページ"
       text_about_us: "About us"
   pages:
@@ -19,53 +47,24 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
-      text_title: "ダッシュボード"
-      btn_search: "検索"
     template:
-      text_title: "テンプレート"
-      text_target_template_set: "目標テンプレートセット"
-      text_assignment_template_set: "課題テンプレートセット"
   devise:
     passwords:
       new:
-        text_field_email: "Email"
-        btn_password_reset: "パスワードリセット"
-        btn_cancel: "キャンセル"
     registrations:
       new:
-        text_title: "ユーザー登録"
         text_warning_note: "現バージョンのNurtureでは、「トレーナー」としてユーザー登録すると、その登録したユーザープロファイル情報は全ての受講者から参照可能な状態になります。
-        もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールいただければと存じます。"
-        text_field_email: "Email"
-        text_field_password: "パスワード"
+        もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールにてお知らせください。"
         text_field_password_confirmation: "パスワード再確認"
-        text_field_first_name: "名"
-        text_field_last_name: "姓"
-        text_field_nickname: "ニックネーム"
-        select_role: "役割"
-        file_photo: "画像"
-        btn_sign_up: "ユーザー登録"
-        btn_cancel: "キャンセル"
     sessions:
       new:
-        text_title: "ログイン"
-        text_field_email: "Email"
-        text_field_password: "パスワード"
         checkbox_remember_me: "パスワードの保存"
-        btn_sign_in: "ログイン"
-        btn_cancel: "キャンセル"
     shared:
       links:
-        btn_sign_up: "ユーザー登録"
-        btn_sign_in: "ログイン"
-        btn_forget: "パスワードリセット"
   courses:
     index:
-      text_title: "コース一覧"
-      btn_add: "登録"
   assignments:
     all:
-      text_title: "課題一覧"
   targets:
   progresses:
   target_templates_sets:

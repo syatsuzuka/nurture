@@ -1,13 +1,13 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page"><%= t('.shared.bread_crumbs.home') %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.home') %></li>
   </ol>
 </nav>
 
 <div class="d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
     <i class="fas fa-home fa-2x mb-2 me-2"></i>
-    <h1><%= t('.text_title') %></h1>
+    <h1><%= t('resources.dashboard') %></h1>
   </div>
   <%= form_tag dashboard_path, class: "d-flex h-25 w-50", method: :get do %>
     <%= text_field_tag :q,
@@ -15,7 +15,7 @@
       class: "form-control searchbar",
       placeholder: "Find a dashboard"
     %>
-    <%= submit_tag t('.btn_search'), class: "btn btn-success searchbox" %>
+    <%= submit_tag t('actions.search'), class: "btn btn-success searchbox" %>
   <% end %>
 </div>
 
@@ -156,9 +156,6 @@
 <!-- organization: org-chart -->
 <script src="https://code.highcharts.com/modules/organization.js"></script>
 
-<!-- dumbbell: dumbbell -->
-<script src="https://code.highcharts.com/modules/dumbbell.js"></script>
-
 <!-- networkgraph: network-graph -->
 <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
 
@@ -174,8 +171,13 @@
 <!-- gannt: gannt -->
 <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
 
+<!-- dumbbell: dumbbell -->
+<!--
+<script src="https://code.highcharts.com/modules/dumbbell.js"></script>
+-->
+
 <%= javascript_pack_tag 'gannt-chart', 'data-turbolinks-track': 'reload', defer: true %>
-<%= javascript_pack_tag 'radar-chart', 'data-turbolinks-track': 'reload', defer: true %>
-<%= javascript_pack_tag 'dumbbell', 'data-turbolinks-track': 'reload', defer: true %>
-<%= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
 <%= javascript_pack_tag 'org-chart', 'data-turbolinks-track': 'reload', defer: true %>
+<%#= javascript_pack_tag 'radar-chart', 'data-turbolinks-track': 'reload', defer: true %>
+<%#= javascript_pack_tag 'dumbbell', 'data-turbolinks-track': 'reload', defer: true %>
+<%#= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
