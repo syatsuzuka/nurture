@@ -18,21 +18,24 @@ en:
     target_template: "Target Template"
     assignment_templates_set: "Homework Templates Set"
     assignment_template: "Homework Template"
-  actions:
-    add: "Add"
-    edit: "Edit"
-    delete: "Delete"
-    upload: "Upload"
-    download: "Download"
-    sign_in: "Sign in"
-    sign_up: "Sign up"
-    log_out: "Log out"
-    password_reset: "Password Reset"
-    ok: "OK"
-    save: "Save"
-    cancel: "Cancel"
-    search: "Search"
   label:
+    form:
+      add: "Add"
+      edit: "Edit"
+      delete: "Delete"
+      upload: "Upload"
+      download: "Download"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      log_out: "Log out"
+      password_confirmation: "Password confirmation"
+      password_reset: "Password Reset"
+      ok: "OK"
+      save: "Save"
+      cancel: "Cancel"
+      search: "Search"
+      csv_file_select: "Choose CSV file"
+      download_sample_csv: "Sample CSV"
     user:
       email: "Email"
       password: "Password"
@@ -92,11 +95,11 @@ en:
   devise:
     passwords:
       new:
+        text_title: "Forgot your password?"
     registrations:
       new:
         text_warning_note: "In the current version of Nurture, your registered profile will be visible among students, if you sign up with 'tutor' role.
         Please send an email for nurture-admin [at] nurture.pw if you want to deactivate your account to make it invisible to any other users in the platform."
-        text_field_password_confirmation: "Password confirmation"
     sessions:
       new:
         checkbox_remember_me: "Remember me"
@@ -117,8 +120,6 @@ en:
       text_title: "Edit the Homework"
     upload:
       text_title: "Upload Homework data"
-      text_file_select: "Choose CSV file"
-      btn_sample_csv: "Sample CSV"
   targets:
     new:
       text_title: "Add a New Target"
@@ -126,9 +127,12 @@ en:
       text_title: "Edit the Target"
     upload:
       text_title: "Upload Target data"
-      text_file_select: "Choose CSV file"
-      btn_sample_csv: "Sample CSV"
   progresses:
+    index:
+    new:
+      text_title: "Add a New Progress"
+    edit:
+      text_title: "Edit the Progress"
   target_templates_sets:
   target_templates:
   assignment_templates_sets:

@@ -7,7 +7,7 @@
   </ol>
 </nav>
 
-<h1><%= t('resources.target') %><%= t('suffix.detail') %> - <%= @target.name %></h1>
+<h1><i class="fas fa-bullseye"></i> <%= t('resources.target') %><%= t('suffix.detail') %> - <%= @target.name %></h1>
 
 <div class="card flex-md-row shadow mt-5 p-4 rounded">
   <%= line_chart  @data,
@@ -82,11 +82,11 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col"><%= t('actions.edit') %></th>
+          <th scope="col"><%= t('label.form.edit') %></th>
           <th scope="col"><%= t('label.progress.date') %></th>
           <th scope="col"><%= t('label.progress.score') %></th>
           <th scope="col"><%= t('label.progress.comment') %></th>
-          <th scope="col"><%= t('actions.delete') %></th>
+          <th scope="col"><%= t('label.form.delete') %></th>
           <th></th>
         </tr>
       </thead>

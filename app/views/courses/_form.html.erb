@@ -23,6 +23,6 @@
       </div>
     <% end %>
     <%= f.input :photo, label: t('label.course.photo'), as: :file %>
-    <%= f.submit t('actions.save'), class: "btn btn-success text-light" %>
-    <%= link_to t('actions.cancel'), courses_path, class: 'btn btn-secondary text-light'%>
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), courses_path, class: 'btn btn-secondary text-light'%>
   <% end %>
