@@ -1,7 +1,8 @@
-<div class="container m-5  col-6">
+<div class="container col-xl-6 col-lg-8 col-md-10 col-sm-12">
   <h1 class="h3 mb-3 fw-normal">
-    <%= t('actions.sign_in') %>
+    <%= t('label.form.sign_in') %>
   </h1>
+
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -17,8 +18,8 @@
     </div>
 
     <div class="form-actions mb-3">
-      <%= f.button :submit, t('actions.sign_in'), class: "btn btn-success text-light" %>
-      <%= link_to t('actions.cancel'), root_path, class: "btn btn-secondary text-light" %>
+      <%= f.button :submit, t('label.form.sign_in'), class: "btn btn-success text-light" %>
+      <%= link_to t('label.form.cancel'), root_path, class: "btn btn-secondary text-light" %>
     </div>
 
     <div>

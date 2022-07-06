@@ -17,21 +17,24 @@ ja:
     target_template: "目標テンプレート"
     assignment_templates_set: "課題テンプレートセット"
     assignment_template: "課題テンプレート"
-  actions:
-    add: "登録"
-    edit: "編集"
-    delete: "削除"
-    upload: "アップロード"
-    download: "ダウンロード"
-    sign_in: "ログイン"
-    sign_up: "ユーザー登録"
-    sign_out: "ログアウト"
-    password_reset: "パスワードリセット"
-    ok: "OK"
-    save: "保存"
-    cancel: "キャンセル"
-    search: "検索"
   label:
+    form:
+      add: "登録"
+      edit: "編集"
+      delete: "削除"
+      upload: "アップロード"
+      download: "ダウンロード"
+      sign_in: "ログイン"
+      sign_up: "ユーザー登録"
+      sign_out: "ログアウト"
+      password_confirmation: "パスワード再確認"
+      password_reset: "パスワードリセット"
+      ok: "OK"
+      save: "保存"
+      cancel: "キャンセル"
+      search: "検索"
+      csv_file_select: "CSVファイルの選択"
+      download_sample_csv: "サンプルCSVファイル"
     user:
       email: "メールアドレス"
       password: "パスワード"
@@ -91,11 +94,11 @@ ja:
   devise:
     passwords:
       new:
+        text_title: "パスワードリセット"
     registrations:
       new:
         text_warning_note: "現バージョンのNurtureでは、「トレーナー」としてユーザー登録すると、その登録したユーザープロファイル情報は全ての受講者から参照可能な状態になります。
         もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールにてお知らせください。"
-        text_field_password_confirmation: "パスワード再確認"
     sessions:
       new:
         checkbox_remember_me: "パスワードの保存"
@@ -116,8 +119,6 @@ ja:
       text_title: "課題の編集"
     upload:
       text_title: "課題のアップロード"
-      text_file_select: "CSVファイルの選択"
-      btn_sample_csv: "サンプルCSVファイル"
   targets:
     new:
       text_title: "目標設定の新規作成"
@@ -125,10 +126,12 @@ ja:
       text_title: "目標設定の編集"
     upload:
       text_title: "目標設定のアップロード"
-      text_file_select: "CSVファイルの選択"
-      btn_sample_csv: "サンプルCSVファイル"
   progresses:
     index:
+    new:
+      text_title: "進捗状況の新規作成"
+    edit:
+      text_title: "進捗状況の編集"
   target_templates_sets:
   target_templates:
   assignment_templates_sets:
