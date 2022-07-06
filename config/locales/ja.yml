@@ -73,9 +73,9 @@ ja:
       instruction_url: "インストラクション (URL)"
       checkpoint: "チェックポイント"
       status: "ステータス"
-      comment: "コメント"
+      comment: "受講者コメント"
       material_url: "補足レポート (URL)"
-      review_comment: "レビューコメント"
+      review_comment: "トレーナーコメント"
       period: "期間"
       start_date: "開始日"
       end_date: "終了日"
@@ -101,6 +101,10 @@ ja:
       rating: "レビュースコア"
       comment: "レビューコメント"
       anonymous: "匿名によるレビュー"
+    post:
+      title: "タイトル"
+      Photo: "画像"
+      content: "内容"
   prefix:
   suffix:
     list: "一覧"
@@ -136,15 +140,23 @@ ja:
       text_title: "コースの新規作成"
     edit:
       text_title: "コースの編集"
+    accept:
+      text_title: "コースへの招待の受け入れ"
+      text_confirmation: "コースへの招待を受け入れますか？"
+      text_access_denial: "あなたはこの招待の受け入れを行うことはできません。対象の受講者アカウントでログインし直してください。"
   assignments:
     all:
     index:
+    show:
+      btn_review: "レビューの追記"
     new:
       text_title: "課題の新規作成"
     edit:
       text_title: "課題の編集"
     upload:
       text_title: "課題のアップロード"
+    review:
+      text_title: "課題のレビュー"
   targets:
     new:
       text_title: "目標の新規作成"
@@ -192,3 +204,12 @@ ja:
       text_title: "レビューの新規作成"
     edit:
       text_title: "レビューの編集"
+  posts:
+    index:
+      btn_view_post: "表示"
+    show:
+      text_comment: "コメント"
+    new:
+      text_title: "ナレッジの新規作成"
+    edit:
+      text_title: "ナレッジの編集"

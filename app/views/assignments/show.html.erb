@@ -1,9 +1,9 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Courses", courses_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Course Detail", course_assignments_path(@assignment.course), class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Homework Detail</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.list'), courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.detail'), course_assignments_path(@assignment.course), class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.assignment') %><%= t('suffix.detail') %></li>
   </ol>
 </nav>
 
@@ -25,7 +25,7 @@
       <h1 class="mb-5"><%= @assignment.title %></h1>
       <div class="row">
         <div class="mb-3">
-          <h4><i class="fas fa-book-reader me-2"></i>Instruction</h4>
+          <h4><i class="fas fa-book-reader me-2"></i><%= t('label.assignment.instruction') %></h4>
           <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
           <p>
             <% unless @assignment.instruction_url.blank? %>
@@ -38,19 +38,16 @@
       </div>
       <div class="row">
         <div class="mb-3">
-          <h4><i class="fas fa-check-square me-2"></i>Checkpoint</h4>
+          <h4><i class="fas fa-check-square me-2"></i><%= t('label.assignment.checkpoint') %></h4>
           <p class="ms-3 p-2 border"><%= @assignment.checkpoint %></p>
         </div>
       </div>
       <div class="row">
         <div class="mb-3">
           <h4>
-            <i class="fas fa-sticky-note me-2"></i>Student's Note
+            <i class="fas fa-sticky-note me-2"></i><%= t('label.assignment.comment') %>
             <% if current_user.role == "student" %>
-              <%= link_to edit_course_assignment_path(@assignment.course, @assignment), class:"btn btn-success" do %>
-                <i class="fas fa-edit"></i>
-                  Add your comment?
-              <% end %>
+              <%= link_to edit_course_assignment_path(@assignment.course, @assignment) do %><%= show_edit_button.html_safe %><% end %>
             <% end %>
           </h4>
           <% unless @assignment.comment.blank? %>
@@ -69,12 +66,9 @@
       </div>
       <div class="row">
         <div class="mb-3">
-          <h4><i class="fas fa-check me-2"></i>Tutor's Review Comment
+          <h4><i class="fas fa-check me-2"></i><%= t('label.assignment.review_comment') %>
             <% if current_user.role == "tutor"%>
-              <%= link_to review_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success" do %>
-                <i class="fas fa-edit"></i>
-                Add your review?
-              <% end %>
+              <%= link_to review_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success" do %><%= t('.btn_review') %><% end %>
             <% end %>
           </h4>
           <% unless @assignment.review_comment.blank? %>
@@ -87,7 +81,7 @@
       <div class="row">
         <div class="d-flex align-items-center me-2">
           <h5><i class="fas fa-calendar-check me-1"></i>
-          Period</h5>
+          <%= t('label.assignment.period') %></h5>
         </div>
         <div class="ms-3 p-2">
           <p>

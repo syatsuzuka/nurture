@@ -13,7 +13,7 @@ class PostForm
   end
 
   def submit
-    click_button('Create Post')
+    click_button('Save')
     self
   end
 end

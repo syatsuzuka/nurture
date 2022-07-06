@@ -74,9 +74,9 @@ en:
       instruction_url: "Instruction (URL)"
       checkpoint: "Checkpoint"
       status: "Status"
-      comment: "Comment"
+      comment: "Student's Comment"
       material_url: "Report (URL)"
-      review_comment: "Review Comment"
+      review_comment: "Tutor's Comment"
       period: "Period"
       start_date: "Start Date"
       end_date: "End Date"
@@ -101,6 +101,10 @@ en:
       rating: "Rating"
       comment: "Comment"
       anonymous: "Anonymous Flag"
+    post:
+      title: "Title"
+      Photo: "Photo"
+      content: "Content"
   prefix:
   suffix:
     list: " List"
@@ -136,15 +140,23 @@ en:
       text_title: "Add a New Course"
     edit:
       text_title: "Edit the Course"
+    accept:
+      text_title: "Accept the Course invitation"
+      text_confirmation: "Do you accept this invitation?"
+      text_access_denial: "You can't accept this invitation. Please login with the right student's account."
   assignments:
     all:
     index:
+    show:
+      btn_review: "Add your review?"
     new:
       text_title: "Add a New Homework"
     edit:
       text_title: "Edit the Homework"
     upload:
       text_title: "Upload Homework data"
+    review:
+      text_title: "Review the Homework"
   targets:
     new:
       text_title: "Add a New Target"
@@ -187,3 +199,12 @@ en:
       text_title: "Add a New Review"
     edit:
       text_title: "Edit the Review"
+  posts:
+    index:
+      btn_view_post: "View"
+    show:
+      text_comment: "Comment"
+    new:
+      text_title: "Add a New Knowledge"
+    edit:
+      text_title: "Edit the Knowledge"
