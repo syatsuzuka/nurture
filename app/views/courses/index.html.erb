@@ -5,10 +5,7 @@
   </ol>
 </nav>
 
-<h1 class="mb-3">
-  <i class="fas fa-university me-2"></i>
-  <%= t('resources.course') %><%= t('suffix.list') %>
-</h1>
+<h2 class="mb-3"><i class="fas fa-university me-2"></i><%= t('resources.course') %><%= t('suffix.list') %></h2>
 
 <% if current_user.role == "tutor" %>
   <%= link_to new_course_path, id: "add-course" do %>

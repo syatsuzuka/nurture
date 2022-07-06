@@ -4,7 +4,7 @@ ja:
     dashboard: "ダッシュボード"
     course: "コース"
     course_detail: "コース詳細"
-    target: "目標設定"
+    target: "目標"
     progress: "進捗状況"
     assignment: "課題"
     chatroom: "Chatroom"
@@ -13,10 +13,11 @@ ja:
     tutor: "トレーナー"
     student: "受講者"
     user: "ユーザー"
-    target_templates_set: "目標テンプレートセット"
-    target_template: "目標テンプレート"
-    assignment_templates_set: "課題テンプレートセット"
-    assignment_template: "課題テンプレート"
+    review: "レビュー"
+    target_templates_set: "目標設定テンプレート集"
+    target_template: "目標設定テンプレート"
+    assignment_templates_set: "課題設定テンプレート集"
+    assignment_template: "課題設定テンプレート"
   label:
     form:
       add: "登録"
@@ -45,6 +46,9 @@ ja:
       role: "役割"
       manager: "管理者"
       photo: "画像"
+      message: "メッセージ"
+      interest: "興味分野"
+      specialty: "専門分野"
     course:
       name: "名称"
       description: "摘要"
@@ -75,6 +79,28 @@ ja:
       period: "期間"
       start_date: "開始日"
       end_date: "終了日"
+    target_templates_set:
+      name: "名称"
+      category: "カテゴリー"
+      visible: "共有表示"
+    target_template:
+      name: "名称"
+      description: "摘要"
+      score: "目標スコア"
+      parent: "上位目標"
+    assignment_templates_set:
+      name: "名称"
+      category: "カテゴリー"
+      visible: "共有表示"
+    assignment_template:
+      title: "タイトル"
+      instruction: "インストラクション"
+      instruction_url: "インストラクション (URL)"
+      checkpoint: "チェックポイント"
+    review:
+      rating: "レビュースコア"
+      comment: "レビューコメント"
+      anonymous: "匿名によるレビュー"
   prefix:
   suffix:
     list: "一覧"
@@ -121,11 +147,11 @@ ja:
       text_title: "課題のアップロード"
   targets:
     new:
-      text_title: "目標設定の新規作成"
+      text_title: "目標の新規作成"
     edit:
-      text_title: "目標設定の編集"
+      text_title: "目標の編集"
     upload:
-      text_title: "目標設定のアップロード"
+      text_title: "目標のアップロード"
   progresses:
     index:
     new:
@@ -133,8 +159,36 @@ ja:
     edit:
       text_title: "進捗状況の編集"
   target_templates_sets:
+    new:
+      text_title: "目標設定テンプレート集の新規作成"
+    edit:
+      text_title: "目標設定テンプレート集の編集"
   target_templates:
+    new:
+      text_title: "目標設定テンプレートの新規作成"
+    edit:
+      text_title: "目標設定テンプレートの編集"
+    upload:
+      text_title: "目標設定テンプレートのアップロード"
   assignment_templates_sets:
+    index:
+    new:
+      text_title: "課題設定テンプレート集の新規作成"
+    edit:
+      text_title: "課題設定テンプレート集の編集"
   assignment_templates:
+    new:
+      text_title: "課題設定テンプレートの新規作成"
+    edit:
+      text_title: "課題設定テンプレートの編集"
+    upload:
+      text_title: "課題設定テンプレートのアップロード"
   users:
+    show:
+      text_active_user: "アクティブユーザー"
+      text_deactivated_user: "無効化済みユーザー"
   reviews:
+    new:
+      text_title: "レビューの新規作成"
+    edit:
+      text_title: "レビューの編集"

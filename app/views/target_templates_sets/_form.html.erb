@@ -1,7 +1,10 @@
 <%= simple_form_for [@target_templates_set] do |f| %>
-  <%= f.input :name, required: true %>
-  <%= f.input :category, required: true %>
-  <%= f.input :visible %>
-  <%= f.submit 'Save', class: "btn btn-success text-light" %>
-  <%= link_to 'Cancel', template_path, class: 'btn btn-secondary text-light'%>
+  <%= f.input :name, required: true, label: t('label.target_templates_set.name') %>
+  <%= f.input :category, required: true, label: t('label.target_templates_set.category') %>
+  <%= f.input :visible, label: t('label.target_templates_set.visible') %>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), template_path, class: 'btn btn-secondary text-light'%>
+  </div>
 <% end %>

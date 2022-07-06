@@ -1,6 +1,7 @@
 class AssignmentTemplatesSetsController < ApplicationController
   before_action :assignment_templates_sets_params, only: %i[create update]
   before_action :set_assignment_templates_set, only: %i[show edit update destroy]
+  before_action :set_active_template
 
   def new
     @assignment_templates_set = AssignmentTemplatesSet.new
@@ -51,5 +52,9 @@ class AssignmentTemplatesSetsController < ApplicationController
 
   def set_assignment_templates_set
     @assignment_templates_set = AssignmentTemplatesSet.find(params[:id])
+  end
+
+  def set_active_template
+    @active_template = "class=active"
   end
 end

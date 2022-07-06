@@ -1,15 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb d-flex align-items-center">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Template", template_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Homework Template</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.template'), template_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.assignment_template') %></li>
   </ol>
 </nav>
 
-<h1 class="mb-3">
-  <i class="fas fa-bullseye me-2"></i>
-  Homework Template - <%= @assignment_templates_set.name %>
-</h1>
+<h2 class="mb-3"><i class="fas fa-bullseye me-2"></i><%= t('resources.assignment_template') %><%= t('suffix.list') %> - <%= @assignment_templates_set.name %></h2>
 
 <% if @assignment_templates_set.user == current_user %>
   <%= link_to new_assignment_templates_set_assignment_template_path(@assignment_templates_set),

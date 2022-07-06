@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_active_knowledge
+
   def new
     @post = Post.new
     authorize @post
@@ -57,5 +59,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :photo)
+  end
+
+  def set_active_knowledge
+    @active_knowledge = "class=active"
   end
 end

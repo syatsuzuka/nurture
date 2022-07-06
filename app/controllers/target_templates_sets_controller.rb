@@ -1,6 +1,7 @@
 class TargetTemplatesSetsController < ApplicationController
   before_action :target_templates_sets_params, only: %i[create update]
   before_action :set_target_templates_set, only: %i[show edit update destroy]
+  before_action :set_active_template
 
   def new
     @target_templates_set = TargetTemplatesSet.new
@@ -51,5 +52,9 @@ class TargetTemplatesSetsController < ApplicationController
 
   def set_target_templates_set
     @target_templates_set = TargetTemplatesSet.find(params[:id])
+  end
+
+  def set_active_template
+    @active_template = "class=active"
   end
 end

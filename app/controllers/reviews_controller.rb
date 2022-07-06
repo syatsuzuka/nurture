@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_tutor, only: %i[new create edit update destroy]
   before_action :set_review, only: %i[edit update destroy]
+  before_action :set_active_users
 
   def new
     @review = Review.new
@@ -56,5 +57,9 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def set_active_users
+    @active_users = "class=active"
   end
 end

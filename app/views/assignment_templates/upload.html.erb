@@ -1,20 +1,27 @@
-<h1 class="mb-5">Upload Homework Templates (CSV)</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb d-flex align-items-center">
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.template'), template_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.assignment_template') %></li>
+  </ol>
+</nav>
 
+<h2 class="mb-4"><i class="fas fa-bullseye me-2"></i><%= t('.text_title') %></h2>
 
 <%= form_tag import_assignment_templates_path(@assignment_templates_set), multipart: true do %>
-  <div class="mt-5 mb-5">
+  <div>
     <div>
-      Choose CSV file:
+      <%= t('label.form.csv_file_select') %>
     </div>
     <%= file_field_tag :file %>
 
     <%= link_to "/sample/nurture_homework_template_sample.csv", class: "btn btn-success text-light" do %>
       <i class="fas fa-download"></i>
-      Sample CSV
+      <%= t('label.form.download_sample_csv') %>
     <% end %>
   </div>
 
-  <div>
+  <div class="mt-4">
     <%= submit_tag t('label.form.upload'), class: "btn btn-success text-light" %>
     <%= link_to t('label.form.cancel'), assignment_templates_set_assignment_templates_path(@assignment_templates_set), class: "btn btn-secondary text-light" %>
   </div>

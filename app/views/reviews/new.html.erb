@@ -1,10 +1,25 @@
-<h1>Add a New Review</h1>
-<div>
-  <%= simple_form_for [@review.tutor, @review], url: tutor_reviews_path, method: :post do |f| %>
-    <%= f.input :stars, include_blank: false, include_hidden: false, as: :select, collection: 1..5, selected: 3  %>
-    <%= f.input :comment %>
-    <%= f.input :anonymous %>
-    <%= f.submit 'Save', class: "btn btn-success text-light" %>
-    <%= link_to 'Cancel', tutor_path(@review.tutor), class: 'btn btn-secondary text-light'%>
-  <% end %>
-</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <% if current_user.role == "tutor" %>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.student') + t('suffix.list'), students_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.student') %><%= t('suffix.detail') %></li>
+    <% else %>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.tutor') + t('suffix.list'), tutors_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.tutor') + t('suffix.detail') %></li>
+    <% end %>
+  </ol>
+</nav>
+
+<h2 class="mb-4"><i class="fas fa-bullseye me-3"></i><%= t('.text_title') %></h2>
+
+<%= simple_form_for [@review.tutor, @review], url: tutor_reviews_path, method: :post do |f| %>
+  <%= f.input :stars, include_blank: false, include_hidden: false, as: :select, collection: 1..5, selected: 3, label: t('label.review.rating')  %>
+  <%= f.input :comment, label: t('label.review.comment') %>
+  <%= f.input :anonymous, label: t('label.review.anonymous') %>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), tutor_path(@review.tutor), class: 'btn btn-secondary text-light'%>
+  </div>
+<% end %>

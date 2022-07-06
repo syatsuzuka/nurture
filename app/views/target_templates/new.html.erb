@@ -1,2 +1,11 @@
-<h1>Add a Target Template</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb d-flex align-items-center">
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.template'), template_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.target_template') %></li>
+  </ol>
+</nav>
+
+<h2 class="mb-4"><i class="fas fa-bullseye me-2"></i><%= t('.text_title') %></h2>
+
 <%= render 'form' %>

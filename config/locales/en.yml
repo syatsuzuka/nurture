@@ -14,6 +14,7 @@ en:
     tutor: "Tutor"
     student: "Student"
     user: "User"
+    review: "Review"
     target_templates_set: "Target Templates Set"
     target_template: "Target Template"
     assignment_templates_set: "Homework Templates Set"
@@ -46,6 +47,9 @@ en:
       role: "Role"
       manager: "Manager"
       photo: "Photo"
+      message: "Message"
+      interest: "Interest"
+      specialty: "Specialty"
     course:
       name: "Name"
       description: "Description"
@@ -76,6 +80,27 @@ en:
       period: "Period"
       start_date: "Start Date"
       end_date: "End Date"
+    target_templates_set:
+      name: "Name"
+      category: "Category"
+      visible: "Visible"
+    target_template:
+      name: "Name"
+      description: "Description"
+      score: "Target Score"
+    assignment_templates_set:
+      name: "Name"
+      category: "Category"
+      visible: "Visible"
+    assignment_template:
+      title: "Title"
+      instruction: "Instruction"
+      instruction_url: "Instruction (URL)"
+      checkpoint: "Checkpoint"
+    review:
+      rating: "Rating"
+      comment: "Comment"
+      anonymous: "Anonymous Flag"
   prefix:
   suffix:
     list: " List"
@@ -134,8 +159,31 @@ en:
     edit:
       text_title: "Edit the Progress"
   target_templates_sets:
+    new:
+      text_title: "Add a New Target Templates Set"
+    edit:
+      text_title: "Edit the Target Templates Set"
   target_templates:
+    new:
+      text_title: "Add a New Target Template"
+    edit:
+      text_title: "Edit the Target Template"
   assignment_templates_sets:
+    new:
+      text_title: "Add a New Homework Templates Set"
+    edit:
+      text_title: "Edit the Homework Templates Set"
   assignment_templates:
+    new:
+      text_title: "Add a New Homework Template"
+    edit:
+      text_title: "Edit the Homework Template"
   users:
+    show:
+      text_active_user: "active user"
+      text_deactivated_user: "deactivated user"
   reviews:
+    new:
+      text_title: "Add a New Review"
+    edit:
+      text_title: "Edit the Review"
