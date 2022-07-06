@@ -14,6 +14,7 @@ en:
     tutor: "Tutor"
     student: "Student"
     user: "User"
+    review: "Review"
     target_templates_set: "Target Templates Set"
     target_template: "Target Template"
     assignment_templates_set: "Homework Templates Set"
@@ -46,6 +47,9 @@ en:
       role: "Role"
       manager: "Manager"
       photo: "Photo"
+      message: "Message"
+      interest: "Interest"
+      specialty: "Specialty"
     course:
       name: "Name"
       description: "Description"
@@ -70,12 +74,37 @@ en:
       instruction_url: "Instruction (URL)"
       checkpoint: "Checkpoint"
       status: "Status"
-      comment: "Comment"
+      comment: "Student's Comment"
       material_url: "Report (URL)"
-      review_comment: "Review Comment"
+      review_comment: "Tutor's Comment"
       period: "Period"
       start_date: "Start Date"
       end_date: "End Date"
+    target_templates_set:
+      name: "Name"
+      category: "Category"
+      visible: "Visible"
+    target_template:
+      name: "Name"
+      description: "Description"
+      score: "Target Score"
+    assignment_templates_set:
+      name: "Name"
+      category: "Category"
+      visible: "Visible"
+    assignment_template:
+      title: "Title"
+      instruction: "Instruction"
+      instruction_url: "Instruction (URL)"
+      checkpoint: "Checkpoint"
+    review:
+      rating: "Rating"
+      comment: "Comment"
+      anonymous: "Anonymous Flag"
+    post:
+      title: "Title"
+      Photo: "Photo"
+      content: "Content"
   prefix:
   suffix:
     list: " List"
@@ -111,15 +140,23 @@ en:
       text_title: "Add a New Course"
     edit:
       text_title: "Edit the Course"
+    accept:
+      text_title: "Accept the Course invitation"
+      text_confirmation: "Do you accept this invitation?"
+      text_access_denial: "You can't accept this invitation. Please login with the right student's account."
   assignments:
     all:
     index:
+    show:
+      btn_review: "Add your review?"
     new:
       text_title: "Add a New Homework"
     edit:
       text_title: "Edit the Homework"
     upload:
       text_title: "Upload Homework data"
+    review:
+      text_title: "Review the Homework"
   targets:
     new:
       text_title: "Add a New Target"
@@ -134,8 +171,40 @@ en:
     edit:
       text_title: "Edit the Progress"
   target_templates_sets:
+    new:
+      text_title: "Add a New Target Templates Set"
+    edit:
+      text_title: "Edit the Target Templates Set"
   target_templates:
+    new:
+      text_title: "Add a New Target Template"
+    edit:
+      text_title: "Edit the Target Template"
   assignment_templates_sets:
+    new:
+      text_title: "Add a New Homework Templates Set"
+    edit:
+      text_title: "Edit the Homework Templates Set"
   assignment_templates:
+    new:
+      text_title: "Add a New Homework Template"
+    edit:
+      text_title: "Edit the Homework Template"
   users:
+    show:
+      text_active_user: "active user"
+      text_deactivated_user: "deactivated user"
   reviews:
+    new:
+      text_title: "Add a New Review"
+    edit:
+      text_title: "Edit the Review"
+  posts:
+    index:
+      btn_view_post: "View"
+    show:
+      text_comment: "Comment"
+    new:
+      text_title: "Add a New Knowledge"
+    edit:
+      text_title: "Edit the Knowledge"

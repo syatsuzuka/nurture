@@ -1,8 +1,12 @@
 <%= simple_form_for @post do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :title, wrapper_html: {class: "offset-2 col-6 " }%>
-  <%= f.input :photo, as: :file, wrapper_html: {class: "offset-2 col-6 " } %>
-  <%= f.input :content, as: :text, wrapper_html: {class: "offset-2 col-6 " }  %>
-  <%= f.submit class: "btn btn-success offset-2  "  %>
-  <% end %>
+  <%= f.input :title, label: t('label.post.title') %>
+  <%= f.input :photo, as: :file, label: t('label.post.photo')  %>
+  <%= f.input :content, as: :text, label: t('label.post.content') %>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), knowledge_path, class: 'btn btn-secondary text-light'%>
+  </div>
+<% end %>

@@ -1,13 +1,9 @@
 class TargetsController < ApplicationController
   before_action :target_params, only: %i[create update]
   before_action :set_course, only: %i[new create edit update destroy upload import close export]
-  before_action :set_target, only: %i[show edit update destroy close]
+  before_action :set_target, only: %i[edit update destroy close]
   before_action :set_active_courses
   before_action :set_target_options, only: %i[new edit]
-
-  def show
-    authorize @target
-  end
 
   def new
     @target = Target.new

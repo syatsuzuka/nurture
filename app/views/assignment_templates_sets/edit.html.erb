@@ -1,2 +1,10 @@
-<h1>Edit the Homework Template Set</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.template') %><%= t('suffix.list') %></li>
+  </ol>
+</nav>
+
+<h2 class="mb-4"><i class="fas fa-tasks me-3"></i><%= t('.text_title') %></h2>
+
 <%= render 'form' %>

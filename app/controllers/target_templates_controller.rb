@@ -3,6 +3,7 @@ class TargetTemplatesController < ApplicationController
   before_action :set_target_template, only: %i[show edit update destroy]
   before_action :set_target_templates_set, only: %i[index show new create edit update destroy upload import export]
   before_action :set_target_template_options, only: %i[new edit]
+  before_action :set_active_template
 
   def index
     all_target_templates = policy_scope(TargetTemplate).select do |target_template|
@@ -126,5 +127,9 @@ class TargetTemplatesController < ApplicationController
       end
       result
     end
+  end
+
+  def set_active_template
+    @active_template = "class=active"
   end
 end

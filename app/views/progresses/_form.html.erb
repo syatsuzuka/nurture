@@ -2,6 +2,9 @@
   <%= f.input :date, required: true, html5: true, label: t('label.progress.date') %>
   <%= f.input :score, required: true, label: t('label.progress.score') %>
   <%= f.input :comment, label: t('label.progress.comment') %>
-  <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
-  <%= link_to t('label.form.cancel'), course_target_progresses_path(@course, @target), class: 'btn btn-secondary text-light'%>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), course_target_progresses_path(@course, @target), class: 'btn btn-secondary text-light'%>
+  </div>
 <% end %>

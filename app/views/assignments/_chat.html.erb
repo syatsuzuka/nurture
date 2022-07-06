@@ -1,57 +1,50 @@
-<h3 class="mt-3">
-  <i class="fas fa-comments me-3"></i>
-  <%= t('resources.chatroom') %>
-
+<h3 class="mt-2"><i class="fas fa-comments me-3"></i><%= t('resources.chatroom') %>
   <span  class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
     <i class="fas fa-bars border p-2 rounded"></i>
   </span>
 </h3>
 
-  <div class="modal fade" id="myModal" >
-
-    <div class="modal-dialog modal-lg">
-          <div id="chatroom" class="modal-content d-flex flex-column-reverse container rounded border-success"
-            data-controller="chatroom-subscription"
-            data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-          >
-
-            <div id="messages" class="messages d-flex flex-column-reverse align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
-              <% @chatroom.messages.each do |message| %>
-                <%= render "messages/message", message: message %>
-              <% end %>
-            </div>
-            <div>
-            <div class= "modal-footer" >
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              <%= simple_form_for [@chatroom, @message],
-                remote: true,
-                html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "row" } do |f|
-              %>
-              <%= f.input :content,
-                label: false,
-                as: :text,
-                placeholder: "Message ##{@chatroom.name}",
-                wrapper_html: {class: "col-12  flex-space-between"}
-              %>
-
-              <%= f.input :photo,
+<div class="modal fade" id="myModal" >
+  <div class="modal-dialog modal-lg">
+    <div id="chatroom" class="modal-content d-flex flex-column-reverse container rounded border-success"
+      data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+    >
+      <div id="messages" class="messages d-flex flex-column-reverse align-items-start p-2 m-3"  data-chatroom-subscription-target="messages">
+        <% @chatroom.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+      <div>
+        <div class= "modal-footer" >
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          <%= simple_form_for [@chatroom, @message],
+            remote: true,
+            html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "row" } do |f|
+          %>
+            <%= f.input :content,
+              label: false,
+              as: :text,
+              placeholder: "Message ##{@chatroom.name}",
+              wrapper_html: {class: "col-12  flex-space-between"}
+            %>
+            <%= f.input :photo,
               as: :file,
               inline_label: "Image upload",
               wrapper_html: {class: "col-6 " }
-              %>
-                  <%= f.input :video,
+            %>
+            <%= f.input :video,
               as: :file,
               inline_label: "Video upload",
               wrapper_html: {class: "col-6 "}
-              %>
-              <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
-
-            <% end %>
-            </div>
-            </div>
+            %>
+            <%= f.submit "Send", class: "btn btn-success text-light w-50 align-self-center" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 <%# <script>
 var chatToggle = document.getElementById('chat-toggle');

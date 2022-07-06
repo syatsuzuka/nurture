@@ -4,6 +4,9 @@
   <%= f.input :description, required: true, label: t('label.target.description') %>
   <%= f.input :score, required: true, label: t('label.target.score') %>
   <%= f.input :display, label: t('label.target.display') %>
-  <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
-  <%= link_to t('label.form.cancel'), course_assignments_path(@course), class: 'btn btn-secondary text-light'%>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), course_assignments_path(@course), class: 'btn btn-secondary text-light'%>
+  </div>
 <% end %>

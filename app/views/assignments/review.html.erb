@@ -1,31 +1,40 @@
-<h1 class="mb-4">Add Review Comments - <%= @assignment.title %></h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.list'), courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.detail'), course_assignments_path(@assignment.course), class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.assignment') %><%= t('suffix.detail') %></li>
+  </ol>
+</nav>
+
+<h2 class="mb-4"><i class="fas fa-tasks me-3 mb-4"></i><%= t('.text_title') %></h2>
 
 <%= simple_form_for [@course, @assignment] do |f| %>
 
-  <span>Title</span>
+  <span><%= t('label.assignment.title') %></span>
   <div class="border mt-2 mb-3 p-2">
     <%= @assignment.title %>
   </div>
 
-  <span>Instruction</span>
+  <span><%= t('label.assignment.instruction') %></span>
   <div class="border mt-2 mb-3 p-2">
     <%= @assignment.instruction %>
   </div>
 
-  <span>Checkpoint</span>
+  <span><%= t('label.assignment.checkpoint') %></span>
   <div class="border mt-2 mb-3 p-2">
     <%= @assignment.checkpoint %>
   </div>
 
   <% unless @assignment.id.nil? %>
     <% if current_user.role == "tutor" %>
-      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true %>
+      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1], ["Closed", 2]], required: true, label: t('label.assignment.status') %>
     <% else %>
-      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true %>
+      <%= f.input :status, collection: [["Work In Process", 0], ["Done", 1]], required: true, label: t('label.assignment.status') %>
     <% end %>
   <% end %>
 
-  <span>Student Comment</span>
+  <span><%= t('label.assignment.comment') %></span>
   <% unless @assignment.comment.blank? %>
     <div class="border mt-2 mb-3 p-2">
       <%= @assignment.comment %>
@@ -36,9 +45,12 @@
     </div>
   <% end %>
 
-  <%= f.input :review_comment %>
-  <%= f.input :start_date, html5: true %>
-  <%= f.input :end_date, html5: true %>
-  <%= f.submit 'Save', class: "btn btn-success text-light" %>
-  <%= link_to 'Cancel', course_assignment_path(@assignment), class: 'btn btn-secondary text-light'%>
+  <%= f.input :review_comment, label: t('label.assignment.review_comment') %>
+  <%= f.input :start_date, html5: true, label: t('label.assignment.start_date') %>
+  <%= f.input :end_date, html5: true, label: t('label.assignment.end_date') %>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), course_assignment_path(@assignment), class: 'btn btn-secondary text-light'%>
+  </div>
 <% end %>

@@ -1,15 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb d-flex align-items-center">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to "Template", template_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page">Target Template</li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.template') + t('suffix.list'), template_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.target_template') %></li>
   </ol>
 </nav>
 
-<h1 class="mb-3">
-  <i class="fas fa-bullseye me-3"></i>
-  Target Template - <%= @target_templates_set.name %>
-</h1>
+<h2 class="mb-3"><i class="fas fa-bullseye me-3"></i><%= t('resources.target_template') %> - <%= @target_templates_set.name %></h2>
 
 <% if @target_templates_set.user == current_user %>
   <%= link_to new_target_templates_set_target_template_path(@target_templates_set),
@@ -27,11 +24,11 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Name (Fullpath)</th>
-        <th scope="col">Description</th>
-        <th scope="col">Score</th>
-        <th scope="col">Delete</th>
+        <th scope="col"><%= t('label.form.edit') %></th>
+        <th scope="col"><%= t('label.target_template.name') %></th>
+        <th scope="col"><%= t('label.target_template.description') %></th>
+        <th scope="col"><%= t('label.target_template.score') %></th>
+        <th scope="col"><%= t('label.form.delete') %></th>
       </tr>
     </thead>
 

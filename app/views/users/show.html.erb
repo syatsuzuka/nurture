@@ -1,12 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Home", dashboard_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
     <% if current_user.role == "tutor" %>
-      <li class="breadcrumb-item" aria-current="page"><%= link_to "Students", students_path, class: "text-secondary" %></li>
-      <li class="breadcrumb-item active" aria-current="page">Student Detail</li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.student') + t('suffix.list'), students_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.student') %><%= t('suffix.detail') %></li>
     <% else %>
-      <li class="breadcrumb-item" aria-current="page"><%= link_to "Tutors", tutors_path, class: "text-secondary" %></li>
-      <li class="breadcrumb-item active" aria-current="page">Tutor Detail</li>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.tutor') + t('suffix.list'), tutors_path, class: "text-secondary" %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('resources.tutor') + t('suffix.detail') %></li>
     <% end %>
   </ol>
 </nav>
@@ -20,14 +20,14 @@
   <p>
     <% if @user.deactivated == true %>
       <span>
-        <i class="fas fa-user-alt-slash me-2"></i>deactivated user
+        <i class="fas fa-user-alt-slash me-2"></i><%= t('.text_deactivated_user') %>
         <% unless @user.visible %>
           <i class="far fa-eye-slash"></i>
         <% end %>
       </span>
     <% else %>
       <span>
-        <i class="fas fa-user me-2"></i> active user
+        <i class="fas fa-user me-2"></i><%= t('.text_active_user') %>
         <% unless @user.visible %>
           <i class="far fa-eye-slash"></i>
         <% end %>
@@ -35,14 +35,19 @@
     <% end %>
   </p>
   <p>
-    <i class="fas fa-envelope me-2"></i><%= @user.email %>
+    <i class="fas fa-users me-2"></i>
+    <% if @user.role == "tutor" %>
+      <%= t('resources.tutor') %>
+    <% else %>
+      <%= t('resources.student') %>
+    <% end %>
   </p>
   <p>
-    <i class="fas fa-users me-3"></i><%= @user.role %>
+    <i class="fas fa-envelope me-2"></i><%= @user.email %>
   </p>
 
   <div class="mt-5 ms-3">
-    <h3>Message</h3>
+    <h3><%= t('label.user.message') %></h3>
     <% unless @user.message.nil? %>
       <div class="border mt-3 ms-3 mb-3 p-3">
         <pre>
@@ -56,7 +61,7 @@
     <% end %>
 
     <% if @user.role == "tutor" %>
-      <h3>Specialty</h3>
+      <h3><%= t('label.user.specialty') %></h3>
 
       <% unless @user.specialty.nil? %>
         <div class="border mt-3 mb-3 ms-3 p-3">
@@ -69,12 +74,11 @@
       <% end %>
 
       <h3>
-        Reviews <span class="fs-5 text-secondary">(ave: <%= @average_star %>)</span>
+        <%= t('resources.review') %> <span class="fs-5 text-secondary">(ave: <%= @average_star %>)</span>
         <% if current_user.role == "student" %>
           <% unless @review_flag %>
             <%= link_to new_tutor_review_path(@user), class: "btn btn-success text-light" do %>
-              <i class="fas fa-plus"></i>
-              Review
+              <i class="fas fa-plus"></i><%= t('label.form.add') %>
             <% end %>
           <% else %>
             <%= link_to edit_tutor_review_path(@user, @review) do %><%= show_edit_button.html_safe %><% end %>
@@ -110,7 +114,7 @@
       </div>
 
     <% else %>
-      <h3>Interest</h3>
+      <h3><%= t('label.user.interest') %></h3>
 
       <% unless @user.interest.nil? %>
         <div class="border mt-3 ms-3 p-3">

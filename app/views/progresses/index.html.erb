@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course'), courses_path, class: "text-secondary" %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.list'), courses_path, class: "text-secondary" %></li>
     <li class="breadcrumb-item" aria-current="page"><%= link_to t('resources.course') + t('suffix.detail'), course_assignments_path(@target.course), class: "text-secondary" %></li>
     <li class="breadcrumb-item active" aria-current="page"><%= t('resources.target') %><%= t('suffix.detail') %></li>
   </ol>

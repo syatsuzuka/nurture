@@ -2,6 +2,7 @@ class AssignmentTemplatesController < ApplicationController
   before_action :assignment_templates_params, only: %i[create update]
   before_action :set_assignment_template, only: %i[show edit update destroy]
   before_action :set_assignment_templates_set, only: %i[index show new create edit update destroy upload import export]
+  before_action :set_active_template
 
   def index
     @assignment_templates = policy_scope(AssignmentTemplate).select do |assignment_template|
@@ -92,5 +93,9 @@ class AssignmentTemplatesController < ApplicationController
 
   def set_assignment_template
     @assignment_template = AssignmentTemplate.find(params[:id])
+  end
+
+  def set_active_template
+    @active_template = "class=active"
   end
 end

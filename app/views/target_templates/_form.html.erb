@@ -1,8 +1,11 @@
 <%= simple_form_for [@target_templates_set, @target_template] do |f| %>
-  <%= f.input :name, required: true %>
-  <%= f.association :parent, collection: @target_template_options %>
-  <%= f.input :description, required: true %>
-  <%= f.input :score, required: true %>
-  <%= f.submit 'Save', class: "btn btn-success text-light" %>
-  <%= link_to 'Cancel', target_templates_set_target_templates_path(@target_templates_set), class: 'btn btn-secondary text-light'%>
+  <%= f.input :name, required: true, label: t('label.target_template.name') %>
+  <%= f.association :parent, collection: @target_template_options, label: t('label.target_template.parent') %>
+  <%= f.input :description, required: true, label: t('label.target_template.description') %>
+  <%= f.input :score, required: true, label: t('label.target_template.score') %>
+
+  <div class="mt-4">
+    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= link_to t('label.form.cancel'), target_templates_set_target_templates_path(@target_templates_set), class: 'btn btn-secondary text-light'%>
+  </div>
 <% end %>

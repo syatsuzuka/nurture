@@ -1,26 +1,26 @@
-<h1>Accept the Course invitation</h1>
+<h2 class="mb-4"><i class="fas fa-university me-2"></i><%= t('.text_title') %></h2>
 
 <% if current_user == @course.student %>
   <div class="mt-3 ms-3">
-  Do you accept this invitation?
+  <%= t('.text_confirmation') %>
 
     <div class="mt-4 ms-3">
       <div class="mt-3">
-        <div>Name</div>
+        <div><%= t('label.course.name') %></div>
         <div class="ms-3 border p-2">
           <%= @course.name %>
         </div>
       </div>
 
       <div class="mt-3">
-        <div>Description</div>
+        <div><%= t('label.course.description') %></div>
         <div class="ms-3 border p-2">
           <%= @course.description %>
         </div>
       </div>
 
       <div class="mt-3">
-        <div>Tutor</div>
+        <div><%= t('resources.tutor') %></div>
         <div class="ms-3 border p-2">
           <%= @course.tutor.first_name %> <%= @course.tutor.last_name %> (<%= @course.tutor.email %>)
         </div>
@@ -29,14 +29,14 @@
       <div class="mt-5">
         <%= simple_form_for @course do |f| %>
           <%= f.input :status, as: :hidden %>
-          <%= f.submit 'Save', class: "btn btn-success text-light" %>
-          <%= link_to 'Cancel', root_path, class: 'btn btn-secondary text-light'%>
+          <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+          <%= link_to t('label.form.cancel'), root_path, class: 'btn btn-secondary text-light'%>
         <% end %>
       </div>
     </div>
   </div>
 <% else %>
   <div class="mt-3 ms-3">
-  You can't accept this invitation. Please login with the right student's account.
+    <%= t('.text_access_denial') %>
   </div>
 <% end %>
