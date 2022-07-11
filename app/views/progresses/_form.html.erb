@@ -1,7 +1,14 @@
 <%= simple_form_for [@course, @target, @progress] do |f| %>
   <%= f.input :date, required: true, html5: true, label: t('label.progress.date') %>
-  <%= f.input :score, required: true, label: t('label.progress.score') %>
-  <%= f.input :comment, label: t('label.progress.comment') %>
+  <%= f.input :score,
+              required: true,
+              label: t('label.progress.score'),
+              placeholder: t('label.progress.score_placeholder')
+  %>
+  <%= f.input :comment,
+              label: t('label.progress.comment'),
+              placeholder: t('label.progress.comment_placeholder')
+  %>
 
   <div class="mt-4">
     <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>

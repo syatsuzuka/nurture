@@ -45,7 +45,10 @@
     </div>
   <% end %>
 
-  <%= f.input :review_comment, label: t('label.assignment.review_comment') %>
+  <%= f.input :review_comment,
+              label: t('label.assignment.review_comment'),
+              placeholder: t('label.assignment.review_comment_placeholder')
+  %>
   <%= f.input :start_date, html5: true, label: t('label.assignment.start_date') %>
   <%= f.input :end_date, html5: true, label: t('label.assignment.end_date') %>
 

@@ -61,18 +61,18 @@
 
   <% unless @assignment.id.nil? %>
     <%= f.input :comment,
-                placeholder: "What do you want to emphasize in your student's checkpoints? Otherwise, leave blank",
-                label: t('label.assignment.comment')
+                label: t('label.assignment.comment'),
+                placeholder: t('label.assignment.comment_placeholder')
     %>
     <%= f.input :material_url,
-                placeholder: "Put the url for the material your would like to share with Tutor",
-                  label: t('label.assignment.material_url')
+                label: t('label.assignment.material_url'),
+                placeholder: t('label.assignment.material_url_placeholder')
     %>
 
     <% if current_user.role == "tutor" %>
       <%= f.input :review_comment,
-                  placeholder: "Put review comment",
-                  label: t('label.assignment.review_comment')
+                  label: t('label.assignment.review_comment'),
+                  placeholder: t('label.assignment.review_comment_placeholder')
       %>
     <% else %>
       <span>Review Comment</span>
