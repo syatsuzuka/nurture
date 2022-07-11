@@ -1,8 +1,20 @@
 <%= simple_form_for [@course, @target] do |f| %>
-  <%= f.input :name, required: true, label: t('label.target.name') %>
+  <%= f.input :name,
+              required: true,
+              label: t('label.target.name'),
+              placeholder: t('label.target.name_placeholder')
+  %>
   <%= f.association :parent, label: t('label.target.parent'), collection: @target_options %>
-  <%= f.input :description, required: true, label: t('label.target.description') %>
-  <%= f.input :score, required: true, label: t('label.target.score') %>
+  <%= f.input :description,
+              required: true,
+              label: t('label.target.description'),
+              placeholder: t('label.target.description_placeholder')
+  %>
+  <%= f.input :score,
+              required: true,
+              label: t('label.target.score'),
+              placeholder: t('label.target.score_placeholder')
+  %>
   <%= f.input :display, label: t('label.target.display') %>
 
   <div class="mt-4">

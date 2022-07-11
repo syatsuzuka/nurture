@@ -31,15 +31,18 @@
       %>
       <%= f.input :first_name,
                   required: true,
-                  label: t('label.user.first_name')
+                  label: t('label.user.first_name'),
+                  placeholder: t('label.user.first_name_placeholder')
       %>
       <%= f.input :last_name,
                   required: true,
-                  label: t('label.user.last_name')
+                  label: t('label.user.last_name'),
+                  placeholder: t('label.user.last_name_placeholder')
       %>
       <%= f.input :nickname,
                   required: true,
-                  label: t('label.user.nickname')
+                  label: t('label.user.nickname'),
+                  placeholder: t('label.user.nickname_placeholder')
       %>
       <%= f.input :role,
                   required: true,
