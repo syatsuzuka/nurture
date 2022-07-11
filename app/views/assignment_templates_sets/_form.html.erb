@@ -1,6 +1,14 @@
 <%= simple_form_for [@assignment_templates_set] do |f| %>
-  <%= f.input :name, required: true, label: t('label.assignment_templates_set.name') %>
-  <%= f.input :category, required: true, label: t('label.assignment_templates_set.category') %>
+  <%= f.input :name,
+              required: true,
+              label: t('label.assignment_templates_set.name'),
+              placeholder: t('label.assignment_templates_set.name_placeholder')
+  %>
+  <%= f.input :category,
+              required: true,
+              label: t('label.assignment_templates_set.category'),
+              placeholder: t('label.assignment_templates_set.category_placeholder')
+  %>
   <%= f.input :visible, label: t('label.assignment_templates_set.visible') %>
 
   <div class="mt-4">

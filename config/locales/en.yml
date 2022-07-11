@@ -29,6 +29,7 @@ en:
       sign_in: "Sign in"
       sign_up: "Sign up"
       log_out: "Log out"
+      current_password: "Current password"
       password_confirmation: "Password confirmation"
       password_reset: "Password Reset"
       ok: "OK"
@@ -70,7 +71,7 @@ en:
       description: "Description"
       description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
       score: "Target Score"
-      score_placeholder: "E.g. 30(%)"
+      score_placeholder: "E.g. 20(%)"
       display: "Display"
       latest_score: "Latest Score"
       best_score: "Best Score"
@@ -78,9 +79,9 @@ en:
     progress:
       date: "Date"
       score: "Score"
-      score_placeholder: "32.0"
+      score_placeholder: "E.g. 22.0"
       comment: "Comment"
-      comment_placeholder: "the score in official game with Mike of ABC junior high school"
+      comment_placeholder: "E.g. the score in official game with Mike of ABC junior high school"
     assignment:
       title: "Title"
       title_placeholder: "E.g. Smash Practice"
@@ -102,21 +103,32 @@ en:
       end_date: "End Date"
     target_templates_set:
       name: "Name"
+      name_placeholder: "E.g. Tennis Lesson (Intermediate)"
       category: "Category"
+      category_placeholder: "E.g. Tennis"
       visible: "Visible"
     target_template:
       name: "Name"
+      name_placeholder: "E.g. Service Ace (%)"
       description: "Description"
+      description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
       score: "Target Score"
+      score_placeholder: "E.g. 20.0"
     assignment_templates_set:
       name: "Name"
+      name_placeholder: "E.g. Tennis (Intermediate)"
       category: "Category"
+      category_placeholder: "E.g. Tennis"
       visible: "Visible"
     assignment_template:
       title: "Title"
+      title_placeholder: "E.g. Smash Practice"
       instruction: "Instruction"
+      instruction_placeholder: "E.g. Practice Smash with Machine"
       instruction_url: "Instruction (URL)"
+      instruction_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
       checkpoint: "Checkpoint"
+      checkpoint_placeholder: "E.g. Have 5 sets of 10 times every two days"
     review:
       rating: "Rating"
       comment: "Comment"
@@ -130,6 +142,9 @@ en:
     list: " List"
     detail: " Detail"
   shared:
+    navbar:
+      text_setting: "Account Setting"
+      text_logout: "Log out"
     sidebarMenu:
       text_other_pages: "OTHER PAGES"
       text_about_us: "About us"
@@ -149,6 +164,9 @@ en:
       new:
         text_warning_note: "In the current version of Nurture, your registered profile will be visible among students, if you sign up with 'tutor' role.
         Please send an email for nurture-admin [at] nurture.pw if you want to deactivate your account to make it invisible to any other users in the platform."
+      edit:
+        text_title: "Account Setting"
+        text_visible: "Make your user info visible to other tutors/students"
     sessions:
       new:
         checkbox_remember_me: "Remember me"
