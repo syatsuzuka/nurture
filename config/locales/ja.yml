@@ -162,8 +162,7 @@ ja:
         text_title: "パスワードリセット"
     registrations:
       new:
-        text_warning_note: "現バージョンのNurtureでは、「トレーナー」としてユーザー登録すると、その登録したユーザープロファイル情報は全ての受講者から参照可能な状態になります。
-        もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールにてお知らせください。"
+        text_warning_note: "登録ユーザー情報の削除もしくは無効化をご希望の場合は nurture-admin [at] nurture.pw へメールにてお知らせください。"
       edit:
         text_title: "アカウント設定"
         text_visible: "ユーザー情報を他のトレーナー/受講者に公開"
