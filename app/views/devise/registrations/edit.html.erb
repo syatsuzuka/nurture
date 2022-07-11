@@ -80,10 +80,20 @@
         %>
       <% end %>
 
+      <%= f.input :photo,
+                  as: :file,
+                  label: t('label.user.photo')
+      %>
+
       <%= f.input :visible,
                   label: t('.text_visible')
       %>
-      <%= f.input :photo, as: :file %>
+
+      <%= f.input :locale,
+                  label: t('label.user.locale'),
+                  as: :select,
+                  collection: [["English", "en"], ["日本語", "ja"]]
+      %>
     </div>
 
     <div class="form-actions">
