@@ -1,8 +1,23 @@
 <%= simple_form_for [@assignment_templates_set, @assignment_template] do |f| %>
-  <%= f.input :title, required: true, label: t('label.assignment_template.title') %>
-  <%= f.input :instruction, required: true, label: t('label.assignment_template.instruction') %>
-  <%= f.input :instruction_url, label: t('label.assignment_template.instruction_url') %>
-  <%= f.input :checkpoint, required: true, label: t('label.assignment_template.checkpoint') %>
+  <%= f.input :title,
+              required: true,
+              label: t('label.assignment_template.title'),
+              placeholder: t('label.assignment_template.title_placeholder')
+  %>
+  <%= f.input :instruction,
+              required: true,
+              label: t('label.assignment_template.instruction'),
+              placeholder: t('label.assignment_template.instruction_placeholder')
+  %>
+  <%= f.input :instruction_url,
+              label: t('label.assignment_template.instruction_url'),
+              placeholder: t('label.assignment_template.instruction_url_placeholder')
+  %>
+  <%= f.input :checkpoint,
+              required: true,
+              label: t('label.assignment_template.checkpoint'),
+              placeholder: t('label.assignment_template.checkpoint_placeholder')
+  %>
 
   <div class="mt-4">
     <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>

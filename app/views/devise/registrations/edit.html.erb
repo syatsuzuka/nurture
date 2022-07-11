@@ -1,13 +1,14 @@
-<div class="container m-5  col-6">
-  <h1 class="h3 mb-3 fw-normal">User Setting</h1>
+<div class="container col-xl-6 col-lg-8 col-md-10 col-sm-12">
+  <h1 class="h3 mb-3 fw-normal"><%= t('.text_title') %></h1>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-
-      e-mail
-      <div class="border p-2">
+      <div class="mb-2">
+        <%= t('label.user.email') %>
+      </div>
+      <div class="border p-2 mb-2">
         <%= @user.email%>
       </div>
 
@@ -18,23 +19,29 @@
       <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
                   required: false,
+                  label: t('label.user.password'),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   required: false,
+                  label: t('label.form.password_confirmation'),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :current_password,
                   hint: "we need your current password to confirm your changes",
                   required: true,
+                  label: t('label.form.current_password'),
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :first_name,
+                  label: t('label.user.first_name'),
                   placeholder: t('label.user.first_name_placeholder'),
                   required: true
       %>
       <%= f.input :last_name,
+                  label: t('label.user.last_name'),
                   placeholder: t('label.user.last_name_placeholder'),
                   required: true
       %>
       <%= f.input :nickname,
+                  label: t('label.user.nickname'),
                   placeholder: t('label.user.nickname_placeholder'),
                   required: true
       %>
@@ -58,25 +65,30 @@
         label_method: :select_label_fullname
       %>
       <%= f.input :message,
+                  label: t('label.user.message'),
                   placeholder: t('label.user.message_placeholder')
       %>
       <% if @user.role == "tutor" %>
         <%= f.input :specialty,
+                  label: t('label.user.specialty'),
                     placeholder: t('label.user.specialty_placeholder')
         %>
       <% else %>
         <%= f.input :interest,
+                    label: t('label.user.interest'),
                     placeholder: t('label.user.interest_placeholder')
         %>
       <% end %>
 
-      <%= f.input :visible, label: 'Make your user info visible to other tutors/students' %>
+      <%= f.input :visible,
+                  label: t('.text_visible')
+      %>
       <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Save", class: "btn btn-success text-light" %>
-      <%= link_to "Cancel", :back, class: "btn btn-danger text-light" %>
+      <%= f.button :submit, t('label.form.save'), class: "btn btn-success text-light" %>
+      <%= link_to t('label.form.cancel'), :back, class: "btn btn-danger text-light" %>
     </div>
   <% end %>
 </div>

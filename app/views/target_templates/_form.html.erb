@@ -1,8 +1,20 @@
 <%= simple_form_for [@target_templates_set, @target_template] do |f| %>
-  <%= f.input :name, required: true, label: t('label.target_template.name') %>
+  <%= f.input :name,
+              required: true,
+              label: t('label.target_template.name'),
+              placeholder: t('label.target_template.name_placeholder')
+  %>
   <%= f.association :parent, collection: @target_template_options, label: t('label.target_template.parent') %>
-  <%= f.input :description, required: true, label: t('label.target_template.description') %>
-  <%= f.input :score, required: true, label: t('label.target_template.score') %>
+  <%= f.input :description,
+              required: true,
+              label: t('label.target_template.description'),
+              placeholder: t('label.target_template.description_placeholder')
+  %>
+  <%= f.input :score,
+              required: true,
+              label: t('label.target_template.score'),
+              placeholder: t('label.target_template.score_placeholder')
+  %>
 
   <div class="mt-4">
     <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>

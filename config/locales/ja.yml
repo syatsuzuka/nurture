@@ -28,6 +28,7 @@ ja:
       sign_in: "ログイン"
       sign_up: "ユーザー登録"
       sign_out: "ログアウト"
+      current_password: "現在のパスワード"
       password_confirmation: "パスワード再確認"
       password_reset: "パスワードリセット"
       ok: "OK"
@@ -41,9 +42,9 @@ ja:
       password: "パスワード"
       name: "氏名"
       first_name: "名"
-      first_name_placeholder: "太郎"
+      first_name_placeholder: "例： 太郎"
       last_name: "姓"
-      last_name_placeholder: "山田"
+      last_name_placeholder: "例： 山田"
       nickname: "ニックネーム"
       nickname_placeholder: "例： taro"
       role: "役割"
@@ -52,12 +53,12 @@ ja:
       message: "メッセージ"
       message_placeholder: "例： はじめまして！"
       interest: "興味分野"
-      interest_placeholder: "テニス"
+      interest_placeholder: "例： テニス"
       specialty: "専門分野"
-      specialty_placeholder: "テニス"
+      specialty_placeholder: "例： テニス"
     course:
       name: "名称"
-      name_placeholder: "例：　テニスレッスン (中級)"
+      name_placeholder: "例： テニスレッスン (中級)"
       description: "摘要"
       description_placeholder: "例：　中学生のテニス大会上位入賞を目指すプライベートレッスン"
       tutor: "トレーナー"
@@ -67,9 +68,9 @@ ja:
       name: "名称"
       name_placeholder: "例： サービスエース (%)"
       description: "摘要"
-      description_placeholder: "例：　サービスエースの成功率"
+      description_placeholder: "例： サービスエースの成功率"
       score: "目標スコア"
-      score_placeholder: "例：　20(%)"
+      score_placeholder: "例： 20(%)"
       display: "グラフ表示"
       latest_score: "最新スコア"
       best_score: "最高スコア"
@@ -77,18 +78,18 @@ ja:
     progress:
       date: "日付"
       score: "スコア"
-      score_placeholder: "例： 32(%)"
+      score_placeholder: "例： 22(%)"
       comment: "コメント"
       comment_placeholder: "例： ABC中学のMikeとの公式戦におけるスコア"
     assignment:
       title: "タイトル"
       title_placeholder: "例： スマッシュ練習"
       instruction: "インストラクション"
-      instruction_placeholder: "例： マシーンを使ってスマッシュの練習"
+      instruction_placeholder: "例： マシーンを使ったスマッシュの練習"
       instruction_url: "インストラクション (URL)"
       instruction_url_placeholder: "例： https://xxx.xxx.xxx/xxx"
       checkpoint: "チェックポイント"
-      checkpoint_placeholder: "例： ２日に一回10回5セット練習を行う"
+      checkpoint_placeholder: "例： 2日に1度、10回5セット練習を行う"
       status: "ステータス"
       comment: "受講者コメント"
       comment_placeholder: "例： 約60%の確率でスマッシュが入るようになった"
@@ -101,22 +102,33 @@ ja:
       end_date: "終了日"
     target_templates_set:
       name: "名称"
+      name_placeholder: "例： テニスレッスン (中級)"
       category: "カテゴリー"
+      category_placeholder: "例： テニス"
       visible: "共有表示"
     target_template:
       name: "名称"
+      name_placeholder: "例： サービスエース (%)"
       description: "摘要"
+      description_placeholder: "例： サービスエースの成功率"
       score: "目標スコア"
+      score_placeholder: "例： 20(%)"
       parent: "上位目標"
     assignment_templates_set:
       name: "名称"
+      name_placeholder: "例： テニスレッスン (中級)"
       category: "カテゴリー"
+      category_placeholder: "例： テニス"
       visible: "共有表示"
     assignment_template:
       title: "タイトル"
+      title_placeholder: "例： スマッシュ練習"
       instruction: "インストラクション"
+      instruction_placeholder: "例： マシーンを使ったスマッシュの練習"
       instruction_url: "インストラクション (URL)"
+      instruction_url_placeholder: "例： https://xxx.xxx.xxx/xxx"
       checkpoint: "チェックポイント"
+      checkpoint_placeholder: "例： 2日に1度、10回5セット練習を行う"
     review:
       rating: "レビュースコア"
       comment: "レビューコメント"
@@ -130,6 +142,9 @@ ja:
     list: "一覧"
     detail: "詳細"
   shared:
+    navbar:
+      text_setting: "アカウント設定"
+      text_logout: "ログアウト"
     sidebarMenu:
       text_other_pages: "その他のページ"
       text_about_us: "About us"
@@ -149,6 +164,9 @@ ja:
       new:
         text_warning_note: "現バージョンのNurtureでは、「トレーナー」としてユーザー登録すると、その登録したユーザープロファイル情報は全ての受講者から参照可能な状態になります。
         もし、登録したユーザー情報の参照をブロックするためにアカウントを無効化したい場合は nurture-admin [at] nurture.pw へメールにてお知らせください。"
+      edit:
+        text_title: "アカウント設定"
+        text_visible: "ユーザー情報を他のトレーナー/受講者に公開"
     sessions:
       new:
         checkbox_remember_me: "パスワードの保存"

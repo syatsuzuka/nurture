@@ -1,7 +1,17 @@
 <%= simple_form_for [@target_templates_set] do |f| %>
-  <%= f.input :name, required: true, label: t('label.target_templates_set.name') %>
-  <%= f.input :category, required: true, label: t('label.target_templates_set.category') %>
-  <%= f.input :visible, label: t('label.target_templates_set.visible') %>
+  <%= f.input :name,
+              required: true,
+              label: t('label.target_templates_set.name'),
+              placeholder: t('label.target_templates_set.name_placeholder')
+  %>
+  <%= f.input :category,
+              required: true,
+              label: t('label.target_templates_set.category'),
+              placeholder: t('label.target_templates_set.category_placeholder')
+  %>
+  <%= f.input :visible,
+              label: t('label.target_templates_set.visible')
+  %>
 
   <div class="mt-4">
     <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
