@@ -59,8 +59,11 @@ ja:
       photo: "画像"
     target:
       name: "名称"
+      name_placeholder: "例： バックハンドストローク (%)"
       description: "摘要"
+      description_placeholder: "例：　バックハンドストロークの成功率"
       score: "目標スコア"
+      score_placeholder: "例：　20(%)"
       display: "グラフ表示"
       latest_score: "最新スコア"
       best_score: "最高スコア"

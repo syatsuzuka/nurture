@@ -59,9 +59,12 @@ en:
       student: "Student"
       photo: "Photo"
     target:
-      name_fullpath: "Name"
+      name: "Name"
+      name_placeholder: "E.g. Backhand Stroke (%)"
       description: "Description"
+      description_placeholder: "E.g. Achieve higher successful rate in Backhand Stroke"
       score: "Target Score"
+      score_placeholder: "E.g. 20(%)"
       display: "Display"
       latest_score: "Latest Score"
       best_score: "Best Score"
