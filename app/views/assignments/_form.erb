@@ -1,23 +1,23 @@
 <%= simple_form_for [@course, @assignment] do |f| %>
   <% if current_user.role == "tutor" %>
     <%= f.input :title,
-                placeholder: "Title of homework",
                 required: true,
-                label: t('label.assignment.title')
+                label: t('label.assignment.title'),
+                placeholder: t('label.assignment.title_placeholder')
     %>
     <%= f.input :instruction,
-                placeholder: "What do you want your student to achieve?",
                 required: true,
-                label: t('label.assignment.instruction')
+                label: t('label.assignment.instruction'),
+                placeholder: t('label.assignment.instruction_placeholder')
     %>
     <%= f.input :instruction_url,
-                placeholder: "Put the URL for the instruction",
-                label: t('label.assignment.instruction_url')
+                label: t('label.assignment.instruction_url'),
+                placeholder: t('label.assignment.instruction_url_placeholder')
     %>
     <%= f.input :checkpoint,
-                placeholder: "List the tasks you think are indicitive of success in your student's instruction?",
                 required: true,
-                label: t('label.assignment.checkpoint')
+                label: t('label.assignment.checkpoint'),
+                placeholder: t('label.assignment.checkpoint_placeholder')
     %>
   <% else %>
     <span><%= t('label.assignment.title') %></span>

@@ -170,7 +170,7 @@ assignment_11 = Assignment.create!(
   title: "Swing Practice every day",
   instruction: "Take 30mins for shadow swing everyday",
   comment: "",
-  checkpoint: "Take 60mins every days",
+  checkpoint: "Take 30mins for shadonw swing almost everyday (90%)",
   course_id: course_1.id,
   status: 2,
   start_date: "2020-09-01",

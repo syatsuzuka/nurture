@@ -1,6 +1,14 @@
   <%= simple_form_for @course do |f| %>
-    <%= f.input :name, required: true, label: t('label.course.name') %>
-    <%= f.input :description, required: true, label: t('label.course.description') %>
+    <%= f.input :name,
+                required: true,
+                label: t('label.course.name'),
+                placeholder: t('label.course.name_placeholder')
+    %>
+    <%= f.input :description,
+                required: true,
+                label: t('label.course.description'),
+                placeholder: t('label.course.description_placeholder')
+    %>
     <% unless @course.id.nil? %>
       <%= f.association :tutor,
         collection: User.where(role: "tutor", visible: true).order(:first_name, :last_name),

@@ -52,7 +52,9 @@ en:
       specialty: "Specialty"
     course:
       name: "Name"
+      name_placeholder: "E.g. Tennis Lesson (Beginner)"
       description: "Description"
+      description_placeholder: "E.g. Private Tennis Lesson for complete beginners"
       tutor: "Tutor"
       student: "Student"
       photo: "Photo"
@@ -70,9 +72,13 @@ en:
       comment: "Comment"
     assignment:
       title: "Title"
+      title_placeholder: "E.g. Swing Practice every day"
       instruction: "Instruction"
+      instruction_placeholder: "E.g. Take 30mins for shadow swing every day"
       instruction_url: "Instruction (URL)"
+      instruction_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
       checkpoint: "Checkpoint"
+      checkpoint_placeholder: "E.g. Take 30mins for shadow swing almost everyday (more than 90%)"
       status: "Status"
       comment: "Student's Comment"
       material_url: "Report (URL)"

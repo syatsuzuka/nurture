@@ -78,7 +78,7 @@ class User < ApplicationRecord
     Assignment.create!(
       title: "Swing Practice every day",
       instruction: "Take 30mins for shadow swing everyday",
-      comment: "", checkpoint: "Take 60mins every days",
+      comment: "", checkpoint: "Take 30mins for shadow swing almost everyday (more than 90%)",
       course_id: course.id,
       status: 2,
       start_date: "2020-09-01", end_date: "2020-12-31"

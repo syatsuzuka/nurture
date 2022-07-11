@@ -51,7 +51,9 @@ ja:
       specialty: "専門分野"
     course:
       name: "名称"
+      name_placeholder: "例：　テニスレッスン (初級)"
       description: "摘要"
+      description_placeholder: "例：　テニス完全未経験者向けのプライベートレッスン"
       tutor: "トレーナー"
       student: "受講者"
       photo: "画像"
@@ -69,9 +71,13 @@ ja:
       comment: "コメント"
     assignment:
       title: "タイトル"
+      title_placeholder: "例： 素振り練習"
       instruction: "インストラクション"
+      instruction_placeholder: "例： 毎日30分間シャドースイングを行う"
       instruction_url: "インストラクション (URL)"
+      instruction_url_placeholder: "例： https://xxx.xxx.xxx/xxx"
       checkpoint: "チェックポイント"
+      checkpoint_placeholder: "例： ほぼ毎日(90%以上)、シャドースイングを実施"
       status: "ステータス"
       comment: "受講者コメント"
       material_url: "補足レポート (URL)"
