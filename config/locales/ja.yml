@@ -50,6 +50,7 @@ ja:
       role: "役割"
       manager: "管理者"
       photo: "画像"
+      locale: "言語"
       message: "メッセージ"
       message_placeholder: "例： はじめまして！"
       interest: "興味分野"

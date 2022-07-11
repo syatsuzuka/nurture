@@ -51,6 +51,7 @@ en:
       role: "Role"
       manager: "Manager"
       photo: "Photo"
+      locale: "Language"
       message: "Message"
       message_placeholder: "E.g. Hi there!"
       interest: "Interest"

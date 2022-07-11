@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(
       :account_update,
-      keys: %i[first_name last_name email nickname manager_id message specialty interest role photo visible]
+      keys: %i[first_name last_name email nickname manager_id message specialty interest role photo locale visible]
     )
   end
 
@@ -42,7 +42,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    locale = params[:locale].to_s.strip.to_sym
+    if current_user && !current_user.locale.nil?
+      locale = current_user.locale.to_sym
+    else
+      locale = params[:locale].to_s.strip.to_sym
+    end
     I18n.locale = I18n.available_locales.include?(locale) ? locale : I18n.default_locale
   end
 end
