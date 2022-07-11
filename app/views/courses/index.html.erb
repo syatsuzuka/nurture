@@ -62,7 +62,11 @@
                   <p>
                     <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                     <span class="fs-6 me-2">
-                      <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                      <% if course.tutor.visible %>
+                        <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                          <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                        <% end %>
+                      <% else %>
                         <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                       <% end %>
                       <% if current_user.users.any? %>
@@ -76,8 +80,12 @@
                     <% if course.status == 1 %>
                       <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                       <span class="fs-6 me-2">
-                        <%= link_to student_path(course.student), class: "text-dark" do %>
-                          <%= course.student.first_name %> <%= course.student.last_name %>
+                        <% if course.student.visible %>
+                          <%= link_to student_path(course.student), class: "text-dark" do %>
+                            <%= course.student.first_name %> <%= course.student.last_name %>
+                          <% end %>
+                        <% else %>
+                            <%= course.student.first_name %> <%= course.student.last_name %>
                         <% end %>
                         <% if current_user.users.any? %>
                         (Student)

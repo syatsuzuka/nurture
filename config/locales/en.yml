@@ -162,8 +162,7 @@ en:
         text_title: "Forgot your password?"
     registrations:
       new:
-        text_warning_note: "In the current version of Nurture, your registered profile will be visible among students, if you sign up with 'tutor' role.
-        Please send an email for nurture-admin [at] nurture.pw if you want to deactivate your account to make it invisible to any other users in the platform."
+        text_warning_note: "In case you would like to delete or deactivate your account, please send an email for nurture-admin [at] nurture.pw."
       edit:
         text_title: "Account Setting"
         text_visible: "Make your user info visible to other tutors/students"

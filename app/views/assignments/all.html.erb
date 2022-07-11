@@ -28,7 +28,11 @@
                   <div>
                     <%= add_image(assignment.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                     <span class="fs-6 me-2">
-                      <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
+                      <% if assignment.course.tutor.visible %>
+                        <%= link_to tutor_path(assignment.course.tutor), class: "text-dark" do %>
+                          <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
+                        <% end %>
+                      <% else %>
                         <%= assignment.course.tutor.first_name %> <%= assignment.course.tutor.last_name %>
                       <% end %>
                       <% if current_user.users.any? %>
@@ -41,7 +45,11 @@
                   <div>
                     <%= add_image(assignment.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                     <span class="fs-6 me-2">
-                      <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
+                      <% if assignment.course.student.visible %>
+                        <%= link_to student_path(assignment.course.student), class: "text-dark" do %>
+                          <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
+                        <% end %>
+                      <% else %>
                         <%= assignment.course.student.first_name %> <%= assignment.course.student.last_name %>
                       <% end %>
                       <% if current_user.users.any? %>

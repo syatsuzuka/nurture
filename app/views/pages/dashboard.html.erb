@@ -72,9 +72,15 @@
                 <% if current_user.role == "student" or current_user.users.any? %>
                   <p>
                     <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
-                    <%= link_to student_path(course.tutor.id), class: "text-dark" do %>
+
+                    <% if course.tutor.visible %>
+                      <%= link_to student_path(course.tutor.id), class: "text-dark" do %>
+                        <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                      <% end %>
+                    <% else %>
                       <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                     <% end %>
+
                     <% if current_user.users.any? %>
                     (Tutor)
                     <% end %>
@@ -83,9 +89,15 @@
                 <% if current_user.role == "tutor" %>
                   <p>
                     <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
-                    <%= link_to student_path(course.student.id), class: "text-dark" do %>
+
+                    <% if course.student.visible %>
+                      <%= link_to student_path(course.student.id), class: "text-dark" do %>
+                        <%= course.student.first_name %> <%= course.student.last_name %>
+                      <% end %>
+                    <% else %>
                       <%= course.student.first_name %> <%= course.student.last_name %>
                     <% end %>
+
                     <% if current_user.users.any? %>
                     (Student)
                     <% end %>

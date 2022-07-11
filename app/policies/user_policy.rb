@@ -11,6 +11,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.visible == true
   end
 end
