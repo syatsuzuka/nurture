@@ -90,7 +90,7 @@
                   <p>
                     <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
 
-                    <% if course.student.visible %>
+                    <% if course.student.visible && course.tutor == current_user %>
                       <%= link_to student_path(course.student.id), class: "text-dark" do %>
                         <%= course.student.first_name %> <%= course.student.last_name %>
                       <% end %>
