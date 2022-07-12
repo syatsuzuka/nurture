@@ -80,7 +80,7 @@
                     <% if course.status == 1 %>
                       <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                       <span class="fs-6 me-2">
-                        <% if course.student.visible %>
+                        <% if course.student.visible && course.tutor == current_user %>
                           <%= link_to student_path(course.student), class: "text-dark" do %>
                             <%= course.student.first_name %> <%= course.student.last_name %>
                           <% end %>
