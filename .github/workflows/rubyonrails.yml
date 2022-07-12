@@ -82,7 +82,7 @@ jobs:
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
       - name: Create ERD
-        run: bin/rails erd
+        run: bin/rails erd attributes=foreign_keys,content
       - name: Upload ERD
         uses: actions/upload-artifact@v3
         with:
