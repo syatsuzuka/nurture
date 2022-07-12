@@ -44,7 +44,7 @@ class AssignmentsController < ApplicationController
       @data_hash << { name: target.name, data: data }
     end
 
-    #======= Data setting for Graph (target) =======
+    #======= Data setting for Target Tree =======
     gon.tree_data = []
     gon.tree_height = 400
 

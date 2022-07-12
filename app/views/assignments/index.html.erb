@@ -12,14 +12,12 @@
 
 <div class="card flex-md-row shadow mt-5 p-4 rounded mb-4">
   <%= line_chart  @data_hash,
-    title: "#{@course.name} - Progress",
+    title: "#{@course.name} - #{t('resources.progress')}",
     xtitle: "Time",
     ytitle: "Score",
     download: {background: "#ffffff"}
   %>
 </div>
-
-
 
 <!-- ======= Target ======= -->
 <h4 class="my-3">
@@ -294,4 +292,5 @@
 <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
 <%= javascript_pack_tag 'gannt-chart', 'data-turbolinks-track': 'reload', defer: true %>
 
+<!-- network: network -->
 <%= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>

@@ -19,6 +19,8 @@
 <%= link_to export_target_templates_path(@target_templates_set, format: :csv),
     id: "download-target-template" do %><%= show_download_button.html_safe %><% end %>
 
+<div id="network-graph" class="card flex-md-row shadow mt-4 mb-4 p-4 rounded"></div>
+
 <% unless @target_templates.count == 0 %>
   <table id="target_templates" class="table table-responsive table-hover align-middle mt-3">
     <thead class="thead-dark">
@@ -80,3 +82,18 @@
 <% else %>
   <span class="ms-5 text-secondary">No data</span>
 <% end %>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<!-- networkgraph: network-graph -->
+<script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+
+<!-- exporting: draggable-box, network-graph, dumbbell, org-chart, radar-chart -->
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- accessibility: draggable-box, network-graph, dumbell, org-chart, radar-chart -->
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<!-- network: network -->
+<%= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
