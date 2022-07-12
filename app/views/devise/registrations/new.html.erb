@@ -49,7 +49,7 @@
                   label: t('label.user.role'),
                   as: :select,
                   collection: ["tutor", "student"],
-                  include_blank: true
+                  prompt: t('label.form.prompt')
       %>
       <%= f.input :photo,
                   as: :file,

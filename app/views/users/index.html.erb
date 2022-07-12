@@ -53,7 +53,7 @@
               <% end %>
             <% else %>
               <% if user.visible %>
-                <%= link_to tutor_path(user), class: "text-decoration-none" do %>
+                <%= link_to tutor_path(user), class: "text-dark" do %>
                   <%= user.first_name %> <%= user.last_name %>
                 <% end %>
               <% else %>
