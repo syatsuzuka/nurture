@@ -44,6 +44,19 @@ class AssignmentsController < ApplicationController
       @data_hash << { name: target.name, data: data }
     end
 
+    #======= Data setting for Graph (target) =======
+    gon.tree_data = []
+    gon.tree_height = 400
+
+    @targets.each do |target|
+      if target.parent.nil?
+        gon.tree_data << ["Goal", target.name]
+      else
+        gon.tree_data << [target.parent.name, target.name]
+      end
+    end
+    gon.tree_title = t('.text_tree_title')
+
     #======= Data Setup for Gannt Chart =======
     gon.courses = []
     @open_assignments = @assignments.select { |assignment| assignment.status.zero? }

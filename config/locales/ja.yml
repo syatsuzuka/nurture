@@ -162,6 +162,7 @@ ja:
     dashboard:
       text_gannt_title: "未完了の課題スケジュール"
       text_org_title: "関係者"
+      text_tree_title: "目標設定ツリー"
     template:
   devise:
     passwords:
@@ -191,6 +192,7 @@ ja:
   assignments:
     all:
     index:
+      text_tree_title: "目標設定ツリー"
     show:
       btn_review: "レビューの追記"
     new:

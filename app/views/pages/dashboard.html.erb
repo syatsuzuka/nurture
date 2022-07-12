@@ -44,8 +44,13 @@
   <% unless @courses.count == 0 %>
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+        <div id="network-graph" class="card flex-md-row shadow p-4 rounded"></div>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
         <div id="org-chart" class="card h-100 flex-md-row shadow p-4 rounded"></div>
       </div>
+
       <% @courses.each_with_index do |course, index| %>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
           <div class="card h-100 shadow p-4 rounded">
@@ -144,9 +149,6 @@
       <div id="dumbbell" class="card flex-md-row shadow p-4 rounded"></div>
     </div>
 
-    <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-      <div id="network-graph" class="card flex-md-row shadow p-4 rounded"></div>
-    </div>
 
   </div>
 </div>
@@ -188,6 +190,6 @@
 
 <%= javascript_pack_tag 'gannt-chart', 'data-turbolinks-track': 'reload', defer: true %>
 <%= javascript_pack_tag 'org-chart', 'data-turbolinks-track': 'reload', defer: true %>
+<%= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
 <%#= javascript_pack_tag 'radar-chart', 'data-turbolinks-track': 'reload', defer: true %>
 <%#= javascript_pack_tag 'dumbbell', 'data-turbolinks-track': 'reload', defer: true %>
-<%#= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
