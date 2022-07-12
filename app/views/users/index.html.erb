@@ -41,14 +41,22 @@
             <%= add_image(user, 'avatar.png',class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40, crop: :fill) %>
 
             <% if current_user.role == "tutor" %>
-              <%= link_to student_path(user), class: "text-dark" do %>
+              <% if user.visible %>
+                <%= link_to student_path(user), class: "text-dark" do %>
+                  <%= user.first_name %> <%= user.last_name %>
+                <% end %>
+              <% else %>
                 <%= user.first_name %> <%= user.last_name %>
               <% end %>
               <% if user.deactivated == true %>
                 <span class="ms-2 text-dark"> (deactivated)</span>
               <% end %>
             <% else %>
-              <%= link_to tutor_path(user), class: "text-decoration-none" do %>
+              <% if user.visible %>
+                <%= link_to tutor_path(user), class: "text-decoration-none" do %>
+                  <%= user.first_name %> <%= user.last_name %>
+                <% end %>
+              <% else %>
                 <%= user.first_name %> <%= user.last_name %>
               <% end %>
               <% if user.deactivated == true %>

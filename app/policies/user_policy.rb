@@ -3,9 +3,9 @@ class UserPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       if user.role == "tutor"
-        scope.where(role: "student", visible: true)
+        scope.where(role: "student")
       else
-        scope.where(role: "tutor", visible: true)
+        scope.where(role: "tutor")
       end
     end
   end
