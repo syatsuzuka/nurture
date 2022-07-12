@@ -52,7 +52,9 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col"><%= t('label.form.edit') %></th>
+          <% if current_user.role == "tutor" %>
+            <th scope="col"><%= t('label.form.edit') %></th>
+          <% end %>
           <th scope="col"><%= t('label.target.name') %></th>
           <th scope="col"><%= t('label.target.description') %></th>
           <th scope="col"><%= t('label.target.score') %></th>
@@ -69,10 +71,12 @@
         <% @targets.each_with_index do |target, index| %>
           <tr>
             <td scope="row"><%= index + 1 %></td>
-            <td>
-              <%= link_to edit_course_target_path(target.course, target),
-                  class: "edit-target" do %><%= show_edit_button.html_safe %><% end %>
-            </td>
+            <% if current_user.role == "tutor" %>
+              <td>
+                <%= link_to edit_course_target_path(target.course, target),
+                    class: "edit-target" do %><%= show_edit_button.html_safe %><% end %>
+              </td>
+            <% end %>
             <td>
               <% element = target %>
               <% parentpath = "" %>
@@ -95,7 +99,18 @@
               <% end %>
             </td>
             <td><%= target.description %></td>
-            <td><%= target.score %></td>
+            <td>
+              <%= target.score %>
+              <% unless target.score_type.nil? %>
+                <% if target.score_type == "float" %>
+                  (<%= t('label.form.score_float') %>)
+                <% elsif target.score_type == "integer" %>
+                  (<%= t('label.form.score_integer') %>)
+                <% else %>
+                  (<%= t('label.form.score_boolean') %>)
+                <% end %>
+              <% end %>
+            </td>
             <td>
               <% if target.display == true %>
                 <i class="fas fa-check-circle"></i>

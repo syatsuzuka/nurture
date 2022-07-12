@@ -17,6 +17,13 @@ class TargetsController < ApplicationController
     @target = Target.new(target_params)
     @target.course = @course
 
+    case @target.score_type
+    when "integer"
+      @target.score = @target.score.round(0)
+    when "boolean"
+      @target.score = 1
+    end
+
     authorize @target
 
     set_target_options
@@ -37,11 +44,20 @@ class TargetsController < ApplicationController
 
   def update
     @target.course = @course
+    target = target_params
+
     authorize @target
+
+    case target[:score_type]
+    when "integer"
+      target[:score] = target[:score].to_i.round(0)
+    when "booean"
+      target[:score] = 1
+    end
 
     set_target_options
 
-    if @target.update(target_params)
+    if @target.update(target)
       redirect_to course_assignments_path(@course)
     else
       render :edit
@@ -80,7 +96,7 @@ class TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:name, :description, :score, :display, :course_id, :parent_id)
+    params.require(:target).permit(:name, :description, :score_type, :score, :display, :course_id, :parent_id)
   end
 
   def set_course

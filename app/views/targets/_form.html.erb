@@ -10,6 +10,13 @@
               label: t('label.target.description'),
               placeholder: t('label.target.description_placeholder')
   %>
+  <%= f.input :score_type,
+              required: true,
+              collection: [[t('label.form.score_float'), "float"], [t('label.form.score_integer'), "integer"], [t('label.form.score_boolean'), "boolean"]],
+              label: t('label.target.score_type'),
+              placeholder: t('label.target.score_type_placeholder'),
+              prompt: t('label.form.prompt')
+  %>
   <%= f.input :score,
               required: true,
               label: t('label.target.score'),

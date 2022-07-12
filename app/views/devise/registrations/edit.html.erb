@@ -92,13 +92,14 @@
       <%= f.input :locale,
                   label: t('label.user.locale'),
                   as: :select,
-                  collection: [["English", "en"], ["日本語", "ja"]]
+                  collection: [["English", "en"], ["日本語", "ja"]],
+                  prompt: t('label.form.prompt')
       %>
     </div>
 
     <div class="form-actions">
       <%= f.button :submit, t('label.form.save'), class: "btn btn-success text-light" %>
-      <%= link_to t('label.form.cancel'), :back, class: "btn btn-danger text-light" %>
+      <%= link_to t('label.form.cancel'), :back, class: "btn btn-secondary text-light" %>
     </div>
   <% end %>
 </div>
