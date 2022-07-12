@@ -222,6 +222,8 @@ en:
     edit:
       text_title: "Edit the Target Templates Set"
   target_templates:
+    index:
+      text_tree_title: "Target Tree"
     new:
       text_title: "Add a New Target Template"
     edit:

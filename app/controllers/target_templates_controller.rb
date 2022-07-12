@@ -29,6 +29,19 @@ class TargetTemplatesController < ApplicationController
         "#{parentpath}> #{target_template.name}"
       end
     end
+
+    #======= Data setting for Target Tree =======
+    gon.tree_data = []
+    gon.tree_height = 400
+
+    @target_templates.each do |target|
+      if target.parent.nil?
+        gon.tree_data << ["Goal", target.name]
+      else
+        gon.tree_data << [target.parent.name, target.name]
+      end
+    end
+    gon.tree_title = t('.text_tree_title')
   end
 
   def new

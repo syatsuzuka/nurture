@@ -222,6 +222,8 @@ ja:
     edit:
       text_title: "目標設定テンプレート集の編集"
   target_templates:
+    index:
+      text_tree_title: "目標設定ツリー"
     new:
       text_title: "目標設定テンプレートの新規作成"
     edit:
