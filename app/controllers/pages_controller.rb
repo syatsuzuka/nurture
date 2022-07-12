@@ -80,6 +80,25 @@ class PagesController < ApplicationController
       }
     end
 
+    #======= Data Setup for Target Tree =======
+    gon.tree_data = []
+    gon.tree_height = 600
+    gon.tree_title = t('.text_tree_title')
+
+    @courses.each do |course|
+      next if course.student.email == ENV['SAMPLE_STUDENT_LOGIN_ID'] ||
+              course.tutor.email == ENV['SAMPLE_TUTOR_LOGIN_ID']
+
+      gon.tree_data << ['Goal', course.name]
+      course.targets.each do |target|
+        if target.parent.nil?
+          gon.tree_data << [course.name, "#{course.name}-#{target.name}"]
+        else
+          gon.tree_data << ["#{course.name}-#{target.parent.name}", "#{course.name}-#{target.name}"]
+        end
+      end
+    end
+
     #======= Data Setup for Org Chart =======
     gon.org_nodes = []
     gon.org_data = []
@@ -88,7 +107,7 @@ class PagesController < ApplicationController
     #----- Add Current User -----
     org_node = {
       id: current_user.nickname,
-      title: current_user.nickname,
+      title: "",
       color: '#980104',
       name: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"
     }
@@ -103,7 +122,7 @@ class PagesController < ApplicationController
         #----- Add Student -----
         org_node = {
           id: course.student.nickname,
-          title: course.student.nickname,
+          title: "student",
           color: '#359154',
           name: "#{course.student.first_name.capitalize} #{course.student.last_name.capitalize}"
         }
@@ -113,7 +132,7 @@ class PagesController < ApplicationController
         if course.tutor != current_user
           org_node = {
             id: course.tutor.nickname,
-            title: course.tutor.nickname,
+            title: "tutor",
             name: "#{course.tutor.first_name.capitalize} #{course.tutor.last_name.capitalize}"
           }
           gon.org_nodes << org_node
@@ -127,7 +146,7 @@ class PagesController < ApplicationController
         until tutor.manager.nil?
           org_node = {
             id: tutor.manager.nickname,
-            title: tutor.manager.nickname,
+            title: "manager",
             name: "#{tutor.manager.first_name.capitalize} #{tutor.manager.last_name.capitalize}"
           }
           gon.org_nodes << org_node
@@ -147,7 +166,7 @@ class PagesController < ApplicationController
         #----- Add Tutor -----
         org_node = {
           id: course.tutor.nickname,
-          title: course.tutor.nickname,
+          title: "tutor",
           name: "#{course.tutor.first_name.capitalize} #{course.tutor.last_name.capitalize}"
         }
         gon.org_nodes << org_node
@@ -160,7 +179,7 @@ class PagesController < ApplicationController
         until tutor.manager.nil?
           org_node = {
             id: tutor.manager.nickname,
-            title: tutor.manager.nickname,
+            title: "manager",
             name: "#{tutor.manager.first_name.capitalize} #{tutor.manager.last_name.capitalize}"
           }
           gon.org_nodes << org_node

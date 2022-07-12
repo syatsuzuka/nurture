@@ -162,6 +162,7 @@ en:
     dashboard:
       text_gannt_title: "Remaining Homework Schedule"
       text_org_title: "Relevant Parties"
+      text_tree_title: "Target Tree"
     template:
   devise:
     passwords:
@@ -191,6 +192,7 @@ en:
   assignments:
     all:
     index:
+      text_tree_title: "Target Tree"
     show:
       btn_review: "Add your review?"
     new:
