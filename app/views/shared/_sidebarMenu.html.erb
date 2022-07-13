@@ -22,6 +22,18 @@
         <% end %>
         </h5>
       </li>
+      <% if current_user.role == "student" %>
+        <li class="nav-item p-3">
+          <h5 class="m-3">
+          <%= link_to report_path, id: 'report-menu', class: "card-link text-dark text-decoration-none" do %>
+            <div <%= @active_report %>>
+              <i class="fas fa-chart-line text-secondary me-1"></i>
+              <%= t('resources.report') %>
+            </div>
+          <% end %>
+          </h5>
+        </li>
+      <% end %>
       <li class="nav-item p-3">
         <h5 class="m-3">
         <%= link_to all_assignments_path, id: 'homework-menu', class: "card-link text-dark text-decoration-none" do %>

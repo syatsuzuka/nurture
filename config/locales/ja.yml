@@ -2,11 +2,12 @@ ja:
   resources:
     home: "Home"
     dashboard: "ダッシュボード"
+    report: "進捗報告"
     course: "コース"
     course_detail: "コース詳細"
     target: "目標"
     progress: "進捗状況"
-    assignment: "課題"
+    assignment: "宿題"
     chatroom: "Chatroom"
     template: "テンプレート"
     knowledge: "ナレッジ"
@@ -16,8 +17,8 @@ ja:
     review: "レビュー"
     target_templates_set: "目標設定テンプレート集"
     target_template: "目標設定テンプレート"
-    assignment_templates_set: "課題設定テンプレート集"
-    assignment_template: "課題設定テンプレート"
+    assignment_templates_set: "宿題設定テンプレート集"
+    assignment_template: "宿題設定テンプレート"
   label:
     form:
       add: "登録"
@@ -160,7 +161,7 @@ ja:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
       btn_start: "スタート"
     dashboard:
-      text_gannt_title: "未完了の課題スケジュール"
+      text_gannt_title: "未完了の宿題スケジュール"
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
     template:
@@ -196,13 +197,13 @@ ja:
     show:
       btn_review: "レビューの追記"
     new:
-      text_title: "課題の新規作成"
+      text_title: "宿題の新規作成"
     edit:
-      text_title: "課題の編集"
+      text_title: "宿題の編集"
     upload:
-      text_title: "課題のアップロード"
+      text_title: "宿題のアップロード"
     review:
-      text_title: "課題のレビュー"
+      text_title: "宿題のレビュー"
   targets:
     new:
       text_title: "目標の新規作成"
@@ -233,16 +234,16 @@ ja:
   assignment_templates_sets:
     index:
     new:
-      text_title: "課題設定テンプレート集の新規作成"
+      text_title: "宿題設定テンプレート集の新規作成"
     edit:
-      text_title: "課題設定テンプレート集の編集"
+      text_title: "宿題設定テンプレート集の編集"
   assignment_templates:
     new:
-      text_title: "課題設定テンプレートの新規作成"
+      text_title: "宿題設定テンプレートの新規作成"
     edit:
-      text_title: "課題設定テンプレートの編集"
+      text_title: "宿題設定テンプレートの編集"
     upload:
-      text_title: "課題設定テンプレートのアップロード"
+      text_title: "宿題設定テンプレートのアップロード"
   users:
     show:
       text_active_user: "アクティブユーザー"
