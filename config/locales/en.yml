@@ -2,6 +2,7 @@ en:
   resources:
     home: "Home"
     dashboard: "Dashboard"
+    report: "Progress Report"
     course: "Course"
     course_list: "Course List"
     course_detail: "Course Detail"

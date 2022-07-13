@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get '/students/', to: 'users#index', as: :students
     get '/students/:id', to: 'users#show', as: :student
     get '/dashboard', to: 'pages#dashboard', as: :dashboard
+    get '/report', to: 'pages#report', as: :report
     get '/template', to: 'pages#template', as: :template
     get '/knowledge', to: 'pages#knowledge', as: :knowledge
     get '/aboutus', to: 'pages#aboutus', as: :aboutus

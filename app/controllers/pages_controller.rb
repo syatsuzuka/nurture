@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
   before_action :set_active_dashboard, only: %i[dashboard]
+  before_action :set_active_report, only: %i[report]
   before_action :set_active_template, only: %i[template]
   before_action :set_active_knowledge, only: %i[knowledge]
   before_action :set_active_aboutus, only: %i[aboutus]
@@ -195,6 +196,10 @@ class PagesController < ApplicationController
     gon.org_data.uniq!
   end
 
+  def report
+    @progresses = policy_scope(Progress).sort_by!(&:date)
+  end
+
   def template
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
@@ -223,6 +228,10 @@ class PagesController < ApplicationController
 
   def set_active_dashboard
     @active_dashboard = "class=active"
+  end
+
+  def set_active_report
+    @active_report = "class=active"
   end
 
   def set_active_template
