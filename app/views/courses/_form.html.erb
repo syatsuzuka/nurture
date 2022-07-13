@@ -11,9 +11,10 @@
     %>
     <% unless @course.id.nil? %>
       <%= f.association :tutor,
-        collection: User.where(role: "tutor", visible: true).order(:first_name, :last_name),
+        collection: User.where(role: "tutor", visible: true).or(User.where(id: current_user)).order(:first_name, :last_name),
         required: true,
         label: t('label.course.tutor'),
+        prompt: t('label.form.prompt'),
         label_method: :select_label_fullname
       %>
     <% end %>
@@ -22,6 +23,7 @@
         collection: User.where(role: "student", visible: true).order(:first_name, :last_name),
         required: true,
         label: "#{t('label.course.student')} (#{t('label.user.nickname')})",
+        prompt: t('label.form.prompt'),
         label_method: :select_label_nickname
       %>
     <% else %>
