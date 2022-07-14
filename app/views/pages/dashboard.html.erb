@@ -32,11 +32,23 @@
   <% unless @courses.count == 0 %>
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-        <div id="org-chart" class="card h-100 flex-md-row shadow p-4 rounded"></div>
+        <% unless @org_data.count == 0 %>
+          <div id="org-chart" class="card h-100 flex-md-row shadow p-4 rounded"></div>
+        <% else %>
+          <div class="card h-100 flex-md-row shadow p-4 rounded text-secondary">
+            <%= t('.text_no_course') %>
+          </div>
+        <% end %>
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-        <div id="network-graph" class="card flex-md-row shadow p-4 rounded"></div>
+        <% unless @tree_data.count == 0 %>
+          <div id="network-graph" class="card flex-md-row shadow p-4 rounded"></div>
+        <% else %>
+          <div class="card h-100 flex-md-row shadow p-4 rounded text-secondary">
+            <%= t('.text_no_target') %>
+          </div>
+        <% end %>
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
