@@ -164,6 +164,8 @@ en:
       text_gannt_title: "Remaining Homework Schedule"
       text_org_title: "Relevant Parties"
       text_tree_title: "Target Tree"
+      text_no_target: "(No target is registered yet)"
+      text_no_course: "(No course is registered yet)"
     template:
   devise:
     passwords:

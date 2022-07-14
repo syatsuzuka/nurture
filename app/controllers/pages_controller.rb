@@ -91,7 +91,10 @@ class PagesController < ApplicationController
               course.tutor.email == ENV['SAMPLE_TUTOR_LOGIN_ID']
 
       gon.tree_data << ['Goal', "Success of #{get_fullname(course.student)}"]
-      gon.tree_data << ["Success of #{get_fullname(course.student)}", "#{course.name} with #{course.tutor.first_name} <#{course.student.nickname}>"]
+      gon.tree_data << [
+        "Success of #{get_fullname(course.student)}",
+        "#{course.name} with #{course.tutor.first_name} <#{course.student.nickname}>"
+      ]
 
       course.targets.each do |target|
         if target.parent.nil?
@@ -107,6 +110,7 @@ class PagesController < ApplicationController
         end
       end
     end
+    @tree_data = gon.tree_data
 
     #======= Data Setup for Org Chart =======
     gon.org_nodes = []
@@ -202,10 +206,11 @@ class PagesController < ApplicationController
     end
     gon.org_nodes.uniq!
     gon.org_data.uniq!
+    @org_data = gon.org_data
   end
 
   def report
-    @progresses = policy_scope(Progress).sort_by!(&:date)
+    @courses = policy_scope(Course).sort_by { |course| [course.student_user_id, course.created_at] }
   end
 
   def template

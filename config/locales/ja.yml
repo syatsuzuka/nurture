@@ -164,6 +164,8 @@ ja:
       text_gannt_title: "未完了の宿題スケジュール"
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
+      text_no_target: "(まだ目標設定が登録されていません)"
+      text_no_course: "(まだコースが登録されていません)"
     template:
   devise:
     passwords:
