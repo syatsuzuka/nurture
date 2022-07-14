@@ -90,12 +90,20 @@ class PagesController < ApplicationController
       next if course.student.email == ENV['SAMPLE_STUDENT_LOGIN_ID'] ||
               course.tutor.email == ENV['SAMPLE_TUTOR_LOGIN_ID']
 
-      gon.tree_data << ['Goal', "#{course.name} for #{course.student.nickname}"]
+      gon.tree_data << ['Goal', get_fullname(course.student)]
+      gon.tree_data << [get_fullname(course.student), "#{course.name} <#{course.student.nickname}>"]
+
       course.targets.each do |target|
         if target.parent.nil?
-          gon.tree_data << ["#{course.name} for #{course.student.nickname}", "#{target.name} <#{course.name} for #{course.student.nickname}>"]
+          gon.tree_data << [
+            "#{course.name} <#{course.student.nickname}>",
+            "#{target.name} <#{course.name}, #{course.student.nickname}>"
+          ]
         else
-          gon.tree_data << ["#{target.parent.name} <#{course.name} for #{course.student.nickname}>", "#{target.name} <#{course.name} for #{course.student.nickname}>"]
+          gon.tree_data << [
+            "#{target.parent.name} <#{course.name}, #{course.student.nickname}>",
+            "#{target.name} <#{course.name}, #{course.student.nickname}>"
+          ]
         end
       end
     end
