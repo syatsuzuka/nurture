@@ -46,12 +46,16 @@
             <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-start align-self-center">
               <div>Last Update</div>
               <div class="fs-5">
-                <%= target.progresses.sort_by(&:date).last.date %>
+                <% if target.progresses.any? %>
+                  <%= target.progresses.sort_by(&:date).last.date %>
+                <% else %>
+                  (No data)
+                <% end %>
               </div>
             </div>
             <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
               <%= link_to course_target_progresses_path(course, target), class: "fs-4" do %>
-                Past Records
+                Target Detail
               <% end %>
             </div>
             <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>
