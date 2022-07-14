@@ -29,27 +29,25 @@
 <div class="mt-3">
   <%= render 'alert' %>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-      <% unless @open_assignments.count == 0 %>
-        <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
-      <% else %>
-        <div class="card flex-md-row shadow p-4 text-secondary rounded">
-          <%= show_no_homework_message.html_safe %>
-        </div>
-      <% end %>
-      </div>
-  </div>
-
   <% unless @courses.count == 0 %>
     <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+        <div id="org-chart" class="card h-100 flex-md-row shadow p-4 rounded"></div>
+      </div>
+
       <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
         <div id="network-graph" class="card flex-md-row shadow p-4 rounded"></div>
       </div>
 
-      <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-        <div id="org-chart" class="card h-100 flex-md-row shadow p-4 rounded"></div>
-      </div>
+      <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+        <% unless @open_assignments.count == 0 %>
+          <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
+        <% else %>
+          <div class="card flex-md-row shadow p-4 text-secondary rounded">
+            <%= show_no_homework_message.html_safe %>
+          </div>
+        <% end %>
+        </div>
 
       <% @courses.each_with_index do |course, index| %>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">

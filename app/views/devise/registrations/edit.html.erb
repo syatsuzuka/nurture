@@ -59,11 +59,13 @@
         end
       %>
 
-      <%= f.association :manager,
-        collection: @manager_options,
-        label: "Manager",
-        label_method: :select_label_fullname
-      %>
+      <% if current_user.role == "tutor" %>
+        <%= f.association :manager,
+          collection: @manager_options,
+          label: "Manager",
+          label_method: :select_label_fullname
+        %>
+      <% end %>
       <%= f.input :message,
                   label: t('label.user.message'),
                   placeholder: t('label.user.message_placeholder')
