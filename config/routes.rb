@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  scope "(:locale)", locale: /en|ja/ do
+  scope "(:locale)", locale: /en|ja|ko/ do
     root to: 'pages#home'
   end
 

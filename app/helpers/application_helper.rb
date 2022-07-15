@@ -49,6 +49,8 @@ module ApplicationHelper
         "Newly created '#{course.name}' is waiting for the accept by #{course.student.nickname}"
       when :ja
         "新規作成された'#{course.name}'は #{course.student.nickname} の確認待ちです。"
+      when :ko
+        "Newly created '#{course.name}' is waiting for the accept by #{course.student.nickname}"
       end
     else
       case I18n.locale
@@ -58,6 +60,9 @@ module ApplicationHelper
       when :ja
         "#{link_to get_fullname(course.tutor), tutor_path(course.tutor)} により作成されたコース #{course.name}" \
         + "はあなたの確認待ちです。 (#{link_to '確認する', accept_course_path(course)})"
+      when :ko
+        "Course #{course.name} created by #{link_to get_fullname(course.tutor), tutor_path(course.tutor)}" \
+        + " is waiting for your accept. (#{link_to 'Accept now', accept_course_path(course)})"
       end
     end
   end
@@ -74,6 +79,8 @@ module ApplicationHelper
       "(No Homework remained <span class='ms-2'>#{emoji}</span>)"
     when :ja
       "(残っている課題はありません <span class='ms-2'>#{emoji}</span>)"
+    when :ko
+      "(No Homework remained <span class='ms-2'>#{emoji}</span>)"
     end
   end
 end
