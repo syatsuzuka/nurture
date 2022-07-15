@@ -1,0 +1,261 @@
+en:
+  resources:
+    home: "Home"
+    dashboard: "Dashboard"
+    report: "Progress Report"
+    course: "Course"
+    course_list: "Course List"
+    course_detail: "Course Detail"
+    target: "Target"
+    progress: "Progress"
+    assignment: "Homework"
+    chatroom: "Chatroom"
+    template: "Template"
+    knowledge: "Knowledge"
+    tutor: "Tutor"
+    student: "Student"
+    user: "User"
+    review: "Review"
+    target_templates_set: "Target Templates Set"
+    target_template: "Target Template"
+    assignment_templates_set: "Homework Templates Set"
+    assignment_template: "Homework Template"
+  label:
+    form:
+      add: "Add"
+      edit: "Edit"
+      delete: "Delete"
+      upload: "Upload"
+      download: "Download"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      log_out: "Log out"
+      current_password: "Current password"
+      password_confirmation: "Password confirmation"
+      password_reset: "Password Reset"
+      ok: "OK"
+      save: "Save"
+      cancel: "Cancel"
+      prompt: "(Select from list)"
+      search: "Search"
+      csv_file_select: "Choose CSV file"
+      download_sample_csv: "Sample CSV"
+      score_float: "Decimal Number"
+      score_integer: "Whole Number"
+      score_boolean: "True / False"
+    user:
+      email: "Email"
+      password: "Password"
+      name: "Full Name"
+      first_name: "First Name"
+      first_name_placeholder: "E.g. Douglas"
+      last_name: "Last Name"
+      last_name_placeholder: "E.g. Berkeley"
+      nickname: "Nickname"
+      nickname_placeholder: "E.g. doug"
+      role: "Role"
+      manager: "Manager"
+      photo: "Photo"
+      locale: "Language"
+      message: "Message"
+      message_placeholder: "E.g. Hi there!"
+      interest: "Interest"
+      interest_placeholder: "E.g. Tennis"
+      specialty: "Specialty"
+      specialty_placeholder: "E.g. Tennis"
+    course:
+      name: "Name"
+      name_placeholder: "E.g. Tennis Lesson (Intermediate)"
+      description: "Description"
+      description_placeholder: "E.g. Private Tennis Lesson to help to win the junior high school student's championship"
+      tutor: "Tutor"
+      student: "Student"
+      photo: "Photo"
+    target:
+      name: "Name"
+      name_placeholder: "E.g. Service Ace (%)"
+      description: "Description"
+      description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
+      score_type: "Score Type"
+      score_type_placeholder: "E.g. float"
+      score: "Target Score"
+      score_placeholder: "E.g. 20(%)"
+      display: "Display"
+      latest_score: "Latest Score"
+      best_score: "Best Score"
+      parent: "Parent"
+    progress:
+      date: "Date"
+      score: "Score"
+      score_placeholder: "E.g. 22.0"
+      comment: "Comment"
+      comment_placeholder: "E.g. the score in official game with Mike of ABC junior high school"
+    assignment:
+      title: "Title"
+      title_placeholder: "E.g. Smash Practice"
+      instruction: "Instruction"
+      instruction_placeholder: "E.g. Practice Smash with machine"
+      instruction_url: "Instruction (URL)"
+      instruction_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
+      checkpoint: "Checkpoint"
+      checkpoint_placeholder: "E.g. Have 5 sets of 10 times every two days"
+      status: "Status"
+      comment: "Student's Comment"
+      comment_placeholder: "E.g. Now, I can do Smash successfully at the rate of about 60%"
+      material_url: "Report (URL)"
+      material_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
+      review_comment: "Tutor's Comment"
+      review_comment_placeholder: "E.g. Good job!!"
+      period: "Period"
+      start_date: "Start Date"
+      end_date: "End Date"
+    target_templates_set:
+      name: "Name"
+      name_placeholder: "E.g. Tennis Lesson (Intermediate)"
+      category: "Category"
+      category_placeholder: "E.g. Tennis"
+      visible: "Visible"
+    target_template:
+      name: "Name"
+      name_placeholder: "E.g. Service Ace (%)"
+      description: "Description"
+      description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
+      score: "Target Score"
+      score_placeholder: "E.g. 20.0"
+    assignment_templates_set:
+      name: "Name"
+      name_placeholder: "E.g. Tennis (Intermediate)"
+      category: "Category"
+      category_placeholder: "E.g. Tennis"
+      visible: "Visible"
+    assignment_template:
+      title: "Title"
+      title_placeholder: "E.g. Smash Practice"
+      instruction: "Instruction"
+      instruction_placeholder: "E.g. Practice Smash with Machine"
+      instruction_url: "Instruction (URL)"
+      instruction_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
+      checkpoint: "Checkpoint"
+      checkpoint_placeholder: "E.g. Have 5 sets of 10 times every two days"
+    review:
+      rating: "Rating"
+      comment: "Comment"
+      anonymous: "Anonymous Flag"
+    post:
+      title: "Title"
+      Photo: "Photo"
+      content: "Content"
+  prefix:
+  suffix:
+    list: " List"
+    detail: " Detail"
+  shared:
+    navbar:
+      text_setting: "Account Setting"
+      text_logout: "Log out"
+    sidebarMenu:
+      text_other_pages: "OTHER PAGES"
+      text_about_us: "About us"
+  pages:
+    home:
+      text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
+      btn_start: "Start learning"
+    dashboard:
+      text_gannt_title: "Remaining Homework Schedule"
+      text_org_title: "Relevant Parties"
+      text_tree_title: "Target Tree"
+      text_no_target: "(No target is registered yet)"
+      text_no_course: "(No course is registered yet)"
+    template:
+  devise:
+    passwords:
+      new:
+        text_title: "Forgot your password?"
+    registrations:
+      new:
+        text_warning_note: "In case you would like to delete or deactivate your account, please send an email for nurture-admin [at] nurture.pw."
+      edit:
+        text_title: "Account Setting"
+        text_visible: "Make your user info visible to other tutors/students"
+    sessions:
+      new:
+        checkbox_remember_me: "Remember me"
+    shared:
+      links:
+  courses:
+    index:
+    new:
+      text_title: "Add a New Course"
+    edit:
+      text_title: "Edit the Course"
+    accept:
+      text_title: "Accept the Course invitation"
+      text_confirmation: "Do you accept this invitation?"
+      text_access_denial: "You can't accept this invitation. Please login with the right student's account."
+  assignments:
+    all:
+    index:
+      text_tree_title: "Target Tree"
+    show:
+      btn_review: "Add your review?"
+    new:
+      text_title: "Add a New Homework"
+    edit:
+      text_title: "Edit the Homework"
+    upload:
+      text_title: "Upload Homework data"
+    review:
+      text_title: "Review the Homework"
+  targets:
+    new:
+      text_title: "Add a New Target"
+    edit:
+      text_title: "Edit the Target"
+    upload:
+      text_title: "Upload Target data"
+  progresses:
+    index:
+    new:
+      text_title: "Add a New Progress"
+    edit:
+      text_title: "Edit the Progress"
+  target_templates_sets:
+    new:
+      text_title: "Add a New Target Templates Set"
+    edit:
+      text_title: "Edit the Target Templates Set"
+  target_templates:
+    index:
+      text_tree_title: "Target Tree"
+    new:
+      text_title: "Add a New Target Template"
+    edit:
+      text_title: "Edit the Target Template"
+  assignment_templates_sets:
+    new:
+      text_title: "Add a New Homework Templates Set"
+    edit:
+      text_title: "Edit the Homework Templates Set"
+  assignment_templates:
+    new:
+      text_title: "Add a New Homework Template"
+    edit:
+      text_title: "Edit the Homework Template"
+  users:
+    show:
+      text_active_user: "active user"
+      text_deactivated_user: "deactivated user"
+  reviews:
+    new:
+      text_title: "Add a New Review"
+    edit:
+      text_title: "Edit the Review"
+  posts:
+    index:
+      btn_view_post: "View"
+    show:
+      text_comment: "Comment"
+    new:
+      text_title: "Add a New Knowledge"
+    edit:
+      text_title: "Edit the Knowledge"
