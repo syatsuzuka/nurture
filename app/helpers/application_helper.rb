@@ -18,6 +18,13 @@ module ApplicationHelper
     end
   end
 
+  def sample_course?(course)
+    return true if current_user.role == "tutor" && course.student.email == ENV["SAMPLE_STUDENT_LOGIN_ID"]
+    return true if current_user.role == "student" && course.tutor.email == ENV["SAMPLE_TUTOR_LOGIN_ID"]
+
+    false
+  end
+
   def get_fullname(user)
     "#{user.first_name.capitalize} #{user.last_name.capitalize}"
   end
@@ -49,7 +56,7 @@ module ApplicationHelper
         "Newly created '#{course.name}' is waiting for the accept by #{course.student.nickname}"
       when :ja
         "新規作成された'#{course.name}'は #{course.student.nickname} の確認待ちです。"
-      when :ko
+      when :ko  # rubocop:disable Lint/DuplicateBranch
         "Newly created '#{course.name}' is waiting for the accept by #{course.student.nickname}"
       end
     else
@@ -60,7 +67,7 @@ module ApplicationHelper
       when :ja
         "#{link_to get_fullname(course.tutor), tutor_path(course.tutor)} により作成されたコース #{course.name}" \
         + "はあなたの確認待ちです。 (#{link_to '確認する', accept_course_path(course)})"
-      when :ko
+      when :ko  # rubocop:disable Lint/DuplicateBranch
         "Course #{course.name} created by #{link_to get_fullname(course.tutor), tutor_path(course.tutor)}" \
         + " is waiting for your accept. (#{link_to 'Accept now', accept_course_path(course)})"
       end
@@ -79,7 +86,7 @@ module ApplicationHelper
       "(No Homework remained <span class='ms-2'>#{emoji}</span>)"
     when :ja
       "(残っている課題はありません <span class='ms-2'>#{emoji}</span>)"
-    when :ko
+    when :ko # rubocop:disable Lint/DuplicateBranch
       "(No Homework remained <span class='ms-2'>#{emoji}</span>)"
     end
   end

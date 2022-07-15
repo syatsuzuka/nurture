@@ -87,8 +87,7 @@ class PagesController < ApplicationController
     gon.tree_title = t('.text_tree_title')
 
     @courses.each do |course|
-      next if course.student.email == ENV['SAMPLE_STUDENT_LOGIN_ID'] ||
-              course.tutor.email == ENV['SAMPLE_TUTOR_LOGIN_ID']
+      next if sample_course?(course)
 
       gon.tree_data << ['Goal', "Success of #{get_fullname(course.student)}"]
       gon.tree_data << [
@@ -130,7 +129,7 @@ class PagesController < ApplicationController
       #----- Add Each Tutors / Students in courses -----
       @courses.each do |course|
         #----- Skip Sample Student -----
-        next if course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+        next if sample_course?(course)
 
         #----- Add Student -----
         org_node = {
@@ -174,7 +173,7 @@ class PagesController < ApplicationController
       #----- Add Tutor / Student -----
       @courses.each do |course|
         #----- Skip Sample Tutor -----
-        next if course.tutor == User.find_by(email: ENV['SAMPLE_TUTOR_LOGIN_ID'])
+        next if sample_course?(course)
 
         #----- Add Tutor -----
         org_node = {
