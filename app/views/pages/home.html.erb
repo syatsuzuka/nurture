@@ -22,10 +22,18 @@
             <% end %>
             |
             <% unless I18n.locale.to_s == "ja" %>
-              <%= link_to "日本語", "/ja/" %>
+              <%= link_to "Japanese", "/ja/" %>
             <% else %>
               <span>
-                日本語
+                Japanese
+              </span>
+            <% end %>
+            |
+            <% unless I18n.locale.to_s == "ko" %>
+              <%= link_to "Korean (WIP)", "/ko/" %>
+            <% else %>
+              <span>
+                Korean (WIP)
               </span>
             <% end %>
           ]
