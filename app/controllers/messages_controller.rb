@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
-      raise
     else
       render "chatrooms/show"
     end
