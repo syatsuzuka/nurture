@@ -89,11 +89,18 @@ class PagesController < ApplicationController
     @courses.each do |course|
       next if sample_course?(course)
 
-      gon.tree_data << ['Goal', "Success of #{get_fullname(course.student)}"]
-      gon.tree_data << [
-        "Success of #{get_fullname(course.student)}",
-        "#{course.name} with #{course.tutor.first_name} <#{course.student.nickname}>"
-      ]
+      if current_user.role == "tutor"
+        gon.tree_data << ['Goal', "Success of #{get_fullname(course.student)}"]
+        gon.tree_data << [
+          "Success of #{get_fullname(course.student)}",
+          "#{course.name} with #{course.tutor.first_name} <#{course.student.nickname}>"
+        ]
+      else
+        gon.tree_data << [
+          "Goal",
+          "#{course.name} with #{course.tutor.first_name} <#{course.student.nickname}>"
+        ]
+      end
 
       course.targets.each do |target|
         if target.parent.nil?
