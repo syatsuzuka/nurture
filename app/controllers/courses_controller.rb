@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
     @course.status = 0
     @course.tutor_user_id = current_user.id
     @chatroom = Chatroom.create(name: "Assignment chat")
-
+    
     authorize @course
 
     if @course.save
