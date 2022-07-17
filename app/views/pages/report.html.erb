@@ -1,15 +1,14 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to t('resources.home'), dashboard_path, class: "text-secondary" %></li>
-    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.report') %><%= t('suffix.list') %></li></ol>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('resources.progress') %><%= t('suffix.list') %></li></ol>
 </nav>
 
-<h1><i class="fas fa-chart-line"></i> <%= t('resources.report') %><%= t('suffix.list') %></h1>
+<h1><i class="fas fa-chart-line"></i> <%= t('resources.progress') %><%= t('suffix.list') %></h1>
 
 <div class="mt-5">
   <div class="row mb-3">
     <% @courses.each do |course| %>
-      <% unless sample_course?(course) %>
         <% course.targets.each do |target| %>
           <div class="col-12">
             <div class="card flex-md-row mb-4 shadow rounded">
@@ -62,7 +61,6 @@
               <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>
             </div>
           </div>
-        <% end %>
       <% end %>
     <% end %>
   </div>
