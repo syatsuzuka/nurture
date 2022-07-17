@@ -1,4 +1,19 @@
 <%= simple_form_for [@course, @target, @progress] do |f| %>
+
+  <div>
+    <span><%= t('resource.course') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @course.name %>
+    </div>
+  </div>
+
+  <div>
+    <span><%= t('resource.target') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @target.name %>
+    </div>
+  </div>
+
   <%= f.input :date, required: true, html5: true, label: t('label.progress.date') %>
 
   <% if @target.score_type == "boolean" %>
