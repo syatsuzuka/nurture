@@ -1,13 +1,12 @@
 class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
-
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    authorize @message
 
+    authorize @message
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
@@ -20,6 +19,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :photo, :video)
+    params.require(:message).permit(:content, :photo, :video, :viewed_at)
   end
 end

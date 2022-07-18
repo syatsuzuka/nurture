@@ -85,13 +85,23 @@ class AssignmentsController < ApplicationController
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
+    @messages = @chatroom.messages
+    new_messages = @messages.where.not("user_id = #{current_user.id}")
+
+    unless new_messages.empty?
+      new_messages.each do |message|
+        message.update_attribute(:viewed_at, DateTime.now)
+      end
+      flash[:alert] = "Hello #{current_user.first_name} you have new messages in chat!"
+    end
+    #=========================
   end
 
   def show
     authorize @assignment
   end
 
-  def new
+  def newhat
     @assignment = Assignment.new
     @assignment.course = @course
     authorize @assignment
