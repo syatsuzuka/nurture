@@ -101,7 +101,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
   end
 
-  def newhat
+  def new
     @assignment = Assignment.new
     @assignment.course = @course
     authorize @assignment
