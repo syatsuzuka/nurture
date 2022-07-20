@@ -22,12 +22,21 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.save
-      UserMailer.with(
-        user: @course.student,
-        tutor: @course.tutor,
-        course: @course.name,
-        path: accept_course_path(@course)
-      ).invitation_email.deliver_later
+      if Rails.env.production?
+        UserMailer.with(
+          user: @course.student,
+          tutor: @course.tutor,
+          course: @course.name,
+          path: accept_course_path(@course)
+        ).invitation_email.deliver_later
+      else
+        UserMailer.with(
+          user: @course.student,
+          tutor: @course.tutor,
+          course: @course.name,
+          path: accept_course_path(@course)
+        ).invitation_email.deliver_now
+      end
       redirect_to courses_path
     else
       render :new
@@ -52,12 +61,21 @@ class CoursesController < ApplicationController
     authorize @course
     @course.destroy
 
-    UserMailer.with(
-      user: @course.student,
-      tutor: @course.tutor,
-      course: @course.name,
-      path: course_path(@course)
-    ).closing_course_email.deliver_later
+    if Rails.env.production?
+      UserMailer.with(
+        user: @course.student,
+        tutor: @course.tutor,
+        course: @course.name,
+        path: course_path(@course)
+      ).closing_course_email.deliver_later
+    else
+      UserMailer.with(
+        user: @course.student,
+        tutor: @course.tutor,
+        course: @course.name,
+        path: course_path(@course)
+      ).closing_course_email.deliver_now
+    end
 
     redirect_to courses_path
   end
