@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-
+  # RailsAdmin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   scope "(:locale)", locale: /en|ja|ko/ do
     root to: 'pages#home'

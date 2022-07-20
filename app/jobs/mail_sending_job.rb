@@ -3,5 +3,6 @@ class MailSendingJob < ApplicationJob
 
   def perform(*args)
     # Do something later
+    puts "test"
   end
 end

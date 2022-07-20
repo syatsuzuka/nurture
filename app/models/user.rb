@@ -66,11 +66,21 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome_email.deliver_now
+    if Rails.env.production?
+      UserMailer.with(user: self).welcome_email.deliver_later
+    else
+      UserMailer.with(user: self).welcome_email.deliver_now
+    end
   end
 
   def send_update_email
-    UserMailer.with(user: self).update_email.deliver_now if has_changes_to_save?
+    if has_changes_to_save?
+      if Rails.env.production?
+        UserMailer.with(user: self).update_email.deliver_later
+      else
+        UserMailer.with(user: self).update_email.deliver_now
+      end
+    end
   end
 
   def add_sample_data(course)
