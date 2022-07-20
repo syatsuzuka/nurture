@@ -85,9 +85,8 @@ class AssignmentsController < ApplicationController
     @chatroom = Chatroom.find(params[:course_id])
     authorize @chatroom
     @message = Message.new
-    @messages = @chatroom.messages
-    new_messages = @messages.where.not("user_id = #{current_user.id}")
-
+    messages = @chatroom.messages
+    new_messages = messages.where.not(user_id: current_user[:id]).where(viewed_at: nil)
     unless new_messages.empty?
       new_messages.each do |message|
         message.update_attribute(:viewed_at, DateTime.now)
@@ -101,7 +100,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
   end
 
-  def newhat
+  def new
     @assignment = Assignment.new
     @assignment.course = @course
     authorize @assignment
