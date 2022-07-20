@@ -66,11 +66,11 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome_email.deliver_now
+    UserMailer.with(user: self).welcome_email.deliver_later
   end
 
   def send_update_email
-    UserMailer.with(user: self).update_email.deliver_now if has_changes_to_save?
+    UserMailer.with(user: self).update_email.deliver_later if has_changes_to_save?
   end
 
   def add_sample_data(course)

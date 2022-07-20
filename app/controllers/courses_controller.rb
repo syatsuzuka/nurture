@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
     @course.status = 0
     @course.tutor_user_id = current_user.id
     @chatroom = Chatroom.create(name: "Assignment chat")
-    
+
     authorize @course
 
     if @course.save
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
         tutor: @course.tutor,
         course: @course.name,
         path: accept_course_path(@course)
-      ).invitation_email.deliver_now
+      ).invitation_email.deliver_later
       redirect_to courses_path
     else
       render :new
@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
       tutor: @course.tutor,
       course: @course.name,
       path: course_path(@course)
-    ).closing_course_email.deliver_now
+    ).closing_course_email.deliver_later
 
     redirect_to courses_path
   end
