@@ -7,8 +7,8 @@ class SessionForm
   end
 
   def fill_in_with(params = {})
-    fill_in('user_email', with: params.fetch(:user_email, ENV['DEMO_TUTOR_LOGIN_ID']))
-    fill_in('user_password', with: params.fetch(:user_password, ENV['DEMO_TUTOR_LOGIN_PASSWORD']))
+    fill_in('user_email', with: params.fetch(:user_email, ENV.fetch('DEMO_TUTOR_LOGIN_ID')))
+    fill_in('user_password', with: params.fetch(:user_password, ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')))
     self
   end
 

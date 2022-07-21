@@ -12,9 +12,9 @@ class UserForm
   end
 
   def fill_in_with(params = {})
-    fill_in('user_email', with: params.fetch(:user_email, ENV['TEST_TUTOR_LOGIN_ID']))
-    fill_in('user_password', with: params.fetch(:user_password, ENV['TEST_TUTOR_LOGIN_PASSWORD']))
-    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV['TEST_TUTOR_LOGIN_PASSWORD']))
+    fill_in('user_email', with: params.fetch(:user_email, ENV.fetch('TEST_TUTOR_LOGIN_ID')))
+    fill_in('user_password', with: params.fetch(:user_password, ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD')))
+    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD')))
     fill_in('user_first_name', with: params.fetch(:user_first_name, 'Test'))
     fill_in('user_last_name', with: params.fetch(:user_last_name, 'User'))
     fill_in('user_nickname', with: params.fetch(:user_nickname, 'testuser'))
@@ -28,9 +28,9 @@ class UserForm
   end
 
   def fill_in_setting_with(params = {})
-    fill_in('user_password', with: params.fetch(:user_password, ENV['TEST_TUTOR_LOGIN_PASSWORD']))
-    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV['TEST_TUTOR_LOGIN_PASSWORD']))
-    fill_in('user_current_password', with: params.fetch(:user_current_password, ENV['TEST_TUTOR_LOGIN_PASSWORD']))
+    fill_in('user_password', with: params.fetch(:user_password, ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD')))
+    fill_in('user_password_confirmation', with: params.fetch(:user_password, ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD')))
+    fill_in('user_current_password', with: params.fetch(:user_current_password, ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD')))
     fill_in('user_first_name', with: params.fetch(:user_first_name, 'FirstName'))
     fill_in('user_last_name', with: params.fetch(:user_last_name, 'LastName'))
     fill_in('user_nickname', with: params.fetch(:user_nickname, 'testuser'))

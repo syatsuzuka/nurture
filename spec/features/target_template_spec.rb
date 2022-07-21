@@ -6,7 +6,10 @@ feature 'target_template' do
   scenario 'creates a new target template' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
@@ -35,7 +38,10 @@ feature 'target_template' do
   scenario 'edits an existing target template' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
@@ -64,7 +70,10 @@ feature 'target_template' do
   scenario 'deletes an existing target template' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
@@ -82,7 +91,10 @@ feature 'target_template' do
   scenario 'uploads new target templates' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
@@ -105,7 +117,10 @@ feature 'target_template' do
   scenario 'downloads target templates list with owner' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======
@@ -121,7 +136,10 @@ feature 'target_template' do
   scenario 'downloads target templates list with other tutor' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR2_LOGIN_ID'], user_password: ENV['DEMO_TUTOR2_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR2_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR2_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Template =======

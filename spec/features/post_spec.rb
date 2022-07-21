@@ -6,7 +6,10 @@ feature 'post' do
   scenario 'Create a new Post' do
     #======= Access to Knowledge list =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     find('#knowledge-menu').click
     expect(page).to have_content('Knowledge')
@@ -28,7 +31,10 @@ feature 'post' do
   scenario 'Edit an existing Knowledge' do
     #======= Access to Knowledge list =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('knowledge-menu')
     expect(page).to have_content('Knowledge')

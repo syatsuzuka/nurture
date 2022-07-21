@@ -6,7 +6,10 @@ feature 'course' do
   scenario 'creates a new course' do
     #======= Access to course menu =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     expect(page).to have_content('Course')
@@ -31,7 +34,10 @@ feature 'course' do
     session_form.logout
 
     #======= Log in with Demo Student =======
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     expect(page).to have_content('test_name')
 
@@ -47,7 +53,10 @@ feature 'course' do
   scenario 'edits an existing course' do
     #======= Access to course menu =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     expect(page).to have_content('Course')
@@ -70,7 +79,10 @@ feature 'course' do
   scenario 'deletes an existing course' do
     #======= Access to course menu =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     expect(page).to have_content('Course')

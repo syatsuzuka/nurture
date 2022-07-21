@@ -7,9 +7,9 @@ feature 'user' do
     #======= Signup as a Tutor =======
     user_form = UserForm.new
     user_params = {
-      user_email: ENV['TEST_TUTOR_LOGIN_ID'],
-      user_password: ENV['TEST_TUTOR_LOGIN_PASSWORD'],
-      user_password_confirmation: ENV['TEST_TUTOR_LOGIN_PASSWORD'],
+      user_email: ENV.fetch('TEST_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD'),
+      user_password_confirmation: ENV.fetch('TEST_TUTOR_LOGIN_PASSWORD'),
       user_first_name: 'Test',
       user_last_name: 'Tutor',
       user_nickname: 'test-tutor',
@@ -24,9 +24,9 @@ feature 'user' do
     #======= Signup as a Student =======
     user_form = UserForm.new
     user_params = {
-      user_email: ENV['TEST_STUDENT_LOGIN_ID'],
-      user_password: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
-      user_password_confirmation: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
+      user_email: ENV.fetch('TEST_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('TEST_STUDENT_LOGIN_PASSWORD'),
+      user_password_confirmation: ENV.fetch('TEST_STUDENT_LOGIN_PASSWORD'),
       user_first_name: 'Test',
       user_last_name: 'Student',
       user_nickname: 'test-student',
@@ -40,15 +40,18 @@ feature 'user' do
   scenario 'updates an existing tutor' do
     #======= Login as a Student =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Change User Setting =======
     user_form = UserForm.new
     user_params = {
-      user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'],
-      user_password_confirmation: ENV['DEMO_TUTOR_LOGIN_PASSWORD'],
-      user_current_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'],
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD'),
+      user_password_confirmation: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD'),
+      user_current_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD'),
       user_first_name: 'FirstName',
       user_last_name: 'LastName',
       user_nickname: 'test_nickname',
@@ -63,7 +66,10 @@ feature 'user' do
     session_form.logout
 
     #======= Login as a Student =======
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Check the updated Tutor info =======
@@ -82,9 +88,9 @@ feature 'user' do
     #======= Signup as a Tutor =======
     user_form = UserForm.new
     user_params = {
-      user_email: ENV['TEST_STUDENT_LOGIN_ID'],
-      user_password: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
-      user_password_confirmation: ENV['TEST_STUDENT_LOGIN_PASSWORD'],
+      user_email: ENV.fetch('TEST_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('TEST_STUDENT_LOGIN_PASSWORD'),
+      user_password_confirmation: ENV.fetch('TEST_STUDENT_LOGIN_PASSWORD'),
       user_first_name: 'Test',
       user_last_name: 'Student',
       user_nickname: 'test-student',
@@ -98,15 +104,18 @@ feature 'user' do
   scenario 'updates an existing student' do
     #======= Login as a Student =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Change User Setting =======
     user_form = UserForm.new
     user_params = {
-      user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'],
-      user_password_confirmation: ENV['DEMO_STUDENT_LOGIN_PASSWORD'],
-      user_current_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'],
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD'),
+      user_password_confirmation: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD'),
+      user_current_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD'),
       user_first_name: 'FirstName',
       user_last_name: 'LastName',
       user_nickname: 'test_nickname',
@@ -121,7 +130,10 @@ feature 'user' do
     session_form.logout
 
     #======= Login as a Student =======
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Check the updated Tutor info =======
