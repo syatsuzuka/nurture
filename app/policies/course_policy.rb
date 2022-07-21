@@ -12,7 +12,7 @@ class CoursePolicy < ApplicationPolicy
             manager = manager.manager
           end
 
-          if course.tutor != user && course.student == User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+          if course.tutor != user && course.student == User.find_by(email: ENV.fetch('SAMPLE_STUDENT_LOGIN_ID'))
             result = false
           end
           result

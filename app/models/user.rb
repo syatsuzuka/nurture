@@ -43,22 +43,22 @@ class User < ApplicationRecord
   private
 
   def create_sample_course
-    if role == "tutor" && email != ENV['SAMPLE_TUTOR_LOGIN_ID']
+    if role == "tutor" && email != ENV.fetch('SAMPLE_TUTOR_LOGIN_ID')
       course = Course.create!(
         name: "Sample Course (Tennis Lesson)",
         description: "This is a sample course. Please feel free to use this as a sandbox environment.",
         status: 1,
         tutor: self,
-        student: User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+        student: User.find_by(email: ENV.fetch('SAMPLE_STUDENT_LOGIN_ID'))
       )
       add_sample_data(course)
 
-    elsif role == "student" && email != ENV['SAMPLE_STUDENT_LOGIN_ID']
+    elsif role == "student" && email != ENV.fetch('SAMPLE_STUDENT_LOGIN_ID')
       course = Course.create!(
         name: "Sample Course (Tennis Lesson)",
         description: "This is a sample course. Please feel free to use this as a sandbox environment.",
         status: 1,
-        tutor: User.find_by(email: ENV['SAMPLE_TUTOR_LOGIN_ID']),
+        tutor: User.find_by(email: ENV.fetch('SAMPLE_TUTOR_LOGIN_ID')),
         student: self
       )
       add_sample_data(course)
