@@ -12,7 +12,7 @@ class AssignmentPolicy < ApplicationPolicy
             manager = manager.manager
           end
 
-          sample_student = User.find_by(email: ENV['SAMPLE_STUDENT_LOGIN_ID'])
+          sample_student = User.find_by(email: ENV.fetch('SAMPLE_STUDENT_LOGIN_ID'))
           result = false if assignment.course.tutor != user && assignment.course.student == sample_student
           result
         end

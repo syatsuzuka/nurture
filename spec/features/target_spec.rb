@@ -6,7 +6,10 @@ feature 'target' do
   scenario 'creates a new target' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
@@ -34,7 +37,10 @@ feature 'target' do
   scenario 'Uploads new targets' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
@@ -57,7 +63,10 @@ feature 'target' do
   scenario 'edits an existing target' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
@@ -85,7 +94,10 @@ feature 'target' do
   scenario 'deletes an existing target' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target Setting =======
@@ -103,7 +115,10 @@ feature 'target' do
   scenario 'exports the target list' do
     #======= Access to target menu =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')

@@ -6,7 +6,10 @@ feature 'progress' do
   scenario 'creates a new progress with tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -33,7 +36,10 @@ feature 'progress' do
   scenario 'creates a new progress with student account' do
     #======= Login with Student ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -60,7 +66,10 @@ feature 'progress' do
   scenario 'edits an existing progress' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -89,7 +98,10 @@ feature 'progress' do
   scenario 'deletes an existing progress' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -108,7 +120,10 @@ feature 'progress' do
   scenario 'uploades new progresses with tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -133,7 +148,10 @@ feature 'progress' do
   scenario 'uploades new progresses with student account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -158,7 +176,10 @@ feature 'progress' do
   scenario 'exports an existing progress with Tutor account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======
@@ -175,7 +196,10 @@ feature 'progress' do
   scenario 'exports an existing progress with Student account' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_STUDENT_LOGIN_ID'], user_password: ENV['DEMO_STUDENT_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_STUDENT_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_STUDENT_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Target detail =======

@@ -6,7 +6,10 @@ feature 'assignment_templates_set' do
   scenario 'creates a new assignment_templates_set' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Template menu =======
@@ -32,7 +35,10 @@ feature 'assignment_templates_set' do
   scenario 'edits an existing assignment_templates_set' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Template menu =======
@@ -57,7 +63,10 @@ feature 'assignment_templates_set' do
   scenario 'deletes an existing assignment_templates_set' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Template menu =======

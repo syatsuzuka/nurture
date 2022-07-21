@@ -6,7 +6,10 @@ feature 'homework template (assignment_template)' do
   scenario 'creates a new homework template' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
@@ -35,7 +38,10 @@ feature 'homework template (assignment_template)' do
   scenario 'edits an existing assignment templates' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
@@ -65,7 +71,10 @@ feature 'homework template (assignment_template)' do
   scenario 'deletes an existing assignment templates' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
@@ -83,7 +92,10 @@ feature 'homework template (assignment_template)' do
   scenario 'uploads new assignment templates' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
@@ -105,7 +117,10 @@ feature 'homework template (assignment_template)' do
   scenario 'export assignment templates list with owner' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR_LOGIN_ID'], user_password: ENV['DEMO_TUTOR_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======
@@ -121,7 +136,10 @@ feature 'homework template (assignment_template)' do
   scenario 'export assignment templates list with other tutor' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
-    session_params = { user_email: ENV['DEMO_TUTOR2_LOGIN_ID'], user_password: ENV['DEMO_TUTOR2_LOGIN_PASSWORD'] }
+    session_params = {
+      user_email: ENV.fetch('DEMO_TUTOR2_LOGIN_ID'),
+      user_password: ENV.fetch('DEMO_TUTOR2_LOGIN_PASSWORD')
+    }
     session_form.visit_page.fill_in_with(session_params).submit
 
     #======= Access to Assignment Template =======

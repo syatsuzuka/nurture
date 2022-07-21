@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     {
-      host: ENV["SERVER_HOSTNAME"],
+      host: ENV.fetch("SERVER_HOSTNAME"),
       locale: I18n.locale
     }
   end
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   def ensure_domain
     return unless /\.herokuapp.com/ =~ request.host
 
-    redirect_to "#{ENV['SERVER_HOSTNAME']}/#{request.path}", status: :moved_permanently
+    redirect_to "#{ENV.fetch('SERVER_HOSTNAME')}/#{request.path}", status: :moved_permanently
   end
 
   def set_locale
