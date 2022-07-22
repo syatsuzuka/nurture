@@ -1,16 +1,23 @@
 <%= simple_form_for [@course, @target, @progress] do |f| %>
 
   <div>
-    <span><%= t('resource.course') %></span>
+    <span><%= t('resources.course') %></span>
     <div class="border mt-2 mb-3 p-2">
       <%= @course.name %>
     </div>
   </div>
 
   <div>
-    <span><%= t('resource.target') %></span>
+    <span><%= t('resources.target') %></span>
     <div class="border mt-2 mb-3 p-2">
       <%= @target.name %>
+    </div>
+  </div>
+
+  <div>
+    <span><%= t('label.target.description') %></span>
+    <div class="border mt-2 mb-3 p-2">
+      <%= @target.description %>
     </div>
   </div>
 

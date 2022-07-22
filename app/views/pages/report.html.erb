@@ -55,8 +55,10 @@
                   </div>
                 </div>
                 <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
+                  <% if (course.student == current_user) or (course.tutor == current_user) %>
                   <%= link_to course_target_progresses_path(course, target), class: "fs-4" do %>
                     Target Detail
+                  <% end %>
                   <% end %>
                 </div>
                 <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>
