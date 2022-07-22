@@ -216,7 +216,10 @@ class PagesController < ApplicationController
   end
 
   def report
-    @courses = policy_scope(Course).sort_by { |course| [course.student_user_id, course.created_at] }
+    @courses = policy_scope(Course).select do |course|
+      !sample_course?(course)
+    end
+    @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
   end
 
   def template

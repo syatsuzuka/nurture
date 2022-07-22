@@ -14,7 +14,7 @@ feature 'homework (assignment))' do
 
     #======= Check the list of homework =======
     click_on('homework-menu')
-    expect(page.all('div.row > div').count).to eq 3
+    expect(page.all('div.row > div').count).to eq 2
 
     #======= Access to course detail =======
     click_on('courses-menu')
@@ -43,7 +43,7 @@ feature 'homework (assignment))' do
 
     #======= Check the list of homework =======
     click_on('homework-menu')
-    expect(page.all('div.row > div').count).to eq 4
+    expect(page.all('div.row > div').count).to eq 3
 
     #======= Logout =======
     session_form.logout

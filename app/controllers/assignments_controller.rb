@@ -142,7 +142,10 @@ class AssignmentsController < ApplicationController
   end
 
   def all
-    @assignments = policy_scope(Assignment).sort_by!(&:status)
+    @assignments = policy_scope(Assignment).select do |assignment|
+      !sample_course?(assignment)
+    end
+    @assignments.sort_by!(&:status)
   end
 
   def review
