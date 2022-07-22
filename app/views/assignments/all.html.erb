@@ -17,11 +17,7 @@
                 <%= assignment.course.name %>
               </div>
               <div class="fs-4">
-                <% if assignment.course.tutor == current_user or assignment.course.student == current_user %>
                 <%= link_to course_assignment_path(assignment.course, assignment) do %>
-                  <%= assignment.title %>
-                <% end %>
-                <% else %>
                   <%= assignment.title %>
                 <% end %>
               </div>

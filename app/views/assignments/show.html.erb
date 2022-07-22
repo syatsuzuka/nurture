@@ -47,7 +47,7 @@
           <h4>
             <i class="fas fa-sticky-note me-2"></i><%= t('label.assignment.comment') %>
             <% if current_user.role == "student" %>
-              <%= link_to edit_course_assignment_path(@assignment.course, @assignment) do %><%= show_edit_button.html_safe %><% end %>
+              <%= link_to edit_course_assignment_path(@assignment.course, @assignment), class: "btn btn-success" do %><%= t('.btn_comment') %><% end %>
             <% end %>
           </h4>
           <% unless @assignment.comment.blank? %>

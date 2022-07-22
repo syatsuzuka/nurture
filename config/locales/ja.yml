@@ -197,6 +197,7 @@ ja:
     index:
       text_tree_title: "目標設定ツリー"
     show:
+      btn_comment: "コメントの追記"
       btn_review: "レビューの追記"
     new:
       text_title: "宿題の新規作成"

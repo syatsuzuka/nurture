@@ -197,6 +197,7 @@ en:
     index:
       text_tree_title: "Target Tree"
     show:
+      btn_comment: "Add your comment?"
       btn_review: "Add your review?"
     new:
       text_title: "Add a New Homework"
