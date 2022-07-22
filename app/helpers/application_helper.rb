@@ -18,7 +18,7 @@ module ApplicationHelper
     end
   end
 
-  def sample_course?(course)
+  def sample_course?(current_user, course)
     return true if current_user.role == "tutor" && course.student.email == ENV["SAMPLE_STUDENT_LOGIN_ID"]
     return true if current_user.role == "student" && course.tutor.email == ENV["SAMPLE_TUTOR_LOGIN_ID"]
 
@@ -27,6 +27,28 @@ module ApplicationHelper
 
   def get_fullname(user)
     "#{user.first_name.capitalize} #{user.last_name.capitalize}"
+  end
+
+  def manager?(current_user, tutor)
+    element = tutor
+    until element.manager.nil?
+      return true if element.manager == current_user
+
+      element = element.manager
+    end
+    false
+  end
+
+  def tutor?(current_user, tutor)
+    courses = Course.where(tutor: current_user, student: tutor)
+
+    true if courses.any?
+  end
+
+  def student?(current_user, student)
+    courses = Course.where(tutor: current_user, student: student)
+
+    true if courses.any?
   end
 
   def show_add_button

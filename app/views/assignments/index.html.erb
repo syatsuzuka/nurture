@@ -254,10 +254,11 @@
   <% end %>
 </div>
 
-<div class="mt-5">
-  <%= render 'chat' %>
-</div>
-
+<% if @course.tutor == current_user || @course.student == current_user %>
+  <div class="mt-5">
+    <%= render 'chat' %>
+  </div>
+<% end %>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 

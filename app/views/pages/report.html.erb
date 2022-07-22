@@ -18,30 +18,45 @@
                     <%= course.name %>
                   </div>
                   <div class="fs-4">
-                    <% if course.tutor == current_user or course.student == current_user %>
-                      <%= link_to new_course_target_progress_path(course, target) do %>
-                        <%= target.name %>
-                      <% end %>
-                    <% else %>
+                    <%= link_to new_course_target_progress_path(course, target) do %>
                       <%= target.name %>
                     <% end %>
                   </div>
                   <div class="ms-3 mt-3 mb-1">
-                    <div>
-                      <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
-                      <span class="fs-6 me-2">
-                        <% if course.tutor.visible %>
-                          <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                    <% if current_user.role == "student" || current_user.users.any? %>
+                      <div>
+                        <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                        <span class="fs-6 me-2">
+                          <% if course.tutor.visible %>
+                            <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
+                              <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                            <% end %>
+                          <% else %>
                             <%= course.tutor.first_name %> <%= course.tutor.last_name %>
                           <% end %>
-                        <% else %>
-                          <%= course.tutor.first_name %> <%= course.tutor.last_name %>
-                        <% end %>
-                        <% if current_user.users.any? %>
-                        (Tutor)
-                        <% end %>
-                      </span>
-                    </div>
+                          <% if current_user.users.any? %>
+                            (Tutor)
+                          <% end %>
+                        </span>
+                      </div>
+                    <% end %>
+                    <% if current_user.role == "tutor" %>
+                      <div>
+                        <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                        <span class="fs-6 me-2">
+                          <% if course.student.visible %>
+                            <%= link_to student_path(course.student), class: "text-dark" do %>
+                              <%= course.student.first_name %> <%= course.student.last_name %>
+                            <% end %>
+                          <% else %>
+                            <%= course.student.first_name %> <%= course.student.last_name %>
+                          <% end %>
+                          <% if current_user.users.any? %>
+                            (Student)
+                          <% end %>
+                        </span>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-start align-self-center">
@@ -55,10 +70,8 @@
                   </div>
                 </div>
                 <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
-                  <% if (course.student == current_user) or (course.tutor == current_user) %>
                   <%= link_to course_target_progresses_path(course, target), class: "fs-4" do %>
                     Target Detail
-                  <% end %>
                   <% end %>
                 </div>
                 <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>

@@ -2,7 +2,9 @@ class ProgressPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.select { |progress| progress.target.course.tutor == user }
+        scope.select do |progress|
+          progress.target.course.tutor == user || manager?(user, progress.target.course.tutor)
+        end
       else
         scope.select { |progress| progress.target.course.student == user }
       end
@@ -10,7 +12,9 @@ class ProgressPolicy < ApplicationPolicy
   end
 
   def create?
-    user.role == "tutor" or user.role == "student"
+    record.target.course.tutor == user \
+      || record.target.course.student == user \
+      || manager?(user, record.target.course.tutor)
   end
 
   def new?
@@ -18,7 +22,9 @@ class ProgressPolicy < ApplicationPolicy
   end
 
   def update?
-    record.target.course.tutor == user or record.target.course.student == user
+    record.target.course.tutor == user \
+      || record.target.course.student == user \
+      || manager?(user, record.target.course.tutor)
   end
 
   def edit?
@@ -26,10 +32,14 @@ class ProgressPolicy < ApplicationPolicy
   end
 
   def export?
-    true
+    record.target.course.tutor == user \
+      || record.target.course.student == user \
+      || manager?(user, record.target.course.tutor)
   end
 
   def destroy?
-    record.target.course.tutor == user or record.target.course.student == user
+    record.target.course.tutor == user \
+      || record.target.course.student == user \
+      || manager?(user, record.target.course.tutor)
   end
 end

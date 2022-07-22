@@ -2,7 +2,9 @@ class TargetPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.select { |target| target.course.tutor == user }
+        scope.select do |target|
+          target.course.tutor == user || manager?(user, target.course.tutor)
+        end
       else
         scope.select { |target| target.course.student == user }
       end
@@ -10,7 +12,7 @@ class TargetPolicy < ApplicationPolicy
   end
 
   def create?
-    user.role == "tutor"
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 
   def new?
@@ -18,7 +20,7 @@ class TargetPolicy < ApplicationPolicy
   end
 
   def update?
-    user.role == "tutor"
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 
   def edit?
@@ -26,6 +28,6 @@ class TargetPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 end
