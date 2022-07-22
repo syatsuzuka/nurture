@@ -3,7 +3,15 @@ class UserPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       if user.role == "tutor"
-        scope.where(role: "student")
+        scope.where(role: "student").select do |student|
+          result = false
+          courses = Course.where(student: student, status: 1)
+          courses.each do |course|
+            result = true if course.tutor == user
+            result = true if manager?(user, course.tutor)
+          end
+          result
+        end
       else
         scope.where(role: "tutor")
       end
