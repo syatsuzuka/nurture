@@ -7,7 +7,7 @@
 <h2 ><i class="fas fa-tasks me-3"></i><%= t('resources.assignment') %><%= t('suffix.list') %></h2>
 
 <div class="mt-5">
-  <% if !@assignments.nil? or @assignments.count == 0  %>
+  <% if !@assignments.nil? and @assignments.count > 0  %>
     <div class="row mb-3">
       <% @assignments.each do |assignment| %>
         <div class="col-12">
