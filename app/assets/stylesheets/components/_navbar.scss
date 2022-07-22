@@ -10,3 +10,34 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-toggler-icon {
+  filter: invert(100);
+}
+
+.navbar-light .navbar-toggler {
+  color: gray;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+// @media screen and (min-width: 768px) {
+//   .navbar {
+//     flex-wrap: nowrap;
+//     justify-content: flex-start;
+//   }
+// }
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .hide {
+      display: none;
+    }
+  }
+}
+
+// @media screen and (max-width: 768px) {
+
+// }

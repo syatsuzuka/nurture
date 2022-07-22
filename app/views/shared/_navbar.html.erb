@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light sticky-top navbar-lewagon bg-dark">
+<div class="navbar navbar-expand-md navbar-light sticky-top navbar-lewagon bg-dark">
   <div class="container-fluid">
     <%= link_to dashboard_path, class: "navbar navbar-light text-light text-decoration-none d-flex" do %>
       <%= image_tag "Nuture2.png", style: "width:auto; height: 55px;"%>
@@ -15,15 +15,115 @@
         <% else %>
           <i class="text-light fas fa-graduation-cap me-3"></i>
         <% end %>
+        <%= add_image(current_user, 'avatar.png',class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40, crop: :fill) %>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <%= link_to t('.text_setting'), edit_user_registration_path, id: "setting-menu", class: "dropdown-item" %>
+          <%= link_to t('.text_logout'), destroy_user_session_path, method: :delete, id: "logout-menu", class: "dropdown-item" %>
+        </div>
 
         <ul class="navbar-nav me-auto">
-          <li class="nav-item dropdown">
-            <%= add_image(current_user, 'avatar.png',class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40, crop: :fill) %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to t('.text_setting'), edit_user_registration_path, id: "setting-menu", class: "dropdown-item" %>
-              <%= link_to t('.text_logout'), destroy_user_session_path, method: :delete, id: "logout-menu", class: "dropdown-item" %>
-            </div>
+          <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+              <%= link_to dashboard_path, id: 'dashboard-menu', class: "card-link text-white text-decoration-none" do %>
+                <div <%= @active_dashboard %>>
+                  <i class="fas fa-home text-white me-1"></i>
+                  <%= t('resources.dashboard') %>
+                </div>
+              <% end %>
+            </h5>
           </li>
+          <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+            <%= link_to courses_path, id: 'courses-menu', class: "card-link text-white text-decoration-none" do %>
+              <div <%= @active_courses %>>
+                <i class="fas fa-university text-white me-1"></i>
+                <%= t('resources.course') %>
+              </div>
+            <% end %>
+            </h5>
+          </li>
+          <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+            <%= link_to report_path, id: 'report-menu', class: "card-link text-white text-decoration-none" do %>
+              <div <%= @active_report %>>
+                <i class="fas fa-chart-line text-white me-1"></i>
+                <%= t('resources.progress') %>
+              </div>
+            <% end %>
+            </h5>
+          </li>
+          <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+            <%= link_to all_assignments_path, id: 'homework-menu', class: "card-link text-white text-decoration-none" do %>
+              <div <%= @active_assignments %>>
+                <i class="fas fa-tasks text-white me-1"></i>
+                <%= t('resources.assignment') %>
+              </div>
+            <% end %>
+            </h5>
+          </li>
+          <% if current_user.role == "tutor" %>
+            <li class="nav-item hide mb-4 dropdown">
+              <h5 class="m-3">
+              <%= link_to template_path, id: 'template-menu', class: "card-link text-white text-decoration-none" do %>
+                <div <%= @active_template %>>
+                  <i class="fas fa-sticky-note text-white me-1"></i>
+                  <%= t('resources.template') %>
+                </div>
+              <% end %>
+              </h5>
+            </li>
+          <% end %>
+          <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+            <%= link_to knowledge_path, id: 'knowledge-menu', class: "card-link text-white text-decoration-none" do %>
+              <div <%= @active_knowledge %>>
+                <i class="fas fa-book-open text-white me-1"></i>
+                <%= t('resources.knowledge') %>
+              </div>
+            <% end %>
+            </h5>
+          </li>
+          <% if current_user.role == "student" %>
+            <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+              <%= link_to tutors_path, id: 'tutors-menu', class: "card-link text-white text-decoration-none" do %>
+                <div <%= @active_users %>>
+                  <i class="fas fa-chalkboard-teacher text-white me-1"></i>
+                  <%= t('resources.tutor') %>
+                </div>
+              <% end %>
+            </h5>
+            </li>
+          <% end %>
+          <% if current_user.role == "tutor" %>
+            <li class="nav-item hide mb-4 dropdown">
+            <h5 class="m-3">
+              <%= link_to students_path, id: 'students-menu', class: "card-link text-white text-decoration-none" do %>
+                <div <%= @active_users %>>
+                  <i class="fas fa-user text-white me-1"></i>
+                  <%= t('resources.student') %>
+                </div>
+              <% end %>
+              </h5>
+            </li>
+          <% end %>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
+            <span id="text-other-pages" class="hide">
+              <%= t('.other_pages') %>
+            </span>
+          </h6>
+          <ul class="nav hide flex-column mb-2">
+            <li class="nav-item p-3">
+              <%= link_to aboutus_path, id: 'aboutus-menu', class: "nav-link, text-white text-decoration-none" do %>
+                <div <%= @active_aboutus %>>
+                  <i class="fas fa-user-friends me-1"></i>
+                  <%= t('.about_us') %>
+                </div>
+              <% end %>
+              </a>
+            </li>
+          </ul>
         </ul>
       <% else %>
         <ul class="navbar-nav me-auto">
@@ -32,6 +132,7 @@
           </li>
         </ul>
       <% end %>
+
     </div>
   </div>
 </div>
