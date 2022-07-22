@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @users = policy_scope(User).sort_by(&:first_name)
 
     if current_user.role == "tutor"
-      @users = @users.select do |student|
+      @users.select! do |student|
         Course.where(tutor: current_user, student: student, status: 1).any?
       end
     end

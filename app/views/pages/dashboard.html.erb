@@ -73,18 +73,14 @@
             <div class="card-body row">
               <div class="col-12 mb-3">
                 <h5 class="card-title text-dark">
-                  <% unless current_user.role == "tutor" and current_user != course.tutor %>
-                    <%= link_to course_assignments_path(course) do %>
-                      <%= course.name %>
-                    <% end %>
-                  <% else %>
+                  <%= link_to course_assignments_path(course) do %>
                     <%= course.name %>
                   <% end %>
                 </h5>
                 <p class="card-text ms-3 text-secondary"><%= course.description %></p>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-8">
-                <% if current_user.role == "student" or current_user.users.any? %>
+                <% if current_user.role == "student" || current_user.users.any? %>
                   <p>
                     <%= add_image(course.tutor, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
 
@@ -105,7 +101,7 @@
                   <p>
                     <%= add_image(course.student, 'avatar.png', class: 'avatar dropdown-toggle',id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40) %>
 
-                    <% if course.student.visible && course.tutor == current_user %>
+                    <% if course.student.visible %>
                       <%= link_to student_path(course.student.id), class: "text-dark" do %>
                         <%= course.student.first_name %> <%= course.student.last_name %>
                       <% end %>
@@ -134,35 +130,6 @@
     <span class="ms-5 text-secondary">No data</span>
   <% end %>
 </div>
-
-
-
-<!-- ======= Sample Gallery ======= -->
-<!--
-<h3 class="my-3">
-  <i class="far fa-chart-bar"></i>
-  Other Sample Graph
-
-  <span  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGalleryHeader" aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle Target">
-    <i class="fas fa-bars border p-2 rounded"></i>
-  </span>
-</h3>
-
-<div class="collapse" id="navbarGalleryHeader">
-  <div class="row">
-
-    <div class="col-sm-12 col-md-12 col-lg-6 mb-5">
-      <div id="radar-chart" class="card flex-md-row shadow p-4 rounded"></div>
-    </div>
-
-    <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-      <div id="dumbbell" class="card flex-md-row shadow p-4 rounded"></div>
-    </div>
-
-
-  </div>
-</div>
--->
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 

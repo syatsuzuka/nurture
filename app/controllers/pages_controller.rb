@@ -87,7 +87,7 @@ class PagesController < ApplicationController
     gon.tree_title = t('.text_tree_title')
 
     @courses.each do |course|
-      next if sample_course?(course)
+      next if sample_course?(current_user, course)
 
       if current_user.role == "tutor"
         gon.tree_data << ['Goal', "Success of #{get_fullname(course.student)}"]
@@ -136,7 +136,7 @@ class PagesController < ApplicationController
       #----- Add Each Tutors / Students in courses -----
       @courses.each do |course|
         #----- Skip Sample Student -----
-        next if sample_course?(course)
+        next if sample_course?(current_user, course)
 
         #----- Add Student -----
         org_node = {
@@ -180,7 +180,7 @@ class PagesController < ApplicationController
       #----- Add Tutor / Student -----
       @courses.each do |course|
         #----- Skip Sample Tutor -----
-        next if sample_course?(course)
+        next if sample_course?(current_user, course)
 
         #----- Add Tutor -----
         org_node = {
@@ -217,7 +217,7 @@ class PagesController < ApplicationController
 
   def report
     @courses = policy_scope(Course).reject do |course|
-      sample_course?(course)
+      sample_course?(current_user, course)
     end
     @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
   end

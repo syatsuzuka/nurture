@@ -143,7 +143,7 @@ class AssignmentsController < ApplicationController
 
   def all
     @assignments = policy_scope(Assignment).reject do |assignment|
-      sample_course?(assignment)
+      sample_course?(current_user, assignment)
     end
     @assignments.sort_by!(&:status)
   end

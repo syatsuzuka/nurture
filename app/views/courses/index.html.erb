@@ -23,13 +23,9 @@
               <div class="mb-3">
                 <% if course.status == 1 %>
                   <div class="fs-3">
-                    <% unless current_user.role == "tutor" and current_user != course.tutor %>
                       <%= link_to course_assignments_path(course) do %>
                         <%= course.name %>
                       <% end %>
-                    <% else %>
-                      <%= course.name %>
-                    <% end %>
                   </div>
                 <% else %>
                   <span class="fs-3 text-muted">

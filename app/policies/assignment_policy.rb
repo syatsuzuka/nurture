@@ -5,15 +5,8 @@ class AssignmentPolicy < ApplicationPolicy
         scope.select do |assignment|
           result = false
           result = true if assignment.course.tutor == user
-          manager = assignment.course.tutor
+          result = true if manager?(user, assignment.course.tutor)
 
-          until manager.manager.nil?
-            result = true if manager.manager == user
-            manager = manager.manager
-          end
-
-          sample_student = User.find_by(email: ENV.fetch('SAMPLE_STUDENT_LOGIN_ID'))
-          result = false if assignment.course.tutor != user && assignment.course.student == sample_student
           result
         end
       else
@@ -23,11 +16,13 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def show?
-    record.course.tutor == user or record.course.student == user
+    record.course.tutor == user \
+    || record.course.student == user \
+    || manager?(user, record.course.tutor)
   end
 
   def create?
-    user.role == "tutor"
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 
   def new?
@@ -35,7 +30,9 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.course.tutor == user or record.course.student == user
+    record.course.tutor == user \
+    || record.course.student == user \
+    || manager?(user, record.course.tutor)
   end
 
   def edit?
@@ -43,14 +40,14 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.course.tutor == user
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 
   def review?
-    record.course.tutor == user
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 
   def close?
-    record.course.tutor == user
+    record.course.tutor == user || manager?(user, record.course.tutor)
   end
 end
