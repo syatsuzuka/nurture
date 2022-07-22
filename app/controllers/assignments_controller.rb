@@ -91,7 +91,7 @@ class AssignmentsController < ApplicationController
       new_messages.each do |message|
         message.update_attribute(:read, DateTime.now)
       end
-      flash[:alert] = "Hello #{current_user.first_name} you have new messages in chat!"
+      # flash[:alert] = "Hello #{current_user.first_name} you have new messages in chat!"
     end
     #=========================
   end
