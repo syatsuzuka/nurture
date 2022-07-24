@@ -471,7 +471,8 @@ puts '===================================='
 puts 'Generating Posts...'
 
 post_1 = Post.create!(
-  title: "I could improve my serve thanks to the homework",
+  title: "Great homework for Tennis Beginners",
+  summary: "I could improve my serve thanks to the homework",
   content: "I couldn't have higher score in service ace rate, but my score is getting improved thanks to #{demo_tutor.first_name}'s training menu",
   user: demo_student
 )

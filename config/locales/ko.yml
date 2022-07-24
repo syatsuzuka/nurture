@@ -144,6 +144,7 @@ ko:
     post:
       title: "Title"
       Photo: "Photo"
+      summary: "Summary"
       content: "Content"
   prefix:
   suffix:

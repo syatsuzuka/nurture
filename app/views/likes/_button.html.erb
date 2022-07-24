@@ -5,12 +5,12 @@
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="like[likeable_id]" value="<%= likeable.id %>">
     <input type="hidden" name="like[likeable_type]" value="<%= likeable.class.to_s %>">
-    <input type="submit" value="Like" class="btn btn-success">
+    <input type="submit" value="Like" class="btn btn-success like-post">
   </form>
   <% else %>
   <form action="<%= like_path(like)%>" method="post" class="d-inline">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Unlike" class="btn btn-success">
+    <input type="submit" value="Unlike" class="btn btn-success unlike-post">
   </form>
   <% end %>

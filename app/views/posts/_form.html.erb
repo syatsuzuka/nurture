@@ -1,9 +1,10 @@
 <%= simple_form_for @post do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :title, label: t('label.post.title') %>
+  <%= f.input :title, label: t('label.post.title'), required: true %>
   <%= f.input :photo, as: :file, label: t('label.post.photo')  %>
-  <%= f.input :content, as: :text, label: t('label.post.content') %>
+  <%= f.input :summary, label: t('label.post.summary'), required: true %>
+  <%= f.input :content, as: :text, label: t('label.post.content'), required: true %>
 
   <div class="mt-4">
     <%= f.submit t('label.form.save'), id: "save", class: "btn btn-success text-light" %>

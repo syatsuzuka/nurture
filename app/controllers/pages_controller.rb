@@ -235,9 +235,9 @@ class PagesController < ApplicationController
     #======= PGsearch =======
     posts =
       if params[:q].present?
-        Post.all.search_knowledge(params[:q])
+        poilcy_scope(Post).search_knowledge(params[:q])
       else
-        Post.all
+        policy_scope(Post)
       end
 
     @pagy, @posts = pagy(posts.order(created_at: :desc))

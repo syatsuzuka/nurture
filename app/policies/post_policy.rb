@@ -2,35 +2,31 @@ class PostPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      true
+      scope.all
     end
-  end
-
-  def create?
-    true
   end
 
   def show?
     true
   end
 
-  def new?
+  def create?
     true
   end
 
-  def edit?
-    true
+  def new?
+    create?
   end
 
   def update?
-    true
+    record.user == user
   end
 
-  def index?
-    true
+  def edit?
+    update?
   end
 
   def destroy?
-    true
+    record.user == user
   end
 end

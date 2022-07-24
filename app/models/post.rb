@@ -10,7 +10,7 @@ class Post < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
-  validates :title, :content, presence: true
-  validates :title, presence: true, length: { in: 6...70 }
-  validates :content, presence: true, length: { in: 30...3000 }
+  validates :title, :summary, :content, presence: true
+  validates :title, length: { in: 6...70 }
+  validates :content, length: { in: 30...3000 }
 end
