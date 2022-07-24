@@ -5,7 +5,6 @@ require_relative '../support/comment_form'
 
 feature 'like/comment' do
   scenario 'like/unlike a post' do
-
     #======= Access to Knowledge list =======
     session_form = SessionForm.new
     session_params = {
@@ -38,7 +37,6 @@ feature 'like/comment' do
   end
 
   scenario 'create/delete a new comment' do
-
     #======= Access to Knowledge list =======
     session_form = SessionForm.new
     session_params = {

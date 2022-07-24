@@ -18,7 +18,11 @@ feature 'post' do
     #======= Create a new Post =======
     find('#add-post').click
     post_form = PostForm.new
-    post_params = { post_title: "test_title", post_summary: "test_summary", post_content: "test_content_01234567890123456789" }
+    post_params = {
+      post_title: "test_title",
+      post_summary: "test_summary",
+      post_content: "test_content_01234567890123456789"
+    }
     post_form.fill_in_with(post_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_summary')
@@ -47,7 +51,11 @@ feature 'post' do
     #======= Edit an existing Post =======
     find('div.row > div:nth-child(1) > div.card > div.card-body > a.edit-post').click
     post_form = PostForm.new
-    post_params = { post_title: "test_title", post_summary: "test_summary", post_content: "test_content_01234567890123456789" }
+    post_params = {
+      post_title: "test_title",
+      post_summary: "test_summary",
+      post_content: "test_content_01234567890123456789"
+    }
     post_form.fill_in_with(post_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_summary')
