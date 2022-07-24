@@ -5,11 +5,13 @@ SimpleCov.start
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'support/factory_bot'
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'capybara-screenshot/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -74,4 +76,8 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include FactoryBot::Syntax::Methods
+end
+
+def take_screenshot
+  page.save_screenshot "tmp/capybara/screenshot-#{DateTime.now}.png"
 end

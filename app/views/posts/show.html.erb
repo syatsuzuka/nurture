@@ -19,8 +19,8 @@
   <%# Links for edit new post and back to index %>
   <ul class= "list-inline">
     <%= render partial: 'likes/button', locals: { likeable: @post } %>
-    <%= link_to edit_post_path(@post) do%><%= show_edit_button.html_safe %><% end %>
-    <%= link_to  post_path(@post), method: :delete do%><%= show_delete_button.html_safe %><% end %>
+    <%= link_to edit_post_path(@post), class: "edit-post" do%><%= show_edit_button.html_safe %><% end %>
+    <%= link_to post_path(@post), method: :delete do%><%= show_delete_button.html_safe %><% end %>
   </ul>
 
 
