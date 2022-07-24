@@ -2,7 +2,7 @@ require 'rails_helper'
 require_relative '../support/session_form'
 require_relative '../support/assignment_form'
 
-feature 'homework (assignment))' do
+feature 'homework (assignment)' do
   scenario 'creates a new homework (assignment)' do
     #======= Login with Tutor ID =======
     session_form = SessionForm.new
@@ -131,11 +131,13 @@ feature 'homework (assignment))' do
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page).to have_content('Swing Practice every day')
     expect(page.all('#assignments >table > tbody > tr').count).to eq 1
 
     #======= Delete an existing homework =======
     find('#assignments > table > tbody > tr:nth-child(1) > td > a.delete-assignment').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
+    expect(page).to have_no_content('Swing Practice every day')
     expect(page.all('#assignments >table > tbody > tr').count).to eq 0
   end
 

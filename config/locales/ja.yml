@@ -144,7 +144,8 @@ ja:
     post:
       title: "タイトル"
       Photo: "画像"
-      content: "内容"
+      summary: "概要"
+      content: "詳細"
   prefix:
   suffix:
     list: "一覧"

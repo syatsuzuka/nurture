@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_post, only: %i[show edit update destroy]
   before_action :set_active_knowledge
 
   def new
@@ -10,7 +11,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    # @post.post_board_id = 1
     authorize @post
 
     if @post.save
@@ -21,25 +21,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     authorize @post
   end
 
-=begin
-  def index
-    @pagy, @posts = pagy(Post.order(created_at: :desc))
-    authorize @posts
-    skip_policy_scope
-  end
-=end
-
   def edit
-    @post = Post.find(params[:id])
     authorize @post
   end
 
   def update
-    @post = Post.find(params[:id])
     authorize @post
 
     if @post.update(post_params)
@@ -50,16 +39,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     authorize @post
     @post.destroy
-    redirect_to '/knowledge'
+    redirect_to knowledge_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :photo)
+    params.require(:post).permit(:title, :summary, :content, :photo)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
   def set_active_knowledge
