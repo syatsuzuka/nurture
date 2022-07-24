@@ -13,7 +13,7 @@ class PostForm
   end
 
   def submit
-    click_button('Save')
+    find('#save').click
     self
   end
 end

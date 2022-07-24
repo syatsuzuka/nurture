@@ -6,7 +6,7 @@
   <%= f.input :content, as: :text, label: t('label.post.content') %>
 
   <div class="mt-4">
-    <%= f.submit t('label.form.save'), class: "btn btn-success text-light" %>
+    <%= f.submit t('label.form.save'), id: "save", class: "btn btn-success text-light" %>
     <%= link_to t('label.form.cancel'), :back, class: 'btn btn-secondary text-light'%>
   </div>
 <% end %>
