@@ -22,6 +22,20 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'You are invited to a new course!')
   end
 
+  def notify_message_email
+    @user = params[:user]
+    @from = params[:from]
+    @course = params[:course]
+    @message_count = params[:message_count]
+    @url = ENV.fetch('SERVER_HOSTNAME') + params[:path]
+
+    puts "to: #{@user.email}, from: #{@from.first_name}, course: #{@course.name}"
+    mail(
+      to: @user.email,
+      subject: "You've got #{@message_count} messages from #{@from.first_name} in '#{@course.name}'!"
+    )
+  end
+
   def closing_course_email
     @user = params[:user]
     @tutor = params[:tutor]
