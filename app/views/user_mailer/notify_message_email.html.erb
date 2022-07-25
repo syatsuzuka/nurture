@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You've got <%= @message_count %> messages in "<%= @course.name %>", <%= @user.first_name %>!</h1>
+
+    <p>
+      <%= link_to "Check it now!", @url %>
+    </p>
+    <p>Good luck in your studies!</p>
+    <br>
+    <div>
+      <p>Cheers,</p>
+      <p>Nurture Dev Team</p>
+    </div>
+  </body>
+</html>
