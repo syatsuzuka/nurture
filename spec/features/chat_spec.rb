@@ -40,7 +40,7 @@ feature 'chat' do
     find('#chat-toggle').click
     expect(page).to have_text('test_message')
     chat_params = {
-      message_content: "https://www.youtube.com/watch?v=vUCB7LS5Cw8"
+      message_content: "https://youtu.be/P1mv-weRuTQ"
     }
     chat_form.fill_in_with(chat_params).submit
 
