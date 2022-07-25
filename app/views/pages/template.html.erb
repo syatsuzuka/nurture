@@ -21,66 +21,55 @@
 </div>
 
 <% unless @target_templates_sets.count == 0 %>
-  <table id="target-templates-sets" class="table table-responsive table-hover align-middle">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Edit</th>
-        <% end %>
-        <th scope="col">Name</th>
-        <th scope="col">Category</th>
-        <th scope="col">Owner</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Delete</th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @target_templates_sets.each_with_index do |target_templates_set, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <% if current_user.role == "tutor" %>
-            <td>
-              <% if target_templates_set.user == current_user %>
-                <%= link_to edit_target_templates_set_path(target_templates_set), class: "edit-target-templates-set btn btn-outline-success" do %>
+  <div id="target-templates-sets" class="row mb-3">
+    <% @target_templates_sets.each_with_index do |target_templates_set, index| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card flex-md-row mb-4 shadow rounded">
+          <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
+            <div class="fs-6 text-secondary">
+              <%= target_templates_set.category %>
+            </div>
+            <div class="fs-4">
+              <%= link_to target_templates_set_target_templates_path(target_templates_set) do %>
+                <%= target_templates_set.name %>
+              <% end %>
+            </div>
+            <% if target_templates_set.user == current_user %>
+              <div class="mt-2 mb-3">
+                <%= link_to edit_target_templates_set_path(target_templates_set), class: "ms-3 edit-target-templates-set btn btn-outline-success" do %>
                   <i class="fas fa-edit"></i>
                 <% end %>
-              <% end %>
-            </td>
-          <% end %>
-          <td>
-            <%= link_to target_templates_set_target_templates_path(target_templates_set) do %>
-              <%= target_templates_set.name %>
-            <% end %>
-          </td>
-          <td><%= target_templates_set.category %></td>
-          <td>
-            <%= link_to tutor_path(target_templates_set.user) do %>
-              <%= target_templates_set.user.first_name %> <%= target_templates_set.user.last_name %>
-            <% end %>
-          </td>
-          <% if current_user.role == "tutor" %>
-            <td>
-              <% if target_templates_set.user == current_user %>
+
                 <%= link_to target_templates_set_path(target_templates_set),
                     method: :delete,
                     class: "delete-target-templates-set ms-1",
                     data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  (No Templates for Target is registered)
+              </div>
+            <% end %>
+            <div class="ms-3 mb-1">
+              <p>
+                <%= add_image(target_templates_set.user, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                <span class="fs-6 me-2">
+                  <% if target_templates_set.user.visible %>
+                    <%= link_to tutor_path(target_templates_set.user), class: "text-dark" do %>
+                      <%= target_templates_set.user.first_name %> <%= target_templates_set.user.last_name %>
+                    <% end %>
+                  <% else %>
+                    <%= target_templates_set.user.first_name %> <%= target_templates_set.user.last_name %>
+                  <% end %>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
-
 <!-- ======= Homework Template Set ======= -->
-<div class="mt-5">
+
+<div class="mt-3">
   <h4>
     <i class="fas fa-tasks me-2"></i><%= t('resources.assignment_templates_set') %>
     <% if current_user.role == "tutor" %>
@@ -92,58 +81,48 @@
 </div>
 
 <% unless @assignment_templates_sets.count == 0 %>
-  <table id="assignment-templates-sets" class="table table-responsive table-hover align-middle">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Edit</th>
-        <% end %>
-        <th scope="col">Name</th>
-        <th scope="col">Category</th>
-        <th scope="col">Owner</th>
-        <% if current_user.role == "tutor" %>
-          <th scope="col">Delete</th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @assignment_templates_sets.each_with_index do |assignment_templates_set, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <% if current_user.role == "tutor" %>
-            <td>
-              <% if assignment_templates_set.user == current_user %>
-                <%= link_to edit_assignment_templates_set_path(assignment_templates_set),
-                    class: "edit-assignment-templates-set" do %><%= show_edit_button.html_safe %><% end %>
+  <div id="assignment-templates-sets" class="row">
+    <% @assignment_templates_sets.each_with_index do |assignment_templates_set, index| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card flex-md-row mb-3 shadow rounded">
+          <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
+            <div class="fs-6 text-secondary">
+              <%= assignment_templates_set.category %>
+            </div>
+            <div class="fs-4">
+              <%= link_to assignment_templates_set_assignment_templates_path(assignment_templates_set) do %>
+                <%= assignment_templates_set.name %>
               <% end %>
-            </td>
-          <% end %>
-          <td>
-            <%= link_to assignment_templates_set_assignment_templates_path(assignment_templates_set) do %>
-              <%= assignment_templates_set.name %>
-            <% end %>
-          </td>
-          <td><%= assignment_templates_set.category %></td>
-          <td>
-            <%= link_to tutor_path(assignment_templates_set.user) do %>
-              <%= assignment_templates_set.user.first_name %> <%= assignment_templates_set.user.last_name %>
-            <% end %>
-          </td>
-          <% if current_user.role == "tutor" %>
-            <td>
-              <% if assignment_templates_set.user == current_user %>
+            </div>
+            <% if assignment_templates_set.user == current_user %>
+              <div class="mt-2 mb-3">
+                <%= link_to edit_assignment_templates_set_path(assignment_templates_set), class: "ms-3 edit-assignment-templates-set btn btn-outline-success" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+
                 <%= link_to assignment_templates_set_path(assignment_templates_set),
                     method: :delete,
                     class: "delete-assignment-templates-set ms-1",
-                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  (No Templates for Target is registered)
+                    data: { confirm: 'Do you really want to delete the assignment template?' } do %><%= show_delete_button.html_safe %><% end %>
+              </div>
+            <% end %>
+            <div class="ms-3 mb-1">
+              <p>
+                <%= add_image(assignment_templates_set.user, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                <span class="fs-6 me-2">
+                  <% if assignment_templates_set.user.visible %>
+                    <%= link_to tutor_path(assignment_templates_set.user), class: "text-dark" do %>
+                      <%= assignment_templates_set.user.first_name %> <%= assignment_templates_set.user.last_name %>
+                    <% end %>
+                  <% else %>
+                    <%= assignment_templates_set.user.first_name %> <%= assignment_templates_set.user.last_name %>
+                  <% end %>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>

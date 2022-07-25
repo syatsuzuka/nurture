@@ -14,7 +14,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_no_content('test_name')
     expect(page.all('#target_templates > tbody > tr').count).to eq 2
@@ -46,7 +46,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_no_content('test_name')
     expect(page.all('#target_templates > tbody > tr').count).to eq 2
@@ -78,7 +78,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#target_templates > tbody > tr').count).to eq 2
 
@@ -99,7 +99,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#target_templates > tbody > tr').count).to eq 2
 
@@ -125,7 +125,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Create a new Target Template =======
@@ -144,7 +144,7 @@ feature 'target_template' do
 
     #======= Access to Target Template =======
     click_on('template-menu')
-    find('#target-templates-sets tbody tr td:nth-child(3) a').click
+    find('#target-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Create a new Target Template =======

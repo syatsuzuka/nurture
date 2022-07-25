@@ -14,7 +14,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
@@ -46,7 +46,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
@@ -79,7 +79,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
@@ -100,7 +100,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 1
 
@@ -125,7 +125,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Create a new Assignment Template =======
@@ -144,7 +144,7 @@ feature 'homework template (assignment_template)' do
 
     #======= Access to Assignment Template =======
     click_on('template-menu')
-    find('#assignment-templates-sets tbody tr td:nth-child(3) a').click
+    find('#assignment-templates-sets > div > div.card:nth-child(1) > div.card-body > div:nth-child(2) > a').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Create a new Assignment Template =======
