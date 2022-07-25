@@ -21,10 +21,10 @@
 </div>
 
 <% unless @target_templates_sets.count == 0 %>
-  <div id="target-templates-sets" class="row mb-3">
+  <div id="target-templates-sets" class="row mt-3">
     <% @target_templates_sets.each_with_index do |target_templates_set, index| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card flex-md-row mb-4 shadow rounded">
+      <div class="col-xs-12 col-sm-6 col-md-4 mb-3">
+        <div class="card flex-md-row mb-4 shadow rounded h-100">
           <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
             <div class="fs-6 text-secondary">
               <%= target_templates_set.category %>
@@ -81,10 +81,10 @@
 </div>
 
 <% unless @assignment_templates_sets.count == 0 %>
-  <div id="assignment-templates-sets" class="row">
+  <div id="assignment-templates-sets" class="row mt-3">
     <% @assignment_templates_sets.each_with_index do |assignment_templates_set, index| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card flex-md-row mb-3 shadow rounded">
+      <div class="col-xs-12 col-sm-6 col-md-4 mb-3">
+        <div class="card flex-md-row mb-3 shadow rounded h-100">
           <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
             <div class="fs-6 text-secondary">
               <%= assignment_templates_set.category %>
