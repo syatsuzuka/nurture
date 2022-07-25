@@ -15,7 +15,7 @@ feature 'target_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 1
 
     #======= Create a new Target Templates Set =======
     target_templates_set_form = TargetTemplatesSetForm.new
@@ -27,7 +27,7 @@ feature 'target_templates_set' do
     target_templates_set_form.visit_page.fill_in_with(target_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 2
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 2
   end
 
   scenario 'edits an existing target_templates_set' do
@@ -42,10 +42,10 @@ feature 'target_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 1
 
     #======= Edit an existing Target Templates Set =======
-    find("#target-templates-sets > tbody > tr:nth-child(1) > td > a.edit-target-templates-set").click
+    find("#target-templates-sets > div > div.card:nth-child(1) a.edit-target-templates-set").click
     target_templates_set_form = TargetTemplatesSetForm.new
     target_templates_set_params = {
       target_templates_set_name: "test_name",
@@ -55,7 +55,7 @@ feature 'target_templates_set' do
     target_templates_set_form.fill_in_with(target_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 1
   end
 
   scenario 'deletes an existing target_templates_set' do
@@ -70,11 +70,11 @@ feature 'target_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 1
 
     #======= Delete an existing Target Templates Set =======
-    find("#target-templates-sets > tbody > tr:nth-child(1) > td > a.delete-target-templates-set").click
+    find("#target-templates-sets > div > div.card:nth-child(1) a.delete-target-templates-set").click
     expect(page).to have_content('Template')
-    expect(page.all('#target-templates-sets > tbody > tr').count).to eq 0
+    expect(page.all('#target-templates-sets > div > div.card').count).to eq 0
   end
 end

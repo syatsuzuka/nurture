@@ -17,7 +17,7 @@ feature 'assignment_templates_set' do
     expect(page).to have_content('Template')
     expect(page).to have_no_content('test_name')
     expect(page).to have_no_content('test_category')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 1
 
     #======= Create a new Assignment Templates Set =======
     assignment_templates_set_form = AssignmentTemplatesSetForm.new
@@ -29,7 +29,7 @@ feature 'assignment_templates_set' do
     assignment_templates_set_form.visit_page.fill_in_with(assignment_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 2
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 2
   end
 
   scenario 'edits an existing assignment_templates_set' do
@@ -44,10 +44,10 @@ feature 'assignment_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 1
 
     #======= Edit an existing Assignment Templates Set =======
-    find("#assignment-templates-sets > tbody > tr:nth-child(1) > td > a.edit-assignment-templates-set").click
+    find("#assignment-templates-sets > div > div.card:nth-child(1) a.edit-assignment-templates-set").click
     assignment_templates_set_form = AssignmentTemplatesSetForm.new
     assignment_templates_set_params = {
       assignment_templates_set_name: "test_name",
@@ -57,7 +57,7 @@ feature 'assignment_templates_set' do
     assignment_templates_set_form.fill_in_with(assignment_templates_set_params).submit
     expect(page).to have_content('test_name')
     expect(page).to have_content('test_category')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 1
   end
 
   scenario 'deletes an existing assignment_templates_set' do
@@ -72,11 +72,11 @@ feature 'assignment_templates_set' do
     #======= Access to Template menu =======
     click_on('template-menu')
     expect(page).to have_content('Template')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 1
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 1
 
     #======= Delete an existing Assignment Templates Set =======
-    find("#assignment-templates-sets > tbody > tr:nth-child(1) > td > a.delete-assignment-templates-set").click
+    find("#assignment-templates-sets > div > div.card:nth-child(1) a.delete-assignment-templates-set").click
     expect(page).to have_content('Template')
-    expect(page.all('#assignment-templates-sets > tbody > tr').count).to eq 0
+    expect(page.all('#assignment-templates-sets > div > div.card').count).to eq 0
   end
 end
