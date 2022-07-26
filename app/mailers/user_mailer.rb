@@ -13,9 +13,7 @@ class UserMailer < ApplicationMailer
   def update_email
     @user = params[:user]
     @url  = ENV.fetch('SERVER_HOSTNAME')
-    I18n.with_locale(@user.locale) do
-      mail(to: @user.email, subject: I18n.t('user_mailer.update_email.text_subject'))
-    end
+    mail(to: @user.email, subject: I18n.t('user_mailer.update_email.text_subject'))
   end
 
   def invitation_email
