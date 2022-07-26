@@ -4,15 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @course %> was closed</h1>
+    <h1><%= t('.text_title', course_name: @course) %></h1>
     <p>
-      <%= @tutor.first_name %> closed the course - <%= @course %>.
+      <%= t('.text_message', tutor_first_name: @tutor.first_name, course_name: @course) %>
     </p>
-    <p>We wish you could have a good learning. Have a nice day!</p>
-    <br>
-    <div>
-      <p>Cheers,</p>
-      <p>Nurture Dev Team</p>
-    </div>
+    <%= render '/user_mailer/footer_email' %>
   </body>
 </html>

@@ -17,14 +17,7 @@
       <% end %>
       </ul>
     </p>
-    <p>
-      <%= t('.text_message_2', url: @url) %>
-    </p>
-    <p><%= t('user_mailer.shared.text_closing_message') %></p>
-    <br>
-    <div>
-      <p><%= t('user_mailer.shared.text_signature') %></p>
-      <p><%= t('user_mailer.shared.text_signature_2') %></p>
-    </div>
+
+    <%= render '/user_mailer/footer_email' %>
   </body>
 </html>

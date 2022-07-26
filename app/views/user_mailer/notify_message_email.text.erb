@@ -1,9 +1,6 @@
-You've got <%= @message_count %> messages in "<%= @course.name %>", <%= @user.first_name %>!
+<%= t('.text_title', message_count: @message_count, course_name: @course.name, user_first_name: @user.first_name) %>
 
-Check it now!
+<%= t('.text_message') %>
 <%= @url %>
 
-Good luck in your studies!
-
-Cheers,
-Nurture Dev Team
+<%= render '/user_mailer/footer_email' %>

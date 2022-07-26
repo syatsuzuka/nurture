@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
     @tutor = params[:tutor]
     @course = params[:course]
     @url = ENV.fetch('SERVER_HOSTNAME') + params[:path]
-    mail(to: @user.email, subject: 'You are invited to a new course!')
+    mail(to: @user.email, subject: I18n.t('user_mailer.invitation_email.text_subject'))
   end
 
   def notify_message_email
@@ -41,6 +41,6 @@ class UserMailer < ApplicationMailer
     @tutor = params[:tutor]
     @course = params[:course]
     @url = ENV.fetch('SERVER_HOSTNAME') + params[:path]
-    mail(to: @user.email, subject: "'#{@course}' was closed")
+    mail(to: @user.email, subject: I18n.t('user_mailer.closing_course_email.text_subject', course_name: @course))
   end
 end

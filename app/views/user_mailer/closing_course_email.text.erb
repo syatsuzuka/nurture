@@ -1,9 +1,5 @@
-<%= @course %> was closed
+<%= t('.text_title', course_name: @course) %>
 
-<%= @tutor.first_name %> closed the course - <%= @course %>.<br><br>
-We wish you could have a good learning.
-Have a nice day!
+<%= t('.text_message', tutor_first_name: @tutor.first_name, course_name: @course) %>
 
-
-Cheers,
-Nurture Dev Team
+<%= render '/user_mailer/footer_email' %>

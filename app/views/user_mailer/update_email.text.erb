@@ -9,8 +9,5 @@
 <% end %>
 
 <%= t('.text_message_2', url: @url) %>
-<%= t('user_mailer.shared.text_closing_message') %>
 
-
-<%= t('user_mailer.shared.text_signature') %>
-<%= t('user_mailer.shared.text_signature_2') %>
+<%= render '/user_mailer/footer_email' %>

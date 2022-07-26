@@ -4,20 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>You are invited to a new course, <%= @user.first_name %>!</h1>
+    <h1><%= t('.text_title', name: @user.first_name) %></h1>
     <p>
-      Your tutor invited you to a course.<br><br>
-      Tutor: <%= @tutor.first_name %> <%= @tutor.last_name %>.<br>
-      Course: <%= @course %>.
+      <%= t('.text_message') %><br><br>
+      <%= t('.text_message_2', tutor_first_name: @tutor.first_name, tutor_last_name: @tutor.last_name) %><br>
+      <%= t('.text_message_3', course_name: @course) %>.
     </p>
     <p>
-      Will you accept the invitation? <%= link_to "Accept", @url %>
+      <%= t('.text_message_4') %> <%= link_to "#{t('label.form.accept')}", @url %>
     </p>
-    <p>Good luck in your studies!</p>
-    <br>
-    <div>
-      <p>Cheers,</p>
-      <p>Nurture Dev Team</p>
-    </div>
+    <%= render '/user_mailer/footer_email' %>
   </body>
 </html>

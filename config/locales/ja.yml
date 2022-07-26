@@ -28,6 +28,7 @@ ja:
       sign_in: "ログイン"
       sign_up: "ユーザー登録"
       sign_out: "ログアウト"
+      accept: "承諾"
       current_password: "現在のパスワード"
       password_confirmation: "パスワード再確認"
       password_reset: "パスワードリセット"
@@ -280,5 +281,14 @@ ja:
       text_message: "以下のアカウント設定が更新されました。"
       text_message_2: "更新内容を確認するには、こちらのリンクへアクセスください。: %{url}"
     invitation_email:
+      text_subject: "新しいコースへの招待！"
+      text_title: "新しいコースへの招待です、%{name}!"
+      text_message: "トレーナーが新しいコースへ招待しました。"
+      text_message_2: "トレーナー: %{tutor_first_name} %{tutor_last_name}."
+      text_message_3: "コース: %{course_name}."
+      text_message_4: "こちらの正体を承諾しますか？"
     notifying_email:
-    closing_email:
+    closing_course_email:
+      text_subject: "%{course_name} のクローズ"
+      text_title: "%{course_name} のクローズ"
+      text_message: "%{tutor_first_name} は %{course_name} をクローズしました。"

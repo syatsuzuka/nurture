@@ -27,7 +27,8 @@ ko:
       download: "Download"
       sign_in: "Sign in"
       sign_up: "Sign up"
-      log_out: "Log out"
+      sign_out: "Log out"
+      accept: "Accept"
       current_password: "Current password"
       password_confirmation: "Password confirmation"
       password_reset: "Password Reset"
@@ -279,5 +280,14 @@ ko:
       text_message: "The following account setting was updated."
       text_message_2: "To check your update, access to this link: %{url}"
     invitation_email:
+      text_subject: "You are invited to a new course!"
+      text_title: "You are invited to a new course, %{name}!"
+      text_message: "Your tutor invited you to a course."
+      text_message_2: "Tutor: %{tutor_first_name} %{tutor_last_name}."
+      text_message_3: "Course: %{course_name}."
+      text_message_4: "Will you accept the invitation?"
     notifying_email:
-    closing_email:
+    closing_course_email:
+      text_subject: "%{course_name} was closed"
+      text_title: "%{course_name} was closed"
+      text_message: "%{tutor_first_name} closed the course - %{course_name}."
