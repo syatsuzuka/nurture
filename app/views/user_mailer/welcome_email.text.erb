@@ -1,10 +1,6 @@
-Welcome to Nurture, <%= @user.first_name %>!
+<%= t('.text_title', name: @user.first_name) %>
 
-We're happy to notify that your account has been created successfully.
-To login to the site, click the link: <%= @url %>.
+<%= t('.text_message') %>
+<%= t('.text_message_2', url: @url) %>
 
-Good luck in your studies!
-
-
-Cheers,
-Nurture Dev Team
+<%= render '/user_mailer/footer_email' %>

@@ -4,8 +4,6 @@ en:
     dashboard: "Dashboard"
     report: "Progress Report"
     course: "Course"
-    course_list: "Course List"
-    course_detail: "Course Detail"
     target: "Target"
     progress: "Progress"
     assignment: "Homework"
@@ -29,7 +27,8 @@ en:
       download: "Download"
       sign_in: "Sign in"
       sign_up: "Sign up"
-      log_out: "Log out"
+      sign_out: "Log out"
+      accept: "Accept"
       current_password: "Current password"
       password_confirmation: "Password confirmation"
       password_reset: "Password Reset"
@@ -122,6 +121,7 @@ en:
       description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
       score: "Target Score"
       score_placeholder: "E.g. 20.0"
+      parent: "Parent"
     assignment_templates_set:
       name: "Name"
       name_placeholder: "E.g. Tennis (Intermediate)"
@@ -166,7 +166,7 @@ en:
       text_org_title: "Relevant Parties"
       text_tree_title: "Target Tree"
       text_no_target: "(No target is registered yet)"
-      text_no_course: "(No course is registered yet)"
+      text_no_course: "(No relevant parties because no course is registered yet)"
     template:
   devise:
     passwords:
@@ -233,6 +233,8 @@ en:
       text_title: "Add a New Target Template"
     edit:
       text_title: "Edit the Target Template"
+    upload:
+      text_title: "Upload the Target Template"
   assignment_templates_sets:
     new:
       text_title: "Add a New Homework Templates Set"
@@ -243,6 +245,8 @@ en:
       text_title: "Add a New Homework Template"
     edit:
       text_title: "Edit the Homework Template"
+    upload:
+      text_title: "Upload the Homework Template"
   users:
     show:
       text_active_user: "active user"
@@ -261,3 +265,33 @@ en:
       text_title: "Add a New Knowledge"
     edit:
       text_title: "Edit the Knowledge"
+  user_mailer:
+    shared:
+      text_closing_message: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Team"
+    welcome_email:
+      text_subject: "Your Nurture account is now registered!"
+      text_title: "Welcome to Nurture, %{name}!"
+      text_message: "We're happy to notify that your account has been created successfully."
+      text_message_2: "To login to the site, just click the link: %{url}"
+    update_email:
+      text_subject: "Your Nurture account was updated!"
+      text_title: "Greeting from Nurture, %{name}!"
+      text_message: "The following account setting was updated."
+      text_message_2: "To check your update, access to this link: %{url}"
+    invitation_email:
+      text_subject: "You are invited to a new course!"
+      text_title: "You are invited to a new course, %{name}!"
+      text_message: "Your tutor invited you to a course."
+      text_message_2: "Tutor: %{tutor_first_name} %{tutor_last_name}."
+      text_message_3: "Course: %{course_name}."
+      text_message_4: "Will you accept the invitation?"
+    notifying_email:
+      text_subject:
+      text_title: "You've got #{message_count} messages in '%{course_name}', %{user_first_name}!"
+      text_message: "Check it now!"
+    closing_course_email:
+      text_subject: "%{course_name} was closed"
+      text_title: "%{course_name} was closed"
+      text_message: "%{tutor_first_name} closed the course - %{course_name}."

@@ -14,7 +14,6 @@ class NotifyMessageJob < ApplicationJob
 
     mail_info.each_key do |user_id|
       user = User.find(user_id)
-      user.locale.nil? ? locale = "en" : locale = user.locale
 
       mail_info[user_id].each_key do |course_id|
         course = Course.find(course_id)
@@ -26,7 +25,7 @@ class NotifyMessageJob < ApplicationJob
             from: from,
             course: course,
             message_count: mail_info[user_id][course_id].count,
-            path: "/#{locale}/courses/#{course_id}/assignments"
+            path: "/#{I18n.locale}/courses/#{course_id}/assignments"
           ).notify_message_email.deliver_later
         else
           UserMailer.with(
@@ -34,7 +33,7 @@ class NotifyMessageJob < ApplicationJob
             from: from,
             course: course,
             message_count: mail_info[user_id][course_id].count,
-            path: "/#{locale}/courses/#{course_id}/assignments"
+            path: "/#{I18n.locale}/courses/#{course_id}/assignments"
           ).notify_message_email.deliver_now
         end
       end

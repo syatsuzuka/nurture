@@ -1,12 +1,9 @@
-You are invited to a new course, <%= @user.first_name %>!
+<%= t('.text_title', name: @user.first_name) %>
 
-Your tutor invited you to a course.<br><br>
-Tutor: <%= @tutor.first_name %> <%= @tutor.last_name %>.
-Course: <%= @course %>.
+<%= t('.text_message') %><br><br>
+<%= t('.text_message_2', tutor_first_name: @tutor.first_name, tutor_last_name: @tutor.last_name) %>
+<%= t('.text_message_3', course_name: @course) %>
 
-Will you accept the invitation? <%= @url %>
-Good luck in your studies!
+<%= t('.text_message_4') %> <%= @url %>
 
-
-Cheers,
-Nurture Dev Team
+<%= render '/user_mailer/footer_email' %>

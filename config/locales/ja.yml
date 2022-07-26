@@ -4,7 +4,6 @@ ja:
     dashboard: "ダッシュボード"
     report: "進捗報告"
     course: "コース"
-    course_detail: "コース詳細"
     target: "目標"
     progress: "進捗状況"
     assignment: "宿題"
@@ -29,6 +28,7 @@ ja:
       sign_in: "ログイン"
       sign_up: "ユーザー登録"
       sign_out: "ログアウト"
+      accept: "承諾"
       current_password: "現在のパスワード"
       password_confirmation: "パスワード再確認"
       password_reset: "パスワードリセット"
@@ -166,7 +166,7 @@ ja:
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
       text_no_target: "(まだ目標設定が登録されていません)"
-      text_no_course: "(まだコースが登録されていません)"
+      text_no_course: "(まだコースが登録されていないため、関係者はいません)"
     template:
   devise:
     passwords:
@@ -236,7 +236,6 @@ ja:
     upload:
       text_title: "目標設定テンプレートのアップロード"
   assignment_templates_sets:
-    index:
     new:
       text_title: "宿題設定テンプレート集の新規作成"
     edit:
@@ -266,3 +265,30 @@ ja:
       text_title: "ナレッジの新規作成"
     edit:
       text_title: "ナレッジの編集"
+  user_mailer:
+    shared:
+      text_closing_message: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Teamより"
+    welcome_email:
+      text_subject: "Nurtureにアカウントが登録されました!"
+      text_title: "Nurtureへようこそ、%{name}!"
+      text_message: "アカウントが作成されたことをお知らせいたします。"
+      text_message_2: "ログインする場合には、こちらのリンクをクリックしてください: %{url}"
+    update_email:
+      text_subject: "あなたのNurtureアカウントが更新されました!"
+      text_title: "こんにちは、%{name}!"
+      text_message: "以下のアカウント設定が更新されました。"
+      text_message_2: "更新内容を確認するには、こちらのリンクへアクセスください。: %{url}"
+    invitation_email:
+      text_subject: "新しいコースへの招待！"
+      text_title: "新しいコースへの招待です、%{name}!"
+      text_message: "トレーナーが新しいコースへ招待しました。"
+      text_message_2: "トレーナー: %{tutor_first_name} %{tutor_last_name}."
+      text_message_3: "コース: %{course_name}."
+      text_message_4: "こちらの正体を承諾しますか？"
+    notifying_email:
+    closing_course_email:
+      text_subject: "%{course_name} のクローズ"
+      text_title: "%{course_name} のクローズ"
+      text_message: "%{tutor_first_name} は %{course_name} をクローズしました。"
