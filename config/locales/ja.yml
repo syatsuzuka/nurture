@@ -4,7 +4,6 @@ ja:
     dashboard: "ダッシュボード"
     report: "進捗報告"
     course: "コース"
-    course_detail: "コース詳細"
     target: "目標"
     progress: "進捗状況"
     assignment: "宿題"
@@ -236,7 +235,6 @@ ja:
     upload:
       text_title: "目標設定テンプレートのアップロード"
   assignment_templates_sets:
-    index:
     new:
       text_title: "宿題設定テンプレート集の新規作成"
     edit:
@@ -266,3 +264,16 @@ ja:
       text_title: "ナレッジの新規作成"
     edit:
       text_title: "ナレッジの編集"
+  user_mailer:
+    welcome_email:
+      text_subject: "Nurtureにアカウントが登録されました!"
+      text_title: "Nurtureへようこそ、%{name}!"
+      text_message: "アカウントが作成されたことをお知らせいたします。"
+      text_message_2: "ログインする場合には、こちらのリンクをクリックしてください: %{url}"
+      text_message_3: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Teamより"
+    update_email:
+    invitation_email:
+    notifying_email:
+    closing_email:

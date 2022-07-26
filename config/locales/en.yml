@@ -4,8 +4,6 @@ en:
     dashboard: "Dashboard"
     report: "Progress Report"
     course: "Course"
-    course_list: "Course List"
-    course_detail: "Course Detail"
     target: "Target"
     progress: "Progress"
     assignment: "Homework"
@@ -122,6 +120,7 @@ en:
       description_placeholder: "E.g. Achieve higher successful rate in Serviece Ace."
       score: "Target Score"
       score_placeholder: "E.g. 20.0"
+      parent: "Parent"
     assignment_templates_set:
       name: "Name"
       name_placeholder: "E.g. Tennis (Intermediate)"
@@ -233,6 +232,8 @@ en:
       text_title: "Add a New Target Template"
     edit:
       text_title: "Edit the Target Template"
+    upload:
+      text_title: "Upload the Target Template"
   assignment_templates_sets:
     new:
       text_title: "Add a New Homework Templates Set"
@@ -243,6 +244,8 @@ en:
       text_title: "Add a New Homework Template"
     edit:
       text_title: "Edit the Homework Template"
+    upload:
+      text_title: "Upload the Homework Template"
   users:
     show:
       text_active_user: "active user"
@@ -261,3 +264,16 @@ en:
       text_title: "Add a New Knowledge"
     edit:
       text_title: "Edit the Knowledge"
+  user_mailer:
+    welcome_email:
+      text_subject: "Your Nurture account is now registered!"
+      text_title: "Welcome to Nurture, %{name}!"
+      text_message: "We're happy to notify that your account has been created successfully."
+      text_message_2: "To login to the site, just click the link: %{url}"
+      text_message_3: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Team"
+    update_email:
+    invitation_email:
+    notifying_email:
+    closing_email:

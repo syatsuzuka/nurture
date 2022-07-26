@@ -4,16 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Nurture, <%= @user.first_name %>!</h1>
+    <h1><%= t('.text_title', name: @user.first_name) %></h1>
     <p>
-      We're happy to notify that your account has been created successfully.<br>
-      To login to the site, just click the link: <%= @url %>.
+      <%= t('.text_message') %><br>
+      <%= t('.text_message_2', url: @url) %>
     </p>
-    <p>Good luck in your studies!</p>
+    <p><%= t('.text_message_3') %></p>
     <br>
     <div>
-      <p>Cheers,</p>
-      <p>Nurture Dev Team</p>
+      <p><%= t('.text_signature') %></p>
+      <p><%= t('.text_signature_2') %></p>
     </div>
   </body>
 </html>

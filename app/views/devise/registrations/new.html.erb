@@ -55,6 +55,12 @@
                   as: :file,
                   label: t('label.user.photo')
       %>
+      <%= f.input :locale,
+                  label: t('label.user.locale'),
+                  as: :select,
+                  collection: [["English", "en"], ["Japanese", "ja"], ["Korean", "ko"]],
+                  selected: I18n.locale
+      %>
     </div>
 
     <div class="form-actions mb-3">

@@ -1,10 +1,10 @@
-Welcome to Nurture, <%= @user.first_name %>!
+<%= t('.text_title', name: @user.first_name) %>
 
-We're happy to notify that your account has been created successfully.
-To login to the site, click the link: <%= @url %>.
+<%= t('.text_message') %>
+<%= t('.text_message_2', url: @url) %>
 
-Good luck in your studies!
+<%= t('.text_message_3') %>
 
 
-Cheers,
-Nurture Dev Team
+<%= t('.text_signature') %>
+<%= t('.text_signature_2') %>
