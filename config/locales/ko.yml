@@ -274,6 +274,10 @@ ko:
       text_signature: "Cheers,"
       text_signature_2: "Nurture Dev Team"
     update_email:
+      text_subject: "Your Nurture account was updated!"
+      text_title: "Greeting from Nurture, %{name}!"
+      text_message: "The following account setting was updated."
+      text_message_2: "To check your update, access to this link: %{url}"
     invitation_email:
     notifying_email:
     closing_email:

@@ -1,6 +1,6 @@
-Greeting from Nurture, <%= @user.first_name %>!
+<%= t('.text_title', name: @user.first_name) %>
 
-The following account setting was updated.<br>
+<%= t('.text_message') %>
 
 <% @user.changes.each do |key, value| %>
   <% if key != "updated_at" %>
@@ -8,8 +8,9 @@ The following account setting was updated.<br>
   <% end %>
 <% end %>
 
-To check your update, access to the link: <%= @url %>.
-Good luck in your studies!
+<%= t('.text_message_2', url: @url) %>
+<%= t('user_mailer.shared.text_closing_message') %>
 
-Cheers,
-Nurture Dev Team
+
+<%= t('user_mailer.shared.text_signature') %>
+<%= t('user_mailer.shared.text_signature_2') %>

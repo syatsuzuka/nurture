@@ -165,7 +165,7 @@ en:
       text_org_title: "Relevant Parties"
       text_tree_title: "Target Tree"
       text_no_target: "(No target is registered yet)"
-      text_no_course: "(No course is registered yet)"
+      text_no_course: "(No relevant parties because no course is registered yet)"
     template:
   devise:
     passwords:
@@ -265,15 +265,20 @@ en:
     edit:
       text_title: "Edit the Knowledge"
   user_mailer:
+    shared:
+      text_closing_message: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Team"
     welcome_email:
       text_subject: "Your Nurture account is now registered!"
       text_title: "Welcome to Nurture, %{name}!"
       text_message: "We're happy to notify that your account has been created successfully."
       text_message_2: "To login to the site, just click the link: %{url}"
-      text_message_3: "Good luck in your studies!"
-      text_signature: "Cheers,"
-      text_signature_2: "Nurture Dev Team"
     update_email:
+      text_subject: "Your Nurture account was updated!"
+      text_title: "Greeting from Nurture, %{name}!"
+      text_message: "The following account setting was updated."
+      text_message_2: "To check your update, access to this link: %{url}"
     invitation_email:
     notifying_email:
     closing_email:

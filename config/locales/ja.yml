@@ -165,7 +165,7 @@ ja:
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
       text_no_target: "(まだ目標設定が登録されていません)"
-      text_no_course: "(まだコースが登録されていません)"
+      text_no_course: "(まだコースが登録されていないため、関係者はいません)"
     template:
   devise:
     passwords:
@@ -265,15 +265,20 @@ ja:
     edit:
       text_title: "ナレッジの編集"
   user_mailer:
+    shared:
+      text_closing_message: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Teamより"
     welcome_email:
       text_subject: "Nurtureにアカウントが登録されました!"
       text_title: "Nurtureへようこそ、%{name}!"
       text_message: "アカウントが作成されたことをお知らせいたします。"
       text_message_2: "ログインする場合には、こちらのリンクをクリックしてください: %{url}"
-      text_message_3: "Good luck in your studies!"
-      text_signature: "Cheers,"
-      text_signature_2: "Nurture Dev Teamより"
     update_email:
+      text_subject: "あなたのNurtureアカウントが更新されました!"
+      text_title: "こんにちは、%{name}!"
+      text_message: "以下のアカウント設定が更新されました。"
+      text_message_2: "更新内容を確認するには、こちらのリンクへアクセスください。: %{url}"
     invitation_email:
     notifying_email:
     closing_email:

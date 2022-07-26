@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
   def update_email
     @user = params[:user]
     @url  = ENV.fetch('SERVER_HOSTNAME')
-    mail(to: @user.email, subject: 'Your Nurture account was updated!')
+    mail(to: @user.email, subject: I18n.t('user_mailer.update_email.text_subject'))
   end
 
   def invitation_email
