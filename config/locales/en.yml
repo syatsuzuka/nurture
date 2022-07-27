@@ -39,6 +39,7 @@ en:
       search: "Search"
       csv_file_select: "Choose CSV file"
       download_sample_csv: "Sample CSV"
+      download_pdf: "PDF"
       score_float: "Decimal Number"
       score_integer: "Whole Number"
       score_boolean: "True / False"
@@ -167,6 +168,8 @@ en:
       text_tree_title: "Target Tree"
       text_no_target: "(No target is registered yet)"
       text_no_course: "(No relevant parties because no course is registered yet)"
+    report:
+      btn_pdf_download: "Download PDF"
     template:
   devise:
     passwords:
@@ -295,3 +298,8 @@ en:
       text_subject: "%{course_name} was closed"
       text_title: "%{course_name} was closed"
       text_message: "%{tutor_first_name} closed the course - %{course_name}."
+  pdf:
+    report:
+      text_twotimesbefore: "Two Times Before"
+      text_lasttime: "Last Time"
+      text_latest: "Latest"
