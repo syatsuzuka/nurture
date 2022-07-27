@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
   before_action :set_active_dashboard, only: %i[dashboard]
-  before_action :set_active_report, only: %i[report]
+  before_action :set_active_report, only: %i[report print_report]
   before_action :set_active_template, only: %i[template]
   before_action :set_active_knowledge, only: %i[knowledge]
   before_action :set_active_aboutus, only: %i[aboutus]
@@ -220,6 +220,21 @@ class PagesController < ApplicationController
       sample_course?(current_user, course)
     end
     @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
+  end
+
+  def print_report
+    @courses = policy_scope(Course).reject do |course|
+      sample_course?(current_user, course)
+    end
+    @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: "progress_report.pdf",
+                template: '/pages/print_report.html'
+      end
+    end
   end
 
   def template

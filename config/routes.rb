@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     get '/students/:id', to: 'users#show', as: :student
     get '/dashboard', to: 'pages#dashboard', as: :dashboard
     get '/report', to: 'pages#report', as: :report
+    get '/report/print', to: 'pages#print_report', as: :print_report
     get '/template', to: 'pages#template', as: :template
     get '/knowledge', to: 'pages#knowledge', as: :knowledge
     get '/aboutus', to: 'pages#aboutus', as: :aboutus
