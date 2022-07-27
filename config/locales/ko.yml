@@ -266,14 +266,15 @@ ko:
     edit:
       text_title: "Edit the Knowledge"
   user_mailer:
+    shared:
+      text_closing_message: "Good luck in your studies!"
+      text_signature: "Cheers,"
+      text_signature_2: "Nurture Dev Team"
     welcome_email:
       text_subject: "Your Nurture account is now registered!"
       text_title: "Welcome to Nurture, %{name}!"
       text_message: "We're happy to notify that your account has been created successfully."
       text_message_2: "To login to the site, just click the link: %{url}"
-      text_message_3: "Good luck in your studies!"
-      text_signature: "Cheers,"
-      text_signature_2: "Nurture Dev Team"
     update_email:
       text_subject: "Your Nurture account was updated!"
       text_title: "Greeting from Nurture, %{name}!"
@@ -286,7 +287,10 @@ ko:
       text_message_2: "Tutor: %{tutor_first_name} %{tutor_last_name}."
       text_message_3: "Course: %{course_name}."
       text_message_4: "Will you accept the invitation?"
-    notifying_email:
+    notify_email:
+      text_subject: "You've got %{message_count} messages from %{from_first_name} in '%{course_name}'!"
+      text_title: "You've got %{message_count} messages in '%{course_name}', %{user_first_name}!"
+      text_message: "Check it now!"
     closing_course_email:
       text_subject: "%{course_name} was closed"
       text_title: "%{course_name} was closed"

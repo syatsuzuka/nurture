@@ -1,6 +1,5 @@
 <%= t('.text_title', message_count: @message_count, course_name: @course.name, user_first_name: @user.first_name) %>
 
-<%= t('.text_message') %>
-<%= @url %>
+<%= t('.text_message') %> : <%= @url %>
 
 <%= render '/user_mailer/footer_email' %>
