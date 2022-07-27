@@ -287,7 +287,10 @@ ja:
       text_message_2: "トレーナー: %{tutor_first_name} %{tutor_last_name}."
       text_message_3: "コース: %{course_name}."
       text_message_4: "こちらの正体を承諾しますか？"
-    notifying_email:
+    notify_email:
+      text_subject: "'%{course_name}'の%{from_first_name} から、%{message_count} 件の未読メッセージがあります!"
+      text_title: "'%{course_name}'の%{from_first_name} から、%{message_count} 件の未読メッセージがあります!"
+      text_message: "確認する"
     closing_course_email:
       text_subject: "%{course_name} のクローズ"
       text_title: "%{course_name} のクローズ"

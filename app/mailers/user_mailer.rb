@@ -37,7 +37,12 @@ class UserMailer < ApplicationMailer
     I18n.with_locale(@user.locale) do
       mail(
         to: @user.email,
-        subject: "You've got #{@message_count} messages from #{@from.first_name} in '#{@course.name}'!"
+        subject: I18n.t(
+          'user_mailer.notify_message_email.text_subject',
+          message_count: @message_count,
+          from_first_name: @from.first_name,
+          course_name: @course.name
+        )
       )
     end
   end
