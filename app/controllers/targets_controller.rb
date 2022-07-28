@@ -17,13 +17,6 @@ class TargetsController < ApplicationController
     @target = Target.new(target_params)
     @target.course = @course
 
-    case @target.score_type
-    when "integer"
-      @target.score = @target.score.round(0)
-    when "boolean"
-      @target.score = 1
-    end
-
     authorize @target
 
     set_target_options
@@ -47,13 +40,6 @@ class TargetsController < ApplicationController
     target = target_params
 
     authorize @target
-
-    case target[:score_type]
-    when "integer"
-      target[:score] = target[:score].to_i.round(0)
-    when "booean"
-      target[:score] = 1
-    end
 
     set_target_options
 

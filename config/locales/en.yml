@@ -39,7 +39,7 @@ en:
       search: "Search"
       csv_file_select: "Choose CSV file"
       download_sample_csv: "Sample CSV"
-      download_pdf: "PDF"
+      download_pdf: "Download (PDF)"
       score_float: "Decimal Number"
       score_integer: "Whole Number"
       score_boolean: "True / False"
@@ -90,6 +90,8 @@ en:
       score_placeholder: "E.g. 22.0"
       comment: "Comment"
       comment_placeholder: "E.g. the score in official game with Mike of ABC junior high school"
+      score_true: "Done"
+      score_false: "Not Yet"
     assignment:
       title: "Title"
       title_placeholder: "E.g. Smash Practice"

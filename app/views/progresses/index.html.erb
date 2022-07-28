@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td scope="row"><%= t('label.target.score') %></td>
-      <td><%= @target.score %></td>
+      <td><%= show_target_score(@target) %> (<%= show_score_type(@target) %>)</td>
     </tr>
     <tr>
       <td scope="row"><%= t('label.target.display') %></td>
@@ -84,7 +84,7 @@
           <th scope="col">#</th>
           <th scope="col"><%= t('label.form.edit') %></th>
           <th scope="col"><%= t('label.progress.date') %></th>
-          <th scope="col"><%= t('label.progress.score') %></th>
+          <th scope="col"><%= t('label.progress.score') %> (<%= show_score_type(@target) %>)</th>
           <th scope="col"><%= t('label.progress.comment') %></th>
           <th scope="col"><%= t('label.form.delete') %></th>
           <th></th>
@@ -101,7 +101,7 @@
                   class: "edit-progress" do %><%= show_edit_button.html_safe %><% end %>
             </td>
             <td><%= progress.date %></td>
-            <td><%= progress.score %></td>
+            <td><%= show_score(progress) %></td>
             <td><%= progress.comment %></td>
             <td>
               <%= link_to course_target_progress_path(@course, @target, progress),

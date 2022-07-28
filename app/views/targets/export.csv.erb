@@ -1,4 +1,4 @@
-<% headers = ['course.name', 'name', 'description', 'parent', 'score', 'display', 'created_at', 'updated_at'] %>
+<% headers = ['course.name', 'name', 'description', 'parent', 'score', 'score_type', 'display', 'created_at', 'updated_at'] %>
 <%= CSV.generate_line headers -%>
 <% @targets.each do |target| %>
 <% unless target.parent.nil? %>
@@ -12,6 +12,7 @@
   target.description,
   parent_name,
   target.score,
+  target.score_type,
   target.display,
   target.created_at,
   target.updated_at

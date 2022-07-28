@@ -5,6 +5,7 @@ class Target < ApplicationRecord
   belongs_to :parent, class_name: 'Target', foreign_key: :parent_id, optional: true
   validates :name, uniqueness: { scope: :course_id }, presence: true
   validates :description, :score, presence: true
+  validate :check_score
 
   def self.import(file, course)
     CSV.foreach(file.path, headers: true) do |row|
@@ -13,9 +14,19 @@ class Target < ApplicationRecord
       target.description = row["description"]
       target.parent = Target.find_by(name: row["parent"], course_id: course.id)
       target.score = row["score"]
+      target.score_type = row["score_type"]
       target.display = row["display"]
       target.course = course
       target.save
+    end
+  end
+
+  def check_score
+    case score_type
+    when "boolean"
+      errors.add(:score, " needs to be a boolean") unless score.in?([0, 1])
+    when "integer"
+      errors.add(:score, " needs to be an integer") unless score == score.floor
     end
   end
 end
