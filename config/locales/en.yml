@@ -292,7 +292,7 @@ en:
       text_message_2: "Tutor: %{tutor_first_name} %{tutor_last_name}."
       text_message_3: "Course: %{course_name}."
       text_message_4: "Will you accept the invitation?"
-    notify_email:
+    notify_message_email:
       text_subject: "You've got %{message_count} messages from %{from_first_name} in '%{course_name}'!"
       text_title: "You've got %{message_count} messages in '%{course_name}', %{user_first_name}!"
       text_message: "Check it now!"
