@@ -38,7 +38,6 @@ feature 'homework (assignment)' do
     assignment_form.fill_in_new_with(assignment_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
-    expect(page).to have_content('test_checkpoint')
     expect(page.all('#assignments > table > tbody > tr').count).to eq 2
 
     #======= Check the list of homework =======
@@ -62,7 +61,6 @@ feature 'homework (assignment)' do
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
     expect(page).to have_content('https://www.nurture.pw')
-    expect(page).to have_content('test_checkpoint')
     expect(page).to have_content('Jan.01, 2022')
     expect(page).to have_content('Dec.31, 2022')
   end

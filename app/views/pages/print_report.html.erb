@@ -7,6 +7,7 @@
     </div>
       <div class="mb-5 ms-5">
         <% course.targets.each do |target| %>
+          <% progresses = target.progresses.sort_by(&:date) %>
           <div class="m-3 fs-4 font-weight-bold"><%= target.name %></div>
 
           <div class="m-4">
@@ -18,7 +19,7 @@
 
               <tr>
                 <th><%= t('label.target.score') %></td>
-                <td><%= target.score %></td>
+                <td><%= show_target_score(target) %> (<%= show_score_type(target) %>)</td>
               </tr>
             </table>
           </div>
@@ -34,16 +35,16 @@
 
               <tr>
                 <th style="text-align:center"><%= t('pdf.report.text_twotimesbefore') %></td>
-                <td style="text-align:center"><%= target.progresses.second_to_last.date %></td>
-                <td style="text-align:center"><%= target.progresses.second_to_last.score %></td>
-                <td><%= target.progresses.second_to_last.comment %></td>
+                <td style="text-align:center"><%= progresses.second_to_last.nil? ? "-" : progresses.second_to_last.date %></td>
+                <td style="text-align:center"><%= progresses.second_to_last.nil? ? "-" : show_score(progresses.second_to_last) %></td>
+                <td><%= progresses.second_to_last.nil? ? "-" : progresses.second_to_last.comment %></td>
               <tr>
 
               <tr>
                 <th style="text-align:center"><%= t('pdf.report.text_lasttime') %></td>
-                <td style="text-align:center"><%= target.progresses.last.date %></td>
-                <td style="text-align:center"><%= target.progresses.last.score %></td>
-                <td><%= target.progresses.last.comment %></td>
+                <td style="text-align:center"><%= progresses.last.nil? ? "-" : progresses.last.date %></td>
+                <td style="text-align:center"><%= progresses.last.nil? ? "-" : show_score(progresses.last) %></td>
+                <td><%= progresses.last.nil? ? "-" : progresses.last.comment %></td>
               <tr>
 
               <tr height="50px">
