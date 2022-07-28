@@ -227,12 +227,16 @@ class PagesController < ApplicationController
       sample_course?(current_user, course)
     end
     @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
-
     respond_to do |format|
       format.html
       format.pdf do
         render  pdf: "progress_report.pdf",
-                template: '/pages/print_report.html'
+                template: '/pages/print_report.html',
+                header: {
+                  html: {
+                    template: 'layouts/pdf_header'
+                  }
+                }
       end
     end
   end
