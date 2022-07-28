@@ -1,10 +1,13 @@
-<h2 class="font-weight-bold"><%= t('resources.progress') %></h2>
-
 <div class="mt-3">
-  <% @courses.each do |course| %>
-    <div class="fs-3 font-weight-bold">
-      <%= t('resources.course') %>: <%= course.name %> - <%= get_fullname(course.tutor) %>
-    </div>
+  <% @courses.each_with_index do |course, index| %>
+    <% if @courses.count == index + 1 %>
+      <div>
+    <% else %>
+      <div class="page-break">
+    <% end %>
+      <div class="fs-3 font-weight-bold">
+        <%= t('resources.course') %>: <%= course.name %> - <%= get_fullname(course.tutor) %>
+      </div>
       <div class="mb-5 ms-5">
         <% course.targets.each do |target| %>
           <% progresses = target.progresses.sort_by(&:date) %>
