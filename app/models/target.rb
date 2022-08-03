@@ -1,6 +1,8 @@
 class Target < ApplicationRecord
   has_many :progresses, dependent: :destroy
   has_many :targets, foreign_key: :parent_id, dependent: :destroy
+  has_many :assignments_targets, dependent: :destroy
+  has_many :assignments, through: :assignments_targets
   belongs_to :course
   belongs_to :parent, class_name: 'Target', foreign_key: :parent_id, optional: true
   validates :name, uniqueness: { scope: :course_id }, presence: true

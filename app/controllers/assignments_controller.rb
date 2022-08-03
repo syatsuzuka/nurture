@@ -103,6 +103,8 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.course = @course
+    @assignment.assignments_targets.build
+
     authorize @assignment
   end
 
@@ -198,7 +200,8 @@ class AssignmentsController < ApplicationController
       :review_comment,
       :start_date,
       :end_date,
-      :course_id
+      :course_id,
+      assignments_targets_attributes: [:id, :target_id]
     )
   end
 

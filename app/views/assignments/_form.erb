@@ -5,6 +5,11 @@
                 label: t('label.assignment.title'),
                 placeholder: t('label.assignment.title_placeholder')
     %>
+
+    <%= f.simple_fields_for :assignments_targets do |af| %>
+      <%= af.input :target_id, as: :select, collection: Target.all, include_hidden: false, input_html: { multiple: true } %>
+    <% end %>
+
     <%= f.input :instruction,
                 required: true,
                 label: t('label.assignment.instruction'),

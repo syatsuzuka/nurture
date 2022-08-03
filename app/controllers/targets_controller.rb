@@ -82,7 +82,16 @@ class TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:name, :description, :score_type, :score, :display, :course_id, :parent_id)
+    params.require(:target).permit(
+      :name,
+      :description,
+      :score_type,
+      :score,
+      :display,
+      :course_id,
+      :parent_id,
+      target_ids: []
+    )
   end
 
   def set_course
