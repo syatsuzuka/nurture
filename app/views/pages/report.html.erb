@@ -6,7 +6,11 @@
 
 <h1><i class="fas fa-chart-line"></i> <%= t('resources.progress') %><%= t('suffix.list') %></h1>
 
-<%= link_to print_report_path(format: :pdf), target: :_blank  do %><span class='btn btn-success text-light'><i class='fas fa-download'></i> <%= t('label.form.download_pdf') %></span><% end %>
+<%= link_to print_report_path(format: :pdf), target: :_blank  do %>
+  <span class='btn btn-success text-light'>
+    <i class='fas fa-download'></i> <%= t('label.form.download_pdf') %>
+  </span>
+<% end %>
 
 <div class="mt-5">
   <% if !@courses.nil? and @courses.count > 0  %>

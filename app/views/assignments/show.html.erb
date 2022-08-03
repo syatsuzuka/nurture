@@ -25,6 +25,21 @@
       <h1 class="mb-5"><%= @assignment.title %></h1>
       <div class="row">
         <div class="mb-3">
+          <h4><i class="fas fa-bullseye me-2"></i><%= t('resources.target') %></h4>
+          <% if @assignment.targets[0] %>
+            <p class="ms-3 p-2 text-dark">
+              <%= link_to course_target_progresses_path(@assignment.targets[0].course, @assignment.targets[0]), target: :_blank, class: "text-dark" do %>
+                <%= @assignment.targets[0].name %>
+              <% end %>
+              <i class="fas fa-external-link-alt"></i>
+            </p>
+          <% else %>
+            <p class="ms-3 p-2 text-secondary">No data</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3">
           <h4><i class="fas fa-book-reader me-2"></i><%= t('label.assignment.instruction') %></h4>
           <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
           <p>
@@ -32,6 +47,7 @@
               <%= link_to @assignment.instruction_url, target: :_blank, class: "text-secondary ms-3" do %>
                 <i class="fas fa-link me-2"></i><%= @assignment.instruction_url %>
               <% end %>
+              <i class="fas fa-external-link-alt"></i>
             <% end %>
           </p>
         </div>
@@ -60,6 +76,7 @@
               <%= link_to @assignment.material_url, target: :_blank, class: "text-secondary ms-3" do %>
                 <i class="fas fa-link me-2"></i><%= @assignment.material_url %>
               <% end %>
+              <i class="fas fa-external-link-alt"></i>
             <% end %>
           </p>
         </div>
