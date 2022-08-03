@@ -7,7 +7,8 @@
     %>
 
     <%= f.simple_fields_for :assignments_targets do |af| %>
-      <%= af.input :target_id, as: :select, collection: Target.all, include_hidden: false, input_html: { multiple: true } %>
+      <%= af.input :target_id, as: :select, collection: Target.all, include_hidden: false, input_html: { multiple: false } %>
+      <%= af.hidden_field :id %>
     <% end %>
 
     <%= f.input :instruction,
