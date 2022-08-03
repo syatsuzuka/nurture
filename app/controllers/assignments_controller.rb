@@ -130,7 +130,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
 
     if @assignment.update(assignment_params)
-      redirect_to course_assignment_path(@assignment)
+      redirect_to course_assignment_path(@assignment.course, @assignment)
     else
       render :edit
     end
@@ -201,7 +201,7 @@ class AssignmentsController < ApplicationController
       :start_date,
       :end_date,
       :course_id,
-      assignments_targets_attributes: [:id, :target_id]
+      assignments_targets_attributes: %i[id target_id]
     )
   end
 
