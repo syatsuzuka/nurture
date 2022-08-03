@@ -7,7 +7,7 @@
     %>
 
     <%= f.simple_fields_for :assignments_targets do |af| %>
-      <%= af.input :target_id, as: :select, collection: Target.where(course: @course), include_hidden: false, input_html: { multiple: false } %>
+      <%= af.input :target_id, label: t('resources.target'), as: :select, collection: Target.where(course: @course), include_hidden: false, input_html: { multiple: false } %>
       <%= af.hidden_field :id %>
     <% end %>
 
