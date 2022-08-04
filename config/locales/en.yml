@@ -163,6 +163,7 @@ en:
   pages:
     home:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
+      text_version: "Private Beta (data can be reset)"
       btn_start: "Start learning"
     dashboard:
       text_gannt_title: "Remaining Homework Schedule"
@@ -202,6 +203,7 @@ en:
     all:
     index:
       text_tree_title: "Target Tree"
+      text_blank: "(General)"
     show:
       btn_comment: "Add your comment?"
       btn_review: "Add your review?"
