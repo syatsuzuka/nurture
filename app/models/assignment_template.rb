@@ -11,7 +11,10 @@ class AssignmentTemplate < ApplicationRecord
       assignment_template.instruction_url = row["instruction_url"]
       assignment_template.checkpoint = row["checkpoint"]
       assignment_template.assignment_templates_set = assignment_templates_set
-      assignment_template.save
+      unless assignment_template.save
+        logger.debug("ERROR: Failed in uploading assignment_template data")
+        logger.debug("ERROR: #{assignment_template.errors.full_messages}")
+      end
     end
   end
 end

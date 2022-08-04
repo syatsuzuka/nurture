@@ -20,7 +20,10 @@ class Target < ApplicationRecord
       target.score_type = row["score_type"]
       target.display = row["display"]
       target.course = course
-      target.save
+      unless target.save
+        logger.debug("ERROR: Failed in uploading target data")
+        logger.debug("ERROR: #{target.errors.full_messages}")
+      end
     end
   end
 
