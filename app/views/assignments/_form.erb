@@ -20,6 +20,11 @@
                 label: t('label.assignment.instruction_url'),
                 placeholder: t('label.assignment.instruction_url_placeholder')
     %>
+     <%= f.input :video,
+              as: :file,
+              label: "Video upload",
+              placeholder: ('Add video')
+            %>
     <%= f.input :checkpoint,
                 required: true,
                 label: t('label.assignment.checkpoint'),

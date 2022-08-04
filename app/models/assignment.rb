@@ -3,6 +3,7 @@ class Assignment < ApplicationRecord
   has_many :targets, through: :assignments_targets
   accepts_nested_attributes_for :assignments_targets, allow_destroy: true
   belongs_to :course
+  has_one_attached :video
   delegate :tutor, to: :course
   delegate :student, to: :course
   validates :title, uniqueness: { scope: :course_id }, presence: true
