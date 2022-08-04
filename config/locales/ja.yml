@@ -163,6 +163,7 @@ ja:
   pages:
     home:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
+      text_version: "Private Beta (登録されたデータはリセットされる可能性があります)"
       btn_start: "スタート"
     dashboard:
       text_gannt_title: "未完了の宿題スケジュール"
@@ -200,6 +201,7 @@ ja:
     all:
     index:
       text_tree_title: "目標設定ツリー"
+      text_blank: "(全般)"
     show:
       btn_comment: "コメントの追記"
       btn_review: "レビューの追記"
