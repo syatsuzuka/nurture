@@ -1,7 +1,8 @@
 class Assignment < ApplicationRecord
-  has_many :assignments_targets, dependent: :destroy
-  has_many :targets, through: :assignments_targets
-  accepts_nested_attributes_for :assignments_targets, allow_destroy: true
+  # has_many :assignments_targets, dependent: :destroy
+  # has_many :targets, through: :assignments_targets
+  # accepts_nested_attributes_for :assignments_targets, allow_destroy: true
+  belongs_to :target, optional: true
   belongs_to :course
   delegate :tutor, to: :course
   delegate :student, to: :course
