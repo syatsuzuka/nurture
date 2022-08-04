@@ -224,6 +224,7 @@ en:
       text_title: "Upload Target data"
   progresses:
     index:
+      text_homework_list: "Related Homework List"
     new:
       text_title: "Add a New Progress"
     edit:

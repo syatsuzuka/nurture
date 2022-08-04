@@ -222,6 +222,7 @@ ja:
       text_title: "目標のアップロード"
   progresses:
     index:
+      text_homework_list: "関連宿題一覧"
     new:
       text_title: "進捗状況の新規作成"
     edit:
