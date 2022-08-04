@@ -29,8 +29,10 @@ class Assignment < ApplicationRecord
 
   def self.import(file, course)
     CSV.foreach(file.path, headers: true) do |row|
+      target = Target.find_by(course: course, name: row["target"])
       assignment = new
       assignment.title = row["title"]
+      assignment.target = target
       assignment.instruction = row["instruction"]
       assignment.instruction_url = row["instruction_url"]
       assignment.checkpoint = row["checkpoint"]
@@ -38,7 +40,10 @@ class Assignment < ApplicationRecord
       assignment.start_date = row["start_date"]
       assignment.end_date = row["end_date"]
       assignment.course = course
-      assignment.save
+      unless assignment.save
+        logger.debug("ERROR: Failed in uploading assignment data")
+        logger.debug("ERROR: #{assignment.errors.full_messages}")
+      end
     end
   end
 end
