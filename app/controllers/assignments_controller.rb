@@ -201,6 +201,7 @@ class AssignmentsController < ApplicationController
       :start_date,
       :end_date,
       :course_id,
+      :video,
       :target_id
     )
   end

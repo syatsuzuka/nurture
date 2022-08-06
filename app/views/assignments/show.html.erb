@@ -141,4 +141,16 @@
       <% end %>
     </div>
   </div>
+  <% unless @assignment.video.key.nil?%>
+        <div class= "video-container">
+          <%= cl_video_tag @assignment.video.key, :controls => true,
+              :transformation => [
+               width: 0.9 , crop: :fill,
+              :quality=>70],
+              :fallback_content => "Your browser does not support HTML5 video tags.",
+              colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
+              %>
+              <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+        </div>
+        <% end %>
 </div>
