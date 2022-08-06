@@ -16,7 +16,10 @@ class TargetTemplate < ApplicationRecord
       )
       target_template.score = row["score"]
       target_template.target_templates_set = target_templates_set
-      target_template.save
+      unless target_template.save
+        logger.debug("ERROR: Failed in uploading target_template data")
+        logger.debug("ERROR: #{target_template.errors.full_messages}")
+      end
     end
   end
 end

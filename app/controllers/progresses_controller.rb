@@ -8,6 +8,7 @@ class ProgressesController < ApplicationController
   before_action :set_active_courses
 
   def index
+    @assignments = policy_scope(Assignment).select { |assignment| assignment.target == @target }.sort_by!(&:title)
     @progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }.sort_by!(&:date)
 
     #===== Data set for graph =====

@@ -10,7 +10,10 @@ class Progress < ApplicationRecord
       progress.score = row["score"]
       progress.comment = row["comment"]
       progress.target = target
-      progress.save
+      unless progress.save
+        logger.debug("ERROR: Failed in uploading progress data")
+        logger.debug("ERROR: #{progress.errors.full_messages}")
+      end
     end
   end
 
