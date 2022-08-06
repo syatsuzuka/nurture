@@ -201,8 +201,10 @@ class AssignmentsController < ApplicationController
       :start_date,
       :end_date,
       :course_id,
-      :video,
-      :target_id
+      :instruction_video,
+      :material_video,
+      :target_id,
+      assignments_targets_attributes: %i[id target_id]
     )
   end
 
