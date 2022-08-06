@@ -203,8 +203,7 @@ class AssignmentsController < ApplicationController
       :course_id,
       :instruction_video,
       :material_video,
-      :target_id,
-      assignments_targets_attributes: %i[id target_id]
+      :target_id
     )
   end
 

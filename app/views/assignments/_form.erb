@@ -21,13 +21,11 @@
                 label: t('label.assignment.instruction_url'),
                 placeholder: t('label.assignment.instruction_url_placeholder')
     %>
-     <%= f.input :instruction_video,
+    <%= f.input :instruction_video,
               as: :file,
-              label: "Instructional video upload",
               label: t('label.assignment.instruction_video'),
               placeholder: t('label.assignment.instruction_video_placeholder')
-            %>
-
+    %>
     <%= f.input :checkpoint,
                 required: true,
                 label: t('label.assignment.checkpoint'),
@@ -50,12 +48,6 @@
         <%= @assignment.instruction_url %>
       </div>
     <% end %>
-
-     <%= f.input :material_video,
-          as: :file,
-           label: "Homework video upload",
-          placeholder: ('Add video')
-     %>
 
     <span><%= t('label.assignment.checkpoint') %></span>
     <div class="border mt-2 mb-3 p-2">
@@ -87,6 +79,11 @@
     <%= f.input :material_url,
                 label: t('label.assignment.material_url'),
                 placeholder: t('label.assignment.material_url_placeholder')
+    %>
+    <%= f.input :material_video,
+                as: :file,
+                label: t('label.assignment.material_video'),
+                placeholder: t('label.assignment.material_video_placeholder')
     %>
 
     <% if current_user.role == "tutor" %>
