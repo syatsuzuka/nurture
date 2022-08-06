@@ -9,7 +9,7 @@
 
 <div class="row">
 
-  <div class="col-8">
+  <div class="col-12">
     <div class="mb-5 me-5 flex-grow-1">
       <div class="row">
         <div class="col-2 mb-3">
@@ -51,14 +51,26 @@
         <div class="mb-3">
           <h4><i class="fas fa-book-reader me-2"></i><%= t('label.assignment.instruction') %></h4>
           <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
-          <p>
-            <% unless @assignment.instruction_url.blank? %>
+          <% unless @assignment.instruction_url.blank? %>
+            <p>
               <%= link_to @assignment.instruction_url, target: :_blank, class: "text-secondary ms-3" do %>
                 <i class="fas fa-link me-2"></i><%= @assignment.instruction_url %>
               <% end %>
               <i class="fas fa-external-link-alt"></i>
-            <% end %>
-          </p>
+            </p>
+          <% end %>
+          <% unless @assignment.video.key.nil?%>
+            <div class= "video-container">
+              <%= cl_video_tag @assignment.video.key, :controls => true,
+                :transformation => [
+                width: 0.9 , crop: :fill,
+                :quality=>70],
+                :fallback_content => "Your browser does not support HTML5 video tags.",
+                colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
+                %>
+                <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="row">
@@ -131,26 +143,4 @@
       <% end %>
     </div>
   </div>
-
-  <div class="col-4">
-    <div class="h-100">
-      <% if defined? @assignment.course.photo.key %>
-        <%= cl_image_tag @assignment.course.photo.key, class: "homework-img" %>
-      <% else %>
-        <%= image_tag 'No image.png', class: "homework-img" %>
-      <% end %>
-    </div>
-  </div>
-  <% unless @assignment.video.key.nil?%>
-        <div class= "video-container">
-          <%= cl_video_tag @assignment.video.key, :controls => true,
-              :transformation => [
-               width: 0.9 , crop: :fill,
-              :quality=>70],
-              :fallback_content => "Your browser does not support HTML5 video tags.",
-              colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
-              %>
-              <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
-        </div>
-        <% end %>
 </div>
