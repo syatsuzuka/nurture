@@ -132,16 +132,36 @@
       <% end %>
     </div>
   </div>
-  <% unless @assignment.video.key.nil?%>
-        <div class= "video-container">
-          <%= cl_video_tag @assignment.video.key, :controls => true,
-              :transformation => [
-               width: 0.9 , crop: :fill,
-              :quality=>70],
-              :fallback_content => "Your browser does not support HTML5 video tags.",
-              colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
-              %>
-              <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+  <div class="d-flex justify-content-around">
+    <% unless @assignment.instruction_video.key.nil?%>
+      <div class="d-flex flex-column">
+        <h4><i class="fas fa-chalkboard-teacher"></i> Instructional video</h4>
+          <div class= "video-container">
+            <%= cl_video_tag @assignment.instruction_video.key, :controls => true,
+                :transformation => [
+                width: 0.9 , crop: :fill,
+                :quality=>70],
+                :fallback_content => "Your browser does not support HTML5 video tags.",
+                colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
+                %>
+           </div>     <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+      </div>
+    <% end %>
+      <% unless @assignment.material_video.key.nil?%>
+        <div class="d-flex flex-column">
+          <h4><i class="fas fa-graduation-cap"></i> Homework video</h4>
+            <div class= "video-container">
+              <%= cl_video_tag @assignment.material_video.key, :controls => true,
+                  :transformation => [
+                  width: 0.9 , crop: :fill,
+                  :quality=>70],
+                  :fallback_content => "Your browser does not support HTML5 video tags.",
+                  colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
+                  %>
+                  <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+            </div>
         </div>
-        <% end %>
+    <% end %>
+  </div>
+
 </div>
