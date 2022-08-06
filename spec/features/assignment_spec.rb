@@ -100,13 +100,9 @@ feature 'homework (assignment)' do
     assignment_form.fill_in_edit_with(assignment_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
-    expect(page).to have_content('https://www.nurture.pw')
     expect(page).to have_content('Work In Process')
-    expect(page).to have_content('test_checkpoint')
-    expect(page).to have_content('test_comment')
-    expect(page).to have_content('test_review_comment')
-    expect(page).to have_content('Jan.01, 2022')
-    expect(page).to have_content('Dec.31, 2022')
+    expect(page).to have_content('2022-01-01')
+    expect(page).to have_content('2022-12-31')
 
     #======= Access to course detail =======
     click_on('courses-menu')
@@ -191,10 +187,9 @@ feature 'homework (assignment)' do
       assignment_end_date: "2022-12-31"
     }
     assignment_form.fill_in_done_with(assignment_params).submit
-    expect(page).to have_content('Pending')
-    expect(page).to have_content('test_comment')
-    expect(page).to have_content('Jan.01, 2022')
-    expect(page).to have_content('Dec.31, 2022')
+    expect(page).to have_content('Done')
+    expect(page).to have_content('2022-01-01')
+    expect(page).to have_content('2022-12-31')
 
     #======= Logout =======
     session_form.logout
@@ -217,12 +212,12 @@ feature 'homework (assignment)' do
       assignment_end_date: "2022-12-31"
     }
     assignment_form.fill_in_review_with(assignment_params).submit
-    expect(page).to have_content('Pending')
-    expect(page).to have_content('test_review_comment')
-    expect(page).to have_content('Jan.01, 2022')
-    expect(page).to have_content('Dec.31, 2022')
+    expect(page).to have_content('Done')
+    expect(page).to have_content('2022-01-01')
+    expect(page).to have_content('2022-12-31')
 
     #======= Check "Mark as completed" =======
+    click_on('Swing Practice every day')
     click_on('Mark as completed')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_content('Closed')

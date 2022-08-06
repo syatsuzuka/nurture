@@ -12,9 +12,12 @@
       <% @assignments.each do |assignment| %>
         <div class="col-12">
           <div class="card flex-md-row mb-4 shadow rounded">
-            <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
+            <div class="card-body col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start p-4">
               <div class="fs-6 text-secondary">
                 <%= assignment.course.name %>
+                <% if assignment.target %>
+                  / <%= assignment.target.name %>
+                <% end %>
               </div>
               <div class="fs-4">
                 <%= link_to course_assignment_path(assignment.course, assignment) do %>
@@ -58,11 +61,11 @@
                 <% end %>
               </div>
             </div>
-            <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-start align-self-center">
+            <div class="card-body col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 d-flex align-items-center align-self-center">
               <% unless assignment.end_date.nil? %>
                 <div><span class="badge rounded-pill bg-info ms-2 fs-7"><%= due_alert(assignment) %></span></div>
               <% end %>
-              <div class="fs-5">
+              <div class="fs-5 w-100 text-center">
                 <div>
                   <i class="fas fa-calendar"></i>
                   <% unless assignment.start_date.nil? %>
@@ -81,16 +84,18 @@
                 </div>
               </div>
             </div>
-            <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
-              <% if assignment.status == 0 %>
-                <span class="badge rounded-pill bg-danger fs-5 me-3">Work In Process</span>
-              <% elsif assignment.status == 1 %>
-                <span class="badge rounded-pill bg-success fs-5 me-3">Pending</span>
-              <% else %>
-                <span class="badge rounded-pill bg-secondary fs-5 me-3">Completed</span>
-              <% end %>
+            <div class="card-body col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 d-flex align-items-center align-self-center">
+              <div class="w-100 text-center">
+                <% if assignment.status == 0 %>
+                  <span class="badge rounded-pill bg-danger fs-5 me-3">Work In Process</span>
+                <% elsif assignment.status == 1 %>
+                  <span class="badge rounded-pill bg-success fs-5 me-3">Pending</span>
+                <% else %>
+                  <span class="badge rounded-pill bg-secondary fs-5 me-3">Completed</span>
+                <% end %>
+              </div>
             </div>
-            <%= add_image(assignment.course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120', style: "object-fit:cover;") %>
+            <%= add_image(assignment.course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120 d-none d-lg-block', style: "object-fit:cover;") %>
           </div>
         </div>
       <% end %>

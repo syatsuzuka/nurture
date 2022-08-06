@@ -1,8 +1,9 @@
 class Target < ApplicationRecord
   has_many :progresses, dependent: :destroy
   has_many :targets, foreign_key: :parent_id, dependent: :destroy
-  has_many :assignments_targets, dependent: :destroy
-  has_many :assignments, through: :assignments_targets
+  # has_many :assignments_targets, dependent: :destroy
+  # has_many :assignments, through: :assignments_targets
+  has_many :assignments
   belongs_to :course
   belongs_to :parent, class_name: 'Target', foreign_key: :parent_id, optional: true
   validates :name, uniqueness: { scope: :course_id }, presence: true
@@ -19,7 +20,10 @@ class Target < ApplicationRecord
       target.score_type = row["score_type"]
       target.display = row["display"]
       target.course = course
-      target.save
+      unless target.save
+        logger.debug("ERROR: Failed in uploading target data")
+        logger.debug("ERROR: #{target.errors.full_messages}")
+      end
     end
   end
 

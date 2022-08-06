@@ -103,7 +103,7 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.course = @course
-    @assignment.assignments_targets.build
+    # @assignment.assignments_targets.build
 
     authorize @assignment
   end
@@ -130,7 +130,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
 
     if @assignment.update(assignment_params)
-      redirect_to course_assignment_path(@assignment.course, @assignment)
+      redirect_to course_assignments_path(@course)
     else
       render :edit
     end
@@ -203,6 +203,7 @@ class AssignmentsController < ApplicationController
       :course_id,
       :instruction_video,
       :material_video,
+      :target_id,
       assignments_targets_attributes: %i[id target_id]
     )
   end

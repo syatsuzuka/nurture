@@ -9,7 +9,7 @@
 
 <div class="row">
 
-  <div class="col-8">
+  <div class="col-12">
     <div class="mb-5 me-5 flex-grow-1">
       <div class="row">
         <div class="col-2 mb-3">
@@ -22,14 +22,23 @@
           <% end %>
         </div>
       </div>
-      <h1 class="mb-5"><%= @assignment.title %></h1>
+      <h1 class="mb-5"><%= @assignment.title %>
+        <%= link_to edit_course_assignment_path(@assignment.course, @assignment),
+                      class: "edit-assignment" do %><%= show_edit_button.html_safe %><% end %>
+        <% if current_user.role == "tutor" %>
+          <%= link_to course_assignment_path(@assignment.course, @assignment),
+                        method: :delete,
+                        class: "delete-assignment",
+                        data: { confirm: 'Do you really want to delete the homework?' } do %><%= show_delete_button.html_safe %><% end %>
+        <% end %>
+      </h1>
       <div class="row">
         <div class="mb-3">
           <h4><i class="fas fa-bullseye me-2"></i><%= t('resources.target') %></h4>
-          <% if @assignment.targets[0] %>
+          <% if @assignment.target %>
             <p class="ms-3 p-2 text-dark">
-              <%= link_to course_target_progresses_path(@assignment.targets[0].course, @assignment.targets[0]), target: :_blank, class: "text-dark" do %>
-                <%= @assignment.targets[0].name %>
+              <%= link_to course_target_progresses_path(@assignment.target.course, @assignment.target), target: :_blank, class: "text-dark" do %>
+                <%= @assignment.target.name %>
               <% end %>
               <i class="fas fa-external-link-alt"></i>
             </p>
@@ -42,14 +51,26 @@
         <div class="mb-3">
           <h4><i class="fas fa-book-reader me-2"></i><%= t('label.assignment.instruction') %></h4>
           <p class="ms-3 p-2 border"><%= @assignment.instruction %></p>
-          <p>
-            <% unless @assignment.instruction_url.blank? %>
+          <% unless @assignment.instruction_url.blank? %>
+            <p>
               <%= link_to @assignment.instruction_url, target: :_blank, class: "text-secondary ms-3" do %>
                 <i class="fas fa-link me-2"></i><%= @assignment.instruction_url %>
               <% end %>
               <i class="fas fa-external-link-alt"></i>
-            <% end %>
-          </p>
+            </p>
+          <% end %>
+          <% unless @assignment.video.key.nil?%>
+            <div class= "video-container">
+              <%= cl_video_tag @assignment.video.key, :controls => true,
+                :transformation => [
+                width: 0.9 , crop: :fill,
+                :quality=>70],
+                :fallback_content => "Your browser does not support HTML5 video tags.",
+                colors: { "base": "#0071ba", "accent": "#db8226", "text": "#fff" }
+                %>
+                <%#^^^^^^^^^ Set 'width: :auto' if  image too big^^^^^^^ %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="row">
@@ -163,5 +184,4 @@
         </div>
     <% end %>
   </div>
-
 </div>
