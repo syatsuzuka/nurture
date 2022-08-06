@@ -99,6 +99,8 @@ ja:
       instruction_placeholder: "例： マシーンを使ったスマッシュの練習"
       instruction_url: "インストラクション (URL)"
       instruction_url_placeholder: "例： https://xxx.xxx.xxx/xxx"
+      instruction_video: "インストラクション (Video)"
+      instruction_video_placeholder: "例： xxx.mp4"
       checkpoint: "チェックポイント"
       checkpoint_placeholder: "例： 2日に1度、10回5セット練習を行う"
       status: "ステータス"
