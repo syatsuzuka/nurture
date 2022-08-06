@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_135452) do
+ActiveRecord::Schema.define(version: 2022_08_04_051441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,16 +78,9 @@ ActiveRecord::Schema.define(version: 2022_08_02_135452) do
     t.text "review_comment"
     t.string "material_url"
     t.string "instruction_url"
-    t.index ["course_id"], name: "index_assignments_on_course_id"
-  end
-
-  create_table "assignments_targets", force: :cascade do |t|
-    t.bigint "assignment_id"
     t.bigint "target_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["assignment_id"], name: "index_assignments_targets_on_assignment_id"
-    t.index ["target_id"], name: "index_assignments_targets_on_target_id"
+    t.index ["course_id"], name: "index_assignments_on_course_id"
+    t.index ["target_id"], name: "index_assignments_on_target_id"
   end
 
   create_table "blazer_audits", force: :cascade do |t|
@@ -293,8 +286,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_135452) do
   add_foreign_key "assignment_templates", "assignment_templates_sets"
   add_foreign_key "assignment_templates_sets", "users"
   add_foreign_key "assignments", "courses"
-  add_foreign_key "assignments_targets", "assignments"
-  add_foreign_key "assignments_targets", "targets"
+  add_foreign_key "assignments", "targets"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "users"

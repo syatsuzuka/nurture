@@ -166,7 +166,7 @@
   <% targets_list = @targets %>
   <% targets_list.unshift(nil) %>
   <% targets_list.each do |target| %>
-    <% assignments_list = @assignments.select{|assignment| assignment.targets[0] == target} %>
+    <% assignments_list = @assignments.select{|assignment| assignment.target == target} %>
     <% unless assignments_list.count == 0 %>
       <div class="mb-4">
         <% if target %>

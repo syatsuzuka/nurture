@@ -19,48 +19,59 @@
 </div>
 
 <div class="p-5">
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col"><i class="fas fa-bullseye"></i> <%= t('resources.target') %></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row"><%= t('resources.course') %></td>
-      <td><%= @target.course.name %></td>
-    </tr>
-    <tr>
-      <td scope="row"><%= t('label.target.name') %></td>
-      <td><%= @target.name %></td>
-    </tr>
-    <tr>
-      <td scope="row"><%= t('label.target.parent') %></td>
-      <td>
-        <% unless @target.parent.nil? %>
-          <%= link_to course_target_progresses_path(@target.course, @target.parent) do %>
-            <%= @target.parent.name %>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><i class="fas fa-bullseye"></i> <%= t('resources.target') %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row"><%= t('resources.course') %></td>
+        <td><%= @target.course.name %></td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('label.target.name') %></td>
+        <td><%= @target.name %></td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('label.target.parent') %></td>
+        <td>
+          <% unless @target.parent.nil? %>
+            <%= link_to course_target_progresses_path(@target.course, @target.parent) do %>
+              <%= @target.parent.name %>
+            <% end %>
+          <% else %>
+            -
           <% end %>
-        <% else %>
-          -
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td scope="row"><%= t('label.target.description') %></td>
-      <td><%= @target.description %></td>
-    </tr>
-    <tr>
-      <td scope="row"><%= t('label.target.score') %></td>
-      <td><%= show_target_score(@target) %> (<%= show_score_type(@target) %>)</td>
-    </tr>
-    <tr>
-      <td scope="row"><%= t('label.target.display') %></td>
-      <td><%= @target.display %></td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('label.target.description') %></td>
+        <td><%= @target.description %></td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('label.target.score') %></td>
+        <td><%= show_target_score(@target) %> (<%= show_score_type(@target) %>)</td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('label.target.display') %></td>
+        <td><%= @target.display %></td>
+      </tr>
+      <tr>
+        <td scope="row"><%= t('.text_homework_list') %></td>
+        <td>
+          <% @assignments.each do |assignment| %>
+            <%= link_to course_assignment_path(assignment.course, assignment), target: :_blank do %>
+              <%= assignment.title %>
+            <% end %>
+            <i class="fas fa-external-link-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- ======= Progress ======= -->
