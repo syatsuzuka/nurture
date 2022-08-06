@@ -18,8 +18,8 @@
       <% @courses.each do |course| %>
           <% course.targets.each do |target| %>
             <div class="col-12">
-              <div class="card flex-md-row mb-4 shadow rounded">
-                <div class="card-body col-sm-12 col-md-12 col-lg-8 col-xl-6 d-flex flex-column align-items-start inline p-4">
+              <div class="card flex-sm-row mb-4 shadow rounded">
+                <div class="card-body col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex flex-column align-items-start inline p-4">
                   <div class="fs-6 text-secondary">
                     <%= course.name %>
                   </div>
@@ -65,22 +65,19 @@
                     <% end %>
                   </div>
                 </div>
-                <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-start align-self-center">
-                  <div>Last Update</div>
-                  <div class="fs-5">
+                <div class="card-body col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3 align-items-start align-self-center text-center">
+                  <span>Last Update: </span>
+                  <span class="ms-3 fs-5">
                     <% if target.progresses.any? %>
+                      <%= link_to course_target_progresses_path(course, target) do %>
                       <%= target.progresses.sort_by(&:date).last.date %>
+                      <% end %>
                     <% else %>
                       (No data)
                     <% end %>
-                  </div>
+                  </span>
                 </div>
-                <div class="card-body col-sm-12 col-md-6 col-lg-4 col-xl-2 align-items-center align-self-center">
-                  <%= link_to course_target_progresses_path(course, target), class: "fs-4" do %>
-                    Target Detail
-                  <% end %>
-                </div>
-                <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120  d-none d-lg-block', style: "object-fit:cover;") %>
+                <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120  d-none d-xl-block', style: "object-fit:cover;") %>
               </div>
             </div>
         <% end %>
