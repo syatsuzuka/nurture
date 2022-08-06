@@ -19,9 +19,8 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    if record.role == "tutor" && record.visible
+    if (record == user) || (record.role == "tutor" && record.visible)
       return true
-
     elsif record.role == "student" && record.visible
       courses = Course.where(student: record)
       courses.each do |course|
