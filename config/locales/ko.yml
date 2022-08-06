@@ -108,6 +108,8 @@ ko:
       comment_placeholder: "E.g. Now, I can do Smash successfully at the rate of about 60%"
       material_url: "Report (URL)"
       material_url_placeholder: "E.g. https://xxx.xxx.xxx/xxx"
+      material_video: "Report (Video)"
+      material_video_placeholder: "E.g. xxx.mov"
       review_comment: "Tutor's Comment"
       review_comment_placeholder: "E.g. Good job!!"
       period: "Period"

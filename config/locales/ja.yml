@@ -108,6 +108,8 @@ ja:
       comment_placeholder: "例： 約60%の確率でスマッシュが入るようになった"
       material_url: "補足レポート (URL)"
       material_url_placeholder: "例： https://xxx.xxx.xxx/xxx"
+      material_video: "補足レポート (Video)"
+      material_video_placeholder: "E.g. xxx.mov"
       review_comment: "トレーナーコメント"
       review_comment_placeholder: "例：　大分上達しましたね！"
       period: "期間"
