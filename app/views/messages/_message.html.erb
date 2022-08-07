@@ -1,8 +1,6 @@
-
-
   <div id="message-<%= message.id %>"  class="d-flex flex-column text-wrap w-80 p-3 rounded mb-3 text-light <%=user_role_style(message)%>"   >
   <small >
-  <%= add_image(message.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %>
+    <%= add_image(message.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %>
     <strong><%= message.user.first_name%></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
@@ -28,4 +26,3 @@
 
   <div class="text-break"><%= text_or_youtube(message)%></div>
 </div>
-<p >
