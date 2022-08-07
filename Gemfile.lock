@@ -446,6 +446,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activesupport
   autoprefixer-rails (= 10.2.5)
   blazer
   bootsnap (>= 1.4.4)

@@ -61,6 +61,10 @@
                   collection: [["English", "en"], ["Japanese", "ja"], ["Korean", "ko"]],
                   selected: I18n.locale
       %>
+      <%= f.input :time_zone,
+            label: t('label.user.time_zone'),
+            as: :time_zone
+      %>
     </div>
 
     <div class="form-actions mb-3">

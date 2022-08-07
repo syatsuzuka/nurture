@@ -77,7 +77,7 @@
                     <% end %>
                   </span>
                   <p class="card-text d-none d-lg-block mt-3">
-                    <small class="text-muted">Created at <%= target.created_at.strftime("%F") %><%= target.created_at.strftime(" %I:%M%#p") %></small>
+                    <small class="text-muted"><%= t('shared.main.text_created_at') %> <%= target.created_at.strftime("%F") %><%= target.created_at.strftime(" %I:%M%#p") %></small>
                   </p>
                 </div>
 

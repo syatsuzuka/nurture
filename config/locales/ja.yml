@@ -57,6 +57,7 @@ ja:
       manager: "管理者"
       photo: "画像"
       locale: "言語"
+      time_zone: "タイムゾーン"
       message: "メッセージ"
       message_placeholder: "例： はじめまして！"
       interest: "興味分野"
@@ -164,6 +165,8 @@ ja:
     sidebarMenu:
       text_other_pages: "その他のページ"
       text_about_us: "About us"
+    main:
+      text_created_at: "作成日時:"
   pages:
     home:
       text_subtitle: "パーソナルトレーナーによるトレーニングおよび進捗管理を支援するソリューション"
@@ -206,6 +209,7 @@ ja:
     index:
       text_tree_title: "目標設定ツリー"
       text_blank: "(全般)"
+      text_read: "(既読)"
     show:
       btn_comment: "コメントの追記"
       btn_review: "レビューの追記"

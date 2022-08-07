@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_051441) do
+ActiveRecord::Schema.define(version: 2022_08_07_062912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_051441) do
     t.string "interest"
     t.bigint "manager_id"
     t.string "locale"
+    t.string "time_zone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["manager_id"], name: "index_users_on_manager_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

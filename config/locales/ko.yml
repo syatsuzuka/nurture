@@ -57,6 +57,7 @@ ko:
       manager: "Manager"
       photo: "Photo"
       locale: "Language"
+      time_zone: "Timezone"
       message: "Message"
       message_placeholder: "E.g. Hi there!"
       interest: "Interest"
@@ -164,6 +165,8 @@ ko:
     sidebarMenu:
       text_other_pages: "OTHER PAGES"
       text_about_us: "About us"
+    main:
+      text_created_at: "Created at"
   pages:
     home:
       text_subtitle: "The easiest way to help tutors engage with students and guide their progress"
@@ -208,6 +211,7 @@ ko:
     index:
       text_tree_title: "Target Tree"
       text_blank: "(General)"
+      text_read: "(read)"
     show:
       btn_comment: "Add your comment?"
       btn_review: "Add your review?"
