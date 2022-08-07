@@ -58,8 +58,10 @@ class AssignmentsController < ApplicationController
     gon.tree_title = t('.text_tree_title')
 
     #======= Data Setup for Gannt Chart =======
-    gon.assignments = []
-    @open_assignments = @assignments.select { |assignment| assignment.status.zero? }
+    gon.courses = []
+    gon.courses[0] = []
+    @open_assignments = @assignments.select { |assignment| assignment.status.zero? && assignment.course == @course }
+
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
         user_name = assignment.course.student.first_name
@@ -70,8 +72,8 @@ class AssignmentsController < ApplicationController
       start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
       end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
 
-      gon.assignments << {
-        "name" => assignment.course.name,
+      gon.courses[0] << {
+        "name" => t('.text_gannt_title'),
         "user_name" => user_name,
         "homework" => {
           "title" => assignment.title,

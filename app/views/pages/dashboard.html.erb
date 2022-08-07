@@ -52,19 +52,9 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-        <% unless @open_assignments.count == 0 %>
-          <div id="gannt-chart" class="card flex-md-row shadow p-4 rounded"></div>
-        <% else %>
-          <div class="card flex-md-row shadow p-4 text-secondary rounded">
-            <%= show_no_homework_message.html_safe %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
         <% @gannt_chart_num.times do |index| %>
           <% gannt_chart_id = "gannt-chart-#{index}" %>
-          <div id=<%= gannt_chart_id %> class="card flex-md-row shadow p-4 rounded"></div>
+          <div id=<%= gannt_chart_id %> class="card flex-md-row shadow p-4 mb-3 rounded"></div>
         <% end %>
       </div>
 

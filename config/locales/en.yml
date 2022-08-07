@@ -209,6 +209,7 @@ en:
   assignments:
     all:
     index:
+      text_gannt_title: "Remaining Homework Schedule"
       text_tree_title: "Target Tree"
       text_blank: "(General)"
       text_read: "(read)"

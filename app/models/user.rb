@@ -90,7 +90,7 @@ class User < ApplicationRecord
       instruction: "Take 30mins for shadow swing everyday",
       comment: "", checkpoint: "Take 30mins for shadow swing almost everyday (more than 90%)",
       course_id: course.id,
-      status: 2,
+      status: 0,
       start_date: "2020-09-01", end_date: "2020-12-31"
     )
     target1 = Target.create!(

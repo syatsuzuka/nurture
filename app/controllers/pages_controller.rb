@@ -87,7 +87,6 @@ class PagesController < ApplicationController
     @gannt_chart_num = 0
 
     @courses.each_with_index do |course, index|
-
       gon.courses[index] = []
       open_assignments = assignments.select { |assignment| assignment.status.zero? && assignment.course == course }
 
@@ -102,13 +101,14 @@ class PagesController < ApplicationController
             title = assignment.course.name
           end
         else
+          title = assignment.course.name
           user_name = assignment.course.tutor.first_name
         end
         start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
         end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
 
         gon.courses[index] << {
-          "name" => title,
+          "name" => "#{title} - #{user_name}",
           "user_name" => user_name,
           "homework" => {
             "title" => assignment.title,
