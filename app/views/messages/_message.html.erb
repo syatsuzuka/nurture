@@ -1,8 +1,12 @@
   <div id="message-<%= message.id %>"  class="d-flex flex-column text-wrap w-80 p-3 rounded mb-3 text-light <%=user_role_style(message)%>"   >
   <small >
+    <% if message.read %>
+      <div class="fs-8"><%= message.created_at.strftime("%F") %><%= message.created_at.strftime(" %I:%M%#p") %> <%= t('assignments.index.text_read') %></div>
+    <% else %>
+      <div class="fs-8"><%= message.created_at.strftime("%F") %><%= message.created_at.strftime(" %I:%M%#p") %></div>
+    <% end %>
     <%= add_image(message.user, 'avatar.png',class: "avatar-chat", crop: :thumb, gravity: :face, width:45, height:45) %>
-    <strong><%= message.user.first_name%></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <span class="fs-6 font-weight-bold"><%= message.user.first_name%> <%= message.user.last_name %></span>
   </small>
      <% unless message.photo.key.nil? %>
      <div class="img-container">

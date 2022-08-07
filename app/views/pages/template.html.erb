@@ -122,7 +122,7 @@
                   <% end %>
                 </span>
                 <p class="card-text d-none d-lg-block">
-                  <small class="text-muted">Created at <%= assignment_templates_set.created_at.strftime("%F") %><%= assignment_templates_set.created_at.strftime(" %I:%M%#p") %></small>
+                  <small class="text-muted"><%= t('shared.main.text_created_at') %> <%= assignment_templates_set.created_at.strftime("%F") %><%= assignment_templates_set.created_at.strftime(" %I:%M%#p") %></small>
                 </p>
               </p>
             </div>
