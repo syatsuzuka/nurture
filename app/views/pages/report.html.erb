@@ -76,7 +76,11 @@
                       (No data)
                     <% end %>
                   </span>
+                  <p class="card-text d-none d-lg-block mt-3">
+                    <small class="text-muted">Created at <%= target.created_at.strftime("%F") %><%= target.created_at.strftime(" %I:%M%#p") %></small>
+                  </p>
                 </div>
+
                 <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120  d-none d-xl-block', style: "object-fit:cover;") %>
               </div>
             </div>

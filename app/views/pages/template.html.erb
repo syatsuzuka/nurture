@@ -59,6 +59,9 @@
                   <% end %>
                 </span>
               </p>
+              <p class="card-text d-none d-lg-block">
+                <small class="text-muted">Created at <%= target_templates_set.created_at.strftime("%F") %><%= target_templates_set.created_at.strftime(" %I:%M%#p") %></small>
+              </p>
             </div>
           </div>
         </div>
@@ -118,6 +121,9 @@
                     <%= assignment_templates_set.user.first_name %> <%= assignment_templates_set.user.last_name %>
                   <% end %>
                 </span>
+                <p class="card-text d-none d-lg-block">
+                  <small class="text-muted">Created at <%= assignment_templates_set.created_at.strftime("%F") %><%= assignment_templates_set.created_at.strftime(" %I:%M%#p") %></small>
+                </p>
               </p>
             </div>
           </div>

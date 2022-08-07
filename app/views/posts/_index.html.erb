@@ -50,9 +50,9 @@
                       <%= post.user.nickname %>
                     <% end %>
                   </span>
-                </p>
-                <p>
-                  <small class="text-muted">Created at <%= post.created_at %></small>
+                  <div class="card-text d-none d-lg-block">
+                    <small class="text-muted">Created at <%= post.created_at.strftime("%F") %><%= post.created_at.strftime(" %I:%M%#p") %></small>
+                  </div>
                 </p>
               </div>
             </div>
