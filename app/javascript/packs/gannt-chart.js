@@ -14,9 +14,9 @@ today.setUTCSeconds(0);
 today.setUTCMilliseconds(0);
 today = today.getTime();
 
-courses = [];
-gon.courses.forEach(element => {
-  course =   {
+assignments = [];
+gon.assignments.forEach(element => {
+  assignment =   {
     name: element.name,
     user_name: element.user_name,
     current: 0,
@@ -28,14 +28,14 @@ gon.courses.forEach(element => {
       }
     ]
   };
-  courses.push(course)
+  assignments.push(assignment)
 });
 
 gannt_title = gon.gannt_title
 
 // Parse car data into series.
-series = courses.map(function (course, i) {
-    var data = course.homeworks.map(function (homework) {
+series = assignments.map(function (assignment, i) {
+    var data = assignment.homeworks.map(function (homework) {
         return {
             id: 'homework-' + i,
             title: homework.title,
@@ -45,10 +45,10 @@ series = courses.map(function (course, i) {
         };
     });
     return {
-        name: course.name,
-        user_name: course.user_name,
+        name: assignment.name,
+        user_name: assignment.user_name,
         data: data,
-        current: course.homeworks[course.current]
+        current: assignment.homeworks[assignment.current]
     };
 });
 
@@ -79,7 +79,7 @@ Highcharts.ganttChart('gannt-chart', {
         },
         series: {
             descriptionFormatter: function (series) {
-                return series.name + ', course ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+                return series.name + ', assignment ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
             }
         }
     },

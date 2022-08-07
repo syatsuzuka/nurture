@@ -53,7 +53,7 @@ class PagesController < ApplicationController
     end
 
     #======= Data Setup for Gannt Chart =======
-    gon.courses = []
+    gon.assignments = []
     gon.gannt_title = t('.text_gannt_title')
     @open_assignments = assignments.select { |assignment| assignment.status.zero? }
     @open_assignments.each do |assignment|
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
       start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
       end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
 
-      gon.courses << {
+      gon.assignments << {
         "name" => title,
         "user_name" => user_name,
         "homework" => {
