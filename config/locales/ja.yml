@@ -207,6 +207,7 @@ ja:
   assignments:
     all:
     index:
+      text_gannt_title: "未完了の宿題スケジュール"
       text_tree_title: "目標設定ツリー"
       text_blank: "(全般)"
       text_read: "(既読)"

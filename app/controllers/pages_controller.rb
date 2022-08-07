@@ -53,7 +53,7 @@ class PagesController < ApplicationController
     end
 
     #======= Data Setup for Gannt Chart =======
-    gon.courses = []
+    gon.assignments = []
     gon.gannt_title = t('.text_gannt_title')
     @open_assignments = assignments.select { |assignment| assignment.status.zero? }
     @open_assignments.each do |assignment|
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
       start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
       end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
 
-      gon.courses << {
+      gon.assignments << {
         "name" => title,
         "user_name" => user_name,
         "homework" => {
@@ -79,6 +79,44 @@ class PagesController < ApplicationController
           "end_date" => (end_date - Date.today).to_i
         }
       }
+    end
+
+    #======= Data Setup for Gannt Chart =======
+
+    gon.courses = []
+    @gannt_chart_num = 0
+
+    @courses.each_with_index do |course, index|
+      gon.courses[index] = []
+      open_assignments = assignments.select { |assignment| assignment.status.zero? && assignment.course == course }
+
+      @gannt_chart_num += 1 if open_assignments.count.positive?
+
+      open_assignments.each do |assignment|
+        if current_user.role == "tutor"
+          user_name = assignment.course.student.first_name
+          if current_user.users.any?
+            title = "#{assignment.course.name} with #{assignment.course.tutor.first_name}"
+          else
+            title = assignment.course.name
+          end
+        else
+          title = assignment.course.name
+          user_name = assignment.course.tutor.first_name
+        end
+        start_date = assignment.start_date.nil? ? assignment.created_at.to_date : assignment.start_date
+        end_date = assignment.end_date.nil? ? Date.today + 7 : assignment.end_date
+
+        gon.courses[index] << {
+          "name" => "#{title} - #{user_name}",
+          "user_name" => user_name,
+          "homework" => {
+            "title" => assignment.title,
+            "start_date" => (start_date - Date.today).to_i,
+            "end_date" => (end_date - Date.today).to_i
+          }
+        }
+      end
     end
 
     #======= Data Setup for Target Tree =======

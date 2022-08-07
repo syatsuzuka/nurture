@@ -14,117 +14,121 @@ today.setUTCSeconds(0);
 today.setUTCMilliseconds(0);
 today = today.getTime();
 
-courses = [];
-gon.courses.forEach(element => {
-  course =   {
-    name: element.name,
-    user_name: element.user_name,
-    current: 0,
-    homeworks: [
-      {
-        title: element.homework.title,
-        from: today + element.homework.start_date * day,
-        to: today + element.homework.end_date * day
-      }
-    ]
-  };
-  courses.push(course)
-});
 
-gannt_title = gon.gannt_title
+courses = []
+index = 0
 
-// Parse car data into series.
-series = courses.map(function (course, i) {
-    var data = course.homeworks.map(function (homework) {
+//======= Set Chart data =======
+gon.courses.forEach(course => {
+
+  console.log(index);
+  console.log(course)
+
+  if (course.length > 0){
+
+    //======= Set assignment list =======
+    assignments = []
+    course.forEach(element => {
+      assignment =   {
+        name: element.name,
+        user_name: element.user_name,
+        current: 0,
+        homeworks: [
+          {
+            title: element.homework.title,
+            from: today + element.homework.start_date * day,
+            to: today + element.homework.end_date * day
+          }
+        ]
+      };
+      assignments.push(assignment)
+    });
+
+
+    //======= Set Series =======
+    series = assignments.map(function (assignment, i) {
+        var data = assignment.homeworks.map(function (homework) {
+            return {
+                id: 'homework-' + i,
+                title: homework.title,
+                start: homework.from,
+                end: homework.to,
+                y: i
+            };
+        });
         return {
-            id: 'homework-' + i,
-            title: homework.title,
-            start: homework.from,
-            end: homework.to,
-            y: i
+            name: assignment.name,
+            user_name: assignment.user_name,
+            data: data,
+            current: assignment.homeworks[assignment.current]
         };
     });
-    return {
-        name: course.name,
-        user_name: course.user_name,
-        data: data,
-        current: course.homeworks[course.current]
-    };
-});
 
-Highcharts.ganttChart('gannt-chart', {
-    series: series,
-    title: {
-        text: gannt_title
-    },
-    tooltip: {
-        pointFormat: '<span>Title: {point.title}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
-    },
-    lang: {
+    console.log(series);
+
+    //======= Set Highchart =======
+    Highcharts.ganttChart(`gannt-chart-${index}`, {
+        series: series,
+        title: {
+            text: series[0].name
+        },
+        tooltip: {
+            pointFormat: '<span>Title: {point.title}</span><br/><span>From: {point.start:%e. %b}</span><br/><span>To: {point.end:%e. %b}</span>'
+        },
+        lang: {
+            accessibility: {
+                axis: {
+                    xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.',
+                    yAxisDescriptionSingular: 'The chart has a tabular Y axis showing a data table row for each point.'
+                }
+            }
+        },
         accessibility: {
-            axis: {
-                xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.',
-                yAxisDescriptionSingular: 'The chart has a tabular Y axis showing a data table row for each point.'
-            }
-        }
-    },
-    accessibility: {
-        keyboardNavigation: {
-            seriesNavigation: {
-                mode: 'serialize'
+            keyboardNavigation: {
+                seriesNavigation: {
+                    mode: 'serialize'
+                }
+            },
+            point: {
+                valueDescriptionFormat: 'Title {point.title} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+            },
+            series: {
+                descriptionFormatter: function (series) {
+                    return series.name + ', assignment ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+                }
             }
         },
-        point: {
-            valueDescriptionFormat: 'Title {point.title} from {point.x:%A, %B %e} to {point.x2:%A, %B %e}.'
+        xAxis: {
+            currentDateIndicator: true
         },
-        series: {
-            descriptionFormatter: function (series) {
-                return series.name + ', course ' + (series.index + 1) + ' of ' + series.chart.series.length + '.';
+        yAxis: {
+            type: 'category',
+            grid: {
+                columns: [{
+                    title: {
+                        text: 'Homework'
+                    },
+                    categories: series.map(function (s) {
+                        return s.current.title;
+                    })
+                }, {
+                    title: {
+                        text: 'From'
+                    },
+                    categories: series.map(function (s) {
+                        return dateFormat('%e. %b', s.current.from);
+                    })
+                }, {
+                    title: {
+                        text: 'To'
+                    },
+                    categories: series.map(function (s) {
+                        return dateFormat('%e. %b', s.current.to);
+                    })
+                }]
             }
         }
-    },
-    xAxis: {
-        currentDateIndicator: true
-    },
-    yAxis: {
-        type: 'category',
-        grid: {
-            columns: [{
-                title: {
-                    text: 'Course'
-                },
-                categories: series.map(function (s) {
-                    return s.name;
-                })
-            }, {
-                title: {
-                    text: ''
-                },
-                categories: series.map(function (s) {
-                    return s.user_name;
-                })
-            }, {
-                title: {
-                    text: 'Homework'
-                },
-                categories: series.map(function (s) {
-                    return s.current.title;
-                })
-            }, {
-                title: {
-                    text: 'From'
-                },
-                categories: series.map(function (s) {
-                    return dateFormat('%e. %b', s.current.from);
-                })
-            }, {
-                title: {
-                    text: 'To'
-                },
-                categories: series.map(function (s) {
-                    return dateFormat('%e. %b', s.current.to);
-                })
-            }]
-        }
-    }
-});
+    });
+    index = index + 1;
+  }
+})
