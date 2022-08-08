@@ -11,6 +11,8 @@ class ProgressesController < ApplicationController
     @assignments = policy_scope(Assignment).select { |assignment| assignment.target == @target }.sort_by!(&:title)
     @progresses = policy_scope(Progress).select { |progress| progress.target.id == @target.id }.sort_by!(&:date)
 
+    @pagy, @progresses_pagy = pagy(Progress.where(id: @progresses.map(&:id)).order(date: :desc))
+
     #===== Data set for graph =====
     @data = []
     data_hash_progress = []
@@ -36,7 +38,7 @@ class ProgressesController < ApplicationController
     authorize @progress
 
     if @progress.save
-      redirect_to course_target_progresses_path(@course, @target)
+      redirect_to course_target_progresses_path(@course, @target, anchor: "progresses")
     else
       render :new
     end
@@ -52,7 +54,7 @@ class ProgressesController < ApplicationController
     authorize @progress
 
     if @progress.update(progress_params)
-      redirect_to course_target_progresses_path(@course, @target)
+      redirect_to course_target_progresses_path(@course, @target, anchor: "progresses")
     else
       render :edit
     end
@@ -62,7 +64,7 @@ class ProgressesController < ApplicationController
     authorize @progress
     @progress.destroy
 
-    redirect_to course_target_progresses_path(@course, @target)
+    redirect_to course_target_progresses_path(@course, @target, anchor: "progresses")
   end
 
   def upload
