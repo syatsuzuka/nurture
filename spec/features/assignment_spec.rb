@@ -154,9 +154,9 @@ feature 'homework (assignment)' do
     find('#upload-assignment').click
     attach_file('file', 'public/sample/nurture_homework_sample.csv')
     click_on('Upload')
-    expect(page).to have_content('test')
-    expect(page).to have_content('test2')
-    expect(page).to have_content('test3')
+    expect(page).to have_content('Sample')
+    expect(page).to have_content('Sample2')
+    expect(page).to have_content('Sample3')
     expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 4
   end
 

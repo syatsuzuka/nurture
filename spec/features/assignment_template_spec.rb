@@ -108,9 +108,9 @@ feature 'homework template (assignment_template)' do
     find('#upload-assignment-template').click
     attach_file('file', 'public/sample/nurture_homework_template_sample.csv')
     click_on('Upload')
-    expect(page).to have_content('test')
-    expect(page).to have_content('test2')
-    expect(page).to have_content('test3')
+    expect(page).to have_content('Sample')
+    expect(page).to have_content('Sample2')
+    expect(page).to have_content('Sample3')
     expect(page.all('#assignment_templates > tbody > tr').count).to eq 4
   end
 

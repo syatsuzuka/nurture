@@ -1,4 +1,4 @@
 title,instruction,instruction_url,checkpoint,status,start_date,end_date
-test,test,"https://www.nurture.pw",test,0,2022/1/1,2022/3/31
-test2,test,"https://www.nurture.pw",test,0,2022/4/1,2022/6/30
-test3,test,"https://www.nurture.pw",test,0,2022/7/1,2022/9/30
+Sample,Sample,"https://www.nurture.pw",Sample,0,2022/1/1,2022/3/31
+Sample2,Sample,"https://www.nurture.pw",Sample,0,2022/4/1,2022/6/30
+Sample3,Sample,"https://www.nurture.pw",Sample,0,2022/7/1,2022/9/30

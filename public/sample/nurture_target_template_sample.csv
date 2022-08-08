@@ -1,5 +1,5 @@
 name,description,parent,score
-test,test,,100
-test2,test,test,110
-test3,test,test2,120
-test4,test,test3,130
+Sample,Sample,,100
+Sample2,Sample,Sample,110
+Sample3,Sample,Sample2,120
+Sample4,Sample,Sample3,130

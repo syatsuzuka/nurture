@@ -107,10 +107,10 @@ feature 'target_template' do
     find('#upload-target-template').click
     attach_file('file', 'public/sample/nurture_target_template_sample.csv')
     click_on('Upload')
-    expect(page).to have_content('test')
-    expect(page).to have_content('test > test2')
-    expect(page).to have_content('test > test2 > test3')
-    expect(page).to have_content('test > test2 > test3 > test4')
+    expect(page).to have_content('Sample')
+    expect(page).to have_content('Sample > Sample2')
+    expect(page).to have_content('Sample > Sample2 > Sample3')
+    expect(page).to have_content('Sample > Sample2 > Sample3 > Sample4')
     expect(page.all('#target_templates > tbody > tr').count).to eq 6
   end
 
