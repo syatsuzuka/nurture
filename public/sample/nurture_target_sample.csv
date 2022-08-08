@@ -1,5 +1,5 @@
 name,description,parent,score,score_type,display
-test,test,,100,integer,true
-test2,test,test,110,integer,false
-test3,test,test2,120,integer,true
-test4,test,test3,130,integer,false
+Sample,Sample,,100,integer,true
+Sample2,Sample,Sample,110,integer,false
+Sample3,Sample,Sample2,120,integer,true
+Sample4,Sample,Sample3,130,integer,false

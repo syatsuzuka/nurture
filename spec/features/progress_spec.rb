@@ -141,7 +141,7 @@ feature 'progress' do
     expect(page).to have_content('2022-07-01')
     expect(page).to have_content('2022-08-01')
     expect(page).to have_content('100')
-    expect(page).to have_content('test')
+    expect(page).to have_content('Sample')
     expect(page.all('#progresses >table > tbody > tr').count).to eq 12
   end
 
@@ -169,7 +169,7 @@ feature 'progress' do
     expect(page).to have_content('2022-07-01')
     expect(page).to have_content('2022-08-01')
     expect(page).to have_content('100')
-    expect(page).to have_content('test')
+    expect(page).to have_content('Sample')
     expect(page.all('#progresses >table > tbody > tr').count).to eq 12
   end
 
