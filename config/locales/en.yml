@@ -98,6 +98,7 @@ en:
     assignment:
       title: "Title"
       title_placeholder: "E.g. Smash Practice"
+      target: "Target"
       instruction: "Instruction"
       instruction_placeholder: "E.g. Practice Smash with machine"
       instruction_url: "Instruction (URL)"

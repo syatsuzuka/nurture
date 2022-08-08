@@ -55,7 +55,10 @@ class PagesController < ApplicationController
     #======= Data Setup for Gannt Chart =======
     gon.assignments = []
     gon.gannt_title = t('.text_gannt_title')
-    @open_assignments = assignments.select { |assignment| assignment.status.zero? }
+    @open_assignments = assignments
+                        .select { |assignment| assignment.status.zero? }
+                        .sort_by { |v| [v.end_date ? 0 : 1, v.end_date] }
+
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
         user_name = assignment.course.student.first_name

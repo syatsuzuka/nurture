@@ -8,7 +8,7 @@
 
     <%= f.input :target_id,
                 as: :select,
-                label: t('resources.target'),
+                label: t('label.assignment.target'),
                 collection: Target.where(course: @course)
     %>
 

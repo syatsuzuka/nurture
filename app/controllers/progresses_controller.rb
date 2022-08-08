@@ -74,7 +74,7 @@ class ProgressesController < ApplicationController
   def import
     Progress.import(params[:file], @target)
 
-    redirect_to course_target_progresses_path(@course, @target)
+    redirect_to course_target_progresses_path(@course, @target, anchor: "progresses")
   end
 
   def export
