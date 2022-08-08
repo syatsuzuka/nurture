@@ -38,7 +38,10 @@ class Assignment < ApplicationRecord
       assignment.instruction = row["instruction"]
       assignment.instruction_url = row["instruction_url"]
       assignment.checkpoint = row["checkpoint"]
-      assignment.status = 0
+      assignment.status = row["status"]
+      assignment.comment = row["comment"]
+      assignment.material_url = row["material_url"]
+      assignment.review_comment = row["review_comment"]
       assignment.start_date = row["start_date"]
       assignment.end_date = row["end_date"]
       assignment.course = course

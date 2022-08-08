@@ -105,7 +105,6 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.course = @course
-    # @assignment.assignments_targets.build
 
     authorize @assignment
   end
