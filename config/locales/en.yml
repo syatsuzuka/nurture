@@ -181,6 +181,10 @@ en:
     report:
       btn_pdf_download: "Download PDF"
     template:
+    docs:
+      text_title: "Docs"
+    company:
+      text_title: "Company Info"
   devise:
     passwords:
       new:

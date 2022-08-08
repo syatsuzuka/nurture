@@ -55,7 +55,9 @@ Rails.application.routes.draw do
     get '/report/print', to: 'pages#print_report', as: :print_report
     get '/template', to: 'pages#template', as: :template
     get '/knowledge', to: 'pages#knowledge', as: :knowledge
-    get '/aboutus', to: 'pages#aboutus', as: :aboutus
+    get '/docs', to: 'pages#docs', as: :docs
+    get '/company', to: 'pages#company', as: :company
+    # get '/aboutus', to: 'pages#aboutus', as: :aboutus
     authenticate :user, ->(user) { user.admin? } do
       mount Blazer::Engine, at: "blazer"
     end

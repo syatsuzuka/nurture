@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-md navbar-light sticky-top navbar-lewagon bg-dark">
   <div class="container-fluid">
-    <%= link_to dashboard_path, class: "navbar navbar-light text-light text-decoration-none d-flex align-items-center" do %>
+    <%= link_to root_path, class: "navbar navbar-light text-light text-decoration-none d-flex align-items-center" do %>
       <%= image_tag "Nuture2.png", style: "width:auto; height: 55px;"%>
       <div class="text-secondary fs-5">Private Beta</div>
     <% end %>
@@ -8,19 +8,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <nav class="my-2 my-md-0 mr-md-3">
+        <%= link_to "Docs", docs_path, class: "fs-5 p-2 text-light me-2" %>
+        <%= link_to "Company", company_path, class: "fs-5 p-2 text-light me-2" %>
       <% if user_signed_in? %>
-        <span class="text-light me-1 fs-5"><%= current_user.first_name %> <%= current_user.last_name %></span>
-        <% if current_user.role == 'tutor' %>
-          <i class="text-light fas fa-chalkboard-teacher me-3"></i>
-        <% else %>
-          <i class="text-light fas fa-graduation-cap me-3"></i>
-        <% end %>
         <%= add_image(current_user, 'avatar.png',class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40, crop: :fill) %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <%= link_to t('.text_setting'), edit_user_registration_path, id: "setting-menu", class: "dropdown-item" %>
           <%= link_to t('.text_logout'), destroy_user_session_path, method: :delete, id: "logout-menu", class: "dropdown-item" %>
         </div>
+        <% end %>
+      </nav>
 
+      <% if user_signed_in? %>
         <ul class="navbar-nav me-auto">
           <li class="nav-item hide mb-4 dropdown">
             <h5 class="m-3">
@@ -108,27 +109,11 @@
               </h5>
             </li>
           <% end %>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
-            <span id="text-other-pages" class="hide">
-              <%= t('.other_pages') %>
-            </span>
-          </h6>
-          <ul class="nav hide flex-column mb-2">
-            <li class="nav-item p-3">
-              <%= link_to aboutus_path, class: "nav-link, text-white text-decoration-none" do %>
-                <div <%= @active_aboutus %>>
-                  <i class="fas fa-user-friends me-1"></i>
-                  <%= t('.about_us') %>
-                </div>
-              <% end %>
-              </a>
-            </li>
-          </ul>
         </ul>
       <% else %>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-light"><%= link_to "Login", new_user_session_path, class: "nav-link" %></button>
+            <button type="button" class="btn btn-success"><%= link_to t('pages.home.btn_start'), new_user_session_path, class: "nav-link text-light" %></button>
           </li>
         </ul>
       <% end %>

@@ -1,17 +1,22 @@
-<div class="video-background-holder" id="banner">
+<div class="video-background-holder d-flex align-items-center" id="banner">
   <div class="video-background-overlay"></div>
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
         <source src="https://res.cloudinary.com/snoared/video/upload/v1653449529/production_ID_4058004_qigpfy.mp4" type="video/mp4">
   </video>
-  <div class="video-background-content container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
+  <div class="video-background-content container mb-5">
+    <div class="text-center">
       <div class="w-100 ">
         <%# <h1 class=" mb-4 display-4 font-weight-bolder mb-3 text-light" style="font-size: 100px; text-shadow: 0 0 10px #2e2e1f, 0 0 5px #2e2e1f;">Nurture</h1> %>
         <%= image_tag("Nuture2.png", style: "width:400px; height: auto;") %>
-        <p class="lead mb-5 mt-1 text-light " style="font-size: 28px, text-shadow: 0 0 10px #2e2e1f, 0 0 5px #2e2e1f;">
+        <p class="lead mt-3 mb-5 text-light " style="font-size: 28px, text-shadow: 0 0 10px #2e2e1f, 0 0 5px #2e2e1f;">
           <%= t '.text_subtitle' %>
         </p>
-        <p class="fs-5 text-light text-decoration-underline mb-3"><%= t('pages.home.text_version') %></p>
+        <p class="mt-5 mb-5">
+          <%= link_to new_user_session_path, id: "start", class:"enter" do %>
+            <%= t '.btn_start' %>
+          <% end %>
+        </p>
+        <p class="fs-5 text-light text-decoration-underline mb-4"><%= t('pages.home.text_version') %></p>
         <p class="fs-5 text-light">
           [
             <% unless I18n.locale.to_s == "en" %>
@@ -38,11 +43,6 @@
               </span>
             <% end %>
           ]
-        </p>
-        <p class="mt-5">
-          <%= link_to new_user_session_path, class:"enter" do %>
-            <%= t '.btn_start' %>
-          <% end %>
         </p>
       </div>
     </div>

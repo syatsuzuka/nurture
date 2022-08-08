@@ -17,7 +17,6 @@ feature 'user' do
     }
     user_form.visit_page.fill_in_with(user_params).submit
     expect(page).to have_content('Dashboard')
-    expect(page).to have_content('Test Tutor')
   end
 
   scenario 'creates a new student' do
@@ -34,7 +33,6 @@ feature 'user' do
     }
     user_form.visit_page.fill_in_with(user_params).submit
     expect(page).to have_content('Dashboard')
-    expect(page).to have_content('Test Student')
   end
 
   scenario 'updates an existing tutor' do
@@ -98,7 +96,6 @@ feature 'user' do
     }
     user_form.visit_page.fill_in_with(user_params).submit
     expect(page).to have_content('Dashboard')
-    expect(page).to have_content('Test Student')
   end
 
   scenario 'updates an existing student' do
