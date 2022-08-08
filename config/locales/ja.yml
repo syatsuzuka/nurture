@@ -1,6 +1,8 @@
 ja:
   resources:
     home: "Home"
+    docs: "ドキュメント"
+    company: "会社情報"
     dashboard: "ダッシュボード"
     report: "進捗報告"
     course: "コース"

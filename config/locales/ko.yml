@@ -1,6 +1,8 @@
 ko:
   resources:
     home: "Home"
+    docs: "Docs"
+    company: "Company"
     dashboard: "Dashboard"
     report: "Progress Report"
     course: "Course"

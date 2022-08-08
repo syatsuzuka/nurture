@@ -10,8 +10,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <nav class="my-2 my-md-0 mr-md-3">
-        <%= link_to "Docs", docs_path, class: "fs-5 p-2 text-light me-2" %>
-        <%= link_to "Company", company_path, class: "fs-5 p-2 text-light me-2" %>
+        <%= link_to t('resources.docs'), docs_path, class: "fs-5 p-2 text-light me-2" %>
+        <%= link_to t('resources.company'), company_path, class: "fs-5 p-2 text-light me-2" %>
       <% if user_signed_in? %>
         <%= add_image(current_user, 'avatar.png',class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width:40, height:40, crop: :fill) %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
