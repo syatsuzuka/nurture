@@ -91,7 +91,7 @@ feature 'progress' do
     expect(page).to have_content('2022-06-01')
     expect(page).to have_content('100')
     expect(page).to have_content('test_comment')
-    expect(page).to have_no_content('2020-04-01')
+    expect(page).to have_no_content('2020-12-01')
     expect(page.all('#progresses >table > tbody > tr').count).to eq 9
   end
 
