@@ -98,6 +98,7 @@ ja:
     assignment:
       title: "タイトル"
       title_placeholder: "例： スマッシュ練習"
+      target: "目標"
       instruction: "インストラクション"
       instruction_placeholder: "例： マシーンを使ったスマッシュの練習"
       instruction_url: "インストラクション (URL)"

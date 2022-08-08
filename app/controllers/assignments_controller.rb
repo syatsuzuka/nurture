@@ -8,9 +8,15 @@ class AssignmentsController < ApplicationController
   before_action :set_active_courses, only: %i[index show new create edit update destroy review close]
 
   def index
-    @assignments =  policy_scope(Assignment)
-                    .select { |assignment| assignment.course.id == @course.id }
-                    .sort_by(&:created_at)
+    @assignments = policy_scope(Assignment).select { |assignment| assignment.course.id == @course.id }
+
+    @pagy, @assignments_pagy = pagy(
+      Assignment.where(id: @assignments.map(&:id))
+        .order(:status)
+        .order(end_date: :asc)
+        .order(start_date: :asc)
+    )
+
     @targets =  policy_scope(Target)
                 .select { |target| target.course.id == @course.id }
                 .sort_by do |target|
@@ -60,7 +66,9 @@ class AssignmentsController < ApplicationController
     #======= Data Setup for Gannt Chart =======
     gon.courses = []
     gon.courses[0] = []
-    @open_assignments = @assignments.select { |assignment| assignment.status.zero? && assignment.course == @course }
+    @open_assignments = @assignments
+                        .select { |assignment| assignment.status.zero? && assignment.course == @course }
+                        .sort_by { |v| [v.end_date ? 0 : 1, v.end_date] }
 
     @open_assignments.each do |assignment|
       if current_user.role == "tutor"
@@ -115,7 +123,7 @@ class AssignmentsController < ApplicationController
     @assignment.status = 0
     authorize @assignment
     if @assignment.save
-      redirect_to course_assignments_path(@course)
+      redirect_to course_assignments_path(@course, anchor: "assignments")
     else
       render :new
     end
@@ -131,7 +139,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
 
     if @assignment.update(assignment_params)
-      redirect_to course_assignments_path(@course)
+      redirect_to course_assignments_path(@course, anchor: "assignments")
     else
       render :edit
     end
@@ -141,14 +149,20 @@ class AssignmentsController < ApplicationController
     authorize @assignment
     @assignment.destroy
 
-    redirect_to course_assignments_path(@assignment.course)
+    redirect_to course_assignments_path(@assignment.course, anchor: "assignments")
   end
 
   def all
     @assignments = policy_scope(Assignment).reject do |assignment|
       sample_course?(current_user, assignment)
     end
-    @assignments.sort_by!(&:status)
+
+    @pagy, @assignments_pagy = pagy(
+      Assignment.where(id: @assignments.map(&:id))
+        .order(:status)
+        .order(end_date: :desc)
+        .order(start_date: :desc)
+    )
   end
 
   def review
@@ -162,7 +176,7 @@ class AssignmentsController < ApplicationController
     authorize @assignment
 
     @assignment.save
-    redirect_to course_assignments_path(@course)
+    redirect_to course_assignments_path(@course, anchor: "assignments")
   end
 
   def upload
@@ -172,7 +186,7 @@ class AssignmentsController < ApplicationController
   def import
     Assignment.import(params[:file], @course)
 
-    redirect_to course_assignments_path(@course)
+    redirect_to course_assignments_path(@course, anchor: "assignments")
   end
 
   def export

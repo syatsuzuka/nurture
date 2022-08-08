@@ -14,14 +14,14 @@ feature 'homework (assignment)' do
 
     #======= Check the list of homework =======
     click_on('homework-menu')
-    expect(page.all('div.row > div').count).to eq 2
+    expect(page.all('main div.row > div').count).to eq 2
 
     #======= Access to course detail =======
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_no_content('test_title')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
 
     #======= Add a new homework =======
     find('#add-assignment').click
@@ -38,11 +38,11 @@ feature 'homework (assignment)' do
     assignment_form.fill_in_new_with(assignment_params).submit
     expect(page).to have_content('test_title')
     expect(page).to have_content('test_instruction')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 2
+    expect(page.all('#assignments table > tbody > tr').count).to eq 2
 
     #======= Check the list of homework =======
     click_on('homework-menu')
-    expect(page.all('div.row > div').count).to eq 3
+    expect(page.all('main div.row > div').count).to eq 3
 
     #======= Logout =======
     session_form.logout
@@ -79,10 +79,10 @@ feature 'homework (assignment)' do
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_no_content('test_title')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
 
     #======= Edit an existing homework =======
-    find('#assignments > div:nth-child(1)  > table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
+    find('#assignments table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
     expect(page).to have_content('Edit the Homework')
     assignment_form = AssignmentForm.new
     assignment_params = {
@@ -109,7 +109,7 @@ feature 'homework (assignment)' do
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_content('test_title')
-    expect(page.all('#assignments > div:nth-child(1)  > table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
   end
 
   scenario 'deletes the existing homework (assignment)' do
@@ -126,13 +126,13 @@ feature 'homework (assignment)' do
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_content('Swing Practice every day')
-    expect(page.all('#assignments > div:nth-child(1)  >table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
 
     #======= Delete an existing homework =======
-    find('#assignments > div:nth-child(1) > table > tbody > tr:nth-child(1) > td > a.delete-assignment').click
+    find('#assignments table > tbody > tr:nth-child(1) > td > a.delete-assignment').click
     expect(page).to have_content('Tennis Lesson (Beginner)')
     expect(page).to have_no_content('Swing Practice every day')
-    expect(page.all('#assignments >table > tbody > tr').count).to eq 0
+    expect(page.all('#assignments table > tbody > tr').count).to eq 0
   end
 
   scenario 'uploads new homeworks (assignment)' do
@@ -148,7 +148,7 @@ feature 'homework (assignment)' do
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
-    expect(page.all('#assignments > div:nth-child(1) >table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
 
     #======= Add a new homework =======
     find('#upload-assignment').click
@@ -157,7 +157,7 @@ feature 'homework (assignment)' do
     expect(page).to have_content('Sample')
     expect(page).to have_content('Sample2')
     expect(page).to have_content('Sample3')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 4
+    expect(page.all('#assignments table > tbody > tr').count).to eq 4
   end
 
   scenario 'review and close a homework (assignment)' do
@@ -173,10 +173,10 @@ feature 'homework (assignment)' do
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
 
     #======= Change the status of homework =======
-    find('#assignments > div:nth-child(1) > table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
+    find('#assignments table > tbody > tr:nth-child(1) > td > a.edit-assignment').click
     expect(page).to have_content('Edit the Homework')
     assignment_form = AssignmentForm.new
     assignment_params = {
@@ -226,7 +226,7 @@ feature 'homework (assignment)' do
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
     expect(page).to have_content('Tennis Lesson (Beginner)')
-    expect(page.all('#assignments > div:nth-child(1) > table > tbody > tr').count).to eq 1
+    expect(page.all('#assignments table > tbody > tr').count).to eq 1
   end
 
   scenario 'exports homework (assignment) list' do

@@ -163,95 +163,93 @@
 <% end %>
 
 <div class="collapse show" id="assignments">
-  <% targets_list = @targets %>
-  <% targets_list.unshift(nil) %>
-  <% targets_list.each do |target| %>
-    <% assignments_list = @assignments.select{|assignment| assignment.target == target} %>
-    <% unless assignments_list.count == 0 %>
-      <div class="mb-4">
-        <% if target %>
-          <h5>
-            <%= link_to course_target_progresses_path(target.course, target), target: :_blank, class: "text-dark" do %>
-              <%= target.name %>
+  <% unless @assignments.count == 0 %>
+    <%== pagy_bootstrap_nav(@pagy) %>
+    <div class="mb-4">
+      <table class="table table-responsive table-hover align-middle">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" width="5%">#</th>
+            <th scope="col" width="5%"><%= t('label.form.edit') %></th>
+            <th scope="col" width="15%"><%= t('label.assignment.title') %></th>
+            <th scope="col" width="15%"><%= t('label.assignment.target') %></th>
+            <th scope="col" width="25%"><%= t('label.assignment.instruction') %></th>
+            <th scope="col" width="15%"><%= t('label.assignment.status') %></th>
+            <th scope="col" width="15%"><%= t('label.assignment.period') %></th>
+            <% if current_user.role == "tutor" %>
+              <th scope="col" width="5%"><%= t('label.form.delete') %></th>
             <% end %>
-            <i class="fas fa-external-link-alt"></i>
-          </h5>
-        <% else %>
-          <h5><%= t('assignments.index.text_blank') %></h5>
-        <% end %>
-        <table class="table table-responsive table-hover align-middle">
-          <thead class="thead-dark">
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @assignments_pagy.each_with_index do |assignment, index| %>
             <tr>
-              <th scope="col" width="5%">#</th>
-              <th scope="col" width="5%"><%= t('label.form.edit') %></th>
-              <th scope="col" width="15%"><%= t('label.assignment.title') %></th>
-              <th scope="col" width="25%"><%= t('label.assignment.instruction') %></th>
-              <th scope="col" width="10%"><%= t('label.assignment.status') %></th>
-              <th scope="col" width="15%"><%= t('label.assignment.period') %></th>
+              <td scope="row"><%= index + 1 %></td>
+              <td>
+                <%= link_to edit_course_assignment_path(assignment.course, assignment),
+                    class: "edit-assignment" do %><%= show_edit_button.html_safe %><% end %>
+              </td>
+              <td>
+                <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
+                  <%= assignment.title %>
+                <% end %>
+              </td>
+              <td>
+                <% if assignment.target %>
+                  <%= link_to course_target_progresses_path(@course, assignment.target), target: :_blank do %>
+                    <%= assignment.target.name if assignment.target %>
+                  <% end %>
+                  <i class="fas fa-external-link-alt"></i>
+                <% else %>
+                  -
+                <% end %>
+              </td>
+              <td><%= assignment.instruction %></td>
+              <td>
+                <% if assignment.status == 0 %>
+                  Work In Process
+                <% elsif assignment.status == 1 %>
+                  Done
+                  <% if current_user.role == "tutor" %>
+                    <%= link_to "Close", close_course_assignment_path(@course, assignment, anchor: 'assignments'), method: :put, class: "btn btn-success", data: { confirm: 'Do you really want to close this?' } %>
+                  <% end %>
+                <% else %>
+                  Closed
+                <% end %>
+              </td>
+              <td>
+                <div>
+                  from:
+                  <% unless assignment.start_date.nil? %>
+                    <%= assignment.start_date %>
+                  <% else %>
+                    (Not determined)
+                  <% end %>
+                </div>
+                <div>
+                  to:
+                  <% unless assignment.end_date.nil? %>
+                    <%= assignment.end_date %>
+                  <% else %>
+                    (Not determined)
+                  <% end %>
+                </div>
+              </td>
               <% if current_user.role == "tutor" %>
-                <th scope="col" width="5%"><%= t('label.form.delete') %></th>
+                <td>
+                  <%= link_to course_assignment_path(assignment.course, assignment),
+                      method: :delete,
+                      class: "delete-assignment",
+                      data: { confirm: 'Do you really want to delete the homework?' } do %><%= show_delete_button.html_safe %><% end %>
+                </td>
               <% end %>
             </tr>
-          </thead>
-
-          <tbody>
-            <% assignments_list.each_with_index do |assignment, index| %>
-              <tr>
-                <td scope="row"><%= index + 1 %></td>
-                <td>
-                  <%= link_to edit_course_assignment_path(assignment.course, assignment),
-                      class: "edit-assignment" do %><%= show_edit_button.html_safe %><% end %>
-                </td>
-                <td>
-                  <%= link_to course_assignment_path(@course, assignment), class: "text-dark" do %>
-                    <%= assignment.title %>
-                  <% end %>
-                </td>
-                <td><%= assignment.instruction %></td>
-                <td>
-                  <% if assignment.status == 0 %>
-                    Work In Process
-                  <% elsif assignment.status == 1 %>
-                    Done
-                    <% if current_user.role == "tutor" %>
-                      <%= link_to "Close", close_course_assignment_path(@course, assignment, anchor: 'assignments'), method: :put, class: "btn btn-success", data: { confirm: 'Do you really want to close this?' } %>
-                    <% end %>
-                  <% else %>
-                    Closed
-                  <% end %>
-                </td>
-                <td>
-                  <div>
-                    from:
-                    <% unless assignment.start_date.nil? %>
-                      <%= assignment.start_date %>
-                    <% else %>
-                      (Not determined)
-                    <% end %>
-                  </div>
-                  <div>
-                    to:
-                    <% unless assignment.end_date.nil? %>
-                      <%= assignment.end_date %>
-                    <% else %>
-                      (Not determined)
-                    <% end %>
-                  </div>
-                </td>
-                <% if current_user.role == "tutor" %>
-                  <td>
-                    <%= link_to course_assignment_path(assignment.course, assignment),
-                        method: :delete,
-                        class: "delete-assignment",
-                        data: { confirm: 'Do you really want to delete the homework?' } do %><%= show_delete_button.html_safe %><% end %>
-                  </td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%== pagy_bootstrap_nav(@pagy) %>
   <% end %>
 </div>
 
