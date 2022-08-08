@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home]
+  skip_before_action :authenticate_user!, only: %i[home docs company]
   before_action :set_active_dashboard, only: %i[dashboard]
   before_action :set_active_report, only: %i[report print_report]
   before_action :set_active_template, only: %i[template]
@@ -298,6 +298,22 @@ class PagesController < ApplicationController
       end
 
     @pagy, @posts = pagy(posts.order(created_at: :desc))
+  end
+
+  def docs
+    if user_signed_in?
+      render layout: 'application'
+    else
+      render layout: 'public'
+    end
+  end
+
+  def company
+    if user_signed_in?
+      render layout: 'application'
+    else
+      render layout: 'public'
+    end
   end
 
   def aboutus

@@ -27,11 +27,15 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag "favicon.ico", options = {} %>
+    <%= include_gon %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-
   </head>
-  <body class="bg-white" style="overflow: hidden;">
+
+  <body class="bg-white">
     <%= render 'shared/navbar'%>
-    <%= yield %>
+
+    <div class="m-4">
+      <%= yield %>
+    </div>
   </body>
 </html>
