@@ -257,17 +257,24 @@ class PagesController < ApplicationController
   end
 
   def report
-    @courses = policy_scope(Course).reject do |course|
-      sample_course?(current_user, course)
+    @targets = policy_scope(Target).reject do |target|
+      sample_course?(current_user, target.course)
     end
-    @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
+
+    @pagy, @targets_pagy = pagy(
+      Target.where(id: @targets.map(&:id))
+        .includes(:course)
+        .order("courses.name")
+        .order("courses.student_user_id")
+        .order(:name)
+    )
   end
 
   def print_report
     @courses = policy_scope(Course).reject do |course|
       sample_course?(current_user, course)
     end
-    @courses.sort_by! { |course| [course.student_user_id, course.created_at] }
+    @courses.sort_by! { |course| [course.name, course.student_user_id] }
     respond_to do |format|
       format.html
       format.pdf do
