@@ -45,16 +45,16 @@
     <table class="table table-responsive table-hover align-middle">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col" width="5%">#</th>
           <% if current_user.role == "tutor" %>
             <th scope="col"><%= t('label.form.edit') %></th>
           <% end %>
           <th scope="col"><%= t('label.target.name') %></th>
           <th scope="col"><%= t('label.target.description') %></th>
           <th scope="col"><%= t('label.target.score') %></th>
-          <th scope="col"><%= t('label.target.display') %></th>
           <th scope="col"><%= t('label.target.latest_score') %></th>
           <th scope="col"><%= t('label.target.best_score') %></th>
+          <th scope="col"><%= t('label.target.display') %></th>
           <% if current_user.role == "tutor" %>
             <th scope="col"><%= t('label.form.delete') %></th>
           <% end %>
@@ -94,25 +94,25 @@
             </td>
             <td><%= target.description %></td>
             <td>
-              <%= show_target_score(target) %>(<%= show_score_type(target) %>)
+              <%= show_target_score(target) %><br>(<%= show_score_type(target) %>)
+            </td>
+            <td>
+              <% unless target.progresses.blank? %>
+                <%= show_score(target.progresses.order(date: :desc).first) %><br>(<%= target.progresses.order(date: :desc).first.date %>)
+              <% else %>
+                -
+              <% end %>
+            </td>
+            <td>
+              <% unless target.progresses.blank? %>
+                <%= show_score(target.progresses.order(score: :desc).first) %><br>(<%= target.progresses.order(score: :desc).first.date %>)
+              <% else %>
+                -
+              <% end %>
             </td>
             <td>
               <% if target.display == true %>
                 <i class="fas fa-check-circle"></i>
-              <% else %>
-                -
-              <% end %>
-            </td>
-            <td>
-              <% unless target.progresses.blank? %>
-                <%= show_score(target.progresses.order(date: :desc).first) %> (<%= target.progresses.order(date: :desc).first.date %>)
-              <% else %>
-                -
-              <% end %>
-            </td>
-            <td>
-              <% unless target.progresses.blank? %>
-                <%= show_score(target.progresses.order(score: :desc).first) %> (<%= target.progresses.order(score: :desc).first.date %>)
               <% else %>
                 -
               <% end %>
@@ -169,15 +169,15 @@
       <table class="table table-responsive table-hover align-middle">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" width="5%">#</th>
-            <th scope="col" width="5%"><%= t('label.form.edit') %></th>
-            <th scope="col" width="15%"><%= t('label.assignment.title') %></th>
-            <th scope="col" width="15%"><%= t('label.assignment.target') %></th>
-            <th scope="col" width="25%"><%= t('label.assignment.instruction') %></th>
-            <th scope="col" width="15%"><%= t('label.assignment.status') %></th>
-            <th scope="col" width="15%"><%= t('label.assignment.period') %></th>
+            <th scope="col">#</th>
+            <th scope="col"><%= t('label.form.edit') %></th>
+            <th scope="col"><%= t('label.assignment.title') %></th>
+            <th scope="col"><%= t('label.assignment.target') %></th>
+            <th scope="col"><%= t('label.assignment.instruction') %></th>
+            <th scope="col"><%= t('label.assignment.status') %></th>
+            <th scope="col"><%= t('label.assignment.period') %></th>
             <% if current_user.role == "tutor" %>
-              <th scope="col" width="5%"><%= t('label.form.delete') %></th>
+              <th scope="col"><%= t('label.form.delete') %></th>
             <% end %>
           </tr>
         </thead>
