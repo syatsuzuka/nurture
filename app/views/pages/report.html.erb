@@ -13,18 +13,18 @@
 <% end %>
 
 <div class="mt-5">
-  <% if !@courses.nil? and @courses.count > 0  %>
+  <%== pagy_bootstrap_nav(@pagy) %>
+  <% if @targets.count > 0 %>
     <div class="row mb-3">
-      <% @courses.each do |course| %>
-          <% course.targets.each do |target| %>
+      <% @targets_pagy.each do |target| %>
             <div class="col-12">
               <div class="card flex-sm-row mb-4 shadow rounded">
                 <div class="card-body col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex flex-column align-items-start inline p-4">
                   <div class="fs-6 text-secondary">
-                    <%= course.name %>
+                    <%= target.course.name %>
                   </div>
                   <div class="fs-4">
-                    <%= link_to new_course_target_progress_path(course, target) do %>
+                    <%= link_to new_course_target_progress_path(target.course, target) do %>
                       <%= target.name %>
                     <% end %>
                   </div>
@@ -33,12 +33,12 @@
                       <div>
                         <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                         <span class="fs-6 me-2">
-                          <% if course.tutor.visible %>
-                            <%= link_to tutor_path(course.tutor), class: "text-dark" do %>
-                              <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                          <% if target.course.tutor.visible %>
+                            <%= link_to tutor_path(target.course.tutor), class: "text-dark" do %>
+                              <%= target.course.tutor.first_name %> <%= target.course.tutor.last_name %>
                             <% end %>
                           <% else %>
-                            <%= course.tutor.first_name %> <%= course.tutor.last_name %>
+                            <%= target.course.tutor.first_name %> <%= target.course.tutor.last_name %>
                           <% end %>
                           <% if current_user.users.any? %>
                             (Tutor)
@@ -48,14 +48,14 @@
                     <% end %>
                     <% if current_user.role == "tutor" %>
                       <div>
-                        <%= add_image(course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                        <%= add_image(target.course.student, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                         <span class="fs-6 me-2">
-                          <% if course.student.visible %>
-                            <%= link_to student_path(course.student), class: "text-dark" do %>
-                              <%= course.student.first_name %> <%= course.student.last_name %>
+                          <% if target.course.student.visible %>
+                            <%= link_to student_path(target.course.student), class: "text-dark" do %>
+                              <%= target.course.student.first_name %> <%= target.course.student.last_name %>
                             <% end %>
                           <% else %>
-                            <%= course.student.first_name %> <%= course.student.last_name %>
+                            <%= target.course.student.first_name %> <%= target.course.student.last_name %>
                           <% end %>
                           <% if current_user.users.any? %>
                             (Student)
@@ -69,7 +69,7 @@
                   <span>Last Update: </span>
                   <span class="ms-3 fs-5">
                     <% if target.progresses.any? %>
-                      <%= link_to course_target_progresses_path(course, target) do %>
+                      <%= link_to course_target_progresses_path(target.course, target) do %>
                       <%= target.progresses.sort_by(&:date).last.date %>
                       <% end %>
                     <% else %>
@@ -81,12 +81,12 @@
                   </p>
                 </div>
 
-                <%= add_image(course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120  d-none d-xl-block', style: "object-fit:cover;") %>
+                <%= add_image(target.course, 'No image.png', class: 'col-md-4 col-lg-4 col-xl-2 h-120  d-none d-xl-block', style: "object-fit:cover;") %>
               </div>
             </div>
-        <% end %>
       <% end %>
     </div>
+  <%== pagy_bootstrap_nav(@pagy) %>
   <% else %>
     <span class="ms-5 text-secondary">No data</span>
   <% end %>
