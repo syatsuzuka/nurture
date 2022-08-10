@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
     else
       @courses = policy_scope(Course)
     end
-    @courses.order(:student_user_id, :created_at)
   end
 
   def new

@@ -9,19 +9,37 @@
   </ol>
 </nav>
 
-<div class="mt-3">
+<div class="d-flex justify-content-between align-items-center mb-4">
   <% if current_user.role == "tutor" %>
-    <h2 class="mb-4">
+    <h2>
       <i class="fas fa-user"></i>
       <%= t('resources.student') %><%= t('suffix.list') %>
     </h2>
+    <%= form_tag students_path, class: "d-flex h-25 w-50", method: :get do %>
+        <%= text_field_tag :q,
+          params[:q],
+          class: "form-control searchbar",
+          placeholder: t('.text_search_placeholder')
+        %>
+        <%= submit_tag t('label.form.search'), class: "btn btn-success" %>
+    <% end %>
   <% else %>
-    <h2 class="mb-4">
+    <h2>
       <i class="fas fa-chalkboard-teacher"></i>
       <%= t('resources.tutor') %><%= t('suffix.list') %>
     </h2>
+    <%= form_tag tutors_path, class: "d-flex h-25 w-50", method: :get do %>
+        <%= text_field_tag :q,
+          params[:q],
+          class: "form-control searchbar",
+          placeholder: t('.text_search_placeholder')
+        %>
+        <%= submit_tag t('label.form.search'), class: "btn btn-success" %>
+    <% end %>
   <% end %>
+</div>
 
+<div>
   <table class="table table-responsive table-hover align-middle">
     <thead class="thead-dark">
       <tr>

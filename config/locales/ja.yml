@@ -181,9 +181,12 @@ ja:
       text_tree_title: "目標設定ツリー"
       text_no_target: "(まだ目標設定が登録されていません)"
       text_no_course: "(まだコースが登録されていないため、関係者はいません)"
+    report:
+      text_search_placeholder: "例： Tennis"
     knowledge:
       text_search_placeholder: "例： Tennis"
     template:
+      text_search_placeholder: "例： Tennis"
   devise:
     passwords:
       new:
@@ -212,6 +215,7 @@ ja:
       text_access_denial: "あなたはこの招待の受け入れを行うことはできません。対象の受講者アカウントでログインし直してください。"
   assignments:
     all:
+      text_search_placeholder: "例： Tennis"
     index:
       text_gannt_title: "未完了の宿題スケジュール"
       text_tree_title: "目標設定ツリー"
@@ -269,6 +273,8 @@ ja:
     upload:
       text_title: "宿題設定テンプレートのアップロード"
   users:
+    index:
+      text_search_placeholder: "例： Sample"
     show:
       text_active_user: "アクティブユーザー"
       text_deactivated_user: "無効化済みユーザー"

@@ -298,7 +298,6 @@ class PagesController < ApplicationController
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
 
-    #======= PGsearch =======
     if params[:q].present?
       posts = policy_scope(Post).search_knowledge(params[:q])
     else

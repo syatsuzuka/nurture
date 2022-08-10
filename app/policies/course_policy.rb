@@ -5,9 +5,9 @@ class CoursePolicy < ApplicationPolicy
         courses = scope.select do |course|
           course.tutor == user || (manager?(user, course.tutor) && !sample_course?(user, course))
         end
-        return Course.where(id: courses.map(&:id)).order(:name)
+        return Course.where(id: courses.map(&:id)).order(:created_at)
       else
-        scope.where(student_user_id: user.id)
+        scope.where(student_user_id: user.id).order(:created_at)
       end
     end
   end
