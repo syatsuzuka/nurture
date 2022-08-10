@@ -182,8 +182,11 @@ en:
       text_no_target: "(No target is registered yet)"
       text_no_course: "(No relevant parties because no course is registered yet)"
     report:
-      btn_pdf_download: "Download PDF"
+      text_search_placeholder: "E.g. Tennis"
+    knowledge:
+      text_search_placeholder: "E.g. Tennis"
     template:
+      text_search_placeholder: "E.g. Tennis"
   devise:
     passwords:
       new:
@@ -201,6 +204,7 @@ en:
       links:
   courses:
     index:
+      text_search_placeholder: "E.g. Tennis"
     new:
       text_title: "Add a New Course"
     edit:
@@ -211,6 +215,7 @@ en:
       text_access_denial: "You can't accept this invitation. Please login with the right student's account."
   assignments:
     all:
+      text_search_placeholder: "E.g. Tennis"
     index:
       text_gannt_title: "Remaining Homework Schedule"
       text_tree_title: "Target Tree"
@@ -268,6 +273,8 @@ en:
     upload:
       text_title: "Upload the Homework Template"
   users:
+    index:
+      text_search_placeholder: "E.g. Sample"
     show:
       text_active_user: "active user"
       text_deactivated_user: "deactivated user"

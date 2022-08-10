@@ -297,15 +297,12 @@ class PagesController < ApplicationController
   def knowledge
     @target_templates_sets = policy_scope(TargetTemplatesSet)
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
-    # @posts = Post.all
 
-    #======= PGsearch =======
-    posts =
-      if params[:q].present?
-        poilcy_scope(Post).search_knowledge(params[:q])
-      else
-        policy_scope(Post)
-      end
+    if params[:q].present?
+      posts = policy_scope(Post).search_knowledge(params[:q])
+    else
+      posts = policy_scope(Post)
+    end
 
     @pagy, @posts = pagy(posts.order(created_at: :desc))
   end

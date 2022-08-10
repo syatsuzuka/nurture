@@ -4,7 +4,11 @@ class CoursesController < ApplicationController
   before_action :set_active_courses
 
   def index
-    @courses = policy_scope(Course).sort_by { |course| [course.student_user_id, course.created_at] }
+    if params[:q].present?
+      @courses = policy_scope(Course).search_by_name_and_description(params[:q])
+    else
+      @courses = policy_scope(Course)
+    end
   end
 
   def new
