@@ -5,7 +5,7 @@ class CoursePolicy < ApplicationPolicy
         courses = scope.select do |course|
           course.tutor == user || (manager?(user, course.tutor) && !sample_course?(user, course))
         end
-        courses.sort_by!(&:name)
+        return Course.where(id: courses.map(&:id)).order(:name)
       else
         scope.where(student_user_id: user.id)
       end

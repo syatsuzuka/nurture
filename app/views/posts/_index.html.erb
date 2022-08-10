@@ -1,14 +1,6 @@
-<div class="d-flex justify-content-between">
+<div class="mb-3">
   <%= link_to "posts/new", id: "add-post" do %>
     <%= show_add_button.html_safe %>
-  <% end %>
-  <%= form_tag knowledge_path, class: "d-flex h-25 w-50 mt-3", method: :get do %>
-      <%= text_field_tag :q,
-        params[:q],
-        class: "form-control searchbar",
-        placeholder: "Find a post"
-      %>
-      <%= submit_tag t('label.form.search'), class: "btn btn-success searchbox" %>
   <% end %>
 </div>
 

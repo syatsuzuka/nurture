@@ -181,8 +181,8 @@ en:
       text_tree_title: "Target Tree"
       text_no_target: "(No target is registered yet)"
       text_no_course: "(No relevant parties because no course is registered yet)"
-    report:
-      btn_pdf_download: "Download PDF"
+    knowledge:
+      text_search_placeholder: "E.g. Tennis"
     template:
   devise:
     passwords:
@@ -201,6 +201,7 @@ en:
       links:
   courses:
     index:
+      text_search_placeholder: "E.g. Tennis"
     new:
       text_title: "Add a New Course"
     edit:

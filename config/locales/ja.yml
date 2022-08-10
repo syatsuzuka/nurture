@@ -181,6 +181,8 @@ ja:
       text_tree_title: "目標設定ツリー"
       text_no_target: "(まだ目標設定が登録されていません)"
       text_no_course: "(まだコースが登録されていないため、関係者はいません)"
+    knowledge:
+      text_search_placeholder: "例： Tennis"
     template:
   devise:
     passwords:
@@ -199,6 +201,7 @@ ja:
       links:
   courses:
     index:
+      text_search_placeholder: "例： Tennis"
     new:
       text_title: "コースの新規作成"
     edit:
