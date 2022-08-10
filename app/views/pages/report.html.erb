@@ -31,7 +31,7 @@
                   <div class="ms-3 mt-3 mb-1">
                     <% if current_user.role == "student" || current_user.users.any? %>
                       <div>
-                        <%= add_image(course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
+                        <%= add_image(target.course.tutor, 'avatar.png', class: 'avatar-course', width:40, height:40) %>
                         <span class="fs-6 me-2">
                           <% if target.course.tutor.visible %>
                             <%= link_to tutor_path(target.course.tutor), class: "text-dark" do %>
