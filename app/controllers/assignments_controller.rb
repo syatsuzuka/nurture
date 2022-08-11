@@ -90,6 +90,7 @@ class AssignmentsController < ApplicationController
         }
       }
     end
+  end
 
   def show
     authorize @assignment
