@@ -52,15 +52,15 @@ module ApplicationHelper
   end
 
   def show_add_button
-    "<span class='btn btn-success text-light'><i class='fas fa-plus'></i> #{t('label.form.add')}</span>"
+    "<span class='btn btn-success text-light'><i class='fas fa-plus'></i></span>"
   end
 
   def show_upload_button
-    "<span class='btn btn-success text-light'><i class='fas fa-upload'></i> #{t('label.form.upload')}</span>"
+    "<span class='btn btn-success text-light'><i class='fas fa-upload'></i></span>"
   end
 
   def show_download_button
-    "<span class='btn btn-success text-light'><i class='fas fa-download'></i> #{t('label.form.download')}</span>"
+    "<span class='btn btn-success text-light'><i class='fas fa-download'></i></span>"
   end
 
   def show_edit_button
