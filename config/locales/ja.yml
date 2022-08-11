@@ -186,7 +186,7 @@ ja:
     knowledge:
       text_search_placeholder: "例： タイトル、概要"
     template:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： 名称、カテゴリー"
   devise:
     passwords:
       new:

@@ -46,9 +46,8 @@
             </div>
             <% if target_templates_set.user == current_user %>
               <div class="mt-2 mb-3">
-                <%= link_to edit_target_templates_set_path(target_templates_set), class: "ms-3 edit-target-templates-set btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_target_templates_set_path(target_templates_set),
+                          class: "edit-target-templates-set ms-3" do %><%= show_edit_button.html_safe %><% end %>
 
                 <%= link_to target_templates_set_path(target_templates_set),
                     method: :delete,
@@ -70,7 +69,7 @@
                 </span>
               </p>
               <p class="card-text d-none d-lg-block">
-                <small class="text-muted">Created at <%= target_templates_set.created_at.strftime("%F") %><%= target_templates_set.created_at.strftime(" %I:%M%#p") %></small>
+                <small class="text-muted"><%= t('shared.main.text_created_at') %> <%= target_templates_set.created_at.strftime("%F") %><%= target_templates_set.created_at.strftime(" %I:%M%#p") %></small>
               </p>
             </div>
           </div>
@@ -109,9 +108,8 @@
             </div>
             <% if assignment_templates_set.user == current_user %>
               <div class="mt-2 mb-3">
-                <%= link_to edit_assignment_templates_set_path(assignment_templates_set), class: "ms-3 edit-assignment-templates-set btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_assignment_templates_set_path(assignment_templates_set),
+                          class: "edit-assignment-templates-set ms-3" do %><%= show_edit_button.html_safe %><% end %>
 
                 <%= link_to assignment_templates_set_path(assignment_templates_set),
                     method: :delete,
