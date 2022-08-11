@@ -11,13 +11,20 @@
 <% if @target_templates_set.user == current_user %>
   <%= link_to new_target_templates_set_target_template_path(@target_templates_set),
       id: "add-target-template",
-      class: "ms-3" do %><%= show_add_button.html_safe %><% end %>
+      class: "ms-3",
+      'data-toggle': "tooltip",
+      title: t('label.form.add') do %><%= show_add_button.html_safe %><% end %>
+
   <%= link_to upload_target_templates_path(@target_templates_set),
-      id: "upload-target-template" do %><%= show_upload_button.html_safe %><% end %>
+      id: "upload-target-template",
+      'data-toggle': "tooltip",
+      title: t('label.form.upload') do %><%= show_upload_button.html_safe %><% end %>
 <% end %>
 
 <%= link_to export_target_templates_path(@target_templates_set, format: :csv),
-    id: "download-target-template" do %><%= show_download_button.html_safe %><% end %>
+    id: "download-target-template",
+    'data-toggle': "tooltip",
+    title: t('label.form.download') do %><%= show_download_button.html_safe %><% end %>
 
 <div id="network-graph" class="card flex-md-row shadow mt-4 mb-4 p-4 rounded"></div>
 
@@ -41,7 +48,9 @@
           <td>
             <% if @target_templates_set.user == current_user %>
               <%= link_to edit_target_templates_set_target_template_path(target_template.target_templates_set, target_template),
-                  class: "edit-target_template" do %><%= show_edit_button.html_safe %><% end %>
+                  class: "edit-target_template",
+                  'data-toggle': "tooltip",
+                  title: t('label.form.edit') do %><%= show_edit_button.html_safe %><% end %>
             <% end %>
           </td>
           <td>
@@ -71,7 +80,9 @@
                 <%= link_to target_templates_set_target_template_path(target_template.target_templates_set, target_template),
                     method: :delete,
                     class: "delete-target_template ms-1",
-                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
+                    data: { confirm: 'Do you really want to delete the target template?' },
+                    'data-toggle': "tooltip",
+                    title: t('label.form.edit') do %><%= show_delete_button.html_safe %><% end %>
               <% end %>
             </td>
           <% end %>
