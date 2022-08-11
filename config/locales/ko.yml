@@ -186,7 +186,7 @@ ko:
     knowledge:
       text_search_placeholder: "E.g. title, summary"
     template:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. name, category"
   devise:
     passwords:
       new:

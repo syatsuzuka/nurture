@@ -2,7 +2,7 @@ class AssignmentTemplatesSetPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all.sort_by(&:name).sort_by(&:category) if user.role == "tutor"
+      scope.all.order(:category, :name) if user.role == "tutor"
     end
   end
 

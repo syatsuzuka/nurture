@@ -296,8 +296,13 @@ class PagesController < ApplicationController
   end
 
   def template
-    @target_templates_sets = policy_scope(TargetTemplatesSet)
-    @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+    if params[:q].present?
+      @target_templates_sets = policy_scope(TargetTemplatesSet).search(params[:q])
+      @assignment_templates_sets = policy_scope(AssignmentTemplatesSet).search(params[:q])
+    else
+      @target_templates_sets = policy_scope(TargetTemplatesSet)
+      @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+    end
   end
 
   def knowledge
