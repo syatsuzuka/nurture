@@ -2,7 +2,7 @@ class AssignmentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.select do |assignment|
+        assignments = scope.select do |assignment|
           result = false
           result = true if assignment.course.tutor == user
           result = true if manager?(user, assignment.course.tutor)
@@ -10,8 +10,10 @@ class AssignmentPolicy < ApplicationPolicy
           result
         end
       else
-        scope.select { |assignment| assignment.course.student == user }
+        assignments = scope.select { |assignment| assignment.course.student == user }
       end
+
+      return Assignment.where(id: assignments.map(&:id))
     end
   end
 

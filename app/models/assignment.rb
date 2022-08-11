@@ -13,6 +13,13 @@ class Assignment < ApplicationRecord
   validate :check_instruction_url
   validate :check_material_url
 
+  include PgSearch::Model
+  pg_search_scope :search,
+                  against: %i[title],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   def check_instruction_url
     unless instruction_url.blank?
       unless instruction_url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
