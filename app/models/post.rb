@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
 
   include PgSearch::Model
-  pg_search_scope :search_knowledge,
-                  against: %i[title content],
+  pg_search_scope :search,
+                  against: %i[title summary],
                   using: {
                     tsearch: { prefix: true }
                   }

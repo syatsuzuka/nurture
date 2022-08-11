@@ -2,12 +2,14 @@ class TargetPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.select do |target|
+        targets = scope.select do |target|
           target.course.tutor == user || manager?(user, target.course.tutor)
         end
       else
-        scope.select { |target| target.course.student == user }
+        targets = scope.select { |target| target.course.student == user }
       end
+
+      return Target.where(id: targets.map(&:id)).order(:name)
     end
   end
 

@@ -10,6 +10,13 @@ class Target < ApplicationRecord
   validates :description, :score, presence: true
   validate :check_score
 
+  include PgSearch::Model
+  pg_search_scope :search,
+                  against: %i[name],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   def self.import(file, course)
     CSV.foreach(file.path, headers: true) do |row|
       target = new

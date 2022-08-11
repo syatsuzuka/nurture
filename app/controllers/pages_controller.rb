@@ -257,7 +257,13 @@ class PagesController < ApplicationController
   end
 
   def report
-    @targets = policy_scope(Target).reject do |target|
+    if params[:q].present?
+      targets = policy_scope(Target).search(params[:q])
+    else
+      targets = policy_scope(Target)
+    end
+
+    @targets = targets.reject do |target|
       sample_course?(current_user, target.course)
     end
 
@@ -299,7 +305,7 @@ class PagesController < ApplicationController
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
 
     if params[:q].present?
-      posts = policy_scope(Post).search_knowledge(params[:q])
+      posts = policy_scope(Post).search(params[:q])
     else
       posts = policy_scope(Post)
     end

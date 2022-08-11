@@ -182,9 +182,9 @@ en:
       text_no_target: "(No target is registered yet)"
       text_no_course: "(No relevant parties because no course is registered yet)"
     report:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. target name"
     knowledge:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. title, summary"
     template:
       text_search_placeholder: "E.g. Tennis"
   devise:

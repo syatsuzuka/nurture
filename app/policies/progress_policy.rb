@@ -2,12 +2,14 @@ class ProgressPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.role == "tutor"
-        scope.select do |progress|
+        progresses = scope.select do |progress|
           progress.target.course.tutor == user || manager?(user, progress.target.course.tutor)
         end
       else
-        scope.select { |progress| progress.target.course.student == user }
+        progresses = scope.select { |progress| progress.target.course.student == user }
       end
+
+      return Progress.where(id: progresses.map(&:id))
     end
   end
 
