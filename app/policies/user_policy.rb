@@ -12,10 +12,12 @@ class UserPolicy < ApplicationPolicy
           end
           result
         end
-        return User.where(id: users.map(&:id)).order(:first_name, :last_name)
+        users = User.where(id: users.map(&:id)).order(:first_name, :last_name)
       else
-        return scope.where(role: "tutor").order(:first_name, :last_name)
+        users = scope.where(role: "tutor").order(:first_name, :last_name)
       end
+
+      return users
     end
   end
 
