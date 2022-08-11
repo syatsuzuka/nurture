@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   before_action :set_active_users
 
   def index
-    @users = policy_scope(User).sort_by(&:first_name)
+    users = policy_scope(User)
+
+    if params[:q].present?
+      users = policy_scope(User).search(params[:q])
+    else
+      users = policy_scope(User)
+    end
+
+    @pagy, @users_pagy = pagy(users)
   end
 
   def show
