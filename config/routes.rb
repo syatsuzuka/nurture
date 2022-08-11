@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     get '/knowledge', to: 'pages#knowledge', as: :knowledge
     get '/docs', to: 'pages#docs', as: :docs
     get '/company', to: 'pages#company', as: :company
+    get '/chatrooms/:id', to: 'chatrooms#show'
     # get '/aboutus', to: 'pages#aboutus', as: :aboutus
     authenticate :user, ->(user) { user.admin? } do
       mount Blazer::Engine, at: "blazer"

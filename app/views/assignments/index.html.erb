@@ -254,8 +254,10 @@
 </div>
 
 <% if @course.tutor == current_user || @course.student == current_user %>
-  <div class="mt-5">
-    <%= render 'chat' %>
+  <div class="mt-5 position-sticky" style="margin-left: 95%; bottom: 30px;">
+    <%= link_to chatroom_path(id: @course.id), target: :blank do%>
+      <%= image_tag "chat.png", style:"width:50px; height:50px;" %>
+    <% end %>
   </div>
 <% end %>
 
