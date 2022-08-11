@@ -176,6 +176,7 @@ ko:
       text_version: "Private Beta (data can be reset)"
       btn_start: "Start learning"
     dashboard:
+      text_search_placeholder: "E.g. name, description"
       text_gannt_title: "Remaining Homework Schedule"
       text_org_title: "Relevant Parties"
       text_tree_title: "Target Tree"

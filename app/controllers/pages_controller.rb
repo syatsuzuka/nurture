@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     #======= PGsearch =======
     courses =
       if params[:q].present?
-        policy_scope(Course).search_by_name_and_description(params[:q])
+        policy_scope(Course).search(params[:q])
       else
         policy_scope(Course)
       end
