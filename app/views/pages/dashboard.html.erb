@@ -10,7 +10,7 @@
     <%= text_field_tag :q,
       params[:q],
       class: "form-control searchbar",
-      placeholder: "Find a dashboard"
+      placeholder: t('.text_search_placeholder')
     %>
     <%= submit_tag t('label.form.search'), class: "btn btn-success searchbox" %>
   <% end %>

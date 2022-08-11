@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 
   def index
     if params[:q].present?
-      @courses = policy_scope(Course).search_by_name_and_description(params[:q])
+      @courses = policy_scope(Course).search(params[:q])
     else
       @courses = policy_scope(Course)
     end

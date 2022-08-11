@@ -176,6 +176,7 @@ ja:
       text_version: "Private Beta (登録されたデータはリセットされる可能性があります)"
       btn_start: "スタート"
     dashboard:
+      text_search_placeholder: "例： 名称、摘要"
       text_gannt_title: "未完了の宿題スケジュール"
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
