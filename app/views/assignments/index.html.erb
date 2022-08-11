@@ -251,8 +251,16 @@
     </div>
     <%== pagy_bootstrap_nav(@pagy) %>
   <% end %>
+
 </div>
 
+<% if @course.tutor == current_user || @course.student == current_user %>
+  <div class="position-sticky" style="margin-left: 90%; bottom: 20px;">
+    <%= link_to chatroom_path(id: @course.id), target: :blank do%>
+      <%= image_tag "chat.png", style:"width:50px; height:50px;" %>
+    <% end %>
+  </div>
+<% end %>
 
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -290,10 +298,3 @@
 
 <!-- network: network -->
 <%= javascript_pack_tag 'network-graph', 'data-turbolinks-track': 'reload', defer: true  %>
-<% if @course.tutor == current_user || @course.student == current_user %>
-  <div class="mt-5 position-sticky" style="margin-left: 90%; bottom: 20px;">
-    <%= link_to chatroom_path(id: @course.id), target: :blank do%>
-      <%= image_tag "chat.png", style:"width:50px; height:50px;" %>
-    <% end %>
-  </div>
-<% end %>
