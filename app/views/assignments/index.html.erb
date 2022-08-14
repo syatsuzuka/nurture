@@ -173,7 +173,7 @@
             <th scope="col"><%= t('label.form.edit') %></th>
             <th scope="col"><%= t('label.assignment.title') %></th>
             <th scope="col"><%= t('label.assignment.target') %></th>
-            <th scope="col"><%= t('label.assignment.instruction') %></th>
+            <th scope="col"<%= t('label.assignment.instruction') %></th>
             <th scope="col"><%= t('label.assignment.status') %></th>
             <th scope="col"><%= t('label.assignment.period') %></th>
             <% if current_user.role == "tutor" %>
@@ -205,7 +205,7 @@
                   -
                 <% end %>
               </td>
-              <td><%= assignment.instruction %></td>
+              <td> <%= assignment.instruction %></td>
               <td>
                 <% if assignment.status == 0 %>
                   Work In Process
@@ -255,10 +255,17 @@
 </div>
 
 <% if @course.tutor == current_user || @course.student == current_user %>
-  <div class="position-sticky" style="margin-left: 90%; bottom: 20px;">
+  <div class="position-sticky d-none d-md-block" style="margin-left: 90%; bottom: 20px;">
     <%= link_to chatroom_path(id: @course.id), target: :blank do%>
       <%= image_tag "chat.png", style:"width:50px; height:50px;" %>
     <% end %>
+  </div>
+
+  <div class="d-md-none d-flex mt-5">
+      <h4 class=" d-inline-block">Chatroom</h4>
+      <%= link_to chatroom_path(id: @course.id), target: :blank, class:"d-inline-block" do%>
+          <i class="fas fa-bars border p-2 rounded"></i>
+      <% end %>
   </div>
 <% end %>
 
