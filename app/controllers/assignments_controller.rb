@@ -139,7 +139,12 @@ class AssignmentsController < ApplicationController
   end
 
   def all
-    @assignments = policy_scope(Assignment).reject do |assignment|
+    if params[:q].present?
+      assignments = policy_scope(Assignment).search(params[:q])
+    else
+      assignments = policy_scope(Assignment)
+    end
+    @assignments = assignments.reject do |assignment|
       sample_course?(current_user, assignment)
     end
 

@@ -16,10 +16,8 @@
   <% end %>
 </div>
 
-<%= link_to print_report_path(format: :pdf), target: :_blank  do %>
-  <span class='btn btn-success text-light'>
-    <i class='fas fa-download'></i> <%= t('label.form.download_pdf') %>
-  </span>
+<%= link_to print_report_path(format: :pdf), target: :_blank, 'data-toggle': "tooltip", title: "print"  do %>
+  <span class='btn btn-success text-light'><i class='fas fa-print'></i></span>
 <% end %>
 
 <div class="mt-5">

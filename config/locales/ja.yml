@@ -176,17 +176,18 @@ ja:
       text_version: "Private Beta (登録されたデータはリセットされる可能性があります)"
       btn_start: "スタート"
     dashboard:
+      text_search_placeholder: "例： 名称、摘要"
       text_gannt_title: "未完了の宿題スケジュール"
       text_org_title: "関係者"
       text_tree_title: "目標設定ツリー"
       text_no_target: "(まだ目標設定が登録されていません)"
       text_no_course: "(まだコースが登録されていないため、関係者はいません)"
     report:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： 名称"
     knowledge:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： タイトル、概要"
     template:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： 名称、カテゴリー"
   devise:
     passwords:
       new:
@@ -204,7 +205,7 @@ ja:
       links:
   courses:
     index:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： 名称, 摘要"
     new:
       text_title: "コースの新規作成"
     edit:
@@ -215,7 +216,7 @@ ja:
       text_access_denial: "あなたはこの招待の受け入れを行うことはできません。対象の受講者アカウントでログインし直してください。"
   assignments:
     all:
-      text_search_placeholder: "例： Tennis"
+      text_search_placeholder: "例： タイトル"
     index:
       text_gannt_title: "未完了の宿題スケジュール"
       text_tree_title: "目標設定ツリー"
@@ -274,7 +275,7 @@ ja:
       text_title: "宿題設定テンプレートのアップロード"
   users:
     index:
-      text_search_placeholder: "例： Sample"
+      text_search_placeholder: "例： 性, 名, ニックネーム, email, 興味分野, 専門分野"
     show:
       text_active_user: "アクティブユーザー"
       text_deactivated_user: "無効化済みユーザー"

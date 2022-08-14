@@ -23,9 +23,10 @@
     <i class="fas fa-bullseye me-2"></i>
     <%= t('resources.target_templates_set') %>
     <% if current_user.role == "tutor" %>
-      <%= link_to new_target_templates_set_path, class: "ms-3" do %>
-        <%= show_add_button.html_safe %>
-      <% end %>
+      <%= link_to new_target_templates_set_path,
+          class: "ms-3",
+          'data-toggle': "tooltip",
+          title: t('label.form.add') do %><%= show_add_button.html_safe %><% end %>
     <% end %>
   </h4>
 </div>
@@ -46,14 +47,17 @@
             </div>
             <% if target_templates_set.user == current_user %>
               <div class="mt-2 mb-3">
-                <%= link_to edit_target_templates_set_path(target_templates_set), class: "ms-3 edit-target-templates-set btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_target_templates_set_path(target_templates_set),
+                    class: "edit-target-templates-set ms-3",
+                    'data-toggle': "tooltip",
+                    title: t('label.form.edit') do %><%= show_edit_button.html_safe %><% end %>
 
                 <%= link_to target_templates_set_path(target_templates_set),
                     method: :delete,
                     class: "delete-target-templates-set ms-1",
-                    data: { confirm: 'Do you really want to delete the target template?' } do %><%= show_delete_button.html_safe %><% end %>
+                    data: { confirm: 'Do you really want to delete the target template?' },
+                    'data-toggle': "tooltip",
+                    title: t('label.form.delete') do %><%= show_delete_button.html_safe %><% end %>
               </div>
             <% end %>
             <div class="ms-3 mb-1">
@@ -70,7 +74,7 @@
                 </span>
               </p>
               <p class="card-text d-none d-lg-block">
-                <small class="text-muted">Created at <%= target_templates_set.created_at.strftime("%F") %><%= target_templates_set.created_at.strftime(" %I:%M%#p") %></small>
+                <small class="text-muted"><%= t('shared.main.text_created_at') %> <%= target_templates_set.created_at.strftime("%F") %><%= target_templates_set.created_at.strftime(" %I:%M%#p") %></small>
               </p>
             </div>
           </div>
@@ -86,9 +90,10 @@
   <h4>
     <i class="fas fa-tasks me-2"></i><%= t('resources.assignment_templates_set') %>
     <% if current_user.role == "tutor" %>
-      <%= link_to new_assignment_templates_set_path, class: "ms-3" do %>
-        <%= show_add_button.html_safe %>
-      <% end %>
+      <%= link_to new_assignment_templates_set_path,
+          class: "ms-3",
+          'data-toggle': "tooltip",
+          title: t('label.form.add') do %><%= show_add_button.html_safe %><% end %>
     <% end %>
   </h4>
 </div>
@@ -109,14 +114,17 @@
             </div>
             <% if assignment_templates_set.user == current_user %>
               <div class="mt-2 mb-3">
-                <%= link_to edit_assignment_templates_set_path(assignment_templates_set), class: "ms-3 edit-assignment-templates-set btn btn-outline-success" do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
+                <%= link_to edit_assignment_templates_set_path(assignment_templates_set),
+                    class: "edit-assignment-templates-set ms-3",
+                    'data-toggle': "tooltip",
+                    title: t('label.form.edit') do %><%= show_edit_button.html_safe %><% end %>
 
                 <%= link_to assignment_templates_set_path(assignment_templates_set),
                     method: :delete,
                     class: "delete-assignment-templates-set ms-1",
-                    data: { confirm: 'Do you really want to delete the assignment template?' } do %><%= show_delete_button.html_safe %><% end %>
+                    data: { confirm: 'Do you really want to delete the assignment template?' },
+                    'data-toggle': "tooltip",
+                    title: t('label.form.delete') do %><%= show_delete_button.html_safe %><% end %>
               </div>
             <% end %>
             <div class="ms-3 mb-1">

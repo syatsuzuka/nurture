@@ -176,17 +176,18 @@ en:
       text_version: "Private Beta (data can be reset)"
       btn_start: "Start learning"
     dashboard:
+      text_search_placeholder: "E.g. name, description"
       text_gannt_title: "Remaining Homework Schedule"
       text_org_title: "Relevant Parties"
       text_tree_title: "Target Tree"
       text_no_target: "(No target is registered yet)"
       text_no_course: "(No relevant parties because no course is registered yet)"
     report:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. target name"
     knowledge:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. title, summary"
     template:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. name, category"
   devise:
     passwords:
       new:
@@ -204,7 +205,7 @@ en:
       links:
   courses:
     index:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. name, description"
     new:
       text_title: "Add a New Course"
     edit:
@@ -215,7 +216,7 @@ en:
       text_access_denial: "You can't accept this invitation. Please login with the right student's account."
   assignments:
     all:
-      text_search_placeholder: "E.g. Tennis"
+      text_search_placeholder: "E.g. title"
     index:
       text_gannt_title: "Remaining Homework Schedule"
       text_tree_title: "Target Tree"
@@ -274,7 +275,7 @@ en:
       text_title: "Upload the Homework Template"
   users:
     index:
-      text_search_placeholder: "E.g. Sample"
+      text_search_placeholder: "E.g. first name, last name, nickname, email, interest / specialty"
     show:
       text_active_user: "active user"
       text_deactivated_user: "deactivated user"

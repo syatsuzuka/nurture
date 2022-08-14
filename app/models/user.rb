@@ -24,6 +24,13 @@ class User < ApplicationRecord
   after_create :create_sample_course
   before_update :send_update_email
 
+  include PgSearch::Model
+  pg_search_scope :search,
+                  against: %i[first_name last_name nickname email interest specialty],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   def active_for_authentication?
     super && !deactivated
   end

@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       if user.role == "tutor"
-        scope.where(role: "student").select do |student|
+        users = scope.where(role: "student").select do |student|
           result = false
           courses = Course.where(student: student, status: 1)
           courses.each do |course|
@@ -12,9 +12,12 @@ class UserPolicy < ApplicationPolicy
           end
           result
         end
+        users = User.where(id: users.map(&:id)).order(:first_name, :last_name)
       else
-        scope.where(role: "tutor")
+        users = scope.where(role: "tutor").order(:first_name, :last_name)
       end
+
+      return users
     end
   end
 

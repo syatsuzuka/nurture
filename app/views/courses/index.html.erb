@@ -18,7 +18,10 @@
 </div>
 
 <% if current_user.role == "tutor" %>
-  <%= link_to new_course_path, id: "add-course" do %>
+  <%= link_to new_course_path,
+      id: "add-course",
+      'data-toggle': "tooltip",
+      title: t('label.form.add') do %>
     <%= show_add_button.html_safe %>
   <% end %>
 <% end %>
@@ -47,12 +50,16 @@
                   <div class="mt-2">
                     <% if course.status == 1 %>
                       <%= link_to edit_course_path(course),
-                          class: "edit-course ms-3" do %><%= show_edit_button.html_safe %><% end %>
+                          class: "edit-course ms-3",
+                          'data-toggle': "tooltip",
+                          title: t('label.form.edit') do %><%= show_edit_button.html_safe %><% end %>
                     <% end %>
                     <%= link_to course_path(course),
                         method: :delete,
                         class: "delete-course ms-1",
-                        data: { confirm: 'Do you really want to delete the course?' } do %><%= show_delete_button.html_safe %><% end %>
+                        data: { confirm: 'Do you really want to delete the course?' },
+                        'data-toggle': "tooltip",
+                        title: t('label.form.delete') do %><%= show_delete_button.html_safe %><% end %>
                   </div>
                 <% end %>
               </div>

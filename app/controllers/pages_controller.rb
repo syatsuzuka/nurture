@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     #======= PGsearch =======
     courses =
       if params[:q].present?
-        policy_scope(Course).search_by_name_and_description(params[:q])
+        policy_scope(Course).search(params[:q])
       else
         policy_scope(Course)
       end
@@ -257,7 +257,13 @@ class PagesController < ApplicationController
   end
 
   def report
-    @targets = policy_scope(Target).reject do |target|
+    if params[:q].present?
+      targets = policy_scope(Target).search(params[:q])
+    else
+      targets = policy_scope(Target)
+    end
+
+    @targets = targets.reject do |target|
       sample_course?(current_user, target.course)
     end
 
@@ -290,8 +296,13 @@ class PagesController < ApplicationController
   end
 
   def template
-    @target_templates_sets = policy_scope(TargetTemplatesSet)
-    @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+    if params[:q].present?
+      @target_templates_sets = policy_scope(TargetTemplatesSet).search(params[:q])
+      @assignment_templates_sets = policy_scope(AssignmentTemplatesSet).search(params[:q])
+    else
+      @target_templates_sets = policy_scope(TargetTemplatesSet)
+      @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
+    end
   end
 
   def knowledge
@@ -299,7 +310,7 @@ class PagesController < ApplicationController
     @assignment_templates_sets = policy_scope(AssignmentTemplatesSet)
 
     if params[:q].present?
-      posts = policy_scope(Post).search_knowledge(params[:q])
+      posts = policy_scope(Post).search(params[:q])
     else
       posts = policy_scope(Post)
     end
