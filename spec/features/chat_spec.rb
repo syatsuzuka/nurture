@@ -19,7 +19,7 @@ feature 'chat' do
     expect(page).to have_content('Tennis Lesson (Beginner)')
 
     #======= Send message in chat =======
-    find('#chat-toggle').click
+    find('#chat-link').click
     expect(page).to have_selector('input.send')
     chat_form = ChatForm.new
     chat_params = {
@@ -37,7 +37,7 @@ feature 'chat' do
     session_form.visit_page.fill_in_with(session_params).submit.visit_page
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
-    find('#chat-toggle').click
+    find('#chat-link').click
     expect(page).to have_text('test_message')
     chat_params = {
       message_content: "https://youtu.be/P1mv-weRuTQ"
@@ -53,7 +53,7 @@ feature 'chat' do
     session_form.visit_page.fill_in_with(session_params).submit.visit_page
     click_on('courses-menu')
     click_on('Tennis Lesson (Beginner)')
-    find('#chat-toggle').click
+    find('#chat-link').click
     expect(page).to have_text('test_message')
   end
 end

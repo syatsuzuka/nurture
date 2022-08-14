@@ -284,14 +284,14 @@
 
 <% if @course.tutor == current_user || @course.student == current_user %>
   <div class="position-sticky d-none d-md-block" style="margin-left: 90%; bottom: 20px;">
-    <%= link_to chatroom_path(id: @course.id), target: :blank do%>
+    <%= link_to chatroom_path(id: @course.id), target: :blank, id: "chat-link" do%>
       <%= image_tag "chat.png", style:"width:50px; height:50px;" %>
     <% end %>
   </div>
 
   <div class="d-md-none d-flex mt-5">
       <h4 class=" d-inline-block">Chatroom</h4>
-      <%= link_to chatroom_path(id: @course.id), target: :blank, class:"d-inline-block" do%>
+      <%= link_to chatroom_path(id: @course.id), target: :blank, class:"d-inline-block", id: "chat-link" do%>
           <i class="fas fa-bars border p-2 rounded"></i>
       <% end %>
   </div>
