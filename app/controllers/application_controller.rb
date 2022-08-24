@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend # For post pagination
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :ensure_domain
+  # before_action :ensure_domain
   before_action :set_locale
   after_action :verify_authorized, except: %i[index all upload import], unless: :skip_pundit?
   after_action :verify_policy_scoped, only: %i[index all export], unless: :skip_pundit?
